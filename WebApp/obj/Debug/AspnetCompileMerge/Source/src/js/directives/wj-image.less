@@ -1,0 +1,24 @@
+﻿.wj-image-regular {
+    height: auto;
+    position: absolute;
+    transition: none;
+
+    & .img {
+        width: 100%;
+        height: auto;
+    }
+
+    & .resizing {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    &.ng-enter {
+        animation-name: fadeIn;
+    }
+
+    &.ng-leave {
+        animation-name: fadeOut;
+    }
+}

@@ -1,0 +1,45 @@
+﻿<div class="preview" ng-style="Background.Style">
+    <div class="cont-page" ng-style="Frame.StyleContPage">
+        <div class="cont" ng-style="Site.Style">
+            <div class="estrutura" ng-style="Frame.StyleEstrutura">
+                <div class="animated shake" ng-show="UI_Animate_Menu && Site.Data.Menu.VAlign == 1">
+                    <ul class="menu custom" ng-class="Site.Data.Menu.Id">
+                        <li ng-repeat="Page in Pages">
+                            <a href="">{{Page.Title}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="header" ng-style="Header.Style">
+                    <div class="header-text" ng-style="Logo.StyleText">
+                        <div ng-show="Logo.Data.LogoType == 1 && !TextEditor.Header.Active" ng-bind-html="TextEditor.Header.TrustedModel();"></div>
+                    </div>
+                    <div class="header-image" ng-style="Logo.StyleImageContainer">
+                        <img ng-src="{{Logo.ImagePath}}" ng-style="Logo.StyleImage" />
+                    </div>
+                    <div ng-show="TextEditor.Header.Active">
+                        <div id="tinymce1" ui-tinymce config="TextEditor.Header.Options" ng-model="TextEditor.Header.Model"></div>
+                    </div>
+                </div>
+                <div class="animated shake" ng-show="UI_Animate_Menu && Site.Data.Menu.VAlign == 3">
+                    <ul class="menu custom" ng-class="Site.Data.Menu.Id">
+                        <li ng-repeat="Page in Pages">
+                            <a href="">{{Page.Title}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="base" ng-style="Frame.StyleBase">&nbsp;</div>
+            </div>
+            <div>
+                <!-- CONTEÚDO TODAS AS PÁGINAS -->
+            </div>
+        </div>
+        <div>
+            <!-- CONTEÚDO DESTA PÁGINA -->
+        </div>
+    </div>
+    <div class="footer" ng-style="Site.Style">
+        <div class="content" ng-style="Footer.Style">
+            <div id="tinymce3" ui-tinymce config="TextEditor.Footer.Options" ng-model="TextEditor.Footer.Model"></div>
+        </div>
+    </div>
+</div>

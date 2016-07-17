@@ -1,0 +1,10 @@
+﻿<div id         =   "{{data.Id}}"
+     class      =   "maps animated content"
+     ng-style   =   "{  'top': data.Position.Y + 'px',
+                        'left': data.Position.X + 'px',
+                        'z-index': data.Position.ZIndex }"
+     wj-animate =   "data">
+    <wj-content-click data="data" edit-mode-on="editModeOn" ng-if="!data.IsNewContent"></wj-content-click>
+    <iframe ng-src="{{url}}" ng-style="{'width': data.Size.Width + 'px', 'height': data.Size.Height + 'px' }" ng-if="data.Address != ''"></iframe>
+    <img src="../images/place-holder-google-maps.png" ng-if="data.Address == ''" />
+</div>

@@ -1,0 +1,27 @@
+﻿<div class="content-editor box-editor animated">
+    <div class="container-tool top-33 bottom-20">
+        <i class="negrito" translate>Cor</i>
+        <spectrum-colorpicker class="color-picker" ng-model="data.Color" options="ColorPickerConfig"></spectrum-colorpicker>
+    </div>
+    <div class="container-tool bottom-10">
+        <label>
+            <input type="checkbox" ng-model="data.Border.Exists" />
+            <span class="negrito" translate>Contorno</span>
+        </label>
+    </div>
+    <div class="container-tool animated fadeInDown" ng-show="data.Border.Exists">
+        <select ng-model="data.Border.Width">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+        </select>
+        <spectrum-colorpicker class="color-picker" ng-model="data.Border.Color" options="ColorPickerConfig"></spectrum-colorpicker>
+    </div>
+    <div class="top-22">
+        <wj-zindex state="zindex"></wj-zindex>
+        <wj-ok-cancel data="data" event-ok="OnContentCommit" event-cancel="OnContentRollback"></wj-ok-cancel>
+    </div>
+</div>

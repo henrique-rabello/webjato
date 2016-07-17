@@ -1,0 +1,112 @@
+﻿<div class="content-editor social-editor animated">
+    <div id="panel" ng-class="{'show-all': DisplayAllPlugins}">
+           <div class="container-tool top-33">
+            <i class="negrito" translate>Ícones</i>
+        </div>
+        <div class="container-tool" style="margin-bottom:5px;">
+            <label>
+                <input type="checkbox" ng-model="data.Facebook.Enabled" />
+                <img src="../images/icone_face_peq.png" alt="" title="" />
+                <i class="pequena">Facebook</i>
+            </label>
+            <a href="#">
+                <img class="icon-ajuda" src="../images/icon_ajuda1.png" alt="" title="" />
+            </a>
+        </div>
+        <div class="container-tool">
+            <input type="text" class="form-text1" placeholder="{{'A url aqui...'|translate}}" ng-model="data.Facebook.URL" ng-disabled="!data.Facebook.Enabled" />
+        </div>
+        <div class="container-tool" style="margin-bottom:5px;">
+            <label>
+                <input type="checkbox" ng-model="data.Twitter.Enabled" />
+                <img src="../images/icone_twiter_peq.png" alt="" title="" />
+                <i class="pequena">Twitter</i>
+            </label>
+            <a href="#">
+                <img class="icon-ajuda" src="../images/icon_ajuda1.png" alt="" title="" />
+            </a>
+        </div>
+        <div class="container-tool">
+            <input type="text" class="form-text1" placeholder="{{'A url aqui...'|translate}}" ng-model="data.Twitter.URL" ng-disabled="!data.Twitter.Enabled" />
+        </div>
+        <div class="container-tool" style="margin-bottom:5px;">
+            <label>
+                <input type="checkbox" ng-model="data.GooglePlus.Enabled" />
+                <img src="../images/icone_gmais_peq.png" alt="" title="" />
+                <i class="pequena">Google Plus</i>
+            </label>
+            <a href="#">
+                <img class="icon-ajuda" src="../images/icon_ajuda1.png" alt="" title="" />
+            </a>
+        </div>
+        <div class="container-tool">
+            <input type="text" class="form-text1" placeholder="{{'A url aqui...'|translate}}" ng-model="data.GooglePlus.URL" ng-disabled="!data.GooglePlus.Enabled" />
+        </div>
+        <div class="container-tool" style="margin-bottom:5px;">
+            <label>
+                <input type="checkbox" ng-model="data.LinkedIn.Enabled" />
+                <img src="../images/icone_in_peq.png" alt="" title="" />
+                <i class="pequena">Linkedin</i>
+            </label>
+            <a href="#">
+                <img class="icon-ajuda" src="../images/icon_ajuda1.png" alt="" title="" />
+            </a>
+        </div>
+        <div class="container-tool">
+            <input type="text" class="form-text1" placeholder="{{'A url aqui...'|translate}}" ng-model="data.LinkedIn.URL" ng-disabled="!data.LinkedIn.Enabled" />
+        </div>
+        <div class="container-tool" style="margin-bottom:5px;">
+            <label>
+                <input type="checkbox" ng-model="data.YouTube.Enabled" />
+                <img src="../images/icone_tube_peq.png" alt="" title="" />
+                <i class="pequena">You Tube</i>
+            </label>
+            <a href="#">
+                <img class="icon-ajuda" src="../images/icon_ajuda1.png" alt="" title="" />
+            </a>
+        </div>
+        <div class="container-tool">
+            <input type="text" class="form-text1" placeholder="{{'A url aqui...'|translate}}" ng-model="data.YouTube.URL" ng-disabled="!data.YouTube.Enabled" />
+        </div>
+        <div class="container-tool" style="margin-bottom:5px;">
+            <label>
+                <input type="checkbox" ng-model="data.Pinterest.Enabled" />
+                <img src="../images/icone_pinterest_peq.png" alt="" title="" />
+                <i class="pequena">Pinterest</i>
+            </label>
+            <a href="#">
+                <img class="icon-ajuda" src="../images/icon_ajuda1.png" alt="" title="" />
+            </a>
+        </div>
+        <div class="container-tool">
+            <input type="text" class="form-text1" placeholder="{{'A url aqui...'|translate}}" ng-model="data.Pinterest.URL" ng-disabled="!data.Pinterest.Enabled" />
+        </div>
+        <div class="container-tool" style="margin-bottom:5px;">
+            <label>
+                <input type="checkbox" ng-model="data.Instagram.Enabled" />
+                <img src="../images/icone_instagram_peq.png" alt="" title="" />
+                <i class="pequena">Instagram</i>
+            </label>
+            <a href="#">
+                <img class="icon-ajuda" src="../images/icon_ajuda1.png" alt="" title="" />
+            </a>
+        </div>
+        <div class="container-tool">
+            <input type="text" class="form-text1" placeholder="{{'A url aqui...'|translate}}" ng-model="data.Instagram.URL" ng-disabled="!data.Instagram.Enabled" />
+        </div>
+    </div>
+    <div class="toggle" ng-click="DisplayAllPlugins = true" ng-hide="DisplayAllPlugins">
+        <span translate>mostrar mais</span>
+    </div>
+    <div class="line">&nbsp;</div>
+    <div class="container-tool bottom-20">
+        <i class="negrito" translate>Tamanho</i>
+        <select ng-model="data.Size">
+            <option value="0" translate>Pequeno</option>
+            <option value="1" translate>Médio</option>
+            <option value="2" translate>Grande</option>
+        </select>
+    </div>
+    <wj-zindex state="zindex"></wj-zindex>
+    <wj-ok-cancel data="data"></wj-ok-cancel>
+</div>

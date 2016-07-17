@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{98E9122F-BDC5-43BD-B40B-60F4998F0F3E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Webjato</RootNamespace>
+    <AssemblyName>Webjato</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AWSSDK, Version=2.3.52.0, Culture=neutral, PublicKeyToken=9f476d3089b52be3, processorArchitecture=MSIL">
+      <HintPath>..\packages\AWSSDK.2.3.52.0\lib\net45\AWSSDK.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Administration, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Administration.7.0.0.0\lib\net20\Microsoft.Web.Administration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\mongocsharpdriver.1.9.1\lib\net35\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\mongocsharpdriver.1.9.1\lib\net35\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="SystemInterface">
+      <HintPath>..\packages\SystemWrapper-sn.0.5.3\lib\net40\SystemInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="SystemWrapper">
+      <HintPath>..\packages\SystemWrapper-sn.0.5.3\lib\net40\SystemWrapper.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\AuxiliaryConstans.cs" />
+    <Compile Include="Entities\Content\Box.cs" />
+    <Compile Include="Entities\Content\BoxBorder.cs" />
+    <Compile Include="Entities\Content\ContactForm.cs" />
+    <Compile Include="Entities\Content\ContentBase.cs" />
+    <Compile Include="Entities\Content\ContentIndex.cs" />
+    <Compile Include="Entities\Content\ExpandableImage.cs" />
+    <Compile Include="Entities\Content\GoogleMaps.cs" />
+    <Compile Include="Entities\Content\Line.cs" />
+    <Compile Include="Entities\Content\LinkedImage.cs" />
+    <Compile Include="Entities\Content\RegularImage.cs" />
+    <Compile Include="Entities\Content\SocialPlugin.cs" />
+    <Compile Include="Entities\Content\SocialPlugins.cs" />
+    <Compile Include="Entities\Content\Text.cs" />
+    <Compile Include="Entities\Content\Video.cs" />
+    <Compile Include="Entities\Enums\BackgroundType.cs" />
+    <Compile Include="Entities\Enums\ContentType.cs" />
+    <Compile Include="Entities\Enums\FrameBorderType.cs" />
+    <Compile Include="Entities\Enums\HAlignment.cs" />
+    <Compile Include="Entities\Enums\EnumExtensions.cs" />
+    <Compile Include="Entities\Enums\Feature.cs" />
+    <Compile Include="Entities\Enums\LineStyle.cs" />
+    <Compile Include="Entities\Enums\LinkType.cs" />
+    <Compile Include="Entities\Enums\LogoType.cs" />
+    <Compile Include="Entities\Enums\MailSender.cs" />
+    <Compile Include="Entities\Enums\PasswordRetrievalStatus.cs" />
+    <Compile Include="Entities\Enums\Roles.cs" />
+    <Compile Include="Entities\Enums\SocialPluginSize.cs" />
+    <Compile Include="Entities\Enums\UserOrigin.cs" />
+    <Compile Include="Entities\Enums\VAlignment.cs" />
+    <Compile Include="Entities\Enums\VideoType.cs" />
+    <Compile Include="Entities\Enums\ZIndexChange.cs" />
+    <Compile Include="Entities\IContentBaseRepository.cs" />
+    <Compile Include="Entities\IScalableImage.cs" />
+    <Compile Include="Entities\ISimpleImage.cs" />
+    <Compile Include="Entities\MailServerConfig.cs" />
+    <Compile Include="Entities\OptionalFeature.cs" />
+    <Compile Include="Entities\Page.cs" />
+    <Compile Include="Entities\Position.cs" />
+    <Compile Include="Entities\Publish.cs" />
+    <Compile Include="Entities\PublishInfo.cs" />
+    <Compile Include="Entities\ScalableImage.cs" />
+    <Compile Include="Entities\SimpleImage.cs" />
+    <Compile Include="Entities\Site\Config.cs" />
+    <Compile Include="Entities\Site\Footer.cs" />
+    <Compile Include="Entities\Site\Frame.cs" />
+    <Compile Include="Entities\Site\FrameBorder.cs" />
+    <Compile Include="Entities\Site\Header.cs" />
+    <Compile Include="Entities\Site\BackgroundBase.cs" />
+    <Compile Include="Entities\Site\Logo.cs" />
+    <Compile Include="Entities\Site\Menu.cs" />
+    <Compile Include="Entities\Site\MenuPart.cs" />
+    <Compile Include="Entities\Site\Site.cs" />
+    <Compile Include="Entities\Site\Background.cs" />
+    <Compile Include="Entities\Size.cs" />
+    <Compile Include="Entities\TemporaryImage.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\UserBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AccountRepository.cs" />
+    <Compile Include="Repositories\AwsRepos\BucketRepository.cs" />
+    <Compile Include="Repositories\ContentRepos\BoxRepository.cs" />
+    <Compile Include="Repositories\ContentRepos\ContactFormRepository.cs" />
+    <Compile Include="Repositories\ContentRepos\ContentManager.cs" />
+    <Compile Include="Repositories\ContentRepos\ContentBaseRepository.cs" />
+    <Compile Include="Repositories\ContentRepos\ExpandableImageRepository.cs" />
+    <Compile Include="Repositories\ContentRepos\GoogleMapsRepository.cs" />
+    <Compile Include="Repositories\ContentRepos\ImageContentBaseRepository.cs" />
+    <Compile Include="Repositories\ContentRepos\LineRepository.cs" />
+    <Compile Include="Repositories\ContentRepos\LinkedImageRepository.cs" />
+    <Compile Include="Repositories\ContentRepos\RegularImageRepository.cs" />
+    <Compile Include="Repositories\ContentRepos\SocialPluginRepository.cs" />
+    <Compile Include="Repositories\ContentRepos\VideoRepository.cs" />
+    <Compile Include="Repositories\AwsRepos\Route53Repository.cs" />
+    <Compile Include="Repositories\IISRepository.cs" />
+    <Compile Include="Repositories\PublishRepository.cs" />
+    <Compile Include="Repositories\ScalableImageRepository.cs" />
+    <Compile Include="Repositories\SimpleImageRepository.cs" />
+    <Compile Include="Utilities\AwsUtilities.cs" />
+    <Compile Include="Utilities\ContentUtilities.cs" />
+    <Compile Include="Repositories\ContentRepos\TextRepository.cs" />
+    <Compile Include="Repositories\OptionalFeatureRepository.cs" />
+    <Compile Include="Repositories\PageRepository.cs" />
+    <Compile Include="Repositories\AwsRepos\S3Repository.cs" />
+    <Compile Include="Repositories\SiteRepos\FooterRepository.cs" />
+    <Compile Include="Repositories\SiteRepos\FrameRepository.cs" />
+    <Compile Include="Repositories\SiteRepos\LogoRepository.cs" />
+    <Compile Include="Repositories\SiteRepos\SiteRepository.cs" />
+    <Compile Include="Repositories\SiteRepos\BackgroundRepository.cs" />
+    <Compile Include="Repositories\TemporaryImageRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Utilities\General.cs" />
+    <Compile Include="Utilities\ImageUtils.cs" />
+    <Compile Include="Utilities\MailManager.cs" />
+    <Compile Include="Utilities\Publisher.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

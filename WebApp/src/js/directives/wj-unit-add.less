@@ -1,0 +1,60 @@
+﻿.wj-add-unit {
+    position: absolute;
+    width: 100%;
+    top: 12px;
+    background: url(../images/sombra-top.png) repeat-x 0px 77px;
+
+    &.ng-enter {
+        animation-name: fadeInLeft;
+    }
+
+    &.ng-leave {
+        animation-name: fadeOutLeft;
+    }
+
+    & .selected {
+        color: #fff;
+        cursor: default;
+        border: 0px solid #0078d7 !important;
+        background-color: #333;
+    }
+
+    & .botoes-frame {
+        margin-bottom: 42px;
+
+        & li a.inativo,
+        & li a:hover .inativo {
+            color: #ccc;
+            cursor: default;
+            background: #ececec;
+        }
+
+        & .padding2 {
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+    }
+
+
+    & button {
+        font-size: 0.8em;
+        color: #555;
+        position: relative;
+        width: 139px;
+        height: auto;
+        text-align: left;
+        cursor: pointer;
+        display: block;
+        margin: 5px 0px 5px 18px;
+        padding: 6px 0 6px 9px;
+        border: 0px solid transparent;
+        background-color: transparent;
+
+        &:hover {
+            text-decoration: none;
+            border: 0px solid #eee;
+            background: #eee;
+            color: #333;
+        }
+    }
+}

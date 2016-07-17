@@ -1,0 +1,22 @@
+﻿<div class="wj-add-unit animated">
+    <div class="container-tool negrito top-33 bottom-13">
+        <img src="../images/add_icon.png" alt="" title="" class="right-7" />
+        <span translate>Adicionar</span>
+    </div>
+    <ul class="botoes-frame">
+        <li>
+            <a class="linkNormal linkAtivo" translate>Unidade</a>
+        </li>
+        <li>
+            <a class="linkNormal ajuste inativo south padding2" alt="" title="{{'Em breve'|translate}}" translate>Grupo</a>
+        </li>
+    </ul>
+    <button type="button" ng-class="{'selected': Model.ContentTypeToPreview == ContentType.TEXT}" ng-click="Model.ContentTypeToPreview = ContentType.TEXT;" translate>Texto</button>
+    <button type="button" ng-class="{'selected': Model.ContentTypeToPreview == ContentType.BOX}" ng-click="Model.ContentTypeToPreview = ContentType.BOX;" translate>Box</button>
+    <button type="button" ng-class="{'selected': Model.ContentTypeToPreview == ContentType.LINE}" ng-click="Model.ContentTypeToPreview = ContentType.LINE;" translate>Linha</button>
+    <button type="button" ng-class="{'selected': Model.ContentTypeToPreview == ContentType.IMAGE}" ng-click="Model.ContentTypeToPreview = ContentType.IMAGE;" translate>Imagem</button>
+    <button type="button" ng-class="{'selected': Model.ContentTypeToPreview == ContentType.VIDEO}" ng-click="Model.ContentTypeToPreview = ContentType.VIDEO;" translate>Vídeo</button>
+    <button type="button" ng-class="{'selected': Model.ContentTypeToPreview == ContentType.MAPS}" ng-click="Model.ContentTypeToPreview = ContentType.MAPS;" translate>Mapa</button>
+    <button type="button" ng-class="{'selected': Model.ContentTypeToPreview == ContentType.SOCIAL}" ng-click="Model.ContentTypeToPreview = ContentType.SOCIAL;" translate>Rede Social</button>
+    <button type="button" ng-class="{'selected': Model.ContentTypeToPreview == ContentType.CONTACT_FORM}" ng-click="Model.ContentTypeToPreview = ContentType.CONTACT_FORM;" translate>Formulário</button>
+</div>

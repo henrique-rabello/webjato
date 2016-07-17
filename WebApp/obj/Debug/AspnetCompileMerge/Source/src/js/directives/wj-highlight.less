@@ -1,0 +1,28 @@
+﻿.wj-highlight {
+    z-index: 9999;
+
+    &.old-content {
+        border: 1px solid #0000FF;
+        margin-left: -1px;
+        margin-top: -1px;
+        position: absolute;
+        transition: all 0.05s ease-in-out 0.05s;
+    }
+
+    &.new-content {
+        border: 1px dashed #BDBDBD;
+        position: absolute;
+        margin-left: -17px;
+        margin-top: -17px;
+    }
+
+    &.ui-draggable-dragging,
+    &.ui-resizable-resizing {
+        transition: none;
+    }
+
+    &.interactive {
+        cursor: pointer;
+        transition: none;
+    }
+}

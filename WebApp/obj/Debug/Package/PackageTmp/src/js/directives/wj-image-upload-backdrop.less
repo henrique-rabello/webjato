@@ -1,0 +1,31 @@
+﻿.wj-image-upload-backdrop {
+    background-color: rgba(0, 0, 0, 0.8);
+    bottom: 0;
+    cursor: wait;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    &.ng-enter {
+        animation-name: fadeInRight;
+    }
+
+    &.ng-leave {
+        animation-name: fadeOutLeft;
+    }
+
+    & .caption,
+    & .progress {
+        color: #FFF;
+        text-align: center;
+    }
+
+    & .caption {
+        margin-top: 50%;
+    }
+
+    & .progress {
+        font-size: xx-large;
+    }
+}

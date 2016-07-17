@@ -1,0 +1,21 @@
+﻿body {
+	font-family:Arial;
+	font-size:13px;
+}
+.label {
+	color: #000000;
+}
+.link {
+	color: #3333FF;
+	text-decoration: none;
+}
+.note {
+	color: #888;
+	font-size: 11px;
+}
+.block {
+	padding:5px;
+	margin-bottom:10px;
+	border-bottom:1px solid #ccc;
+	text-decoration: none;
+}

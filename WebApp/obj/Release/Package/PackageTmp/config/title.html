@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="../css/basic.css" />
+    <style type="text/css" media="screen">
+        body {
+            font-family: Verdana, Geneva, sans-serif;
+            text-align: center;
+            background-color: #fff;
+            margin: 0;
+        }
+
+        #page-title {
+            background-color: transparent;
+            margin: 0 auto;
+            position: relative;
+            width: 760px;
+            height: 300px;
+            border: 0 solid #ddd;
+        }
+
+        #monitor {
+            background-color: transparent;
+            position: absolute;
+            top: 85px;
+            right: 120px;
+            width: auto;
+            height: auto;
+        }
+
+             #shot {
+            background-color: transparent;
+            color: #000;
+            font-size: 0.8em;
+            text-align: left;
+            line-height: normal;
+            position: absolute;
+            font-weight: normal;
+            top: 110px;
+            left: 120px;
+            width: 295px;
+            height: auto;
+        }
+
+        #linha {
+            position: absolute;
+            top: 105px;
+            left: 370px;
+            width: 90px;
+            height: 10px;
+            border-top: 0 solid #f00;
+            border-left: 0 solid #f00;
+        }
+
+        .tamanho {
+            font-size: 1.1em;
+            color: #0093DD;
+            line-height: 50px;
+            margin-left: 3px;
+            font-weight: bold;
+        }
+
+        #boxaviso p {
+            margin-top: 0;
+            margin-bottom: 4px;
+        }
+
+        #boxaviso {
+            color: #000;
+            text-align: left;
+            font-size: 0.8em;
+            position: absolute;
+            top: 175px;
+            left: 123px;
+            width: auto;
+            height: auto;
+            padding-left: 14px;
+            border-left: 3px solid #82c300;
+            background-color: transparent;
+        }
+
+           #page-title input[type='text'] {
+            width: 265px;
+            height: 20px;
+            border-color: activeborder;
+            border-style: solid;
+            font-size: 11pt;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="page-title">
+        <div id="monitor">
+            <img src="../images/monitor_titulo.jpg" alt="" />
+              </div>
+        <div id="shot">
+            <input placeholder=" Escreva aqui..." type="text" maxlength="128" class="place_indentado" size="20" style="border:1px solid #999;" id="txt_text" ng-model="Site.Title" ng-change="UpdateTitle();" ui-mask />
+        </div>
+        <div id="boxaviso" translate>
+            <p>Ex.: nome do site ou negócio, </p>serviços, qualidades...
+        </div>
+        <div id="linha">&nbsp;</div>
+    </div>
+</body>
+</html>

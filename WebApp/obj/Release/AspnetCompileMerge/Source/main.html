@@ -1,0 +1,472 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" id="ng-app" ng-app="MainApp">
+<head>
+    <title translate>Webjato&nbsp;&nbsp;-&nbsp;&nbsp;INÍCIO&nbsp;&nbsp;</title>
+    <link rel="stylesheet" type="text/css" href="css/animate.css" />
+    <link rel="stylesheet" type="text/css" href="css/header.css" />
+    <link rel="stylesheet" type="text/css" href="css/help.css" />
+    <link rel="stylesheet" type="text/css" href="css/basic.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.selectboxit-grey.css" />
+    <style type="text/css" media="screen">
+        body {
+            font-family: Verdana, Geneva, sans-serif;
+            text-align: center;
+            background: #fff url(images/bg_header1.png) repeat-x top left;
+            margin: 0;
+        }
+
+        img {
+            border: none;
+        }
+        /* XXXX HEADER XXXX */
+        #page {
+            z-index: 10;
+        }
+
+        .dropdown {
+            position: relative;
+            width: auto;
+            height: 30px;
+            margin: 0 auto;
+            margin-top: 18px;
+            margin-right: 50px;
+            margin-left: 240px;
+            float: left;
+            background: url(images/bg_dropdown.png) no-repeat -1000px -1000px;
+        }
+
+            .dropdown dt {
+                color: #000;
+                font-size: 0.84em;
+                text-align: left;
+            }
+
+                .dropdown dt a {
+                    background: url(images/icon_conta.png) no-repeat left top;
+                    display: block;
+                    width: auto;
+                    height: auto;
+                    padding: 6px 0px 5px 44px;
+                    color: #000;
+                    text-decoration: none;
+                }
+
+                    .dropdown dt a span {
+                        cursor: pointer;
+                        display: block;
+                        padding: 5px;
+                    }
+
+            .dropdown dd, .dropdown dt, .dropdown ul {
+                margin: 0px;
+                padding: 0px;
+            }
+
+            .dropdown dd {
+                font-size: 0.8em;
+                text-align: left;
+                display: none;
+            }
+
+            .dropdown:hover dd {
+                display: block;
+            }
+
+            .dropdown dd {
+                position: relative;
+            }
+
+                .dropdown dd ul {
+                    background: url(images/bg_dropdown.png) no-repeat top left;
+                    border: 0px solid #d9d9d9;
+                    padding: 20px 0 10px 1px;
+                    position: absolute;
+                    top: 0px;
+                    right: -20px;
+                    width: 319px;
+                    height: 100px;
+                    list-style: none;
+                }
+
+                    .dropdown dd ul li a {
+                        color: #000;
+                        text-decoration: none;
+                        margin-right: 7px;
+                        padding: 8px 0 8px 18px;
+                        display: block;
+                    }
+
+                        .dropdown dd ul li a:hover {
+                            color: #000;
+                            text-decoration: none;
+                            background-color: #eee;
+                        }
+
+            .dropdown img {
+                border: none;
+                margin-right: 0px;
+                vertical-align: -2px;
+            }
+
+        #ligado {
+            color: #000;
+            font-size: 0.75em;
+            font-weight: normal;
+            position: relative;
+            width: auto;
+            height: auto;
+            display: table;
+            float: left;
+            margin-top: 10px;
+            margin-left: 55px;
+        }
+
+        #id img {
+            vertical-align: -3px;
+        }
+
+        #id {
+            background-color: transparent;
+            padding-right: 4px;
+            padding-left: 4px;
+            text-align: left;
+            color: #000;
+            font-size: small;
+            position: absolute;
+            top: 5px;
+            left: 150px;
+            width: auto;
+            height: auto;
+        }
+
+            #id .saudacao {
+                font-weight: normal;
+                color: #000;
+            }
+
+            #id .margem {
+                margin-right: 3px;
+                margin-left: 3px;
+            }
+
+            #id a:link {
+                font-size: 0.8em;
+                color: #FA7403;
+                text-decoration: underline;
+            }
+
+            #id a:visited {
+                color: #FA7403;
+                text-decoration: underline;
+            }
+
+            #id a:hover {
+                color: #FA7403;
+                text-decoration: underline;
+            }
+        /* CONTAINER */
+        #container {
+            background-color: transparent;
+            margin: 0 auto;
+            margin-top: 30px;
+            position: relative;
+            width: 1000px;
+            height: 338px;
+            border: 0px solid #999;
+        }
+
+        #menu li p {
+            margin-top: 0px;
+            margin-bottom: 22px;
+            text-align: center;
+        }
+
+        #menu, #menu * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #menu {
+            font-family: Arial, Helvetica, sans-serif;
+            position: relative;
+            width: auto;
+            height: auto;
+            margin-top: 70px;
+            list-style: none;
+            display: inline-block;
+            font-size: 1.0em;
+            font-weight: bold;
+            text-transform: uppercase;
+            background-color: transparent;
+        }
+
+            #menu li {
+                display: inline-block;
+            }
+
+                #menu li a {
+                    background-color: transparent;
+                    display: block;
+                    text-decoration: none;
+                    color: #0078d7;
+                    padding-top: 3px;
+                    padding-right: 29px;
+                    padding-bottom: 7px;
+                    padding-left: 29px;
+                    margin-bottom: 3px;
+                    border: 1px solid #fff;
+                    border-radius: 0.1em;
+                    border-radius: 0.2em;
+                }
+
+                    #menu li a:hover {
+                        text-decoration: none;
+                        background-color: #fff;
+                        border: 1px solid #e5e5e5;
+                    }
+
+                #menu li.mack {
+                    margin-right: 0px;
+                    margin-left: 52px;
+                }
+
+                #menu li a.visuri {
+                    margin-right: 52px;
+                    margin-left: 52px;
+                }
+
+                #menu li a.configura {
+                    padding-right: 15px;
+                    padding-left: 15px;
+                    margin-left: 0px;
+                }
+
+        .dock {
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 0.75em;
+            font-weight: normal;
+            color: #333;
+            text-transform: none;
+        }
+        /* XXXXXX RODAPÉ XXXXX */
+        #tradutor {
+            position: relative;
+            width: auto;
+            height: auto;
+            margin: 0 auto;
+            margin-top: 20px;
+            margin-bottom: 23px;
+            background: transparent;
+        }
+
+            #tradutor img {
+                vertical-align: -9px;
+                margin-right: 5px;
+            }
+
+        .outro {
+            font-size: 0.7em;
+            font-weight: normal;
+            margin-bottom: 15px;
+            position: relative;
+            width: auto;
+            height: auto;
+        }
+
+            .outro a {
+                color: #06c;
+                text-decoration: none;
+                margin-right: 21px;
+            }
+
+                .outro a:hover {
+                    text-decoration: underline;
+                }
+
+        h4 {
+            color: #6d6d6d;
+            font-size: x-small;
+            font-weight: normal;
+            margin: 0 auto;
+            position: relative;
+            width: auto;
+            height: auto;
+        }
+
+        #textEditorPreloader {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            display: none;
+        }
+
+        .mailBox {
+            color: #000;
+            font-size: small;
+            font-weight: normal;
+            text-align: left;
+            padding: 0px 20px 20px 20px;
+            border: 5px solid gray;
+            line-height: 25px;
+            background-color: White;
+            width: 600px;
+            display: none;
+        }
+
+        .mailBoxTitle {
+            color: #2C65B9;
+            font-size: medium;
+            font-weight: bold;
+        }
+    </style>
+    <script type="text/javascript" src="scripts/wj-libs.js"></script>
+    <script type="text/javascript" src="scripts/wj.js"></script>
+    <script type="text/javascript">
+        angular.module("MainApp", ["gettext", "ngCookies", "WebjatoDirectives", "WebjatoServices"])
+            .controller("MainCrtl",
+                function ($scope, $http, $cookies, gettextCatalog, HandleServerException) {
+                    $scope.UserName = "";
+                    $scope.HelpUrl = null;
+                    $scope.IsHelpEnabled = false;
+                    $scope.ChangeLanguage = function () {
+                        gettextCatalog.currentLanguage = $scope.CurrentLanguage;
+                        $cookies.language = $scope.CurrentLanguage;
+                    };
+                    $scope.OnHelpStateChange = function () {
+                        var action = $scope.IsHelpEnabled ? "put" : "delete";
+                        $http({ method: "GET", url: "api/feature/" + action + "/0" }).error(HandleServerException);
+                        $scope.$emit("HelpSetState", $scope.IsHelpEnabled, $scope.IsHelpEnabled);
+                    };
+                    $scope.Logout = function () {
+                        $http({ method: "POST", url: "api/user/logout" })
+                            .success(function (data, status, headers, config) {
+                                top.location.href = "index.html";
+                            }).error(HandleServerException);
+                    };
+                    $scope.ShowHelp = function () {
+                        $scope.$emit("HelpDisplay", "main");
+                    };
+                    $http({ method: "GET", url: "api/feature/get/0" })
+                        .success(function (data, status, headers, config) {
+                            $scope.IsHelpEnabled = (String(data) == "true");
+                            $scope.$emit("HelpSetState", $scope.IsHelpEnabled, false);
+                            $scope.$emit("HelpAutoDisplay", "main");
+                        }).error(HandleServerException);
+                    $http({ method: "GET", url: "api/user/name" })
+                        .success(function (data) {
+                            $scope.UserName = eval(data);
+                        }).error(HandleServerException);
+                    $scope.CurrentLanguage = $cookies.language ? $cookies.language : "pt_BR";
+                    $scope.ChangeLanguage();
+                });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            //Calls the selectBoxIt method on your HTML select box.
+            $('.drop-local').selectBoxIt();
+        });
+    </script>
+</head>
+<body ng-controller="MainCrtl">
+    <wj-help></wj-help>
+    <div id="page">
+        <dl id="sample" class="dropdown">
+            <dt>
+                <a href="#" title="">{{UserName}} <img src="images/arrow.png" alt="" title="" /></a>
+            </dt>
+            <dd>
+                <ul>
+                    <li>
+                        <a href="registros.html" title="{{''|translate}}" translate>Conectar endereço (www.seusite.com)</a>
+                    </li>
+                    <li>
+                        <a translate>Alterar senha</a>
+                    </li>
+                    <li>
+                        <a href="#" ng-click="Logout();" translate>Sair</a>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+        <div class="bot-azul">
+            <a href="planos.html" title="{{''|translate}}" translate>Aprimorar</a>
+        </div>
+        <div id="ligado">
+            <input type="checkbox" id="ckAjuda" class="ipt_checkbox cursorpointer" ng-model="IsHelpEnabled" ng-change="OnHelpStateChange();" />
+            <label for="ckAjuda" class="cursorpointer" title="{{''|translate}}" translate>Ajuda automática</label>
+        </div>
+        <div id="bot-visualizar">
+            <ul id="lado">
+                <li>
+                    <a title="{{'Visualizar projeto'|translate}}" translate>Visualizar</a>
+                </li>
+            </ul>
+        </div>
+        <div id="cont">
+            <div class="botao-ajuda">
+                <a href="#" ng-click="ShowHelp();" title="{{'Ajuda'|translate}}" translate>&nbsp;</a>
+            </div>
+            <div class="botao-inicio">
+                <a href="main.html" title="{{'Início'|translate}}" translate>&nbsp;</a>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+        <ul id="menu">
+            <li>
+                <a href="config/#/size.html" target="_top" class="configura">
+                    <p>
+                        <img src="images/configuracao.png" alt="" title="{{'1º Passo'|translate}}" />
+                    </p>
+                    <span translate>Configuração</span>
+                </a>
+                <span class="dock"><strong>1&deg;</strong>&nbsp; <span translate>Tela e navegação</span></span>
+            </li>
+            <li>
+                <a href="visual/#/background.html" target="_top" class="visuri">
+                    <p>
+                        <img src="images/visual.png" alt="" title="{{'2º Passo'|translate}}" />
+                    </p>
+                    <span translate>Visual</span>
+                </a>
+                <span class="dock"><strong>2&deg;</strong>&nbsp; <span translate>Aparência do site</span></span>
+            </li>
+            <li>
+                <a href="content/index.html" target="_top" class="configura">
+                    <p>
+                        <img src="images/conteudo.png" alt="" title="{{'3º Passo'|translate}}" />
+                    </p>
+                    <span translate>Conteúdo</span>
+                </a>
+                <span class="dock"><strong>3&deg;</strong>&nbsp; <span translate>Adicionar e editar</span></span>
+            </li>
+            <li class="mack">
+                <a>
+                    <p>
+                        <img src="images/publicar.png" alt="" title="{{'4º Passo'|translate}}" />
+                    </p>
+                    <span translate>Publicar</span>
+                </a>
+                <span class="dock"><strong>4&deg;</strong>&nbsp; <span translate>Exibir seu site na web</span></span>
+            </li>
+        </ul>
+    </div>
+    <div class="ui-layout-north">
+        <div id="tradutor">
+            <img src="images/icon_idioma.png" alt="" title="{{'Idioma'|translate}}" />
+            <select class="drop-local" ng-model="CurrentLanguage" ng-change="ChangeLanguage();">
+                <option value="en_US">English</option>
+                <option value="pt_BR">Português</option>
+            </select>
+        </div>
+        <div class="outro">
+            <a translate>Administração</a><a translate>Termo de Uso</a><a translate>Política de Conteúdo</a>
+        </div>
+        <h4 translate>© 2012-2015 WebJato - Todos os direitos reservados.</h4>
+        <div id="logo">
+            <img src="images/logowj.png" alt="" title="" />
+        </div>
+        <h1 style="margin-left:7px; letter-spacing:1px;" translate>INÍCIO</h1>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+﻿<div    class       =   "wj-animated-highlight"
+        ng-show     =   "data.Selected"
+        ng-style    =   "{'top': position.Y + 'px', 'left': position.X + 'px', 'width': size.Width + 'px', 'height': size.Height + 'px'}"
+        title       =   "{{'Clique para desmarcar'|translate}}">
+    <div class="jcrop-hline"></div>
+    <div class="jcrop-hline bottom"></div>
+    <div class="jcrop-vline right"></div>
+    <div class="jcrop-vline"></div>
+    <wj-content-toolbar data="data" draggable-element="draggableElement" display="toolbarDisplay"></wj-content-toolbar>
+    <div class="label animated" ng-if="displayElementName">
+        <img src="/images/check.png" />
+        <span ng-show="data.Type == contentType.TEXT" translate>Texto</span>
+        <span ng-show="data.Type == contentType.BOX" translate>Box</span>
+        <span ng-show="data.Type == contentType.CONTACT_FORM" translate>Formulário</span>
+        <span ng-show="data.Type == contentType.MAPS" translate>Mapa</span>
+        <span ng-show="data.Type == contentType.IMAGE || data.Type == contentType.LINKED_IMAGE || data.Type == contentType.EXPANDABLE_IMAGE" translate>Imagem</span>
+        <span ng-show="data.Type == contentType.LINE" translate>Linha</span>
+        <span ng-show="data.Type == contentType.SOCIAL" translate>Rede Social</span>
+        <span ng-show="data.Type == contentType.VIDEO" translate>Vídeo</span>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿<div id         =   "{{data.Id}}"
+     class      =   "wj-social animated"
+     ng-style   =   "{  'top': data.Position.Y + 'px',
+                        'left': data.Position.X + 'px',
+                        'z-index': data.Position.ZIndex }"
+     wj-animate =   "data">
+    <span ng-hide="AnyPluginEnabled">Social plugins</span>
+    <a ng-href="{{data.Facebook.URL}}" title="" target="_blank" ng-show="data.Facebook.Enabled" class="animated fadeIn">
+        <img ng-src="{{Icons.Facebook[data.Size]}}" alt="" title="Facebook" ng-style="{'width': IconsSize[data.Size] + 'px', 'height': IconsSize[data.Size] + 'px' }" />
+    </a>
+    <a ng-href="{{data.Twitter.URL}}" title="" target="_blank" ng-show="data.Twitter.Enabled" class="animated fadeIn">
+        <img ng-src="{{Icons.Twitter[data.Size]}}" alt="" title="Twitter" ng-style="{'width': IconsSize[data.Size] + 'px', 'height': IconsSize[data.Size] + 'px' }" />
+    </a>
+    <a ng-href="{{data.LinkedIn.URL}}" title="" target="_blank" ng-show="data.LinkedIn.Enabled" class="animated fadeIn">
+        <img ng-src="{{Icons.Linkedin[data.Size]}}" alt="" title="LinkedIn" ng-style="{'width': IconsSize[data.Size] + 'px', 'height': IconsSize[data.Size] + 'px' }" />
+    </a>
+    <a ng-href="{{data.YouTube.URL}}" title="" target="_blank" ng-show="data.YouTube.Enabled" class="animated fadeIn">
+        <img ng-src="{{Icons.Youtube[data.Size]}}" alt="" title="Youtube" ng-style="{'width': IconsSize[data.Size] + 'px', 'height': IconsSize[data.Size] + 'px' }" />
+    </a>
+    <a ng-href="{{data.GooglePlus.URL}}" title="" target="_blank" ng-show="data.GooglePlus.Enabled" class="animated fadeIn">
+        <img ng-src="{{Icons.GooglePlus[data.Size]}}" alt="" title="GooglePlus" ng-style="{'width': IconsSize[data.Size] + 'px', 'height': IconsSize[data.Size] + 'px' }" />
+    </a>
+    <a ng-href="{{data.Pinterest.URL}}" title="" target="_blank" ng-show="data.Pinterest.Enabled" class="animated fadeIn">
+        <img ng-src="{{Icons.Pinterest[data.Size]}}" alt="" title="Pinterest" ng-style="{'width': IconsSize[data.Size] + 'px', 'height': IconsSize[data.Size] + 'px' }" />
+    </a>
+    <a ng-href="{{data.Instagram.URL}}" title="" target="_blank" ng-show="data.Instagram.Enabled" class="animated fadeIn">
+        <img ng-src="{{Icons.Instagram[data.Size]}}" alt="" title="Instagram" ng-style="{'width': IconsSize[data.Size] + 'px', 'height': IconsSize[data.Size] + 'px' }" />
+    </a>
+</div>

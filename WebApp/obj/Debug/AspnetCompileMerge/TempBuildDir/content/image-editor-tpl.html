@@ -1,0 +1,51 @@
+﻿<div class="content-editor image-editor animated">
+    <div class="container-tool bottom-titulo top-33">
+        <i class="negrito" translate>Arquivo</i>
+        <i class="pequena" translate>
+            <p>Jpeg, Gif ou Png</p>
+        </i>
+    </div>
+    <div class="btn-upload">
+        <span translate>Escolher imagem</span>
+        <input type="file" nv-file-select uploader="uploader" />
+    </div>
+    <div class="arquivo warning animated flash" ng-show="!IsFileValid" translate>
+        Somente são aceitos arquivos de imagens nos formatos JPG, PNG e GIF.
+    </div>
+    <div class="arquivo left-16">
+        <span translate>Arquivo selecionado:</span>
+    </div>
+    <div class="logical-name left-16">
+        <span>{{data.ImageName}}</span>
+    </div>
+    <div class="container-tool" ng-show="data.Type == 5">
+        <div class="negrito bottom-titulo top-20" translate>Abrir</div>
+        <label style="margin-bottom: 3px;">
+            <input type="radio" class="ipt_radiobutton" ng-model="data.LinkType" value="1" />
+            <span class="arquivo left-0" translate>um site externo</span>
+        </label>
+        <input type="text"
+               class="place_indentado input-url"
+               ng-class="{'url-warning animated flash': urlWarning1}"
+               ng-change="UrlOnChange()"
+               ng-disabled="data.LinkType != 1"
+               ng-model="UrlDraft" />
+        <div class="top-10">
+            <label style="margin-bottom: 3px; display: block;">
+                <input type="radio" class="ipt_radiobutton" ng-model="data.LinkType" value="0" />
+                <span class="arquivo left-0" translate>uma página interna</span>
+            </label>
+            <select title="{{'Página'|translate}}"
+                    ng-class="{'url-warning animated flash': urlWarning2}"
+                    ng-model="data.TargetPageId"
+                    ng-options="Page.Id as Page.Title for Page in $parent.Pages"
+                    ng-disabled="data.LinkType != 0"
+                    style="width: 150px;"></select>
+        </div>
+    </div>
+    <div class="top-22">
+        <wj-zindex state="zindex"></wj-zindex>
+        <wj-ok-cancel data="data" event-ok="OnImageCommit" event-cancel="RollbackOnImageEditor"></wj-ok-cancel>
+    </div>
+    <wj-image-upload-backdrop show="Uploading" progress="UploadProgress"></wj-image-upload-backdrop>
+</div>

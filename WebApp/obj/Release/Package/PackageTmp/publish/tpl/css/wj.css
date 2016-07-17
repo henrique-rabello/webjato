@@ -1,0 +1,1066 @@
+.content-editor {
+  font-family: Verdana, Geneva, sans-serif;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  text-align: left;
+  top: 0;
+}
+.content-editor.ng-enter {
+  -webkit-animation-name: fadeInRight;
+          animation-name: fadeInRight;
+}
+.content-editor.ng-leave {
+  -webkit-animation-name: fadeOutRight;
+          animation-name: fadeOutRight;
+}
+
+.preview {
+  font-family: Arial;
+  padding: 0 0 100px 0;
+  position: relative;
+  margin: 0;
+  transition: all 0.3s ease-out;
+}
+.preview * {
+  transition: all 0.3s ease-out;
+}
+.preview .cont-page,
+.preview .cont,
+.preview .footer,
+.preview .estrutura {
+  background-color: transparent;
+  position: relative;
+  width: 1000px;
+  height: auto;
+  z-index: 0;
+}
+.preview .cont {
+  z-index: 1;
+}
+.preview .cont-page {
+  margin-top: 0;
+  margin-bottom: 0;
+  z-index: 2;
+}
+.preview .cont-page .js-content-boundary {
+  position: absolute;
+  width: 1017px;
+}
+.preview .header {
+  float: left;
+  position: relative;
+  width: 100%;
+  z-index: 0;
+}
+.preview .header .header-text {
+  background-color: transparent;
+  padding: 10px;
+  position: absolute;
+  text-align: left;
+}
+.preview .header .header-image {
+  background-color: transparent;
+  position: absolute;
+  transition: none;
+}
+.preview .header .header-image img {
+  transition: none;
+}
+.preview .estrutura {
+  display: table;
+  border-style: solid;
+  border-width: 0;
+}
+.preview .base {
+  float: left;
+  position: relative;
+  width: 1000px;
+  height: 600px;
+  background-color: transparent;
+  transition: none;
+}
+.preview .footer {
+  z-index: 1;
+}
+.preview .footer .content {
+  border-left-color: transparent;
+  border-left-style: solid;
+  border-right-color: transparent;
+  border-right-style: solid;
+  font-family: Arial;
+  position: relative;
+  height: auto;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+.preview .semi-transparent {
+  opacity: 0.5;
+}
+.preview .saving {
+  background-color: #FFF;
+  border: 1px solid #CCC;
+  border-radius: 4px;
+  box-shadow: 1px 1px 2px #CCC;
+  padding: 5px;
+  position: fixed;
+  right: 20px;
+  top: 70px;
+  z-index: 10;
+}
+.preview .temporario.centralizado {
+  margin: 0 auto;
+  width: 1130px;
+}
+.preview .temporario.esquerda {
+  margin: 0;
+  width: 1085px;
+}
+.resizable-helper {
+  border: 2px dashed lightgray;
+}
+
+
+@-webkit-keyframes anim-zindex-up {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.02);
+            transform: scale(1.02);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+
+@keyframes anim-zindex-up {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.02);
+            transform: scale(1.02);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@-webkit-keyframes anim-zindex-down {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(0.98);
+            transform: scale(0.98);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@keyframes anim-zindex-down {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(0.98);
+            transform: scale(0.98);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+.zindex-up {
+  -webkit-animation: anim-zindex-up 0.2s linear;
+          animation: anim-zindex-up 0.2s linear;
+}
+.zindex-down {
+  -webkit-animation: anim-zindex-down 0.2s linear;
+          animation: anim-zindex-down 0.2s linear;
+}
+.duplicated {
+  transition: all 0.2s ease-out;
+}
+
+.wj-animated-highlight {
+  cursor: pointer;
+  position: absolute;
+  transition: none;
+}
+.wj-animated-highlight .jcrop-hline,
+.wj-animated-highlight .jcrop-vline {
+  opacity: 0.4;
+  position: absolute;
+}
+.wj-animated-highlight .label {
+  background-color: #fff;
+  border: 1px solid #666;
+  bottom: 100%;
+  color: #333;
+  padding: 5px;
+  position: absolute;
+  right: 0;
+  white-space: nowrap;
+}
+.wj-animated-highlight .label.ng-enter {
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+}
+.wj-animated-highlight .label.ng-leave {
+  -webkit-animation-name: fadeOut;
+          animation-name: fadeOut;
+}
+
+.content-editor.box-editor .container-tool label,
+.content-editor.box-editor .container-tool input[type='checkbox'],
+.content-editor.box-editor .container-tool span {
+  cursor: pointer;
+}
+
+.wj-box {
+  border-style: solid;
+  position: absolute;
+  transition: background-color 0.3s ease-out 0s, border-color 0.3s ease-out 0s, border-width 0.3s ease-out 0s;
+}
+.wj-box.ng-enter {
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+}
+.wj-box.ng-leave {
+  -webkit-animation-name: fadeOut;
+          animation-name: fadeOut;
+}
+
+.content-editor .contact-form-editor .invalid-mail {
+  font-size: small;
+  color: darkred;
+  margin-top: 3px;
+}
+
+.wj-contact-form {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  position: absolute;
+  text-align: left;
+  width: 306px;
+  height: auto;
+  transition: color 0.3s ease-out 0s;
+}
+.wj-contact-form input,
+.wj-contact-form textarea {
+  border-width: 1px;
+  border-style: solid;
+  display: block;
+  font: normal 12px Arial, Helvetica, sans-serif;
+  margin: 3px 0 14px 0;
+  padding: 3px;
+  transition: background-color 0.3s ease-out 0s, border-color 0.3s ease-out 0s, color 0.3s ease-out 0s;
+}
+.wj-contact-form input {
+  width: 260px;
+}
+.wj-contact-form textarea {
+  width: 300px;
+  height: 125px;
+}
+.wj-contact-form input[type="button"] {
+  float: right;
+  margin-bottom: initial;
+  width: auto;
+}
+.wj-contact-form.ng-enter {
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+}
+.wj-contact-form.ng-leave {
+  -webkit-animation-name: fadeOut;
+          animation-name: fadeOut;
+}
+
+.wj-content-click {
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+}
+.wj-content-click:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  outline: 1px dotted #333333;
+}
+.wj-content-click:hover .tool-tip {
+  display: block;
+}
+.wj-content-click.reset-hover {
+  background-color: rgba(0, 0, 0, 0);
+  cursor: default;
+  outline: none;
+}
+.wj-content-click.reset-hover .tool-tip {
+  display: none;
+}
+.wj-content-click.reset-z-index {
+  z-index: initial;
+}
+.wj-content-click .tool-tip {
+  background-color: #2C65B9;
+  color: #FFF;
+  border-radius: 3px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+  display: none;
+  font-size: 11px;
+  padding: 3px;
+  margin-bottom: 3px;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  white-space: nowrap;
+}
+
+.wj-toolbar {
+  position: absolute;
+  text-align: right;
+  min-width: 110px;
+  width: 100%;
+}
+.wj-toolbar.top {
+  top: -27px;
+}
+.wj-toolbar.bottom {
+  top: 101%;
+}
+.wj-toolbar.left {
+  right: 0;
+}
+.wj-toolbar.left .not-floated {
+  left: initial !important;
+  right: 0;
+}
+.wj-toolbar .btn {
+  background-color: #EEE;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border: 1px solid #CCC;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+.wj-toolbar .btn:hover {
+  background-color: #DDD;
+}
+.wj-toolbar .btn.move {
+  background-image: url("../images/icon-move.png");
+  cursor: move;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.wj-toolbar .btn.edit {
+  background-image: url("../images/icon-edit.png");
+}
+.wj-toolbar .btn.duplicate {
+  background-image: url("../images/icon-duplicate.png");
+}
+.wj-toolbar .btn.delete {
+  background-image: url("../images/del16x16.png");
+}
+.wj-toolbar .btn.disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.wj-duplicate-editor {
+  margin-top: 52px;
+}
+.wj-duplicate-editor label,
+.wj-duplicate-editor input[type='checkbox'] {
+  cursor: pointer;
+}
+.wj-duplicate-editor label {
+  display: block;
+  margin-left: 15px;
+}
+.wj-duplicate-editor .dropdown {
+  top: initial !important;
+}
+
+.wj-highlight {
+  z-index: 9999;
+}
+.wj-highlight.old-content {
+  border: 1px solid #0000FF;
+  margin-left: -1px;
+  margin-top: -1px;
+  position: absolute;
+  transition: all 0.05s ease-in-out 0.05s;
+}
+.wj-highlight.new-content {
+  border: 2px dashed #BDBDBD;
+  position: absolute;
+  margin-left: -17px;
+  margin-top: -17px;
+}
+.wj-highlight.ui-draggable-dragging,
+.wj-highlight.ui-resizable-resizing {
+  transition: none;
+}
+.wj-highlight.interactive {
+  cursor: pointer;
+  transition: none;
+}
+
+.content-editor.image-editor {
+  height: 100%;
+}
+.content-editor.image-editor .warning {
+  padding: 10px;
+  background: #FFF;
+  border: thin solid #808080;
+  width: 100px;
+  margin-bottom: 10px;
+  box-shadow: 1px 1px 10px;
+}
+.content-editor.image-editor input[type='text'] {
+  font-size: 12px;
+  width: 28px;
+}
+
+.wj-image-expandable {
+  height: auto;
+  position: absolute;
+  transition: none;
+}
+.wj-image-expandable .img {
+  width: 100%;
+  height: auto;
+}
+.wj-image-expandable .btn-expand {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.wj-image-expandable .btn-expand .img-hover {
+  background-color: #FFFFFF;
+  display: none;
+  height: 100%;
+  left: 0;
+  opacity: 0.25;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.wj-image-expandable .btn-expand:hover .img-hover {
+  display: block;
+}
+.wj-image-expandable .resizing {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.wj-image-expandable.ng-enter {
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+}
+.wj-image-expandable.ng-leave {
+  -webkit-animation-name: fadeOut;
+          animation-name: fadeOut;
+}
+
+.wj-image-linked {
+  height: auto;
+  position: absolute;
+  transition: none;
+}
+.wj-image-linked .img {
+  width: 100%;
+  height: auto;
+}
+.wj-image-linked .btn-link {
+  cursor: pointer;
+  display: inline-block;
+  outline: none;
+  position: relative;
+}
+.wj-image-linked .btn-link .img-hover {
+  background-color: #FFFFFF;
+  display: none;
+  height: 100%;
+  left: 0;
+  opacity: 0.25;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.wj-image-linked .btn-link:hover .img-hover {
+  display: block;
+}
+.wj-image-linked .resizing {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.wj-image-linked.ng-enter {
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+}
+.wj-image-linked.ng-leave {
+  -webkit-animation-name: fadeOut;
+          animation-name: fadeOut;
+}
+
+.wj-image-upload-backdrop {
+  background-color: rgba(0, 0, 0, 0.8);
+  bottom: 0;
+  cursor: wait;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.wj-image-upload-backdrop.ng-enter {
+  -webkit-animation-name: fadeInRight;
+          animation-name: fadeInRight;
+}
+.wj-image-upload-backdrop.ng-leave {
+  -webkit-animation-name: fadeOutLeft;
+          animation-name: fadeOutLeft;
+}
+.wj-image-upload-backdrop .caption,
+.wj-image-upload-backdrop .progress {
+  color: #FFF;
+  text-align: center;
+}
+.wj-image-upload-backdrop .caption {
+  margin-top: 50%;
+}
+.wj-image-upload-backdrop .progress {
+  font-size: xx-large;
+}
+
+.wj-image-regular {
+  height: auto;
+  position: absolute;
+  transition: none;
+}
+.wj-image-regular .img {
+  width: 100%;
+  height: auto;
+}
+.wj-image-regular .resizing {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.wj-image-regular.ng-enter {
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+}
+.wj-image-regular.ng-leave {
+  -webkit-animation-name: fadeOut;
+          animation-name: fadeOut;
+}
+
+
+.wj-line {
+  position: absolute;
+  transition: border-top-width 0.3s ease-out 0s, border-left-width 0.3s ease-out 0s, border-top-color 0.3s ease-out 0s, border-left-color 0.3s ease-out 0s;
+}
+.wj-line.ng-enter {
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+}
+.wj-line.ng-leave {
+  -webkit-animation-name: fadeOut;
+          animation-name: fadeOut;
+}
+
+
+.wj-map {
+  position: absolute;
+  transition: none;
+}
+.wj-map iframe {
+  border: none;
+}
+.wj-map.ng-enter {
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+}
+.wj-map.ng-leave {
+  -webkit-animation-name: fadeOut;
+          animation-name: fadeOut;
+}
+
+.wj-move-after-duplicate-editor {
+  margin-top: 20px;
+}
+.wj-move-after-duplicate-editor .title {
+  margin-left: 20px;
+}
+
+.wj-move-together-editor {
+  margin-top: 52px;
+}
+.wj-move-together-editor label,
+.wj-move-together-editor input[type='checkbox'] {
+  cursor: pointer;
+}
+.wj-move-together-editor label {
+  margin-left: 15px;
+}
+
+.wj-ok-cancel button {
+  background-color: #4584ee;
+  border: 0;
+  border-radius: 0.2em;
+  font-family: Verdana, Geneva, sans-serif;
+  color: #fff;
+  position: relative;
+  width: 132px;
+  height: auto;
+  float: left;
+  display: block;
+  font-size: 0.8em;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 50px;
+  margin-left: 20px;
+  padding: 10px 17px 10px 17px;
+  cursor: pointer;
+}
+.wj-ok-cancel button:hover {
+  text-decoration: none;
+  background-color: #3d7adf;
+}
+.wj-ok-cancel button.margem {
+  margin-top: 23px;
+}
+
+.ui-resizable-handle:after {
+  background-color: #0096fd;
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+}
+.ui-resizable-s:after {
+  top: -2px;
+  left: 50%;
+  margin-left: -5px;
+}
+.ui-resizable-n:after {
+  top: -1px;
+  left: 50%;
+  margin-left: -5px;
+}
+.ui-resizable-w:after {
+  top: 50%;
+  left: -1px;
+  margin-top: -5px;
+}
+.ui-resizable-e:after {
+  top: 50%;
+  left: -2px;
+  margin-top: -5px;
+}
+.ui-resizable-ne:after,
+.ui-resizable-nw:after,
+.ui-resizable-sw:after {
+  top: 0;
+  left: 0;
+}
+.ui-resizable-se:after {
+  top: 8px;
+  left: 8px;
+}
+.old-content.line .ui-resizable-e:after {
+  top: -2px;
+  left: 5px;
+}
+.old-content.line .ui-resizable-w:after {
+  top: -2px;
+  left: -7px;
+}
+.old-content.line .ui-resizable-n:after {
+  top: -8px;
+  left: -2px;
+}
+.old-content.line .ui-resizable-s:after {
+  top: 4px;
+  left: -2px;
+}
+
+.social-editor #panel {
+  height: 205px;
+  overflow: hidden;
+  position: relative;
+  transition: height 0.3s ease-out;
+}
+.social-editor .show-all {
+  height: 520px !important;
+}
+.social-editor .toggle {
+  width: 165px;
+  height: auto;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  color: #666666;
+  text-align: center;
+  padding: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+  border-top: 1px solid #ccc;
+}
+.social-editor .container-tool label,
+.social-editor .container-tool label > * {
+  cursor: pointer;
+}
+
+.wj-social {
+  display: inline;
+  float: left;
+  position: absolute;
+  text-align: left;
+  transition: none;
+}
+.wj-social * {
+  transition: none;
+}
+.wj-social a {
+  text-decoration: none;
+}
+.wj-social img {
+  border: none;
+  margin-right: 12px;
+  transition: width 0.3s ease-out 0s, height 0.3s ease-out 0s;
+}
+.wj-social.ng-enter {
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+}
+.wj-social.ng-leave {
+  -webkit-animation-name: fadeOut;
+          animation-name: fadeOut;
+}
+
+.wj-text {
+  background-color: transparent;
+  position: absolute;
+  height: auto;
+  text-align: left;
+  transition: none;
+}
+.wj-text.new-content {
+  outline: 1px solid #ddd;
+}
+.wj-text .editor {
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+}
+.wj-text.ng-enter {
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+}
+.wj-text.ng-leave {
+  -webkit-animation-name: fadeOut;
+          animation-name: fadeOut;
+}
+
+.wj-tinymce .toolbar {
+  position: absolute;
+  top: -37px;
+  left: 26px;
+}
+
+.wj-add-unit {
+  position: absolute;
+  width: 100%;
+  top: 12px;
+  background: url(../images/sombra-top.png) repeat-x 0px 77px;
+}
+.wj-add-unit.ng-enter {
+  -webkit-animation-name: fadeInLeft;
+          animation-name: fadeInLeft;
+}
+.wj-add-unit.ng-leave {
+  -webkit-animation-name: fadeOutLeft;
+          animation-name: fadeOutLeft;
+}
+.wj-add-unit .selected {
+  color: #fff;
+  cursor: default;
+  border: 0px solid #0078d7 !important;
+  background-color: #333;
+}
+.wj-add-unit .botoes-frame {
+  margin-bottom: 42px;
+}
+.wj-add-unit .botoes-frame li a.inativo,
+.wj-add-unit .botoes-frame li a:hover .inativo {
+  color: #ccc;
+  cursor: default;
+  background: #ececec;
+}
+.wj-add-unit .botoes-frame .padding2 {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.wj-add-unit button {
+  font-size: 0.8em;
+  color: #555;
+  position: relative;
+  width: 139px;
+  height: auto;
+  text-align: left;
+  cursor: pointer;
+  display: block;
+  margin: 5px 0px 5px 18px;
+  padding: 6px 0 6px 9px;
+  border: 0px solid transparent;
+  background-color: transparent;
+}
+.wj-add-unit button:hover {
+  text-decoration: none;
+  border: 0px solid #eee;
+  background: #eee;
+  color: #333;
+}
+
+.wj-unit-preview {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+.wj-unit-preview #firefox {
+  margin: 0;
+  position: relative;
+  width: 100%;
+  height: 31px;
+}
+.wj-unit-preview .fundo {
+  background-color: #fff;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+  /* For IE8 and earlier */
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+.wj-unit-preview #container {
+  float: left;
+  margin: 0 130px 0 20px;
+  position: relative;
+  width: auto;
+  height: auto;
+}
+.wj-unit-preview .close {
+  cursor: pointer;
+  position: fixed;
+  width: auto;
+  height: auto;
+  top: 127px;
+  right: 57px;
+}
+.wj-unit-preview .close a {
+  display: block;
+  padding: 9px 16px 9px 16px;
+  text-decoration: none;
+  background: url(../images/add_cont_fechar.png) no-repeat 0px 0px;
+}
+.wj-unit-preview .close a:hover {
+  color: #000;
+  text-decoration: none;
+  background: url(../images/add_cont_fechar.png) no-repeat 0px 0px;
+}
+.wj-unit-preview .item {
+  float: left;
+  margin-top: 35px;
+  margin-left: 35px;
+  position: relative;
+  text-align: left;
+  vertical-align: top;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+.wj-unit-preview .item img {
+  position: relative;
+  z-index: 1;
+  border-bottom: 1px solid #ddd;
+}
+.wj-unit-preview .item .ribbon {
+  position: relative;
+  width: 329px;
+  background-color: #fff;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  /* For IE8 and earlier */
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 12px;
+  text-align: center;
+  z-index: 100;
+}
+.wj-unit-preview .item .ribbon button {
+  color: #fff;
+  font-size: 0.8em;
+  border-radius: 0.2em;
+  cursor: pointer;
+  outline: none;
+  padding: 7px 17px !important;
+  border: 0 solid #0078d7;
+  background-color: #4584ee;
+}
+.wj-unit-preview .item .ribbon button:hover {
+  text-decoration: none;
+  background-color: #3d7adf;
+}
+.wj-unit-preview .item:hover .ribbon {
+  display: block;
+}
+
+.wj-video {
+  position: absolute;
+  transition: width 0.3s ease-out 0s, height 0.3s ease-out 0s;
+}
+.wj-video.ng-enter {
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+}
+.wj-video.ng-leave {
+  -webkit-animation-name: fadeOut;
+          animation-name: fadeOut;
+}
+
+.wj-z-index {
+  margin-left: 16px;
+}
+.wj-z-index .zindex {
+  margin-top: 12px;
+}
+.wj-z-index img {
+  width: 16px;
+  height: auto;
+}
+.wj-z-index button {
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  /* box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); */
+  cursor: pointer;
+  outline: none;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  border: 1px solid #999;
+}
+.wj-z-index button.disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.wj-z-index button.disabled:hover {
+  background-color: #FFF;
+}
+.wj-z-index button:hover {
+  background-color: #EEE;
+}
+.wj-z-index button:active {
+  background-color: lightslategray;
+}
+
+.cropbox {
+  background-color: #CCC;
+  width: 640px;
+  height: 480px;
+}
+.cropbox .imageBox {
+  position: relative;
+  height: 400px;
+  width: 400px;
+  border: 1px solid #aaa;
+  background: #fff;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  cursor: move;
+}
+.cropbox .imageBox .thumbBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  box-sizing: border-box;
+  border: solid 2px rgba(222, 60, 80, 0.9);
+  /*box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);*/
+  background: none repeat scroll 0% 0% transparent;
+}
+.cropbox .imageBox .thumbBox:after,
+.cropbox .imageBox .thumbBox:before {
+  border-left: dashed 2px rgba(222, 60, 80, 0.9);
+  border-right: dashed 2px rgba(222, 60, 80, 0.9);
+  content: '';
+  display: block;
+  height: 40px;
+  margin-left: -2px;
+  position: absolute;
+}
+.cropbox .imageBox .thumbBox:after {
+  bottom: 0;
+  margin-bottom: -40px;
+}
+.cropbox .imageBox .thumbBox:before {
+  top: 0;
+  margin-top: -40px;
+}
+.cropbox .imageBox .thumbBox .inner:after {
+  right: 0;
+  margin-right: -40px;
+}
+.cropbox .imageBox .thumbBox .inner:before {
+  left: 0;
+  margin-left: -40px;
+}
+.cropbox .imageBox .thumbBox .inner:after,
+.cropbox .imageBox .thumbBox .inner:before {
+  border-bottom: dashed 2px rgba(222, 60, 80, 0.9);
+  border-top: dashed 2px rgba(222, 60, 80, 0.9);
+  content: '';
+  display: block;
+  position: absolute;
+  margin-top: -2px;
+  width: 40px;
+}
+.cropbox .imageBox .spinner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+  line-height: 400px;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.wj-help {
+  border: none;
+  margin: 0;
+  padding: 0;
+}

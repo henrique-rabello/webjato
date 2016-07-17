@@ -1,0 +1,406 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" id="ng-app" ng-app="LoginApp">
+<head>
+    <title>Webjato - Você na Web!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="css/animate.css" />
+    <link rel="stylesheet" type="text/css" href="css/style_login.css" />
+    <link rel="stylesheet" type="text/css" href="css/blueberry.css" />
+    <link rel="stylesheet" type="text/css" href="css/landpage.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.dropdown.css" />
+    <script type="text/javascript" src="scripts/wj-libs.js"></script>
+    <script type="text/javascript" src="scripts/wj.js"></script>
+    <script type="text/javascript" src="scripts/jquery.dropdown.js"></script>
+    <script type="text/javascript">
+        var gScope = null;
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '538659419649795',
+                xfbml: true,
+                version: 'v2.4'
+            });
+        };
+
+        function LoginWithFacebook() {
+            gScope.WorkingFB = true;
+            gScope.$apply();
+            FB.api("/me?fields=name,email", function (response) {
+                var id = response.id;
+                var email = response.email;
+                var fullname = response.name;
+                gScope.NewFBAccount(id, email, fullname, "");
+            });
+        }
+
+        angular.module("LoginApp", ["gettext", "ngCookies", "duScroll", "WebjatoDirectives", "WebjatoServices"])
+            .controller("LoginCrtl",
+                function ($scope, $http, $cookies, gettextCatalog) {
+                    $scope.Email = "";
+                    $scope.Password = "";
+                    $scope.FullName = "";
+                    $scope.ShowInvalidLogin = false;
+                    $scope.ShowEmailInUse = false;
+                    $scope.ShowFBEmailInUse = false;
+                    $scope.ShowPwdEmailNotFound = false;
+                    $scope.ShowPwdEmailSend = false;
+                    $scope.ShowPwdFBInUse = false;
+                    $scope.RetrievePasswordStatus = -1;
+                    $scope.Working = false;
+                    $scope.WorkingFB = false;
+                    $scope.Login = function () {
+                        $scope.ShowInvalidLogin = false;
+                        $scope.Working = true;
+                        $http({ method: "POST", url: "api/user/login", params: { email: $scope.Email, password: $scope.Password } })
+                            .success(function (data, status, headers, config) {
+                                $scope.ProceedToMain();
+                            })
+                            .error(function (data, status, headers, config) {
+                                $scope.ShowInvalidLogin = true;
+                                $scope.Working = false;
+                            });
+                    };
+                    $scope.LoginFB = function (fbId, email) {
+                        $scope.ShowInvalidLogin = false;
+                        $scope.WorkingFB = true;
+                        $http({ method: "POST", url: "api/user/loginfacebook", params: { fbid: fbId, email: email } })
+                            .success(function (data, status, headers, config) {
+                                $scope.WorkingFB = false;
+                                $scope.ProceedToMain();
+                            })
+                            .error(function (data, status, headers, config) {
+                                $scope.ShowInvalidLogin = true;
+                            });
+                    };
+                    $scope.RetrievePassword = function () {
+                        $scope.RetrievePasswordStatus = -1;
+                        $http({ method: "POST", url: "api/user/RetrievePassword", params: { email: $scope.Email } })
+                            .success(function (data, status, headers, config) {
+                                $scope.RetrievePasswordStatus = parseInt(data);
+                            });
+                    };
+                    $scope.NewAccount = function () {
+                        $scope.ShowEmailInUse = false;
+                        $scope.Working = true;
+                        $http({ method: "POST", url: "api/user", params: { email: $scope.Email, password: $scope.Password, fullname: $scope.FullName } })
+                            .success(function (data, status, headers, config) {
+                                $scope.Working = false;
+                                if (String(data) == "true") {
+                                    $scope.Login();
+                                }
+                                else {
+                                    $scope.ShowEmailInUse = true;
+                                }
+                            });
+                    };
+                    $scope.NewFBAccount = function (fbId, email, fullname, town) {
+                        $scope.ShowFBEmailInUse = false;
+                        $scope.WorkingFB = true;
+                        $http({ method: "POST", url: "api/user/facebook", params: { email: email, fullname: fullname, remoteid: fbId, town: town } })
+                            .success(function (data, status, headers, config) {
+                                if (String(data) == "false") {
+                                    $scope.ShowFBEmailInUse = true;
+                                    $scope.WorkingFB = false;
+                                }
+                                else {
+                                    $scope.LoginFB(fbId, email)
+                                }
+                            });
+                    };
+                    $scope.ChangeLanguage = function () {
+                        gettextCatalog.currentLanguage = $scope.CurrentLanguage;
+                        $cookies.language = $scope.CurrentLanguage;
+                    };
+                    $scope.IsEmailValid = function () {
+                        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                        return re.test($scope.Email);
+                    };
+                    $scope.IsFullNameValid = function () {
+                        return $scope.FullName.length >= 6;
+                    };
+                    $scope.IsPasswordValid = function () {
+                        return $scope.Password.length >= 5;
+                    };
+                    $scope.ResetErrors = function () {
+                        $scope.ShowInvalidLogin = $scope.ShowEmailInUse = $scope.ShowFBEmailInUse = false;
+                        $scope.RetrievePasswordStatus = -1;
+                    }
+                    $scope.ProceedToMain = function () {
+                        $http({ method: "GET", url: "api/feature/get/0" })
+                            .success(function (data) {
+                                var isHelpEnabled = (String(data) == "true");
+                                $scope.$emit("HelpSetState", isHelpEnabled, isHelpEnabled);
+                                setTimeout(function () {
+                                    top.location.href = "main.html";
+                                }, 250);
+                            });
+                    };
+                    $scope.CurrentLanguage = $cookies.language ? $cookies.language : "pt_BR";
+                    $scope.ChangeLanguage();
+                    gScope = $scope;
+                });
+    </script>
+    <script>
+        $(window).load(function () {
+            $('.blueberry').blueberry();
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".drop-idioma img.flag").addClass("flagvisibility");
+
+            $(".drop-idioma dt a").click(function () {
+                $(".drop-idioma dd ul").toggle();
+            });
+
+            $(".drop-idioma dd ul li a").click(function () {
+                var text = $(this).html();
+                $(".drop-idioma dt a span").html(text);
+                $(".drop-idioma dd ul").hide();
+            });
+            $(document).bind('click', function (e) {
+                var $clicked = $(e.target);
+                if (!$clicked.parents().hasClass("drop-idioma"))
+                    $(".drop-idioma dd ul").hide();
+            });
+        });
+    </script>
+</head>
+<body ng-controller="LoginCrtl">
+    <wj-help></wj-help>
+    <div id="fb-root"></div>
+    <script type="text/javascript">
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!-- INICIO DO SITE  -->
+    <div id="header">
+        <div id="logo"><img src="images/site_wj/logo_webjato.png" alt="" title="" /></div>
+        <div id="cont_menu">
+            <ul id="menu1">
+                <li><a href="#entrar" class="ajuste" title="" du-smooth-scroll>Entrar</a></li>
+                <li><a href="#assista-o-video" title="" du-smooth-scroll>Vídeo</a></li>
+                <li><a href="#caso-de-uso" title="" du-smooth-scroll>Utilização</a></li>
+                <li><a href="#o-que-eh" title="" du-smooth-scroll>O que é</a></li>
+            </ul>
+            <dl id="sample" class="drop-idioma">
+                <dt><a href="#" title="Idioma"><img src="images/site_wj/br.png" alt="" title="" />BR</a></dt>
+                <dd>
+                    <ul>
+                        <li><a href="http://www.webjato.com">Global</a></li>
+                        <li><a href="http://www.webjato.com">USA</a></li>
+                    </ul>
+                </dd>
+            </dl>
+            <ul id="bot">
+                <li><a href="#entrar" class="ajuste" title="" du-smooth-scroll>Inscreva-se</a></li>
+            </ul>
+            <ul id="login">
+                <li><a href="#" title="" data-dropdown="#dropdown-2">Contato</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="blueberry" style="background:#fff;">
+        <ul class="slides">
+            <li><img src="images/site_wj/banner1.jpg" alt="" title="" /></li>
+            <li><img src="images/site_wj/banner2.jpg" alt="" title="" /></li>
+            <li><img src="images/site_wj/banner3.jpg" alt="" title="" /></li>
+        </ul>
+    </div>
+    <div id="o-que-eh"></div>
+    <h1 style="margin-top:120px;">O que é Webjato?</h1><br />
+    <h2 class="margin-laterias-txt margin-bottom50">
+        É um site para criar sites. Empreendedores, crianças e até idosos podem desenvolver sites como profissionais da web. Mais rápido, simples e amigável.
+        Webjato é indicado para o grande público.
+    </h2>
+    <div id="caso-de-uso"></div>
+    <div class="responsive" style="background: #0078d7; margin-top:100px;"><img src="images/site_wj/img_02.jpg" alt="" title="" /></div>
+    <div id="assista-o-video"></div>
+    <div class="responsive" style="background:#dcf0fb; padding-bottom:135px;">
+        <h1 class="margin-bottom50" style="padding-top:110px;">Assista o vídeo <i class="normal"> (em breve)</i></h1>
+        <iframe src="https://player.vimeo.com/video/97692693?title=0&byline=0&portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+     <div id="logos"></div>
+    <div class="responsive" style="background: #fff; margin-top:0px; border-bottom: 1px solid #333; border-top: 1px solid #333;"><img src="images/site_wj/img_03.jpg" alt="" title="" /></div>
+    <div id="entrar" class="wrapper">
+        <h1 class="margin-bottom50" style="margin-top:3px;">Inscreva-se grátis</h1>
+        <div class="content">
+            <div id="form_wrapper" class="form_wrapper">
+                <!-- ----------ENTRAR---------- -->
+                <form id="form1" class="form login">
+                    <h3 translate>Entre</h3>
+                    <ul class="botlogin">
+                        <li class="margin-top31 margin-bottom20">
+                            <fb:login-button id="btn-fb" show-faces="false" width="300" max-rows="1" scope="public_profile,email" size="xlarge" onlogin="LoginWithFacebook();">Conta do Facebook</fb:login-button>
+                            <img class="working" src="images/loadinganim.gif" ng-show="WorkingFB" />
+                        </li>
+                    </ul>
+                    <div class="boxpadrao" style="margin-top: 20px; margin-bottom: 20px;">
+                        <img src="images/ou_img.gif" alt="" title="" />
+                    </div>
+                    <div class="container-imput">
+                        <label for="f1" class="align-left" translate>Email</label>
+                        <input id="f1" type="text" maxlength="132" ng-model="Email" ng-disabled="Working" autofocus />
+                    </div>
+                    <div class="container-imput">
+                        <label for="f2" class="align-left" translate>Senha</label>
+                        <input id="f2" type="password" maxlength="16" ng-model="Password" ng-disabled="Working" />
+                    </div>
+                    <ul class="botlogin">
+                        <li>
+                            <button type="submit" id="f1Confirm" ng-disabled="!IsEmailValid() || !IsPasswordValid() || Working" ng-class="{'disabled': !IsEmailValid() || !IsPasswordValid() || Working, 'enabled': IsEmailValid() && IsPasswordValid() && !Working}" ng-click="Login();" translate>
+                                Confirmar
+                            </button>
+                            <img class="working" src="images/loadinganim.gif" ng-show="Working" />
+                            <span class="error animated shake" ng-show="ShowInvalidLogin" translate>Combinação email/senha não reconhecida. Tente de novo.</span>
+                        </li>
+                    </ul>
+                    <a href="#" ng-click="ResetErrors();" rel="forgot_password" class="forgot linkform" style="margin: 13px 135px 30px 0px; float: right; display: block;" translate>Esqueci a senha</a>
+                    <div class="bottom">
+                        <a href="#" ng-click="ResetErrors();" rel="comece" class="linkform">
+                            <span class="fonte-grande" translate>Não possui uma conta? Inscreva-se!</span>
+                        </a>
+                        <div class="clear"></div>
+                    </div>
+                </form>
+                <!-- ----------COMECE---------- -->
+                <form id="form2" class="form comece active">
+                    <h3 translate>Comece hoje</h3>
+                    <ul class="botlogin">
+                           <span class="error animated shake" ng-show="ShowFBEmailInUse">
+                            <span translate>O e-mail associado a esta conta do Facebook já se encontra cadastrado em nosso sistema com uma conta regular (não associada ao Facebook).</span>
+                            <span translate>Clique no link abaixo e entre na Webjato utilizando seu e-mail e senha.</span>
+                        </span>
+                        <li class="margin-top48 margin-bottom20">
+                            <fb:login-button id="btn-fb" show-faces="false" width="300" max-rows="1" scope="public_profile,email" size="xlarge" onlogin="LoginWithFacebook();">Conta do Facebook</fb:login-button>
+                            <img class="working" src="images/loadinganim.gif" ng-show="WorkingFB" />
+                        </li>
+                        <!--
+                        <li>
+                            <a href="#" title="" style="margin-top: 15px;">
+                                <img src="images/icone_twiter25.png" alt="" title="" />Entrar com conta do Twitter
+                            </a>
+                        </li>
+                        -->
+                        <li>
+                            <a href="#" ng-click="ResetErrors();" rel="criar_conta" class="linkform" style="margin-top: 15px; margin-bottom: 43px;" translate>Inscrever-se com Email</a>
+                        </li>
+                    </ul>
+                    <div class="bottom">
+                        <a href="#" ng-click="ResetErrors();" rel="login" class="linkform"><span class="fonte-grande" translate>Já possui uma conta?</span></a>
+                        <div class="clear"></div>
+                    </div>
+                </form>
+                <!-- ----------CRIAR CONTA---------- -->
+                <form id="form3" class="form criar_conta">
+                    <h3 translate>Inscrever-se com email</h3>
+                    <div class="container-imput">
+                        <label for="f3" style="margin-top: 30px;" translate>Nome e sobrenome</label>
+                        <input id="f3" type="text" maxlength="132" ng-model="FullName" />
+                        <span class="obs" ng-show="!IsFullNameValid()" translate>O nome deve ter pelo menos 6 caracteres</span>
+                    </div>
+                    <div class="container-imput">
+                        <label for="f4" translate>Email</label>
+                        <input id="f4" type="text" maxlength="132" ng-model="Email" />
+                        <span class="obs" ng-show="!IsEmailValid() && Email != ''" translate>Entre com um e-mail válido.</span>
+                    </div>
+                    <div class="container-imput">
+                        <label for="f5" translate>Senha</label>
+                        <input id="f5" type="password" maxlength="16" ng-model="Password" />
+                        <span class="obs" ng-show="!IsPasswordValid()" translate>A senha deve ter pelo menos 5 caracteres</span>
+                    </div>
+                    <ul class="botlogin">
+                        <li>
+                            <button type="submit" id="f3Confirm" ng-disabled="!IsEmailValid() || !IsPasswordValid() || !IsFullNameValid()" ng-class="{'disabled': !IsEmailValid() || !IsPasswordValid() || !IsFullNameValid(), 'enabled': IsEmailValid() && IsPasswordValid() && IsFullNameValid() }" ng-click="NewAccount();" translate>
+                                Confirmar
+                            </button>
+                            <img class="working" src="images/loadinganim.gif" ng-show="Working" />
+                            <span class="error animated shake" ng-show="ShowEmailInUse" translate>Este e-mail já está em uso, por favor tente de novo.</span>
+                        </li>
+                    </ul>
+                    <div class="bottom">
+                        <a href="#" ng-click="ResetErrors();" rel="login" class="linkform"><span class="fonte-grande" translate>Já possui uma conta?</span></a>
+                        <div class="clear"></div>
+                    </div>
+                </form>
+                <!-- ----------ESQUECI A SENHA---------- -->
+                <form id="form4" class="form forgot_password">
+                    <h3 translate>Esqueci a Senha</h3>
+                    <div class="container-imput">
+                        <label for="f6" style="margin-top: 30px;" translate>Email</label>
+                        <input id="f6" type="text" maxlength="132" ng-model="Email" />
+                        <span class="obs" ng-show="!IsEmailValid() && Email != ''" translate>Entre com um e-mail válido.</span>
+                    </div>
+                    <ul class="botlogin">
+                        <li>
+                            <button type="submit" id="f4SendPassword" ng-disabled="!IsEmailValid()" ng-class="{'disabled': !IsEmailValid(), 'enabled': IsEmailValid()}" ng-click="RetrievePassword();" translate>Enviar senha</button>
+                            <span class="error animated shake" ng-show="RetrievePasswordStatus == 1" translate>Este e-mail não está cadastrado em nosso sistema.</span>
+                            <span class="error animated shake" ng-show="RetrievePasswordStatus == 0" translate>A senha foi enviada para o seu e-mail.</span>
+                            <span class="error animated shake" ng-show="RetrievePasswordStatus == 2" translate>Este e-mail está associado a uma conta de Facebook. Utilize o facebook para entrar no site.</span>
+                        </li>
+                    </ul>
+                    <div class="bottom">
+                        <a href="#" ng-click="ResetErrors();" rel="login" class="linkform"><span class="fonte-grande" translate>De repente lembrou? Entre aqui</span></a><br />
+                        <br />
+                        <a href="#" ng-click="ResetErrors();" rel="comece" class="linkform"><span class="fonte-grande" translate>Não possui uma conta? Inscreva-se!</span></a>
+                        <div class="clear"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!--  FIM DO FORMULARIO  -->
+
+    <div id="rodape">© 2012-2015 WebJato - Todos os direitos reservados.</div>
+    <script type="text/javascript">
+        $(function () {
+            var $form_wrapper = $('#form_wrapper');
+            var $currentForm = $form_wrapper.children('form.active');
+            var $linkform = $form_wrapper.find('.linkform');
+            $form_wrapper.children('form').each(function (i) {
+                var $theForm = $(this);
+                if (!$theForm.hasClass('active')) $theForm.hide();
+                $theForm.data({ width: $theForm.width(), height: $theForm.height() });
+            });
+            setWrapperWidth();
+            $linkform.bind('click', function (e) {
+                var $link = $(this);
+                var target = $link.attr('rel');
+                $currentForm.fadeOut(100, function () {
+                    $currentForm.removeClass('active');
+                    $currentForm = $form_wrapper.children('form.' + target);
+                    $form_wrapper.stop()
+									.animate({
+									    width: $currentForm.data('width') + 'px',
+									    height: $currentForm.data('height') + 'px'
+									}, 100, function () {
+									    $currentForm.addClass('active');
+									    $currentForm.fadeIn(400);
+									});
+                });
+                e.preventDefault();
+            });
+            function setWrapperWidth() {
+                $form_wrapper.css({
+                    width: $currentForm.data('width') + 'px',
+                    height: $currentForm.data('height') + 'px'
+                });
+            }
+        });
+    </script>
+    <div class="drop-container">
+        <h1>
+            <div id="dropdown-2" class="dropdown dropdown-tip">
+                <div class="dropdown-panel">
+                    <span>Email: webjato@webjato.com.br</span>
+                </div>
+            </div>
+        </h1>
+    </div>
+</body>
+</html>

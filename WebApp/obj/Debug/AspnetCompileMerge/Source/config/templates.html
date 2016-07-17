@@ -1,0 +1,43 @@
+﻿<style type="text/css">
+    .wj-tpl table,
+    .wj-tpl td,
+    .wj-tpl th {
+        border: 1px solid #CCC;
+        border-collapse: collapse;
+    }
+    .wj-tpl img {
+        width: 100px;
+        height: 100px;
+    }
+    .wj-tpl button {
+        position: fixed;
+        top: 65px;
+        right: 20px;
+    }
+</style>
+<div class="wj-tpl">
+    <button type="button" ng-click="AddPage();">Adicionar novo template</button>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">Templates</th>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <th>Thumb</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="Page in Pages">
+                <td>
+                    <input type="text" ng-model="Page.Title" ng-change="UpdateTitle(Page);" />
+                </td>
+                <td>
+                    <img src="../images/template-default-thumb.png" ng-if="!Page.Thumb" />
+                    <img ng-src="{{AssetsPath + Page.Thumb}}" ng-if="Page.Thumb" />
+                    <input type="file" nv-file-select uploader="Page.uploader"/>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,11 @@
+﻿<div id         =   "{{data.Id}}"
+     class      =   "animated wj-image-linked"
+     ng-style   =   "{  'top': data.Position.Y + 'px',
+                        'left': data.Position.X + 'px',
+                        'z-index': data.Position.ZIndex,
+                        'width': data.ImageExportedSize.Width + 'px' }"
+     wj-animate =   "data">
+    <img class="img" ng-src="{{ImageURL}}" ng-class="{'semi-transparent': Resizing}" />
+    <wj-content-click data="data" edit-mode-on="editModeOn"></wj-content-click>
+    <wj-animated-highlight data="data"></wj-animated-highlight>
+</div>

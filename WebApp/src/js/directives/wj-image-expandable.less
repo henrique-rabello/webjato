@@ -1,0 +1,51 @@
+﻿.wj-image-expandable {
+    height: auto;
+    position: absolute;
+    transition: none;
+
+    .img {
+        width: 100%;
+        height: auto;
+    }
+
+    .btn-expand {
+        background: none;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        
+        .img-hover {
+            background-color: #FFFFFF;
+            display: none;
+            height: 100%;
+            left: 0;
+            opacity: 0.25;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        &:hover {
+            .img-hover {
+                display: block;
+            }
+        }
+    }
+
+    .resizing {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    &.ng-enter {
+        animation-name: fadeIn;
+    }
+
+    &.ng-leave {
+        animation-name: fadeOut;
+    }
+}

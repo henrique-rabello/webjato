@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="../css/tools.css" />
+    <link rel="stylesheet" type="text/css" href="../css/basic.css" />
+    <style type="text/css" media="screen">
+        .footer-panel {
+            text-align: left;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+            .footer-panel .loader-color {
+                position: relative;
+                top: 6px;
+                visibility: hidden;
+            }
+
+                .footer-panel .loader-color.updating-color {
+                    visibility: visible;
+                }
+
+            .footer-panel .loader-transparency {
+                position: relative;
+                top: 4px;
+                visibility: hidden;
+            }
+
+                .footer-panel .loader-transparency.updating-transparency {
+                    visibility: visible;
+                }
+
+            .footer-panel .container {
+                margin: 0 auto;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: auto;
+                padding-top: 40px;
+            }
+
+            .footer-panel #shot {
+                color: #666666;
+                font-size: 0.7em;
+                font-weight: normal;
+                width: auto;
+                height: auto;
+                margin-left: 16px;
+                margin-bottom: 28px;
+            }
+
+                .footer-panel #shot label, .footer-panel #shot span, .footer-panel #shot input {
+                    cursor: pointer;
+                }
+
+            .footer-panel #shotdois {
+                color: #61C6F2;
+                font-size: 0.75em;
+                font-weight: normal;
+                margin-right: 20px;
+                margin-left: 16px;
+                margin-bottom: 17px;
+            }
+    </style>
+</head>
+<body>
+    <div class="footer-panel">
+        <div class="container">
+            <div class="container-tool" style="margin-bottom:13px;">
+                <i class="negrito" translate>Cor</i>
+                <spectrum-colorpicker class="color-picker" ng-model="DisplayColor" options="ColorPickerConfig"></spectrum-colorpicker>
+                <img src="../images/loadinganim.gif" class="loader-color" ng-class="{'updating-color': UpdatingColor}" />
+            </div>
+            <div id="shot">
+                <label>
+                    <input type="checkbox" class="ipt_checkbox cursorpointer" style="float: none; margin: 0;" ng-model="Data.IsTransparent" ng-change="OnTransparencyChange();" />
+                    <span translate style="line-height:16px;">Transparente</span>
+                </label>
+                <img class="loader-transparency" src="../images/loadinganim.gif" ng-class="{'updating-transparency': UpdatingTransparency}" />
+            </div>
+            <div id="shotdois" translate><b>Clique</b> no texto de rodapé e digite para alterá-lo.</div>
+        </div>
+    </div>
+</body>
+</html>

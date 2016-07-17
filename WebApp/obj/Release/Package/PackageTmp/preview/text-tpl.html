@@ -1,0 +1,11 @@
+﻿<div id                     =   "{{data.Id}}"
+     class                  =   "wj-text animated"
+     ng-class               =   "{'new-content': data.IsNewContent}"
+     wj-animate             =   "data"
+     ng-style               =   "{  'top': data.Position.Y + 'px',
+                                    'left': data.Position.X + 'px',
+                                    'z-index': data.Position.ZIndex,
+                                    'width': data.Size.Width + 'px',
+                                    'height': data.Size.Height + 'px' }">
+    <span ng-bind-html="TrustedText(data.Value)"></span>
+</div>

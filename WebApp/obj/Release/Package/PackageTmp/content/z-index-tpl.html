@@ -1,0 +1,17 @@
+﻿<div class="wj-z-index">
+     <i class="negrito bottom-titulo" translate>Ordem</i>
+    <div class="zindex">
+        <button type="button" title="{{'Trazer para frente'|translate}}" ng-click="ChangeZIndex(ZIndexChange.BRING_TO_FRONT);" ng-disabled="!ZIndexState.BRING_TO_FRONT" ng-class="{'disabled': !ZIndexState.BRING_TO_FRONT }">
+            <img src="../images/icon-arrow-up-double.png" />
+        </button>
+        <button type="button" title="{{'Avançar um'|translate}}" ng-click="ChangeZIndex(ZIndexChange.ONE_UP);" ng-disabled="!ZIndexState.ONE_UP" ng-class="{'disabled': !ZIndexState.ONE_UP }">
+            <img src="../images/icon-arrow-up.png" />
+        </button>
+        <button type="button" title="{{'Recuar um'|translate}}" ng-click="ChangeZIndex(ZIndexChange.ONE_DOWN);" ng-disabled="!ZIndexState.ONE_DOWN" ng-class="{'disabled': !ZIndexState.ONE_DOWN }">
+            <img src="../images/icon-arrow-down.png" />
+        </button>
+        <button type="button" title="{{'Enviar para trás'|translate}}" ng-click="ChangeZIndex(ZIndexChange.SEND_TO_BACK);" ng-disabled="!ZIndexState.SEND_TO_BACK" ng-class="{'disabled': !ZIndexState.SEND_TO_BACK }">
+            <img src="../images/icon-arrow-down-double.png" />
+        </button>
+    </div>
+</div>

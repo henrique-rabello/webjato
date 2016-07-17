@@ -1,0 +1,306 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" id="ng-app" ng-app="PublishApp">
+<head>
+    <meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
+    <title translate>Webjato - PUBLICAÇÃO</title>
+    <link type="text/css" rel="stylesheet" href="../css/animate.css" />
+    <link type="text/css" rel="stylesheet" href="../css/header.css" />
+    <link type="text/css" rel="stylesheet" href="../css/help.css" />
+    <link rel="stylesheet" type="text/css" href="../css/basic.css" />
+    <link type="text/css" rel="stylesheet" href="../css/tipsy.css" />
+    <link type="text/css" rel="stylesheet" href="../css/jquery.dropdown.css" />
+    <link type="text/css" rel="stylesheet" href="../css/layout-default.css" />
+    <style type="text/css" media="screen">
+        body {
+            font-family: Verdana, Geneva, sans-serif;
+            text-align: center;
+            margin: 0;
+        }
+
+        img {
+            border: none;
+        }
+
+        .ui-layout-north {
+            background: url(../images/bg_header1.png) repeat-x top left;
+        }
+    </style>
+    <script type="text/javascript" src="../scripts/wj-libs.js"></script>
+    <script type="text/javascript" src="../scripts/wj.js"></script>
+    <script type='text/javascript'>
+  $(function() {
+    $('.north').tipsy({gravity: 'n'});
+    $('.south').tipsy({gravity: 's'});
+    $('.east').tipsy({gravity: 'e'});
+    $('.west').tipsy({gravity: 'w'});
+    $('.north-west').tipsy({gravity: 'nw'});
+    $('.north-east').tipsy({gravity: 'ne'});
+    $('.south-west').tipsy({gravity: 'sw'});
+    $('.south-east').tipsy({gravity: 'se'});
+  });
+    </script>
+    <script type="text/javascript">
+        var Sair = null;
+        angular.module("PublishApp", ["gettext", "ngCookies", "ngRoute", "pasvaz.bindonce", "ui.utils", "WebjatoDirectives", "WebjatoServices"])
+            .config(["$routeProvider",
+                    function ($routeProvider) {
+                        $routeProvider
+                            .when("/address.html", {
+                                templateUrl: "address.html",
+                                controller: "AddressCrtl",
+                                resolve: { "SharedData": "SharedData" }
+                            })
+                            .when("/display.html", {
+                                templateUrl: "display.html",
+                                controller: "DisplayCrtl",
+                                resolve: { "SharedData": "SharedData" }
+                            })
+                            .when("/share.html", {
+                                templateUrl: "share.html",
+                                controller: "ShareCrtl",
+                                resolve: { "SharedData": "SharedData" }
+                            })
+                            .when("/hide.html", {
+                                templateUrl: "hide.html",
+                                controller: "HideCrtl",
+                                resolve: { "SharedData": "SharedData" }
+                            })
+                    }])
+            .factory("SharedData", function ($http, $q, HandleServerException) {
+                var defer = $q.defer();
+                var sharedData = {
+                    CandidateDNS: {
+                        Value: ""
+                    },
+                    ActivePublish: null
+                }
+                $http({ method: "GET", url: "../api/publish/getActive" })
+                    .success(function (data) {
+                        sharedData.ActivePublish = eval(data);
+                        if (sharedData.ActivePublish != null) {
+                            sharedData.CandidateDNS.Value = sharedData.ActivePublish.Subdomain;
+                        }
+                        defer.resolve(sharedData);
+                    })
+                    .error(HandleServerException);
+                return defer.promise;
+            })
+            .controller("MenuCrtl", function ($scope, $cookies, $http, $location, $timeout, gettextCatalog, HandleServerException) {
+                var pages = [{ first: true, last: false, index: 0, url: "#/address.html", helpId: "publish/address" },
+                                { first: false, last: false, index: 1, url: "#/display.html", helpId: "publish/display" },
+                                { first: false, last: false, index: 2, url: "#/share.html", helpId: "publish/share" },
+                                { first: false, last: true, index: 3, url: "#/hide.html", helpId: "publish/hide" }];
+                $scope.CurrentPage = null;
+                $scope.PrevPageUrl = "";
+                $scope.NextPageUrl = "";
+                $scope.Url = "";
+                $scope.HelpUrl = null;
+                $scope.GoTo = function (url, viaBtnNext) {
+                    if (url == "") {
+                        return;
+                    }
+                    if ($scope.CurrentPage && $scope.CurrentPage.last && viaBtnNext) {
+                        $scope.$emit("HelpDisplay", "config/finish");
+                    }
+                    $timeout(
+                        function () {
+                            $scope.CurrentPage = _.find(pages, function (key) { return key.url == url; });
+                            $scope.PrevPageUrl = $scope.CurrentPage.first ? "" : pages[$scope.CurrentPage.index - 1].url;
+                            $scope.NextPageUrl = $scope.CurrentPage.last ? $scope.CurrentPage.url : pages[$scope.CurrentPage.index + 1].url;
+                            $scope.Url = url;
+                            $scope.$emit("HelpAutoDisplay", $scope.CurrentPage.helpId);
+                        }, 100
+                    );
+                };
+                $scope.ShowHelp = function (id) {
+                    $scope.$emit("HelpDisplay", id);
+                };
+                gettextCatalog.currentLanguage = $cookies.language;
+                $scope.GoTo("#" + $location.url());
+                $scope.Logout = function () {
+                    $http({ method: "POST", url: "../api/user/logout" })
+                        .success(function (data, status, headers, config) {
+                            top.location.href = "../index.html";
+                        }).error(HandleServerException);
+                };
+                $http({ method: "GET", url: "../api/user/get" })
+                    .success(function (data) {
+                        $scope.User = data;
+                    }).error(HandleServerException);
+                Sair = $scope.Logout;
+            })
+            .controller("AddressCrtl", function ($scope, $http, HandleServerException, SharedData) {
+                $scope.DNSError = null;
+                $scope.CandidateDNS = SharedData.CandidateDNS;
+                $scope.OnDNSChange = function () {
+                    if ($scope.CandidateDNS.Value.length < 3) {
+                        $scope.DNSError = "too-short";
+                    }
+                    else {
+                        var pattern = new RegExp("^(?=.{1,255}$)[0-9A-Za-z](?:(?:[0-9A-Za-z]|-){0,61}[0-9A-Za-z])?(?:\.[0-9A-Za-z](?:(?:[0-9A-Za-z]|-){0,61}[0-9A-Za-z])?)*\.?$");
+                        var fullURL = "www." + $scope.CandidateDNS.Value + ".webjato.com.br";
+                        if (!pattern.test(fullURL) || (fullURL.indexOf(" ") != -1)) {
+                            $scope.DNSError = "invalid-dns";
+                        }
+                        else {
+                            $http({ method: "GET", url: "../api/publish/subdomainInUse", params: { subdomain: $scope.CandidateDNS.Value } })
+                                .success(function (data) {
+                                    if (data == "true") {
+                                        $scope.DNSError = "in-use";
+                                    }
+                                    else {
+                                        $scope.DNSError = null;
+                                    }
+                                });
+                        }
+                    }
+                };
+                $scope.OnDNSChange();
+            })
+            .controller("DisplayCrtl", function ($scope, $http, $timeout, $location, HandleServerException, SharedData) {
+                $scope.CandidateDNS = SharedData.CandidateDNS;
+                $scope.ActivePublish = SharedData.ActivePublish;
+                $scope.Publishing = false;
+                $scope.Publish = function () {
+                    $scope.Publishing = true;
+                    $http({ method: "POST", url: "../api/publish/publish", params: { subdomain: $scope.CandidateDNS.Value } })
+                        .success(function (data) {
+                            $scope.ActivePublish = eval(data);
+                            SharedData.ActivePublish = eval(data);
+                            $scope.Publishing = false;
+                        }).error(HandleServerException);
+                };
+            })
+            .controller("ShareCrtl", function ($scope, $http, HandleServerException, SharedData) {
+                $scope.IsPublished = SharedData.ActivePublish != null;
+            })
+            .controller("HideCrtl", function ($scope, $http, HandleServerException, SharedData) {
+                $scope.IsPublished = SharedData.ActivePublish != null;
+                $scope.Address = $scope.IsPublished ? SharedData.ActivePublish.DNS : "";
+                $scope.Removing = false;
+                $scope.Remove = function () {
+                    $scope.Removing = true;
+                    $http({ method: "POST", url: "../api/publish/remove" })
+                        .success(function () {
+                            SharedData.ActivePublish = null;
+                            $scope.IsPublished = false;
+                            $scope.Address = "";
+                            $scope.Removing = false;
+                        }).error(HandleServerException);
+                };
+            });
+
+        $(document).ready(function () {
+            $("body").layout({ applyDefaultStyles: false });
+        });
+    </script>
+</head>
+<body ng-controller="MenuCrtl">
+    <wj-help></wj-help>
+    <div class="ui-layout-center">
+        <div ng-view></div>
+    </div>
+    <div class="ui-layout-north">
+        <div id="logo"><a href="../main.html"><img src="../images/spacer_logo.png" alt="" title="{{'Início'|translate}}" translate /></a></div>
+        <h1 translate><img src="../images/icon-peq-publicar.png" alt="" title="" />Publicar</h1>
+        <div id="page">
+            <div id="cont">
+                <div class="bot-side float-left">
+                    <a href="../preview/index.html" target="_preview" class="north mouse-seta" title="{{'Ver construção'|translate}}" translate>
+                        <img src="../images/bot_visualizar.png" alt="" />
+                    </a>
+                </div>
+                <div class="bot-side ajudyz">
+                    <a href="" ng-click="ShowHelp(CurrentPage.helpId);" class="north mouse-seta" title="{{'Ajuda'|translate}}">
+                        <img src="../images/bot_ajuda.png" alt="" />
+                    </a>
+                </div>
+                <div class="bot-side ajudyz margemtop-zero">
+                 <div class="account" title="{{'Conta'|translate}}" translate>
+                     <img src="../images/bot_user.png" alt="" />
+                     <div class="dropdown dropdown-tip dropdown-anchor-right">
+                         <ul class="dropdown-menu">
+                             <li class="padding-rl12 bold top-10 bottom-15">{{User.FullName}}</li>
+                             <li class="bottom-10">
+                                 <a href="#" onclick="Sair();">Sair</a>
+                             </li>
+                         </ul>
+                     </div>
+                 </div>
+            </div>
+            </div>
+            <ul id="padrao">
+                <li>
+                    <a href="#/address.html" ng-click="GoTo('#/address.html');" title="{{'Endereço'|translate}}" ng-class="{'linkAtivo': (Url == '#/address.html'), 'linkNormal': (Url != '#/address.html')}">
+                        <span ng-class="{'especialAtivo': (Url == '#/address.html'), 'especial': (Url != '#/address.html')}">
+                            <p>1</p>
+                        </span>
+                        <span translate>Endereço</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/display.html" ng-click="GoTo('#/display.html');" title="{{'Exibição'|translate}}" ng-class="{'linkAtivo': (Url == '#/display.html'), 'linkNormal': (Url != '#/display.html')}">
+                        <span ng-class="{'especialAtivo': (Url == '#/display.html'), 'especial': (Url != '#/display.html')}">
+                            <p>2</p>
+                        </span>
+                        <span translate>Exibir</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/share.html" ng-click="GoTo('#/share.html');" title="{{'Divulgar'|translate}}" ng-class="{'linkAtivo': (Url == '#/share.html'), 'linkNormal': (Url != '#/share.html')}">
+                        <span ng-class="{'especialAtivo': (Url == '#/share.html'), 'especial': (Url != '#/share.html')}">
+                            <p>3</p>
+                        </span>
+                        <span translate>Divulgar</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/hide.html" ng-click="GoTo('#/hide.html');" title="{{'Ocultar'|translate}}" ng-class="{'linkAtivo': (Url == '#/hide.html'), 'linkNormal': (Url != '#/hide.html')}">
+                        <span ng-class="{'especialAtivo': (Url == '#/hide.html'), 'especial': (Url != '#/hide.html')}">
+                            <p>4</p>
+                        </span>
+                        <span translate>Ocultar</span>
+                    </a>
+                </li>
+            </ul>
+            <div id="container-header-seta">
+                <ul id="bot-seta">
+                    <li>
+                        <a ng-href="{{PrevPageUrl}}" ng-click="GoTo(PrevPageUrl);" title="{{'Voltar'|translate}}" ng-class="{'inactive': CurrentPage.first}">
+                            <img src="../images/seta_left.png" alt="" title="{{'Voltar'|translate}}" />
+                        </a>
+                    </li>
+                    <li>
+                        <a ng-href="{{NextPageUrl}}" ng-click="GoTo(NextPageUrl, true);" title="{{'Avançar'|translate}}" ng-class="{'inactive': CurrentPage.last}">
+                            <img src="../images/seta_right.png" alt="" title="{{'Avançar'|translate}}" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="jq-dropdown-1" class="dropdown dropdown-tip dropdown-anchor-right">
+        <ul class="dropdown-menu">
+            <li class="padding-rl12 bold top-10">
+                {{User.FullName}}
+            </li>
+            <!-- <li class="padding-rl12 font-085">
+            lluizweb@hotmail.com
+            </li> -->
+            <li ng-show="User.Admin">
+                <a href="reports/sites.html" translate>[ADMIN] Todos os sites</a>
+            </li>
+            <li class="dropdown-divider"></li>
+            <!-- <li>
+                <a translate>Alterar senha</a>
+            </li> -->
+            <!-- <li>
+                <a href="registros.html" translate>Conectar endereço (www.seusite.com)</a>
+            </li> -->
+            <li>
+                <a href="#" ng-click="Logout();" translate>Sair</a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

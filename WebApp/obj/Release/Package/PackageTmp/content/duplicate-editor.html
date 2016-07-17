@@ -1,0 +1,35 @@
+﻿<div class="wj-duplicate-editor content-editor animated">
+    <label>
+        <input type="checkbox" ng-model="SelectEverything" />
+        <span class="drible" translate>Selecionar tudo</span>
+    </label>
+    <div class="cont-conteudo txt-center top-2 linha">
+        <div class="ou">
+            <span translate>ou</span>
+        </div>
+    </div>
+    <div class="cont-conteudo txt-left top-2">
+        <img src="../images/icon_maoclique.png" class="float-left" />
+        <span class="drible txt-left" translate>Clique com o mouse</span>
+    </div>
+    <div class="cont-conteudo negrito top-33">
+        <span translate>Destino</span>
+    </div>
+    <div class="btn-combo">
+        <a href="#" data-dropdown="#jq-dropdown-13">
+            <i class="float" translate></i>
+            <img src="../images/icon_destino.png" alt="" title="" />
+        </a>
+    </div>
+    <div id="jq-dropdown-13" class="dropdown" style="top: 0 !important;">
+        <ul class="dropdown-menu">
+            <li ng-repeat="Page in PageList">
+                <label>
+                    <input type="checkbox" ng-model="Page.SelectedAsTarget" ng-change="OnPageSelectChange();" />
+                    <span ng-bind-html="Page.Title"></span>
+                </label>
+            </li>
+        </ul>
+    </div>
+    <wj-ok-cancel data="SelectedPages" event-ok="OnMassDuplicateRequest" event-cancel="OnMoveTogetherRollback"></wj-ok-cancel>
+</div>

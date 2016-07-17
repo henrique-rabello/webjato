@@ -1,0 +1,12 @@
+﻿<div class                  =   "wj-highlight"
+     ng-class               =   "{'interactive': isInteractiveContent, 'old-content': (data != null && !data.IsNewContent), 'new-content': (data != null && data.IsNewContent), 'line': (data != null && data.Type == 6)}"
+     ng-click               =   "OnClick();"
+     ng-show                =   "data != null"
+     wj-enabled             =   "{{resizeEnabled}}"
+     wj-resizable           =   "data"
+     wj-resizable-id        =   "{{data.Id}}"
+     wj-resizable-options   =   "{{resizeOptions}}"
+     wj-resize-stop         =   "OnSizeChange(w, h);"
+     ng-style               =   "{'top': position.top + 'px', 'left': position.left + 'px', 'width': size.width + 'px', 'height': size.height + 'px'}">
+    <wj-content-toolbar data="data" draggable-element="draggableElement" display="toolbarDisplay"></wj-content-toolbar>
+</div>

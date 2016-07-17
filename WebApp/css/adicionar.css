@@ -1,0 +1,129 @@
+/* CSS Document */
+img {
+    border: none;
+}
+
+body {
+    font-family: Verdana, Geneva, sans-serif;
+    background-color: #fff;
+    text-align: left;
+    margin: 0 auto;
+    padding: 0;
+    /* background: url(../images/loader_cont.gif) no-repeat -1000px -1000px; */
+}
+
+#firefox {
+    margin: 0;
+    position: relative;
+    width: 100%;
+    height: 5px;
+}
+
+#thumb-unit img, #thumb-grup img {
+    border: none;
+}
+
+#thumb-unit, #thumb-unit *, #thumb-grup, #thumb-grup * {
+    margin: 0;
+    padding: 0;
+}
+
+#thumb-unit, #thumb-grup {
+    list-style: none;
+    font-weight: normal;
+    margin: 0 0 0 67px;
+    position: relative;
+    width: auto;
+    height: auto;
+}
+
+    #thumb-unit li, #thumb-grup li {
+        float: left;
+    }
+
+        #thumb-unit li a {
+            width: 342px;
+            height: 276px;
+        }
+
+        #thumb-grup li a {
+            width: 342px;
+            height: 389px;
+        }
+
+        #thumb-unit li a, #thumb-grup li a {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            margin: 37px 37px 0 0;
+            padding: 0;
+            border: 1px solid #ccc;
+            background: #f5f5f5;
+            /* background: #f5f5f5 url(../images/loader_cont.gif) no-repeat center; */
+        }
+
+            #thumb-unit li a:hover, #thumb-grup li a:hover {
+                text-decoration: none;
+            }
+
+#vazio-bottom {
+    margin: 0;
+    display: table;
+    position: relative;
+    width: 100%;
+    height: 35px;
+}
+/* ============================================= */
+.all {
+    position: absolute;
+    width: auto;
+    height: auto;
+    margin: 37px 0 0 67px;
+    text-align: center;
+}
+
+.fundo-unidade {
+    top: 216px;
+}
+
+.fundo-grupo {
+    top: 329px;
+}
+
+.fundo-unidade, .fundo-grupo {
+    position: absolute;
+    width: 342px;
+    height: 60px;
+    left: 0px;
+    background-color: #000;
+    /* Regras para opacidade crossbrowser */
+    opacity: .60; /* Navegadores padro */
+    filter: alpha(opacity=60); /* IE 7 e anteriores */ /* IE8 */
+}
+
+.local-unidade {
+    top: 216px;
+}
+
+.local-grupo {
+    top: 329px;
+}
+
+.local-unidade, .local-grupo {
+    position: absolute;
+    border: 1px solid #ccc;
+    width: 342px;
+    height: 60px;
+}
+
+.btn-adicionar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 7px 17px;
+    position: relative;
+    margin-top: 14px;
+    font-size: 0.8em;
+    display: inline-block;
+    border-radius: 0.2em;
+    background-color: #16a53f;
+}

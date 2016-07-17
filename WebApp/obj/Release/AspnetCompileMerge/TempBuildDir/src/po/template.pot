@@ -1,0 +1,3278 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+
+#: main.html:407
+#: main.html:410
+#: obj\Release\AspnetCompileMerge\Source\main.html:407
+#: obj\Release\AspnetCompileMerge\Source\main.html:410
+#: obj\Release\AspnetCompileMerge\Source\visual\index.html:992
+#: obj\Release\AspnetCompileMerge\Source\visual\index.html:995
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:407
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:410
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:992
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:995
+#: obj\Release\Package\PackageTmp\main.html:407
+#: obj\Release\Package\PackageTmp\main.html:410
+#: obj\Release\Package\PackageTmp\visual\index.html:992
+#: obj\Release\Package\PackageTmp\visual\index.html:995
+#: visual\index.html:992
+#: visual\index.html:995
+msgid "&nbsp;"
+msgstr ""
+
+#: config\align.html:98
+#: obj\Release\AspnetCompileMerge\Source\config\align.html:98
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\align.html:98
+#: obj\Release\Package\PackageTmp\config\align.html:98
+msgid "(mais utilizado)"
+msgstr ""
+
+#: config\size.html:103
+#: config\size.html:94
+#: obj\Release\AspnetCompileMerge\Source\config\size.html:103
+#: obj\Release\AspnetCompileMerge\Source\config\size.html:94
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\size.html:103
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\size.html:94
+#: obj\Release\Package\PackageTmp\config\size.html:103
+#: obj\Release\Package\PackageTmp\config\size.html:94
+msgid "(não disponível)"
+msgstr ""
+
+#: config\pages.html:398
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:398
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:398
+#: obj\Release\Package\PackageTmp\config\pages.html:398
+msgid "(obrigatório)"
+msgstr ""
+
+#: config\pages.html:545
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:545
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:545
+#: obj\Release\Package\PackageTmp\config\pages.html:545
+msgid "* Texto atingiu o limite de 60 caracteres"
+msgstr ""
+
+#: help\content-start.html:11
+#: obj\Release\AspnetCompileMerge\Source\help\content-start.html:11
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-start.html:11
+#: obj\Release\Package\PackageTmp\help\content-start.html:11
+msgid "1. Página – altera a página sendo editada."
+msgstr ""
+
+#: main.html:419
+#: obj\Release\AspnetCompileMerge\Source\main.html:419
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:419
+#: obj\Release\Package\PackageTmp\main.html:419
+msgid "1º Passo"
+msgstr ""
+
+#: help\content-start.html:12
+#: obj\Release\AspnetCompileMerge\Source\help\content-start.html:12
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-start.html:12
+#: obj\Release\Package\PackageTmp\help\content-start.html:12
+msgid "2. Unidade – adiciona um conteúdo."
+msgstr ""
+
+#: main.html:428
+#: obj\Release\AspnetCompileMerge\Source\main.html:428
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:428
+#: obj\Release\Package\PackageTmp\main.html:428
+msgid "2º Passo"
+msgstr ""
+
+#: help\content-start.html:13
+#: obj\Release\AspnetCompileMerge\Source\help\content-start.html:13
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-start.html:13
+#: obj\Release\Package\PackageTmp\help\content-start.html:13
+msgid "3. Grupo – adiciona página predefinida."
+msgstr ""
+
+#: main.html:437
+#: obj\Release\AspnetCompileMerge\Source\main.html:437
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:437
+#: obj\Release\Package\PackageTmp\main.html:437
+msgid "3º Passo"
+msgstr ""
+
+#: help\content-start.html:14
+#: obj\Release\AspnetCompileMerge\Source\help\content-start.html:14
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-start.html:14
+#: obj\Release\Package\PackageTmp\help\content-start.html:14
+msgid "4. Edição<img src=\"../images/help/ajuda_edicao.png\" alt=\"\">– passe o mouse sobre os conteúdos criados."
+msgstr ""
+
+#: main.html:446
+#: obj\Release\AspnetCompileMerge\Source\main.html:446
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:446
+#: obj\Release\Package\PackageTmp\main.html:446
+msgid "4º Passo"
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\footer.html:61
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\footer.html:61
+#: obj\Release\Package\PackageTmp\visual\footer.html:61
+#: visual\footer.html:61
+msgid "<b>Clique</b> no texto de rodapé e digite para alterá-lo."
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\background.html:124
+#: obj\Release\AspnetCompileMerge\Source\visual\header.html:123
+#: obj\Release\AspnetCompileMerge\Source\visual\logo.html:150
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:124
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\header.html:123
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\logo.html:150
+#: obj\Release\Package\PackageTmp\visual\background.html:124
+#: obj\Release\Package\PackageTmp\visual\header.html:123
+#: obj\Release\Package\PackageTmp\visual\logo.html:150
+#: visual\background.html:124
+#: visual\header.html:123
+#: visual\logo.html:150
+msgid "<p>&nbsp;Jpeg, Gif ou Png</p>"
+msgstr ""
+
+#: config\title.html:101
+#: obj\Release\AspnetCompileMerge\Source\config\title.html:101
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\title.html:101
+#: obj\Release\Package\PackageTmp\config\title.html:101
+msgid "<p>Ex.: nome do site ou negócio, </p>serviços, qualidades..."
+msgstr ""
+
+#: content\image-editor-tpl.html:4
+#: obj\Release\AspnetCompileMerge\Source\content\image-editor-tpl.html:4
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\image-editor-tpl.html:4
+#: obj\Release\Package\PackageTmp\content\image-editor-tpl.html:4
+msgid "<p>Jpeg, Gif ou Png</p>"
+msgstr ""
+
+#: index.html:297
+#: obj\Release\AspnetCompileMerge\Source\index.html:297
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:297
+#: obj\Release\Package\PackageTmp\index.html:297
+msgid "A senha deve ter pelo menos 5 caracteres"
+msgstr ""
+
+#: index.html:322
+#: obj\Release\AspnetCompileMerge\Source\index.html:322
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:322
+#: obj\Release\Package\PackageTmp\index.html:322
+msgid "A senha foi enviada para o seu e-mail."
+msgstr ""
+
+#: content\social-editor-tpl.html:17
+#: content\social-editor-tpl.html:30
+#: content\social-editor-tpl.html:43
+#: content\social-editor-tpl.html:56
+#: content\social-editor-tpl.html:69
+#: content\social-editor-tpl.html:82
+#: content\social-editor-tpl.html:95
+#: obj\Release\AspnetCompileMerge\Source\content\social-editor-tpl.html:17
+#: obj\Release\AspnetCompileMerge\Source\content\social-editor-tpl.html:30
+#: obj\Release\AspnetCompileMerge\Source\content\social-editor-tpl.html:43
+#: obj\Release\AspnetCompileMerge\Source\content\social-editor-tpl.html:56
+#: obj\Release\AspnetCompileMerge\Source\content\social-editor-tpl.html:69
+#: obj\Release\AspnetCompileMerge\Source\content\social-editor-tpl.html:82
+#: obj\Release\AspnetCompileMerge\Source\content\social-editor-tpl.html:95
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\social-editor-tpl.html:17
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\social-editor-tpl.html:30
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\social-editor-tpl.html:43
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\social-editor-tpl.html:56
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\social-editor-tpl.html:69
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\social-editor-tpl.html:82
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\social-editor-tpl.html:95
+#: obj\Release\Package\PackageTmp\content\social-editor-tpl.html:17
+#: obj\Release\Package\PackageTmp\content\social-editor-tpl.html:30
+#: obj\Release\Package\PackageTmp\content\social-editor-tpl.html:43
+#: obj\Release\Package\PackageTmp\content\social-editor-tpl.html:56
+#: obj\Release\Package\PackageTmp\content\social-editor-tpl.html:69
+#: obj\Release\Package\PackageTmp\content\social-editor-tpl.html:82
+#: obj\Release\Package\PackageTmp\content\social-editor-tpl.html:95
+msgid "A url aqui..."
+msgstr ""
+
+#: help\config-finish.html:4
+#: help\visual-finish.html:4
+#: obj\Release\AspnetCompileMerge\Source\help\config-finish.html:4
+#: obj\Release\AspnetCompileMerge\Source\help\visual-finish.html:4
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-finish.html:4
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-finish.html:4
+#: obj\Release\Package\PackageTmp\help\config-finish.html:4
+#: obj\Release\Package\PackageTmp\help\visual-finish.html:4
+msgid "ATENÇÃO"
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\session.html:87
+#: obj\Release\AspnetCompileMerge\TempBuildDir\session.html:87
+#: obj\Release\Package\PackageTmp\session.html:87
+#: session.html:87
+msgid "AVISO"
+msgstr ""
+
+#: content\image-editor-tpl.html:22
+#: obj\Release\AspnetCompileMerge\Source\content\image-editor-tpl.html:22
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\image-editor-tpl.html:22
+#: obj\Release\Package\PackageTmp\content\image-editor-tpl.html:22
+msgid "Abrir"
+msgstr ""
+
+#: help\content-image-linked.html:10
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-linked.html:10
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-linked.html:10
+#: obj\Release\Package\PackageTmp\help\content-image-linked.html:10
+msgid "Abrir – ação para quando a imagem for clicada."
+msgstr ""
+
+#: content\unit-add-tpl.html:4
+#: content\unit-preview-tpl.html:14
+#: content\unit-preview-tpl.html:20
+#: content\unit-preview-tpl.html:32
+#: content\unit-preview-tpl.html:50
+#: content\unit-preview-tpl.html:56
+#: content\unit-preview-tpl.html:62
+#: content\unit-preview-tpl.html:68
+#: content\unit-preview-tpl.html:74
+#: content\unit-preview-tpl.html:8
+#: content\unit-preview-tpl.html:80
+#: content\unit-preview-tpl.html:86
+#: content\unit-preview-tpl.html:98
+#: obj\Release\AspnetCompileMerge\Source\content\unit-add-tpl.html:4
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:14
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:20
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:32
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:50
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:56
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:62
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:68
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:74
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:8
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:80
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:86
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:98
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-add-tpl.html:4
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:14
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:20
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:32
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:50
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:56
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:62
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:68
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:74
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:8
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:80
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:86
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:98
+#: obj\Release\Package\PackageTmp\content\unit-add-tpl.html:4
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:14
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:20
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:32
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:50
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:56
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:62
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:68
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:74
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:8
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:80
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:86
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:98
+msgid "Adicionar"
+msgstr ""
+
+#: main.html:441
+#: obj\Release\AspnetCompileMerge\Source\main.html:441
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:441
+#: obj\Release\Package\PackageTmp\main.html:441
+msgid "Adicionar e editar"
+msgstr ""
+
+#: main.html:463
+#: obj\Release\AspnetCompileMerge\Source\main.html:463
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:463
+#: obj\Release\Package\PackageTmp\main.html:463
+msgid "Administração"
+msgstr ""
+
+#: config\index.html:193
+#: content\index.html:235
+#: main.html:407
+#: obj\Release\AspnetCompileMerge\Source\config\index.html:193
+#: obj\Release\AspnetCompileMerge\Source\content\index.html:235
+#: obj\Release\AspnetCompileMerge\Source\main.html:407
+#: obj\Release\AspnetCompileMerge\Source\visual\index.html:992
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\index.html:193
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\index.html:235
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:407
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:992
+#: obj\Release\Package\PackageTmp\config\index.html:193
+#: obj\Release\Package\PackageTmp\content\index.html:235
+#: obj\Release\Package\PackageTmp\main.html:407
+#: obj\Release\Package\PackageTmp\visual\index.html:992
+#: visual\index.html:992
+msgid "Ajuda"
+msgstr ""
+
+#: main.html:396
+#: obj\Release\AspnetCompileMerge\Source\main.html:396
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:396
+#: obj\Release\Package\PackageTmp\main.html:396
+msgid "Ajuda automática"
+msgstr ""
+
+#: config\index.html:224
+#: help\config-align.html:7
+#: obj\Release\AspnetCompileMerge\Source\config\index.html:224
+#: obj\Release\AspnetCompileMerge\Source\help\config-align.html:7
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\index.html:224
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-align.html:7
+#: obj\Release\Package\PackageTmp\config\index.html:224
+#: obj\Release\Package\PackageTmp\help\config-align.html:7
+msgid "Alinhamento"
+msgstr ""
+
+#: config\index.html:222
+#: obj\Release\AspnetCompileMerge\Source\config\index.html:222
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\index.html:222
+#: obj\Release\Package\PackageTmp\config\index.html:222
+msgid "Alinhamento do site"
+msgstr ""
+
+#: main.html:383
+#: obj\Release\AspnetCompileMerge\Source\main.html:383
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:383
+#: obj\Release\Package\PackageTmp\main.html:383
+msgid "Alterar senha"
+msgstr ""
+
+#: config\size.html:97
+#: content\index.html:246
+#: obj\Release\AspnetCompileMerge\Source\config\size.html:97
+#: obj\Release\AspnetCompileMerge\Source\content\index.html:246
+#: obj\Release\AspnetCompileMerge\Source\visual\header.html:92
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\size.html:97
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\index.html:246
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\header.html:92
+#: obj\Release\Package\PackageTmp\config\size.html:97
+#: obj\Release\Package\PackageTmp\content\index.html:246
+#: obj\Release\Package\PackageTmp\visual\header.html:92
+#: visual\header.html:92
+msgid "Altura"
+msgstr ""
+
+#: help\visual-header.html:11
+#: obj\Release\AspnetCompileMerge\Source\help\visual-header.html:11
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-header.html:11
+#: obj\Release\Package\PackageTmp\help\visual-header.html:11
+msgid "Altura - opções de tamanhos."
+msgstr ""
+
+#: help\content-box.html:12
+#: help\content-contact-form.html:12
+#: help\content-image-expandable.html:11
+#: help\content-image-linked.html:12
+#: help\content-image-simple.html:11
+#: help\content-line.html:13
+#: help\content-map.html:12
+#: help\content-social.html:12
+#: help\content-text.html:10
+#: help\content-video.html:12
+#: obj\Release\AspnetCompileMerge\Source\help\content-box.html:12
+#: obj\Release\AspnetCompileMerge\Source\help\content-contact-form.html:12
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-expandable.html:11
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-linked.html:12
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-simple.html:11
+#: obj\Release\AspnetCompileMerge\Source\help\content-line.html:13
+#: obj\Release\AspnetCompileMerge\Source\help\content-map.html:12
+#: obj\Release\AspnetCompileMerge\Source\help\content-social.html:12
+#: obj\Release\AspnetCompileMerge\Source\help\content-text.html:10
+#: obj\Release\AspnetCompileMerge\Source\help\content-video.html:12
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-box.html:12
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-contact-form.html:12
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-expandable.html:11
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-linked.html:12
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-simple.html:11
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-line.html:13
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-map.html:12
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-social.html:12
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-text.html:10
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-video.html:12
+#: obj\Release\Package\PackageTmp\help\content-box.html:12
+#: obj\Release\Package\PackageTmp\help\content-contact-form.html:12
+#: obj\Release\Package\PackageTmp\help\content-image-expandable.html:11
+#: obj\Release\Package\PackageTmp\help\content-image-linked.html:12
+#: obj\Release\Package\PackageTmp\help\content-image-simple.html:11
+#: obj\Release\Package\PackageTmp\help\content-line.html:13
+#: obj\Release\Package\PackageTmp\help\content-map.html:12
+#: obj\Release\Package\PackageTmp\help\content-social.html:12
+#: obj\Release\Package\PackageTmp\help\content-text.html:10
+#: obj\Release\Package\PackageTmp\help\content-video.html:12
+msgid "Altura <img class=\"margin-img\" src=\"../images/help/ajuda_altura.png\" alt=\"\"> – altera o comprimento da página."
+msgstr ""
+
+#: config\pages.html:393
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:393
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:393
+#: obj\Release\Package\PackageTmp\config\pages.html:393
+msgid "Apagar o nome <strong>somente oculta</strong> o botão e sua página."
+msgstr ""
+
+#: main.html:432
+#: obj\Release\AspnetCompileMerge\Source\main.html:432
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:432
+#: obj\Release\Package\PackageTmp\main.html:432
+msgid "Aparência do site"
+msgstr ""
+
+#: content\map-editor-tpl.html:9
+#: obj\Release\AspnetCompileMerge\Source\content\map-editor-tpl.html:9
+#: obj\Release\AspnetCompileMerge\Source\visual\index.html:1061
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\map-editor-tpl.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:1061
+#: obj\Release\Package\PackageTmp\content\map-editor-tpl.html:9
+#: obj\Release\Package\PackageTmp\visual\index.html:1061
+#: visual\index.html:1061
+msgid "Aplicar"
+msgstr ""
+
+#: main.html:392
+#: obj\Release\AspnetCompileMerge\Source\main.html:392
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:392
+#: obj\Release\Package\PackageTmp\main.html:392
+msgid "Aprimorar"
+msgstr ""
+
+#: content\image-editor-tpl.html:3
+#: obj\Release\AspnetCompileMerge\Source\content\image-editor-tpl.html:3
+#: obj\Release\AspnetCompileMerge\Source\visual\background.html:123
+#: obj\Release\AspnetCompileMerge\Source\visual\header.html:122
+#: obj\Release\AspnetCompileMerge\Source\visual\logo.html:149
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\image-editor-tpl.html:3
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:123
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\header.html:122
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\logo.html:149
+#: obj\Release\Package\PackageTmp\content\image-editor-tpl.html:3
+#: obj\Release\Package\PackageTmp\visual\background.html:123
+#: obj\Release\Package\PackageTmp\visual\header.html:122
+#: obj\Release\Package\PackageTmp\visual\logo.html:149
+#: visual\background.html:123
+#: visual\header.html:122
+#: visual\logo.html:149
+msgid "Arquivo"
+msgstr ""
+
+#: content\image-editor-tpl.html:16
+#: obj\Release\AspnetCompileMerge\Source\content\image-editor-tpl.html:16
+#: obj\Release\AspnetCompileMerge\Source\visual\background.html:132
+#: obj\Release\AspnetCompileMerge\Source\visual\header.html:132
+#: obj\Release\AspnetCompileMerge\Source\visual\logo.html:156
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\image-editor-tpl.html:16
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:132
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\header.html:132
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\logo.html:156
+#: obj\Release\Package\PackageTmp\content\image-editor-tpl.html:16
+#: obj\Release\Package\PackageTmp\visual\background.html:132
+#: obj\Release\Package\PackageTmp\visual\header.html:132
+#: obj\Release\Package\PackageTmp\visual\logo.html:156
+#: visual\background.html:132
+#: visual\header.html:132
+#: visual\logo.html:156
+msgid "Arquivo selecionado:"
+msgstr ""
+
+#: content\contact-form-tpl.html:13
+#: obj\Release\AspnetCompileMerge\Source\content\contact-form-tpl.html:13
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\contact-form-tpl.html:13
+#: obj\Release\Package\PackageTmp\content\contact-form-tpl.html:13
+msgid "Assunto"
+msgstr ""
+
+#: config\index.html:207
+#: config\index.html:208
+#: obj\Release\AspnetCompileMerge\Source\config\index.html:207
+#: obj\Release\AspnetCompileMerge\Source\config\index.html:208
+#: obj\Release\AspnetCompileMerge\Source\visual\index.html:1006
+#: obj\Release\AspnetCompileMerge\Source\visual\index.html:1007
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\index.html:207
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\index.html:208
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:1006
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:1007
+#: obj\Release\Package\PackageTmp\config\index.html:207
+#: obj\Release\Package\PackageTmp\config\index.html:208
+#: obj\Release\Package\PackageTmp\visual\index.html:1006
+#: obj\Release\Package\PackageTmp\visual\index.html:1007
+#: visual\index.html:1006
+#: visual\index.html:1007
+msgid "Avançar"
+msgstr ""
+
+#: content\z-index-tpl.html:7
+#: obj\Release\AspnetCompileMerge\Source\content\z-index-tpl.html:7
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\z-index-tpl.html:7
+#: obj\Release\Package\PackageTmp\content\z-index-tpl.html:7
+msgid "Avançar um"
+msgstr ""
+
+#: help\main.html:5
+#: obj\Release\AspnetCompileMerge\Source\help\main.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\main.html:5
+#: obj\Release\Package\PackageTmp\help\main.html:5
+msgid "Bem vindo a WebJato"
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\page.html:106
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\page.html:106
+#: obj\Release\Package\PackageTmp\visual\page.html:106
+#: visual\page.html:106
+msgid "Bordas"
+msgstr ""
+
+#: help\visual-page.html:12
+#: obj\Release\AspnetCompileMerge\Source\help\visual-page.html:12
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-page.html:12
+#: obj\Release\Package\PackageTmp\help\visual-page.html:12
+msgid "Bordas - adiciona bordas laterais, superior e inferior."
+msgstr ""
+
+#: config\pages.html:397
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:397
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:397
+#: obj\Release\Package\PackageTmp\config\pages.html:397
+msgid "Botão 1"
+msgstr ""
+
+#: config\pages.html:410
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:410
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:410
+#: obj\Release\Package\PackageTmp\config\pages.html:410
+msgid "Botão 2"
+msgstr ""
+
+#: config\pages.html:433
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:433
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:433
+#: obj\Release\Package\PackageTmp\config\pages.html:433
+msgid "Botão 3"
+msgstr ""
+
+#: config\pages.html:458
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:458
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:458
+#: obj\Release\Package\PackageTmp\config\pages.html:458
+msgid "Botão 4"
+msgstr ""
+
+#: config\pages.html:481
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:481
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:481
+#: obj\Release\Package\PackageTmp\config\pages.html:481
+msgid "Botão 5"
+msgstr ""
+
+#: config\pages.html:504
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:504
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:504
+#: obj\Release\Package\PackageTmp\config\pages.html:504
+msgid "Botão 6"
+msgstr ""
+
+#: content\unit-add-tpl.html:15
+#: content\unit-preview-tpl.html:48
+#: help\content-box.html:7
+#: obj\Release\AspnetCompileMerge\Source\content\unit-add-tpl.html:15
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:48
+#: obj\Release\AspnetCompileMerge\Source\help\content-box.html:7
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-add-tpl.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:48
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-box.html:7
+#: obj\Release\Package\PackageTmp\content\unit-add-tpl.html:15
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:48
+#: obj\Release\Package\PackageTmp\help\content-box.html:7
+msgid "Box"
+msgstr ""
+
+#: config\index.html:184
+#: obj\Release\AspnetCompileMerge\Source\config\index.html:184
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\index.html:184
+#: obj\Release\Package\PackageTmp\config\index.html:184
+msgid "CONFIGURAÇÃO"
+msgstr ""
+
+#: content\index.html:224
+#: obj\Release\AspnetCompileMerge\Source\content\index.html:224
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\index.html:224
+#: obj\Release\Package\PackageTmp\content\index.html:224
+msgid "CONTEÚDO"
+msgstr ""
+
+#: help\visual-header.html:8
+#: obj\Release\AspnetCompileMerge\Source\help\visual-header.html:8
+#: obj\Release\AspnetCompileMerge\Source\visual\index.html:1021
+#: obj\Release\AspnetCompileMerge\Source\visual\index.html:1023
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-header.html:8
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:1021
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:1023
+#: obj\Release\Package\PackageTmp\help\visual-header.html:8
+#: obj\Release\Package\PackageTmp\visual\index.html:1021
+#: obj\Release\Package\PackageTmp\visual\index.html:1023
+#: visual\index.html:1021
+#: visual\index.html:1023
+msgid "Cabeçalho"
+msgstr ""
+
+#: config\pages.html:391
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:391
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:391
+#: obj\Release\Package\PackageTmp\config\pages.html:391
+msgid "Cada botão representa uma página."
+msgstr ""
+
+#: content\ok-cancel-tpl.html:3
+#: crop.html:15
+#: obj\Release\AspnetCompileMerge\Source\content\ok-cancel-tpl.html:3
+#: obj\Release\AspnetCompileMerge\Source\crop.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\ok-cancel-tpl.html:3
+#: obj\Release\AspnetCompileMerge\TempBuildDir\crop.html:15
+#: obj\Release\Package\PackageTmp\content\ok-cancel-tpl.html:3
+#: obj\Release\Package\PackageTmp\crop.html:15
+msgid "Cancelar"
+msgstr ""
+
+#: config\pages.html:542
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:542
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:542
+#: obj\Release\Package\PackageTmp\config\pages.html:542
+msgid "Caracteres disponíveis:"
+msgstr ""
+
+#: config\align.html:97
+#: obj\Release\AspnetCompileMerge\Source\config\align.html:97
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\align.html:97
+#: obj\Release\Package\PackageTmp\config\align.html:97
+msgid "Centralizado"
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\background.html:161
+#: obj\Release\AspnetCompileMerge\Source\visual\background.html:177
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:161
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:177
+#: obj\Release\Package\PackageTmp\visual\background.html:161
+#: obj\Release\Package\PackageTmp\visual\background.html:177
+#: visual\background.html:161
+#: visual\background.html:177
+msgid "Centro"
+msgstr ""
+
+#: config\pages.html:414
+#: config\pages.html:437
+#: config\pages.html:462
+#: config\pages.html:485
+#: config\pages.html:508
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:414
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:437
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:462
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:485
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:508
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:414
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:437
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:462
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:485
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:508
+#: obj\Release\Package\PackageTmp\config\pages.html:414
+#: obj\Release\Package\PackageTmp\config\pages.html:437
+#: obj\Release\Package\PackageTmp\config\pages.html:462
+#: obj\Release\Package\PackageTmp\config\pages.html:485
+#: obj\Release\Package\PackageTmp\config\pages.html:508
+msgid "Clientes"
+msgstr ""
+
+#: help\visual-footer.html:11
+#: obj\Release\AspnetCompileMerge\Source\help\visual-footer.html:11
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-footer.html:11
+#: obj\Release\Package\PackageTmp\help\visual-footer.html:11
+msgid "Clique diretamente sobre o texto de rodapé para editá-lo. Escreva uma breve descrição na parte inferior da página como por exemplo o nome site, endereço, etc."
+msgstr ""
+
+#: help\config-position.html:9
+#: help\content-box.html:16
+#: help\content-contact-form.html:15
+#: help\content-image-expandable.html:15
+#: help\content-image-linked.html:16
+#: help\content-image-simple.html:15
+#: help\content-line.html:17
+#: help\content-map.html:15
+#: help\content-social.html:15
+#: help\content-start.html:16
+#: help\content-text.html:14
+#: help\content-video.html:15
+#: obj\Release\AspnetCompileMerge\Source\help\config-position.html:9
+#: obj\Release\AspnetCompileMerge\Source\help\content-box.html:16
+#: obj\Release\AspnetCompileMerge\Source\help\content-contact-form.html:15
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-expandable.html:15
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-linked.html:16
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-simple.html:15
+#: obj\Release\AspnetCompileMerge\Source\help\content-line.html:17
+#: obj\Release\AspnetCompileMerge\Source\help\content-map.html:15
+#: obj\Release\AspnetCompileMerge\Source\help\content-social.html:15
+#: obj\Release\AspnetCompileMerge\Source\help\content-start.html:16
+#: obj\Release\AspnetCompileMerge\Source\help\content-text.html:14
+#: obj\Release\AspnetCompileMerge\Source\help\content-video.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-position.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-box.html:16
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-contact-form.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-expandable.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-linked.html:16
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-simple.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-line.html:17
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-map.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-social.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-start.html:16
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-text.html:14
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-video.html:15
+#: obj\Release\Package\PackageTmp\help\config-position.html:9
+#: obj\Release\Package\PackageTmp\help\content-box.html:16
+#: obj\Release\Package\PackageTmp\help\content-contact-form.html:15
+#: obj\Release\Package\PackageTmp\help\content-image-expandable.html:15
+#: obj\Release\Package\PackageTmp\help\content-image-linked.html:16
+#: obj\Release\Package\PackageTmp\help\content-image-simple.html:15
+#: obj\Release\Package\PackageTmp\help\content-line.html:17
+#: obj\Release\Package\PackageTmp\help\content-map.html:15
+#: obj\Release\Package\PackageTmp\help\content-social.html:15
+#: obj\Release\Package\PackageTmp\help\content-start.html:16
+#: obj\Release\Package\PackageTmp\help\content-text.html:14
+#: obj\Release\Package\PackageTmp\help\content-video.html:15
+msgid "Clique em"
+msgstr ""
+
+#: help\config-pages.html:8
+#: obj\Release\AspnetCompileMerge\Source\help\config-pages.html:8
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-pages.html:8
+#: obj\Release\Package\PackageTmp\help\config-pages.html:8
+msgid "Clique em exemplos ou escreva direto no campo para criar os botões do menu do seu site."
+msgstr ""
+
+#: index.html:260
+#: obj\Release\AspnetCompileMerge\Source\index.html:260
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:260
+#: obj\Release\Package\PackageTmp\index.html:260
+msgid "Clique no link abaixo e entre na Webjato utilizando seu e-mail e senha."
+msgstr ""
+
+#: content\content-click-tpl.html:8
+#: obj\Release\AspnetCompileMerge\Source\content\content-click-tpl.html:8
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\content-click-tpl.html:8
+#: obj\Release\Package\PackageTmp\content\content-click-tpl.html:8
+msgid "Clique para selecionar"
+msgstr ""
+
+#: help\config-position.html:8
+#: obj\Release\AspnetCompileMerge\Source\help\config-position.html:8
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-position.html:8
+#: obj\Release\Package\PackageTmp\help\config-position.html:8
+msgid "Com exceção do 1º botão, você pode trocar a ordem de navegação."
+msgstr ""
+
+#: index.html:243
+#: obj\Release\AspnetCompileMerge\Source\index.html:243
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:243
+#: obj\Release\Package\PackageTmp\index.html:243
+msgid "Combinação email/senha não reconhecida. Tente de novo."
+msgstr ""
+
+#: index.html:256
+#: obj\Release\AspnetCompileMerge\Source\index.html:256
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:256
+#: obj\Release\Package\PackageTmp\index.html:256
+msgid "Comece hoje"
+msgstr ""
+
+#: main.html:380
+#: obj\Release\AspnetCompileMerge\Source\main.html:380
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:380
+#: obj\Release\Package\PackageTmp\main.html:380
+msgid "Conectar endereço (www.seusite.com)"
+msgstr ""
+
+#: main.html:421
+#: obj\Release\AspnetCompileMerge\Source\main.html:421
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:421
+#: obj\Release\Package\PackageTmp\main.html:421
+msgid "Configuração"
+msgstr ""
+
+#: index.html:239
+#: index.html:301
+#: obj\Release\AspnetCompileMerge\Source\index.html:239
+#: obj\Release\AspnetCompileMerge\Source\index.html:301
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:239
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:301
+#: obj\Release\Package\PackageTmp\index.html:239
+#: obj\Release\Package\PackageTmp\index.html:301
+msgid "Confirmar"
+msgstr ""
+
+#: config\pages.html:415
+#: config\pages.html:438
+#: config\pages.html:463
+#: config\pages.html:486
+#: config\pages.html:509
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:415
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:438
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:463
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:486
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:509
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:415
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:438
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:463
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:486
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:509
+#: obj\Release\Package\PackageTmp\config\pages.html:415
+#: obj\Release\Package\PackageTmp\config\pages.html:438
+#: obj\Release\Package\PackageTmp\config\pages.html:463
+#: obj\Release\Package\PackageTmp\config\pages.html:486
+#: obj\Release\Package\PackageTmp\config\pages.html:509
+msgid "Contato"
+msgstr ""
+
+#: help\content-start.html:6
+#: main.html:439
+#: obj\Release\AspnetCompileMerge\Source\help\content-start.html:6
+#: obj\Release\AspnetCompileMerge\Source\main.html:439
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-start.html:6
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:439
+#: obj\Release\Package\PackageTmp\help\content-start.html:6
+#: obj\Release\Package\PackageTmp\main.html:439
+msgid "Conteúdo"
+msgstr ""
+
+#: content\box-editor-tpl.html:9
+#: content\contact-form-editor-tpl.html:17
+#: obj\Release\AspnetCompileMerge\Source\content\box-editor-tpl.html:9
+#: obj\Release\AspnetCompileMerge\Source\content\contact-form-editor-tpl.html:17
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\box-editor-tpl.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\contact-form-editor-tpl.html:17
+#: obj\Release\Package\PackageTmp\content\box-editor-tpl.html:9
+#: obj\Release\Package\PackageTmp\content\contact-form-editor-tpl.html:17
+msgid "Contorno"
+msgstr ""
+
+#: help\content-box.html:10
+#: obj\Release\AspnetCompileMerge\Source\help\content-box.html:10
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-box.html:10
+#: obj\Release\Package\PackageTmp\help\content-box.html:10
+msgid "Contorno – adiciona contorno."
+msgstr ""
+
+#: content\box-editor-tpl.html:3
+#: content\line-editor-tpl.html:3
+#: obj\Release\AspnetCompileMerge\Source\content\box-editor-tpl.html:3
+#: obj\Release\AspnetCompileMerge\Source\content\line-editor-tpl.html:3
+#: obj\Release\AspnetCompileMerge\Source\visual\background.html:99
+#: obj\Release\AspnetCompileMerge\Source\visual\footer.html:53
+#: obj\Release\AspnetCompileMerge\Source\visual\header.html:83
+#: obj\Release\AspnetCompileMerge\Source\visual\page.html:87
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\box-editor-tpl.html:3
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\line-editor-tpl.html:3
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:99
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\footer.html:53
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\header.html:83
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\page.html:87
+#: obj\Release\Package\PackageTmp\content\box-editor-tpl.html:3
+#: obj\Release\Package\PackageTmp\content\line-editor-tpl.html:3
+#: obj\Release\Package\PackageTmp\visual\background.html:99
+#: obj\Release\Package\PackageTmp\visual\footer.html:53
+#: obj\Release\Package\PackageTmp\visual\header.html:83
+#: obj\Release\Package\PackageTmp\visual\page.html:87
+#: visual\background.html:99
+#: visual\footer.html:53
+#: visual\header.html:83
+#: visual\page.html:87
+msgid "Cor"
+msgstr ""
+
+#: help\visual-page.html:10
+#: obj\Release\AspnetCompileMerge\Source\help\visual-page.html:10
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-page.html:10
+#: obj\Release\Package\PackageTmp\help\visual-page.html:10
+msgid "Cor - altera a cor da página."
+msgstr ""
+
+#: help\visual-header.html:10
+#: obj\Release\AspnetCompileMerge\Source\help\visual-header.html:10
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-header.html:10
+#: obj\Release\Package\PackageTmp\help\visual-header.html:10
+msgid "Cor - cor do cabeçalho."
+msgstr ""
+
+#: help\visual-bg.html:10
+#: obj\Release\AspnetCompileMerge\Source\help\visual-bg.html:10
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-bg.html:10
+#: obj\Release\Package\PackageTmp\help\visual-bg.html:10
+msgid "Cor - cor do fundo."
+msgstr ""
+
+#: help\visual-footer.html:10
+#: obj\Release\AspnetCompileMerge\Source\help\visual-footer.html:10
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-footer.html:10
+#: obj\Release\Package\PackageTmp\help\visual-footer.html:10
+msgid "Cor - cor do rodapé."
+msgstr ""
+
+#: help\content-line.html:9
+#: obj\Release\AspnetCompileMerge\Source\help\content-line.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-line.html:9
+#: obj\Release\Package\PackageTmp\help\content-line.html:9
+msgid "Cor – cor da linha."
+msgstr ""
+
+#: help\content-box.html:9
+#: obj\Release\AspnetCompileMerge\Source\help\content-box.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-box.html:9
+#: obj\Release\Package\PackageTmp\help\content-box.html:9
+msgid "Cor – cor do box."
+msgstr ""
+
+#: crop.html:2
+#: obj\Release\AspnetCompileMerge\Source\crop.html:2
+#: obj\Release\AspnetCompileMerge\TempBuildDir\crop.html:2
+#: obj\Release\Package\PackageTmp\crop.html:2
+msgid "Cortar imagem"
+msgstr ""
+
+#: help\main.html:9
+#: obj\Release\AspnetCompileMerge\Source\help\main.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\main.html:9
+#: obj\Release\Package\PackageTmp\help\main.html:9
+msgid "Crie seu site em 4 etapas"
+msgstr ""
+
+#: index.html:327
+#: obj\Release\AspnetCompileMerge\Source\index.html:327
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:327
+#: obj\Release\Package\PackageTmp\index.html:327
+msgid "De repente lembrou? Entre aqui"
+msgstr ""
+
+#: help\config-size.html:8
+#: obj\Release\AspnetCompileMerge\Source\help\config-size.html:8
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-size.html:8
+#: obj\Release\Package\PackageTmp\help\config-size.html:8
+msgid "Defina a largura e altura do seu site."
+msgstr ""
+
+#: help\config-align.html:8
+#: obj\Release\AspnetCompileMerge\Source\help\config-align.html:8
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-align.html:8
+#: obj\Release\Package\PackageTmp\help\config-align.html:8
+msgid "Defina a posição do site na tela."
+msgstr ""
+
+#: help\config-align.html:9
+#: help\config-pages.html:9
+#: help\config-size.html:9
+#: help\config-title.html:9
+#: help\visual-bg.html:14
+#: help\visual-footer.html:13
+#: help\visual-header.html:15
+#: help\visual-logo.html:15
+#: help\visual-menu.html:14
+#: help\visual-page.html:14
+#: obj\Release\AspnetCompileMerge\Source\help\config-align.html:9
+#: obj\Release\AspnetCompileMerge\Source\help\config-pages.html:9
+#: obj\Release\AspnetCompileMerge\Source\help\config-size.html:9
+#: obj\Release\AspnetCompileMerge\Source\help\config-title.html:9
+#: obj\Release\AspnetCompileMerge\Source\help\visual-bg.html:14
+#: obj\Release\AspnetCompileMerge\Source\help\visual-footer.html:13
+#: obj\Release\AspnetCompileMerge\Source\help\visual-header.html:15
+#: obj\Release\AspnetCompileMerge\Source\help\visual-logo.html:15
+#: obj\Release\AspnetCompileMerge\Source\help\visual-menu.html:14
+#: obj\Release\AspnetCompileMerge\Source\help\visual-page.html:14
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-align.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-pages.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-size.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-title.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-bg.html:14
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-footer.html:13
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-header.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-logo.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-menu.html:14
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-page.html:14
+#: obj\Release\Package\PackageTmp\help\config-align.html:9
+#: obj\Release\Package\PackageTmp\help\config-pages.html:9
+#: obj\Release\Package\PackageTmp\help\config-size.html:9
+#: obj\Release\Package\PackageTmp\help\config-title.html:9
+#: obj\Release\Package\PackageTmp\help\visual-bg.html:14
+#: obj\Release\Package\PackageTmp\help\visual-footer.html:13
+#: obj\Release\Package\PackageTmp\help\visual-header.html:15
+#: obj\Release\Package\PackageTmp\help\visual-logo.html:15
+#: obj\Release\Package\PackageTmp\help\visual-menu.html:14
+#: obj\Release\Package\PackageTmp\help\visual-page.html:14
+msgid "Depois clique em"
+msgstr ""
+
+#: content\contact-form-editor-tpl.html:28
+#: obj\Release\AspnetCompileMerge\Source\content\contact-form-editor-tpl.html:28
+#: obj\Release\AspnetCompileMerge\Source\visual\menu.html:139
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\contact-form-editor-tpl.html:28
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\menu.html:139
+#: obj\Release\Package\PackageTmp\content\contact-form-editor-tpl.html:28
+#: obj\Release\Package\PackageTmp\visual\menu.html:139
+#: visual\menu.html:139
+msgid "Desfazer"
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\background.html:182
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:182
+#: obj\Release\Package\PackageTmp\visual\background.html:182
+#: visual\background.html:182
+msgid "Direita"
+msgstr ""
+
+#: content\toolbar-tpl.html:4
+#: obj\Release\AspnetCompileMerge\Source\content\toolbar-tpl.html:4
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\toolbar-tpl.html:4
+#: obj\Release\Package\PackageTmp\content\toolbar-tpl.html:4
+msgid "Duplicar"
+msgstr ""
+
+#: content\contact-form-editor-tpl.html:3
+#: obj\Release\AspnetCompileMerge\Source\content\contact-form-editor-tpl.html:3
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\contact-form-editor-tpl.html:3
+#: obj\Release\Package\PackageTmp\content\contact-form-editor-tpl.html:3
+msgid "E-mail"
+msgstr ""
+
+#: content\contact-form-editor-tpl.html:10
+#: obj\Release\AspnetCompileMerge\Source\content\contact-form-editor-tpl.html:10
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\contact-form-editor-tpl.html:10
+#: obj\Release\Package\PackageTmp\content\contact-form-editor-tpl.html:10
+msgid "E-mail inválido!"
+msgstr ""
+
+#: help\content-contact-form.html:9
+#: obj\Release\AspnetCompileMerge\Source\help\content-contact-form.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-contact-form.html:9
+#: obj\Release\Package\PackageTmp\help\content-contact-form.html:9
+msgid "E-mail – escreva o e-mail que receberá as mensagens."
+msgstr ""
+
+#: content\toolbar-tpl.html:3
+#: obj\Release\AspnetCompileMerge\Source\content\toolbar-tpl.html:3
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\toolbar-tpl.html:3
+#: obj\Release\Package\PackageTmp\content\toolbar-tpl.html:3
+msgid "Editar"
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\logo.html:129
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\logo.html:129
+#: obj\Release\Package\PackageTmp\visual\logo.html:129
+#: visual\logo.html:129
+msgid "Editar texto"
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\background.html:103
+#: obj\Release\AspnetCompileMerge\Source\visual\header.html:102
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:103
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\header.html:102
+#: obj\Release\Package\PackageTmp\visual\background.html:103
+#: obj\Release\Package\PackageTmp\visual\header.html:102
+#: visual\background.html:103
+#: visual\header.html:102
+msgid "Efeitos"
+msgstr ""
+
+#: help\visual-bg.html:11
+#: help\visual-header.html:12
+#: obj\Release\AspnetCompileMerge\Source\help\visual-bg.html:11
+#: obj\Release\AspnetCompileMerge\Source\help\visual-header.html:12
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-bg.html:11
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-header.html:12
+#: obj\Release\Package\PackageTmp\help\visual-bg.html:11
+#: obj\Release\Package\PackageTmp\help\visual-header.html:12
+msgid "Efeitos - cores e imagens predefinidas."
+msgstr ""
+
+#: content\unit-add-tpl.html:11
+#: obj\Release\AspnetCompileMerge\Source\content\unit-add-tpl.html:11
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-add-tpl.html:11
+#: obj\Release\Package\PackageTmp\content\unit-add-tpl.html:11
+msgid "Em breve"
+msgstr ""
+
+#: content\contact-form-tpl.html:11
+#: index.html:230
+#: index.html:290
+#: index.html:314
+#: obj\Release\AspnetCompileMerge\Source\content\contact-form-tpl.html:11
+#: obj\Release\AspnetCompileMerge\Source\index.html:230
+#: obj\Release\AspnetCompileMerge\Source\index.html:290
+#: obj\Release\AspnetCompileMerge\Source\index.html:314
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\contact-form-tpl.html:11
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:230
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:290
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:314
+#: obj\Release\Package\PackageTmp\content\contact-form-tpl.html:11
+#: obj\Release\Package\PackageTmp\index.html:230
+#: obj\Release\Package\PackageTmp\index.html:290
+#: obj\Release\Package\PackageTmp\index.html:314
+msgid "Email"
+msgstr ""
+
+#: config\pages.html:416
+#: config\pages.html:439
+#: config\pages.html:464
+#: config\pages.html:487
+#: config\pages.html:510
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:416
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:439
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:464
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:487
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:510
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:416
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:439
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:464
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:487
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:510
+#: obj\Release\Package\PackageTmp\config\pages.html:416
+#: obj\Release\Package\PackageTmp\config\pages.html:439
+#: obj\Release\Package\PackageTmp\config\pages.html:464
+#: obj\Release\Package\PackageTmp\config\pages.html:487
+#: obj\Release\Package\PackageTmp\config\pages.html:510
+msgid "Empresa"
+msgstr ""
+
+#: content\map-editor-tpl.html:3
+#: obj\Release\AspnetCompileMerge\Source\content\map-editor-tpl.html:3
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\map-editor-tpl.html:3
+#: obj\Release\Package\PackageTmp\content\map-editor-tpl.html:3
+msgid "Endereço"
+msgstr ""
+
+#: help\content-map.html:9
+#: obj\Release\AspnetCompileMerge\Source\help\content-map.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-map.html:9
+#: obj\Release\Package\PackageTmp\help\content-map.html:9
+msgid "Endereço – endereço completo do local."
+msgstr ""
+
+#: index.html:220
+#: obj\Release\AspnetCompileMerge\Source\index.html:220
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:220
+#: obj\Release\Package\PackageTmp\index.html:220
+msgid "Entre"
+msgstr ""
+
+#: index.html:292
+#: index.html:316
+#: obj\Release\AspnetCompileMerge\Source\index.html:292
+#: obj\Release\AspnetCompileMerge\Source\index.html:316
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:292
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:316
+#: obj\Release\Package\PackageTmp\index.html:292
+#: obj\Release\Package\PackageTmp\index.html:316
+msgid "Entre com um e-mail válido."
+msgstr ""
+
+#: content\image-upload-backdrop.html:3
+#: obj\Release\AspnetCompileMerge\Source\content\image-upload-backdrop.html:3
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\image-upload-backdrop.html:3
+#: obj\Release\Package\PackageTmp\content\image-upload-backdrop.html:3
+msgid "Enviando imagem..."
+msgstr ""
+
+#: content\z-index-tpl.html:13
+#: obj\Release\AspnetCompileMerge\Source\content\z-index-tpl.html:13
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\z-index-tpl.html:13
+#: obj\Release\Package\PackageTmp\content\z-index-tpl.html:13
+msgid "Enviar para trás"
+msgstr ""
+
+#: index.html:320
+#: obj\Release\AspnetCompileMerge\Source\index.html:320
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:320
+#: obj\Release\Package\PackageTmp\index.html:320
+msgid "Enviar senha"
+msgstr ""
+
+#: config\pages.html:417
+#: config\pages.html:440
+#: config\pages.html:465
+#: config\pages.html:488
+#: config\pages.html:511
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:417
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:440
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:465
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:488
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:511
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:417
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:440
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:465
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:488
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:511
+#: obj\Release\Package\PackageTmp\config\pages.html:417
+#: obj\Release\Package\PackageTmp\config\pages.html:440
+#: obj\Release\Package\PackageTmp\config\pages.html:465
+#: obj\Release\Package\PackageTmp\config\pages.html:488
+#: obj\Release\Package\PackageTmp\config\pages.html:511
+msgid "Equipe"
+msgstr ""
+
+#: help\content-image-expandable.html:9
+#: help\content-image-linked.html:9
+#: help\content-image-simple.html:9
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-expandable.html:9
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-linked.html:9
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-simple.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-expandable.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-linked.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-simple.html:9
+#: obj\Release\Package\PackageTmp\help\content-image-expandable.html:9
+#: obj\Release\Package\PackageTmp\help\content-image-linked.html:9
+#: obj\Release\Package\PackageTmp\help\content-image-simple.html:9
+msgid "Escolher Imagem – para selecionar uma imagem no computador."
+msgstr ""
+
+#: content\image-editor-tpl.html:9
+#: obj\Release\AspnetCompileMerge\Source\content\image-editor-tpl.html:9
+#: obj\Release\AspnetCompileMerge\Source\visual\background.html:127
+#: obj\Release\AspnetCompileMerge\Source\visual\header.html:126
+#: obj\Release\AspnetCompileMerge\Source\visual\logo.html:153
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\image-editor-tpl.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:127
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\header.html:126
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\logo.html:153
+#: obj\Release\Package\PackageTmp\content\image-editor-tpl.html:9
+#: obj\Release\Package\PackageTmp\visual\background.html:127
+#: obj\Release\Package\PackageTmp\visual\header.html:126
+#: obj\Release\Package\PackageTmp\visual\logo.html:153
+#: visual\background.html:127
+#: visual\header.html:126
+#: visual\logo.html:153
+msgid "Escolher imagem"
+msgstr ""
+
+#: content\contact-form-editor-tpl.html:9
+#: content\map-editor-tpl.html:6
+#: content\video-editor-tpl.html:7
+#: obj\Release\AspnetCompileMerge\Source\content\contact-form-editor-tpl.html:9
+#: obj\Release\AspnetCompileMerge\Source\content\map-editor-tpl.html:6
+#: obj\Release\AspnetCompileMerge\Source\content\video-editor-tpl.html:7
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\contact-form-editor-tpl.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\map-editor-tpl.html:6
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\video-editor-tpl.html:7
+#: obj\Release\Package\PackageTmp\content\contact-form-editor-tpl.html:9
+#: obj\Release\Package\PackageTmp\content\map-editor-tpl.html:6
+#: obj\Release\Package\PackageTmp\content\video-editor-tpl.html:7
+msgid "Escreva aqui..."
+msgstr ""
+
+#: help\config-title.html:8
+#: obj\Release\AspnetCompileMerge\Source\help\config-title.html:8
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-title.html:8
+#: obj\Release\Package\PackageTmp\help\config-title.html:8
+msgid "Escreva um título para o seu site. Este título será exibido na janela do navegador, nos sites de busca e também nas listas de favoritos."
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\logo.html:122
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\logo.html:122
+#: obj\Release\Package\PackageTmp\visual\logo.html:122
+#: visual\logo.html:122
+msgid "Escrever"
+msgstr ""
+
+#: help\visual-logo.html:13
+#: obj\Release\AspnetCompileMerge\Source\help\visual-logo.html:13
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-logo.html:13
+#: obj\Release\Package\PackageTmp\help\visual-logo.html:13
+msgid "Escrever - para entrar com um texto como logotipo caso ainda não possua logo. Escreva o nome do site ou do negócio."
+msgstr ""
+
+#: content\line-editor-tpl.html:7
+#: obj\Release\AspnetCompileMerge\Source\content\line-editor-tpl.html:7
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\line-editor-tpl.html:7
+#: obj\Release\Package\PackageTmp\content\line-editor-tpl.html:7
+msgid "Espessura"
+msgstr ""
+
+#: help\content-line.html:10
+#: obj\Release\AspnetCompileMerge\Source\help\content-line.html:10
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-line.html:10
+#: obj\Release\Package\PackageTmp\help\content-line.html:10
+msgid "Espessura – altera a densidade."
+msgstr ""
+
+#: index.html:312
+#: obj\Release\AspnetCompileMerge\Source\index.html:312
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:312
+#: obj\Release\Package\PackageTmp\index.html:312
+msgid "Esqueci a Senha"
+msgstr ""
+
+#: index.html:246
+#: obj\Release\AspnetCompileMerge\Source\index.html:246
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:246
+#: obj\Release\Package\PackageTmp\index.html:246
+msgid "Esqueci a senha"
+msgstr ""
+
+#: config\align.html:103
+#: obj\Release\AspnetCompileMerge\Source\config\align.html:103
+#: obj\Release\AspnetCompileMerge\Source\visual\background.html:172
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\align.html:103
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:172
+#: obj\Release\Package\PackageTmp\config\align.html:103
+#: obj\Release\Package\PackageTmp\visual\background.html:172
+#: visual\background.html:172
+msgid "Esquerda"
+msgstr ""
+
+#: index.html:323
+#: obj\Release\AspnetCompileMerge\Source\index.html:323
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:323
+#: obj\Release\Package\PackageTmp\index.html:323
+msgid "Este e-mail está associado a uma conta de Facebook. Utilize o facebook para entrar no site."
+msgstr ""
+
+#: index.html:302
+#: obj\Release\AspnetCompileMerge\Source\index.html:302
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:302
+#: obj\Release\Package\PackageTmp\index.html:302
+msgid "Este e-mail já está em uso, por favor tente de novo."
+msgstr ""
+
+#: index.html:321
+#: obj\Release\AspnetCompileMerge\Source\index.html:321
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:321
+#: obj\Release\Package\PackageTmp\index.html:321
+msgid "Este e-mail não está cadastrado em nosso sistema."
+msgstr ""
+
+#: config\pages.html:562
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:562
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:562
+#: obj\Release\Package\PackageTmp\config\pages.html:562
+msgid "Este nome é inválido, pois ultrapassará o limite de 60 caracteres. Por favor tente de novo."
+msgstr ""
+
+#: content\line-editor-tpl.html:18
+#: obj\Release\AspnetCompileMerge\Source\content\line-editor-tpl.html:18
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\line-editor-tpl.html:18
+#: obj\Release\Package\PackageTmp\content\line-editor-tpl.html:18
+msgid "Estilo"
+msgstr ""
+
+#: help\content-line.html:11
+#: obj\Release\AspnetCompileMerge\Source\help\content-line.html:11
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-line.html:11
+#: obj\Release\Package\PackageTmp\help\content-line.html:11
+msgid "Estilo – altera a forma."
+msgstr ""
+
+#: content\toolbar-tpl.html:5
+#: obj\Release\AspnetCompileMerge\Source\content\toolbar-tpl.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\toolbar-tpl.html:5
+#: obj\Release\Package\PackageTmp\content\toolbar-tpl.html:5
+msgid "Excluir"
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\logo.html:160
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\logo.html:160
+#: obj\Release\Package\PackageTmp\visual\logo.html:160
+#: visual\logo.html:160
+msgid "Excluir imagem"
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\background.html:137
+#: obj\Release\AspnetCompileMerge\Source\visual\header.html:137
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:137
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\header.html:137
+#: obj\Release\Package\PackageTmp\visual\background.html:137
+#: obj\Release\Package\PackageTmp\visual\header.html:137
+#: visual\background.html:137
+#: visual\header.html:137
+msgid "Excluir imagem de fundo"
+msgstr ""
+
+#: main.html:450
+#: obj\Release\AspnetCompileMerge\Source\main.html:450
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:450
+#: obj\Release\Package\PackageTmp\main.html:450
+msgid "Exibir seu site na web"
+msgstr ""
+
+#: config\pages.html:418
+#: config\pages.html:441
+#: config\pages.html:466
+#: config\pages.html:489
+#: config\pages.html:512
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:418
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:441
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:466
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:489
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:512
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:418
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:441
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:466
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:489
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:512
+#: obj\Release\Package\PackageTmp\config\pages.html:418
+#: obj\Release\Package\PackageTmp\config\pages.html:441
+#: obj\Release\Package\PackageTmp\config\pages.html:466
+#: obj\Release\Package\PackageTmp\config\pages.html:489
+#: obj\Release\Package\PackageTmp\config\pages.html:512
+msgid "Fale conosco"
+msgstr ""
+
+#: content\unit-preview-tpl.html:102
+#: help\config-align.html:5
+#: help\config-finish.html:5
+#: help\config-pages.html:5
+#: help\config-position.html:5
+#: help\config-size.html:5
+#: help\config-title.html:5
+#: help\content-box.html:5
+#: help\content-contact-form.html:5
+#: help\content-image-expandable.html:5
+#: help\content-image-linked.html:5
+#: help\content-image-simple.html:5
+#: help\content-line.html:5
+#: help\content-map.html:5
+#: help\content-social.html:5
+#: help\content-start.html:4
+#: help\content-text.html:5
+#: help\content-video.html:5
+#: help\main.html:3
+#: help\visual-bg.html:6
+#: help\visual-finish.html:5
+#: help\visual-footer.html:6
+#: help\visual-header.html:6
+#: help\visual-logo.html:6
+#: help\visual-menu.html:6
+#: help\visual-page.html:6
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:102
+#: obj\Release\AspnetCompileMerge\Source\help\config-align.html:5
+#: obj\Release\AspnetCompileMerge\Source\help\config-finish.html:5
+#: obj\Release\AspnetCompileMerge\Source\help\config-pages.html:5
+#: obj\Release\AspnetCompileMerge\Source\help\config-position.html:5
+#: obj\Release\AspnetCompileMerge\Source\help\config-size.html:5
+#: obj\Release\AspnetCompileMerge\Source\help\config-title.html:5
+#: obj\Release\AspnetCompileMerge\Source\help\content-box.html:5
+#: obj\Release\AspnetCompileMerge\Source\help\content-contact-form.html:5
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-expandable.html:5
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-linked.html:5
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-simple.html:5
+#: obj\Release\AspnetCompileMerge\Source\help\content-line.html:5
+#: obj\Release\AspnetCompileMerge\Source\help\content-map.html:5
+#: obj\Release\AspnetCompileMerge\Source\help\content-social.html:5
+#: obj\Release\AspnetCompileMerge\Source\help\content-start.html:4
+#: obj\Release\AspnetCompileMerge\Source\help\content-text.html:5
+#: obj\Release\AspnetCompileMerge\Source\help\content-video.html:5
+#: obj\Release\AspnetCompileMerge\Source\help\main.html:3
+#: obj\Release\AspnetCompileMerge\Source\help\visual-bg.html:6
+#: obj\Release\AspnetCompileMerge\Source\help\visual-finish.html:5
+#: obj\Release\AspnetCompileMerge\Source\help\visual-footer.html:6
+#: obj\Release\AspnetCompileMerge\Source\help\visual-header.html:6
+#: obj\Release\AspnetCompileMerge\Source\help\visual-logo.html:6
+#: obj\Release\AspnetCompileMerge\Source\help\visual-menu.html:6
+#: obj\Release\AspnetCompileMerge\Source\help\visual-page.html:6
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:102
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-align.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-finish.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-pages.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-position.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-size.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-title.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-box.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-contact-form.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-expandable.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-linked.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-simple.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-line.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-map.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-social.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-start.html:4
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-text.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-video.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\main.html:3
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-bg.html:6
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-finish.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-footer.html:6
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-header.html:6
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-logo.html:6
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-menu.html:6
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-page.html:6
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:102
+#: obj\Release\Package\PackageTmp\help\config-align.html:5
+#: obj\Release\Package\PackageTmp\help\config-finish.html:5
+#: obj\Release\Package\PackageTmp\help\config-pages.html:5
+#: obj\Release\Package\PackageTmp\help\config-position.html:5
+#: obj\Release\Package\PackageTmp\help\config-size.html:5
+#: obj\Release\Package\PackageTmp\help\config-title.html:5
+#: obj\Release\Package\PackageTmp\help\content-box.html:5
+#: obj\Release\Package\PackageTmp\help\content-contact-form.html:5
+#: obj\Release\Package\PackageTmp\help\content-image-expandable.html:5
+#: obj\Release\Package\PackageTmp\help\content-image-linked.html:5
+#: obj\Release\Package\PackageTmp\help\content-image-simple.html:5
+#: obj\Release\Package\PackageTmp\help\content-line.html:5
+#: obj\Release\Package\PackageTmp\help\content-map.html:5
+#: obj\Release\Package\PackageTmp\help\content-social.html:5
+#: obj\Release\Package\PackageTmp\help\content-start.html:4
+#: obj\Release\Package\PackageTmp\help\content-text.html:5
+#: obj\Release\Package\PackageTmp\help\content-video.html:5
+#: obj\Release\Package\PackageTmp\help\main.html:3
+#: obj\Release\Package\PackageTmp\help\visual-bg.html:6
+#: obj\Release\Package\PackageTmp\help\visual-finish.html:5
+#: obj\Release\Package\PackageTmp\help\visual-footer.html:6
+#: obj\Release\Package\PackageTmp\help\visual-header.html:6
+#: obj\Release\Package\PackageTmp\help\visual-logo.html:6
+#: obj\Release\Package\PackageTmp\help\visual-menu.html:6
+#: obj\Release\Package\PackageTmp\help\visual-page.html:6
+msgid "Fechar"
+msgstr ""
+
+#: content\index.html:251
+#: obj\Release\AspnetCompileMerge\Source\content\index.html:251
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\index.html:251
+#: obj\Release\Package\PackageTmp\content\index.html:251
+msgid "Ferramenta de duplicar"
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\background.html:140
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:140
+#: obj\Release\Package\PackageTmp\visual\background.html:140
+#: visual\background.html:140
+msgid "Fixa"
+msgstr ""
+
+#: config\size.html:103
+#: obj\Release\AspnetCompileMerge\Source\config\size.html:103
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\size.html:103
+#: obj\Release\Package\PackageTmp\config\size.html:103
+msgid "Fixo"
+msgstr ""
+
+#: content\unit-add-tpl.html:21
+#: help\content-contact-form.html:7
+#: obj\Release\AspnetCompileMerge\Source\content\unit-add-tpl.html:21
+#: obj\Release\AspnetCompileMerge\Source\help\content-contact-form.html:7
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-add-tpl.html:21
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-contact-form.html:7
+#: obj\Release\Package\PackageTmp\content\unit-add-tpl.html:21
+#: obj\Release\Package\PackageTmp\help\content-contact-form.html:7
+msgid "Formulário"
+msgstr ""
+
+#: content\unit-preview-tpl.html:96
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:96
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:96
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:96
+msgid "Formulário de contato"
+msgstr ""
+
+#: config\pages.html:419
+#: config\pages.html:442
+#: config\pages.html:467
+#: config\pages.html:490
+#: config\pages.html:513
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:419
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:442
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:467
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:490
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:513
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:419
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:442
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:467
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:490
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:513
+#: obj\Release\Package\PackageTmp\config\pages.html:419
+#: obj\Release\Package\PackageTmp\config\pages.html:442
+#: obj\Release\Package\PackageTmp\config\pages.html:467
+#: obj\Release\Package\PackageTmp\config\pages.html:490
+#: obj\Release\Package\PackageTmp\config\pages.html:513
+msgid "Fotos"
+msgstr ""
+
+#: content\contact-form-editor-tpl.html:18
+#: help\visual-bg.html:8
+#: obj\Release\AspnetCompileMerge\Source\content\contact-form-editor-tpl.html:18
+#: obj\Release\AspnetCompileMerge\Source\help\visual-bg.html:8
+#: obj\Release\AspnetCompileMerge\Source\visual\index.html:1017
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\contact-form-editor-tpl.html:18
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-bg.html:8
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:1017
+#: obj\Release\Package\PackageTmp\content\contact-form-editor-tpl.html:18
+#: obj\Release\Package\PackageTmp\help\visual-bg.html:8
+#: obj\Release\Package\PackageTmp\visual\index.html:1017
+#: visual\index.html:1017
+msgid "Fundo"
+msgstr ""
+
+#: config\pages.html:420
+#: config\pages.html:443
+#: config\pages.html:468
+#: config\pages.html:491
+#: config\pages.html:514
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:420
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:443
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:468
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:491
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:514
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:420
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:443
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:468
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:491
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:514
+#: obj\Release\Package\PackageTmp\config\pages.html:420
+#: obj\Release\Package\PackageTmp\config\pages.html:443
+#: obj\Release\Package\PackageTmp\config\pages.html:468
+#: obj\Release\Package\PackageTmp\config\pages.html:491
+#: obj\Release\Package\PackageTmp\config\pages.html:514
+msgid "Galeria"
+msgstr ""
+
+#: content\social-editor-tpl.html:107
+#: obj\Release\AspnetCompileMerge\Source\content\social-editor-tpl.html:107
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\social-editor-tpl.html:107
+#: obj\Release\Package\PackageTmp\content\social-editor-tpl.html:107
+msgid "Grande"
+msgstr ""
+
+#: content\index.html:164
+#: obj\Release\AspnetCompileMerge\Source\content\index.html:164
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\index.html:164
+#: obj\Release\Package\PackageTmp\content\index.html:164
+msgid "Gravando"
+msgstr ""
+
+#: content\unit-add-tpl.html:11
+#: obj\Release\AspnetCompileMerge\Source\content\unit-add-tpl.html:11
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-add-tpl.html:11
+#: obj\Release\Package\PackageTmp\content\unit-add-tpl.html:11
+msgid "Grupo"
+msgstr ""
+
+#: config\pages.html:421
+#: config\pages.html:444
+#: config\pages.html:469
+#: config\pages.html:492
+#: config\pages.html:515
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:421
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:444
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:469
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:492
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:515
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:421
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:444
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:469
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:492
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:515
+#: obj\Release\Package\PackageTmp\config\pages.html:421
+#: obj\Release\Package\PackageTmp\config\pages.html:444
+#: obj\Release\Package\PackageTmp\config\pages.html:469
+#: obj\Release\Package\PackageTmp\config\pages.html:492
+#: obj\Release\Package\PackageTmp\config\pages.html:515
+msgid "História"
+msgstr ""
+
+#: config\pages.html:402
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:402
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:402
+#: obj\Release\Package\PackageTmp\config\pages.html:402
+msgid "Home"
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\background.html:191
+#: obj\Release\AspnetCompileMerge\Source\visual\logo.html:137
+#: obj\Release\AspnetCompileMerge\Source\visual\logo.html:172
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:191
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\logo.html:137
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\logo.html:172
+#: obj\Release\Package\PackageTmp\visual\background.html:191
+#: obj\Release\Package\PackageTmp\visual\logo.html:137
+#: obj\Release\Package\PackageTmp\visual\logo.html:172
+#: visual\background.html:191
+#: visual\logo.html:137
+#: visual\logo.html:172
+msgid "Horizontal"
+msgstr ""
+
+#: main.html:469
+#: obj\Release\AspnetCompileMerge\Source\main.html:469
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:469
+#: obj\Release\Package\PackageTmp\main.html:469
+msgid "INÍCIO"
+msgstr ""
+
+#: main.html:456
+#: obj\Release\AspnetCompileMerge\Source\main.html:456
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:456
+#: obj\Release\Package\PackageTmp\main.html:456
+msgid "Idioma"
+msgstr ""
+
+#: content\unit-add-tpl.html:17
+#: help\content-image-simple.html:7
+#: obj\Release\AspnetCompileMerge\Source\content\unit-add-tpl.html:17
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-simple.html:7
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-add-tpl.html:17
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-simple.html:7
+#: obj\Release\Package\PackageTmp\content\unit-add-tpl.html:17
+#: obj\Release\Package\PackageTmp\help\content-image-simple.html:7
+msgid "Imagem"
+msgstr ""
+
+#: help\content-image-linked.html:7
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-linked.html:7
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-linked.html:7
+#: obj\Release\Package\PackageTmp\help\content-image-linked.html:7
+msgid "Imagem Link"
+msgstr ""
+
+#: content\unit-preview-tpl.html:72
+#: help\content-image-expandable.html:7
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:72
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-expandable.html:7
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:72
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-expandable.html:7
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:72
+#: obj\Release\Package\PackageTmp\help\content-image-expandable.html:7
+msgid "Imagem ampliável"
+msgstr ""
+
+#: content\unit-preview-tpl.html:78
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:78
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:78
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:78
+msgid "Imagem com link"
+msgstr ""
+
+#: content\unit-preview-tpl.html:66
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:66
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:66
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:66
+msgid "Imagem simples"
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\background.html:106
+#: obj\Release\AspnetCompileMerge\Source\visual\header.html:105
+#: obj\Release\AspnetCompileMerge\Source\visual\logo.html:119
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:106
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\header.html:105
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\logo.html:119
+#: obj\Release\Package\PackageTmp\visual\background.html:106
+#: obj\Release\Package\PackageTmp\visual\header.html:105
+#: obj\Release\Package\PackageTmp\visual\logo.html:119
+#: visual\background.html:106
+#: visual\header.html:105
+#: visual\logo.html:119
+msgid "Importar"
+msgstr ""
+
+#: help\visual-header.html:13
+#: obj\Release\AspnetCompileMerge\Source\help\visual-header.html:13
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-header.html:13
+#: obj\Release\Package\PackageTmp\help\visual-header.html:13
+msgid "Importar - para enviar uma imagem do seu computador e utilizar como cabeçalho."
+msgstr ""
+
+#: help\visual-bg.html:12
+#: obj\Release\AspnetCompileMerge\Source\help\visual-bg.html:12
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-bg.html:12
+#: obj\Release\Package\PackageTmp\help\visual-bg.html:12
+msgid "Importar - para enviar uma imagem do seu computador e utilizar como fundo."
+msgstr ""
+
+#: help\visual-logo.html:12
+#: obj\Release\AspnetCompileMerge\Source\help\visual-logo.html:12
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-logo.html:12
+#: obj\Release\Package\PackageTmp\help\visual-logo.html:12
+msgid "Importar - para enviar uma imagem do seu computador e utilizar como logo."
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\background.html:166
+#: obj\Release\AspnetCompileMerge\Source\visual\page.html:117
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:166
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\page.html:117
+#: obj\Release\Package\PackageTmp\visual\background.html:166
+#: obj\Release\Package\PackageTmp\visual\page.html:117
+#: visual\background.html:166
+#: visual\page.html:117
+msgid "Inferior"
+msgstr ""
+
+#: index.html:273
+#: obj\Release\AspnetCompileMerge\Source\index.html:273
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:273
+#: obj\Release\Package\PackageTmp\index.html:273
+msgid "Inscrever-se com Email"
+msgstr ""
+
+#: index.html:283
+#: obj\Release\AspnetCompileMerge\Source\index.html:283
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:283
+#: obj\Release\Package\PackageTmp\index.html:283
+msgid "Inscrever-se com email"
+msgstr ""
+
+#: config\index.html:196
+#: config\pages.html:403
+#: content\index.html:238
+#: main.html:410
+#: obj\Release\AspnetCompileMerge\Source\config\index.html:196
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:403
+#: obj\Release\AspnetCompileMerge\Source\content\index.html:238
+#: obj\Release\AspnetCompileMerge\Source\main.html:410
+#: obj\Release\AspnetCompileMerge\Source\visual\index.html:995
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\index.html:196
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:403
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\index.html:238
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:410
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:995
+#: obj\Release\Package\PackageTmp\config\index.html:196
+#: obj\Release\Package\PackageTmp\config\pages.html:403
+#: obj\Release\Package\PackageTmp\content\index.html:238
+#: obj\Release\Package\PackageTmp\main.html:410
+#: obj\Release\Package\PackageTmp\visual\index.html:995
+#: visual\index.html:995
+msgid "Início"
+msgstr ""
+
+#: index.html:277
+#: index.html:306
+#: obj\Release\AspnetCompileMerge\Source\index.html:277
+#: obj\Release\AspnetCompileMerge\Source\index.html:306
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:277
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:306
+#: obj\Release\Package\PackageTmp\index.html:277
+#: obj\Release\Package\PackageTmp\index.html:306
+msgid "Já possui uma conta?"
+msgstr ""
+
+#: config\size.html:88
+#: obj\Release\AspnetCompileMerge\Source\config\size.html:88
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\size.html:88
+#: obj\Release\Package\PackageTmp\config\size.html:88
+msgid "Largura"
+msgstr ""
+
+#: config\index.html:216
+#: obj\Release\AspnetCompileMerge\Source\config\index.html:216
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\index.html:216
+#: obj\Release\Package\PackageTmp\config\index.html:216
+msgid "Largura e altura"
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\page.html:109
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\page.html:109
+#: obj\Release\Package\PackageTmp\visual\page.html:109
+#: visual\page.html:109
+msgid "Lateral"
+msgstr ""
+
+#: content\unit-add-tpl.html:16
+#: help\content-line.html:7
+#: obj\Release\AspnetCompileMerge\Source\content\unit-add-tpl.html:16
+#: obj\Release\AspnetCompileMerge\Source\help\content-line.html:7
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-add-tpl.html:16
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-line.html:7
+#: obj\Release\Package\PackageTmp\content\unit-add-tpl.html:16
+#: obj\Release\Package\PackageTmp\help\content-line.html:7
+msgid "Linha"
+msgstr ""
+
+#: content\unit-preview-tpl.html:54
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:54
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:54
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:54
+msgid "Linha horizontal"
+msgstr ""
+
+#: content\unit-preview-tpl.html:60
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:60
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:60
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:60
+msgid "Linha vertical"
+msgstr ""
+
+#: config\pages.html:422
+#: config\pages.html:445
+#: config\pages.html:470
+#: config\pages.html:493
+#: config\pages.html:516
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:422
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:445
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:470
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:493
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:516
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:422
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:445
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:470
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:493
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:516
+#: obj\Release\Package\PackageTmp\config\pages.html:422
+#: obj\Release\Package\PackageTmp\config\pages.html:445
+#: obj\Release\Package\PackageTmp\config\pages.html:470
+#: obj\Release\Package\PackageTmp\config\pages.html:493
+#: obj\Release\Package\PackageTmp\config\pages.html:516
+msgid "Links"
+msgstr ""
+
+#: config\size.html:100
+#: obj\Release\AspnetCompileMerge\Source\config\size.html:100
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\size.html:100
+#: obj\Release\Package\PackageTmp\config\size.html:100
+msgid "Livre <span class=\"marcatu\">(você determina a altura de cada página)</span>"
+msgstr ""
+
+#: help\visual-logo.html:8
+#: obj\Release\AspnetCompileMerge\Source\help\visual-logo.html:8
+#: obj\Release\AspnetCompileMerge\Source\visual\index.html:1035
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-logo.html:8
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:1035
+#: obj\Release\Package\PackageTmp\help\visual-logo.html:8
+#: obj\Release\Package\PackageTmp\visual\index.html:1035
+#: visual\index.html:1035
+msgid "Logo"
+msgstr ""
+
+#: crop.html:14
+#: obj\Release\AspnetCompileMerge\Source\crop.html:14
+#: obj\Release\AspnetCompileMerge\TempBuildDir\crop.html:14
+#: obj\Release\Package\PackageTmp\crop.html:14
+msgid "Manter imagem original"
+msgstr ""
+
+#: content\unit-add-tpl.html:19
+#: help\content-map.html:7
+#: obj\Release\AspnetCompileMerge\Source\content\unit-add-tpl.html:19
+#: obj\Release\AspnetCompileMerge\Source\help\content-map.html:7
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-add-tpl.html:19
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-map.html:7
+#: obj\Release\Package\PackageTmp\content\unit-add-tpl.html:19
+#: obj\Release\Package\PackageTmp\help\content-map.html:7
+msgid "Mapa"
+msgstr ""
+
+#: content\unit-preview-tpl.html:36
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:36
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:36
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:36
+msgid "Mapa bing"
+msgstr ""
+
+#: content\unit-preview-tpl.html:42
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:42
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:42
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:42
+msgid "Mapa design especial"
+msgstr ""
+
+#: content\unit-preview-tpl.html:30
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:30
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:30
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:30
+msgid "Mapa google"
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\page.html:96
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\page.html:96
+#: obj\Release\Package\PackageTmp\visual\page.html:96
+#: visual\page.html:96
+msgid "Margem"
+msgstr ""
+
+#: help\visual-page.html:11
+#: obj\Release\AspnetCompileMerge\Source\help\visual-page.html:11
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-page.html:11
+#: obj\Release\Package\PackageTmp\help\visual-page.html:11
+msgid "Margem - adiciona espaço no topo da página."
+msgstr ""
+
+#: content\contact-form-tpl.html:15
+#: obj\Release\AspnetCompileMerge\Source\content\contact-form-tpl.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\contact-form-tpl.html:15
+#: obj\Release\Package\PackageTmp\content\contact-form-tpl.html:15
+msgid "Mensagem"
+msgstr ""
+
+#: help\visual-menu.html:8
+#: obj\Release\AspnetCompileMerge\Source\help\visual-menu.html:8
+#: obj\Release\AspnetCompileMerge\Source\visual\index.html:1039
+#: obj\Release\AspnetCompileMerge\Source\visual\index.html:1041
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-menu.html:8
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:1039
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:1041
+#: obj\Release\Package\PackageTmp\help\visual-menu.html:8
+#: obj\Release\Package\PackageTmp\visual\index.html:1039
+#: obj\Release\Package\PackageTmp\visual\index.html:1041
+#: visual\index.html:1039
+#: visual\index.html:1041
+msgid "Menu"
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\menu.html:129
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\menu.html:129
+#: obj\Release\Package\PackageTmp\visual\menu.html:129
+#: visual\menu.html:129
+msgid "Modelos"
+msgstr ""
+
+#: help\visual-menu.html:11
+#: obj\Release\AspnetCompileMerge\Source\help\visual-menu.html:11
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-menu.html:11
+#: obj\Release\Package\PackageTmp\help\visual-menu.html:11
+msgid "Modelos - opções de menus predefinidos."
+msgstr ""
+
+#: content\toolbar-tpl.html:2
+#: obj\Release\AspnetCompileMerge\Source\content\toolbar-tpl.html:2
+#: obj\Release\AspnetCompileMerge\Source\visual\logo.html:133
+#: obj\Release\AspnetCompileMerge\Source\visual\logo.html:168
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\toolbar-tpl.html:2
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\logo.html:133
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\logo.html:168
+#: obj\Release\Package\PackageTmp\content\toolbar-tpl.html:2
+#: obj\Release\Package\PackageTmp\visual\logo.html:133
+#: obj\Release\Package\PackageTmp\visual\logo.html:168
+#: visual\logo.html:133
+#: visual\logo.html:168
+msgid "Mover"
+msgstr ""
+
+#: content\index.html:250
+#: obj\Release\AspnetCompileMerge\Source\content\index.html:250
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\index.html:250
+#: obj\Release\Package\PackageTmp\content\index.html:250
+msgid "Mover junto"
+msgstr ""
+
+#: help\content-box.html:13
+#: help\content-contact-form.html:13
+#: help\content-image-expandable.html:12
+#: help\content-image-linked.html:13
+#: help\content-image-simple.html:12
+#: help\content-line.html:14
+#: help\content-map.html:13
+#: help\content-social.html:13
+#: help\content-text.html:11
+#: help\content-video.html:13
+#: obj\Release\AspnetCompileMerge\Source\help\content-box.html:13
+#: obj\Release\AspnetCompileMerge\Source\help\content-contact-form.html:13
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-expandable.html:12
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-linked.html:13
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-simple.html:12
+#: obj\Release\AspnetCompileMerge\Source\help\content-line.html:14
+#: obj\Release\AspnetCompileMerge\Source\help\content-map.html:13
+#: obj\Release\AspnetCompileMerge\Source\help\content-social.html:13
+#: obj\Release\AspnetCompileMerge\Source\help\content-text.html:11
+#: obj\Release\AspnetCompileMerge\Source\help\content-video.html:13
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-box.html:13
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-contact-form.html:13
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-expandable.html:12
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-linked.html:13
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-simple.html:12
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-line.html:14
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-map.html:13
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-social.html:13
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-text.html:11
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-video.html:13
+#: obj\Release\Package\PackageTmp\help\content-box.html:13
+#: obj\Release\Package\PackageTmp\help\content-contact-form.html:13
+#: obj\Release\Package\PackageTmp\help\content-image-expandable.html:12
+#: obj\Release\Package\PackageTmp\help\content-image-linked.html:13
+#: obj\Release\Package\PackageTmp\help\content-image-simple.html:12
+#: obj\Release\Package\PackageTmp\help\content-line.html:14
+#: obj\Release\Package\PackageTmp\help\content-map.html:13
+#: obj\Release\Package\PackageTmp\help\content-social.html:13
+#: obj\Release\Package\PackageTmp\help\content-text.html:11
+#: obj\Release\Package\PackageTmp\help\content-video.html:13
+msgid "Mover<img src=\"../images/help/ajuda_mover.png\" alt=\"\">– clique no ícone e arraste."
+msgstr ""
+
+#: content\social-editor-tpl.html:106
+#: obj\Release\AspnetCompileMerge\Source\content\social-editor-tpl.html:106
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\social-editor-tpl.html:106
+#: obj\Release\Package\PackageTmp\content\social-editor-tpl.html:106
+msgid "Médio"
+msgstr ""
+
+#: config\index.html:234
+#: config\index.html:236
+#: help\config-pages.html:7
+#: obj\Release\AspnetCompileMerge\Source\config\index.html:234
+#: obj\Release\AspnetCompileMerge\Source\config\index.html:236
+#: obj\Release\AspnetCompileMerge\Source\help\config-pages.html:7
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\index.html:234
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\index.html:236
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-pages.html:7
+#: obj\Release\Package\PackageTmp\config\index.html:234
+#: obj\Release\Package\PackageTmp\config\index.html:236
+#: obj\Release\Package\PackageTmp\help\config-pages.html:7
+msgid "Navegação"
+msgstr ""
+
+#: content\contact-form-tpl.html:9
+#: obj\Release\AspnetCompileMerge\Source\content\contact-form-tpl.html:9
+#: obj\Release\AspnetCompileMerge\Source\visual\index.html:1033
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\contact-form-tpl.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:1033
+#: obj\Release\Package\PackageTmp\content\contact-form-tpl.html:9
+#: obj\Release\Package\PackageTmp\visual\index.html:1033
+#: visual\index.html:1033
+msgid "Nome"
+msgstr ""
+
+#: index.html:285
+#: obj\Release\AspnetCompileMerge\Source\index.html:285
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:285
+#: obj\Release\Package\PackageTmp\index.html:285
+msgid "Nome e sobrenome"
+msgstr ""
+
+#: content\line-editor-tpl.html:20
+#: obj\Release\AspnetCompileMerge\Source\content\line-editor-tpl.html:20
+#: obj\Release\AspnetCompileMerge\Source\visual\menu.html:120
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\line-editor-tpl.html:20
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\menu.html:120
+#: obj\Release\Package\PackageTmp\content\line-editor-tpl.html:20
+#: obj\Release\Package\PackageTmp\visual\menu.html:120
+#: visual\menu.html:120
+msgid "Normal"
+msgstr ""
+
+#: config\pages.html:423
+#: config\pages.html:446
+#: config\pages.html:471
+#: config\pages.html:494
+#: config\pages.html:517
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:423
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:446
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:471
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:494
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:517
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:423
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:446
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:471
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:494
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:517
+#: obj\Release\Package\PackageTmp\config\pages.html:423
+#: obj\Release\Package\PackageTmp\config\pages.html:446
+#: obj\Release\Package\PackageTmp\config\pages.html:471
+#: obj\Release\Package\PackageTmp\config\pages.html:494
+#: obj\Release\Package\PackageTmp\config\pages.html:517
+msgid "Notícias"
+msgstr ""
+
+#: config\pages.html:424
+#: config\pages.html:447
+#: config\pages.html:472
+#: config\pages.html:495
+#: config\pages.html:518
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:424
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:447
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:472
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:495
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:518
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:424
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:447
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:472
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:495
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:518
+#: obj\Release\Package\PackageTmp\config\pages.html:424
+#: obj\Release\Package\PackageTmp\config\pages.html:447
+#: obj\Release\Package\PackageTmp\config\pages.html:472
+#: obj\Release\Package\PackageTmp\config\pages.html:495
+#: obj\Release\Package\PackageTmp\config\pages.html:518
+msgid "Novidades"
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\background.html:148
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:148
+#: obj\Release\Package\PackageTmp\visual\background.html:148
+#: visual\background.html:148
+msgid "Não"
+msgstr ""
+
+#: index.html:249
+#: index.html:329
+#: obj\Release\AspnetCompileMerge\Source\index.html:249
+#: obj\Release\AspnetCompileMerge\Source\index.html:329
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:249
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:329
+#: obj\Release\Package\PackageTmp\index.html:249
+#: obj\Release\Package\PackageTmp\index.html:329
+msgid "Não possui uma conta? Inscreva-se!"
+msgstr ""
+
+#: index.html:259
+#: obj\Release\AspnetCompileMerge\Source\index.html:259
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:259
+#: obj\Release\Package\PackageTmp\index.html:259
+msgid "O e-mail associado a esta conta do Facebook já se encontra cadastrado em nosso sistema com uma conta regular (não associada ao Facebook)."
+msgstr ""
+
+#: index.html:287
+#: obj\Release\AspnetCompileMerge\Source\index.html:287
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:287
+#: obj\Release\Package\PackageTmp\index.html:287
+msgid "O nome deve ter pelo menos 6 caracteres"
+msgstr ""
+
+#: crop.html:3
+#: obj\Release\AspnetCompileMerge\Source\crop.html:3
+#: obj\Release\AspnetCompileMerge\TempBuildDir\crop.html:3
+#: obj\Release\Package\PackageTmp\crop.html:3
+msgid "O recorte pontilhado representa a área do cabeçalho. Arraste a área pontilhada para mostrar apenas a melhor parte da foto."
+msgstr ""
+
+#: config\index.html:242
+#: content\z-index-tpl.html:2
+#: help\config-position.html:7
+#: obj\Release\AspnetCompileMerge\Source\config\index.html:242
+#: obj\Release\AspnetCompileMerge\Source\content\z-index-tpl.html:2
+#: obj\Release\AspnetCompileMerge\Source\help\config-position.html:7
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\index.html:242
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\z-index-tpl.html:2
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-position.html:7
+#: obj\Release\Package\PackageTmp\config\index.html:242
+#: obj\Release\Package\PackageTmp\content\z-index-tpl.html:2
+#: obj\Release\Package\PackageTmp\help\config-position.html:7
+msgid "Ordem"
+msgstr ""
+
+#: config\index.html:240
+#: obj\Release\AspnetCompileMerge\Source\config\index.html:240
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\index.html:240
+#: obj\Release\Package\PackageTmp\config\index.html:240
+msgid "Ordem das páginas"
+msgstr ""
+
+#: help\content-box.html:11
+#: help\content-contact-form.html:11
+#: help\content-image-expandable.html:10
+#: help\content-image-linked.html:11
+#: help\content-image-simple.html:10
+#: help\content-line.html:12
+#: help\content-map.html:11
+#: help\content-social.html:11
+#: help\content-text.html:9
+#: help\content-video.html:11
+#: obj\Release\AspnetCompileMerge\Source\help\content-box.html:11
+#: obj\Release\AspnetCompileMerge\Source\help\content-contact-form.html:11
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-expandable.html:10
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-linked.html:11
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-simple.html:10
+#: obj\Release\AspnetCompileMerge\Source\help\content-line.html:12
+#: obj\Release\AspnetCompileMerge\Source\help\content-map.html:11
+#: obj\Release\AspnetCompileMerge\Source\help\content-social.html:11
+#: obj\Release\AspnetCompileMerge\Source\help\content-text.html:9
+#: obj\Release\AspnetCompileMerge\Source\help\content-video.html:11
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-box.html:11
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-contact-form.html:11
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-expandable.html:10
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-linked.html:11
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-simple.html:10
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-line.html:12
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-map.html:11
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-social.html:11
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-text.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-video.html:11
+#: obj\Release\Package\PackageTmp\help\content-box.html:11
+#: obj\Release\Package\PackageTmp\help\content-contact-form.html:11
+#: obj\Release\Package\PackageTmp\help\content-image-expandable.html:10
+#: obj\Release\Package\PackageTmp\help\content-image-linked.html:11
+#: obj\Release\Package\PackageTmp\help\content-image-simple.html:10
+#: obj\Release\Package\PackageTmp\help\content-line.html:12
+#: obj\Release\Package\PackageTmp\help\content-map.html:11
+#: obj\Release\Package\PackageTmp\help\content-social.html:11
+#: obj\Release\Package\PackageTmp\help\content-text.html:9
+#: obj\Release\Package\PackageTmp\help\content-video.html:11
+msgid "Ordem – posiciona acima ou abaixo de outros conteúdos."
+msgstr ""
+
+#: help\config-finish.html:7
+#: help\visual-finish.html:7
+#: obj\Release\AspnetCompileMerge\Source\help\config-finish.html:7
+#: obj\Release\AspnetCompileMerge\Source\help\visual-finish.html:7
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-finish.html:7
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-finish.html:7
+#: obj\Release\Package\PackageTmp\help\config-finish.html:7
+#: obj\Release\Package\PackageTmp\help\visual-finish.html:7
+msgid "Para sair clique em"
+msgstr ""
+
+#: help\config-align.html:4
+#: help\config-pages.html:4
+#: help\config-position.html:4
+#: help\config-size.html:4
+#: help\config-title.html:4
+#: help\visual-bg.html:5
+#: help\visual-footer.html:5
+#: help\visual-header.html:5
+#: help\visual-logo.html:5
+#: help\visual-menu.html:5
+#: help\visual-page.html:5
+#: obj\Release\AspnetCompileMerge\Source\help\config-align.html:4
+#: obj\Release\AspnetCompileMerge\Source\help\config-pages.html:4
+#: obj\Release\AspnetCompileMerge\Source\help\config-position.html:4
+#: obj\Release\AspnetCompileMerge\Source\help\config-size.html:4
+#: obj\Release\AspnetCompileMerge\Source\help\config-title.html:4
+#: obj\Release\AspnetCompileMerge\Source\help\visual-bg.html:5
+#: obj\Release\AspnetCompileMerge\Source\help\visual-footer.html:5
+#: obj\Release\AspnetCompileMerge\Source\help\visual-header.html:5
+#: obj\Release\AspnetCompileMerge\Source\help\visual-logo.html:5
+#: obj\Release\AspnetCompileMerge\Source\help\visual-menu.html:5
+#: obj\Release\AspnetCompileMerge\Source\help\visual-page.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-align.html:4
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-pages.html:4
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-position.html:4
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-size.html:4
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-title.html:4
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-bg.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-footer.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-header.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-logo.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-menu.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-page.html:5
+#: obj\Release\Package\PackageTmp\help\config-align.html:4
+#: obj\Release\Package\PackageTmp\help\config-pages.html:4
+#: obj\Release\Package\PackageTmp\help\config-position.html:4
+#: obj\Release\Package\PackageTmp\help\config-size.html:4
+#: obj\Release\Package\PackageTmp\help\config-title.html:4
+#: obj\Release\Package\PackageTmp\help\visual-bg.html:5
+#: obj\Release\Package\PackageTmp\help\visual-footer.html:5
+#: obj\Release\Package\PackageTmp\help\visual-header.html:5
+#: obj\Release\Package\PackageTmp\help\visual-logo.html:5
+#: obj\Release\Package\PackageTmp\help\visual-menu.html:5
+#: obj\Release\Package\PackageTmp\help\visual-page.html:5
+msgid "Passo"
+msgstr ""
+
+#: content\social-editor-tpl.html:105
+#: obj\Release\AspnetCompileMerge\Source\content\social-editor-tpl.html:105
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\social-editor-tpl.html:105
+#: obj\Release\Package\PackageTmp\content\social-editor-tpl.html:105
+msgid "Pequeno"
+msgstr ""
+
+#: content\contact-form-editor-tpl.html:13
+#: obj\Release\AspnetCompileMerge\Source\content\contact-form-editor-tpl.html:13
+#: obj\Release\AspnetCompileMerge\Source\visual\menu.html:132
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\contact-form-editor-tpl.html:13
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\menu.html:132
+#: obj\Release\Package\PackageTmp\content\contact-form-editor-tpl.html:13
+#: obj\Release\Package\PackageTmp\visual\menu.html:132
+#: visual\menu.html:132
+msgid "Personalizar"
+msgstr ""
+
+#: help\visual-menu.html:12
+#: obj\Release\AspnetCompileMerge\Source\help\visual-menu.html:12
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-menu.html:12
+#: obj\Release\Package\PackageTmp\help\visual-menu.html:12
+msgid "Personalizar - para alterar as cores dos elementos de menu."
+msgstr ""
+
+#: help\content-contact-form.html:10
+#: obj\Release\AspnetCompileMerge\Source\help\content-contact-form.html:10
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-contact-form.html:10
+#: obj\Release\Package\PackageTmp\help\content-contact-form.html:10
+msgid "Personalizar – para alterar as cores dos elementos."
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\index.html:1015
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:1015
+#: obj\Release\Package\PackageTmp\visual\index.html:1015
+#: visual\index.html:1015
+msgid "Plano de fundo"
+msgstr ""
+
+#: planos.html:37
+msgid "Planos e preços"
+msgstr ""
+
+#: main.html:463
+#: obj\Release\AspnetCompileMerge\Source\main.html:463
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:463
+#: obj\Release\Package\PackageTmp\main.html:463
+msgid "Política de Conteúdo"
+msgstr ""
+
+#: content\line-editor-tpl.html:21
+#: obj\Release\AspnetCompileMerge\Source\content\line-editor-tpl.html:21
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\line-editor-tpl.html:21
+#: obj\Release\Package\PackageTmp\content\line-editor-tpl.html:21
+msgid "Pontilhada"
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\background.html:151
+#: obj\Release\AspnetCompileMerge\Source\visual\menu.html:114
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:151
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\menu.html:114
+#: obj\Release\Package\PackageTmp\visual\background.html:151
+#: obj\Release\Package\PackageTmp\visual\menu.html:114
+#: visual\background.html:151
+#: visual\menu.html:114
+msgid "Posição"
+msgstr ""
+
+#: help\visual-menu.html:10
+#: obj\Release\AspnetCompileMerge\Source\help\visual-menu.html:10
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-menu.html:10
+#: obj\Release\Package\PackageTmp\help\visual-menu.html:10
+msgid "Posição - posição do menu no site."
+msgstr ""
+
+#: config\pages.html:404
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:404
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:404
+#: obj\Release\Package\PackageTmp\config\pages.html:404
+msgid "Principal"
+msgstr ""
+
+#: config\pages.html:425
+#: config\pages.html:448
+#: config\pages.html:473
+#: config\pages.html:496
+#: config\pages.html:519
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:425
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:448
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:473
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:496
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:519
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:425
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:448
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:473
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:496
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:519
+#: obj\Release\Package\PackageTmp\config\pages.html:425
+#: obj\Release\Package\PackageTmp\config\pages.html:448
+#: obj\Release\Package\PackageTmp\config\pages.html:473
+#: obj\Release\Package\PackageTmp\config\pages.html:496
+#: obj\Release\Package\PackageTmp\config\pages.html:519
+msgid "Produtos"
+msgstr ""
+
+#: main.html:448
+#: obj\Release\AspnetCompileMerge\Source\main.html:448
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:448
+#: obj\Release\Package\PackageTmp\main.html:448
+msgid "Publicar"
+msgstr ""
+
+#: content\image-editor-tpl.html:33
+#: content\index.html:243
+#: help\visual-page.html:8
+#: obj\Release\AspnetCompileMerge\Source\content\image-editor-tpl.html:33
+#: obj\Release\AspnetCompileMerge\Source\content\index.html:243
+#: obj\Release\AspnetCompileMerge\Source\help\visual-page.html:8
+#: obj\Release\AspnetCompileMerge\Source\visual\index.html:1045
+#: obj\Release\AspnetCompileMerge\Source\visual\index.html:1047
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\image-editor-tpl.html:33
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\index.html:243
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-page.html:8
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:1045
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:1047
+#: obj\Release\Package\PackageTmp\content\image-editor-tpl.html:33
+#: obj\Release\Package\PackageTmp\content\index.html:243
+#: obj\Release\Package\PackageTmp\help\visual-page.html:8
+#: obj\Release\Package\PackageTmp\visual\index.html:1045
+#: obj\Release\Package\PackageTmp\visual\index.html:1047
+#: visual\index.html:1045
+#: visual\index.html:1047
+msgid "Página"
+msgstr ""
+
+#: crop.html:13
+#: obj\Release\AspnetCompileMerge\Source\crop.html:13
+#: obj\Release\AspnetCompileMerge\TempBuildDir\crop.html:13
+#: obj\Release\Package\PackageTmp\crop.html:13
+msgid "Recortar"
+msgstr ""
+
+#: content\z-index-tpl.html:10
+#: obj\Release\AspnetCompileMerge\Source\content\z-index-tpl.html:10
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\z-index-tpl.html:10
+#: obj\Release\Package\PackageTmp\content\z-index-tpl.html:10
+msgid "Recuar um"
+msgstr ""
+
+#: content\unit-add-tpl.html:20
+#: help\content-social.html:7
+#: obj\Release\AspnetCompileMerge\Source\content\unit-add-tpl.html:20
+#: obj\Release\AspnetCompileMerge\Source\help\content-social.html:7
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-add-tpl.html:20
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-social.html:7
+#: obj\Release\Package\PackageTmp\content\unit-add-tpl.html:20
+#: obj\Release\Package\PackageTmp\help\content-social.html:7
+msgid "Rede Social"
+msgstr ""
+
+#: registros.html:37
+msgid "Registro ou importar endereço"
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\background.html:187
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:187
+#: obj\Release\Package\PackageTmp\visual\background.html:187
+#: visual\background.html:187
+msgid "Repetição"
+msgstr ""
+
+#: help\visual-footer.html:8
+#: obj\Release\AspnetCompileMerge\Source\help\visual-footer.html:8
+#: obj\Release\AspnetCompileMerge\Source\visual\index.html:1027
+#: obj\Release\AspnetCompileMerge\Source\visual\index.html:1029
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-footer.html:8
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:1027
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:1029
+#: obj\Release\Package\PackageTmp\help\visual-footer.html:8
+#: obj\Release\Package\PackageTmp\visual\index.html:1027
+#: obj\Release\Package\PackageTmp\visual\index.html:1029
+#: visual\index.html:1027
+#: visual\index.html:1029
+msgid "Rodapé"
+msgstr ""
+
+#: main.html:386
+#: obj\Release\AspnetCompileMerge\Source\main.html:386
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:386
+#: obj\Release\Package\PackageTmp\main.html:386
+msgid "Sair"
+msgstr ""
+
+#: index.html:234
+#: index.html:295
+#: obj\Release\AspnetCompileMerge\Source\index.html:234
+#: obj\Release\AspnetCompileMerge\Source\index.html:295
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:234
+#: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:295
+#: obj\Release\Package\PackageTmp\index.html:234
+#: obj\Release\Package\PackageTmp\index.html:295
+msgid "Senha"
+msgstr ""
+
+#: config\pages.html:426
+#: config\pages.html:449
+#: config\pages.html:474
+#: config\pages.html:497
+#: config\pages.html:520
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:426
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:449
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:474
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:497
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:520
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:426
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:449
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:474
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:497
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:520
+#: obj\Release\Package\PackageTmp\config\pages.html:426
+#: obj\Release\Package\PackageTmp\config\pages.html:449
+#: obj\Release\Package\PackageTmp\config\pages.html:474
+#: obj\Release\Package\PackageTmp\config\pages.html:497
+#: obj\Release\Package\PackageTmp\config\pages.html:520
+msgid "Serviços"
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\background.html:144
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:144
+#: obj\Release\Package\PackageTmp\visual\background.html:144
+#: visual\background.html:144
+msgid "Sim"
+msgstr ""
+
+#: config\pages.html:427
+#: config\pages.html:450
+#: config\pages.html:475
+#: config\pages.html:498
+#: config\pages.html:521
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:427
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:450
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:475
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:498
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:521
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:427
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:450
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:475
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:498
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:521
+#: obj\Release\Package\PackageTmp\config\pages.html:427
+#: obj\Release\Package\PackageTmp\config\pages.html:450
+#: obj\Release\Package\PackageTmp\config\pages.html:475
+#: obj\Release\Package\PackageTmp\config\pages.html:498
+#: obj\Release\Package\PackageTmp\config\pages.html:521
+msgid "Soluções"
+msgstr ""
+
+#: content\image-editor-tpl.html:12
+#: obj\Release\AspnetCompileMerge\Source\content\image-editor-tpl.html:12
+#: obj\Release\AspnetCompileMerge\Source\visual\background.html:130
+#: obj\Release\AspnetCompileMerge\Source\visual\header.html:128
+#: obj\Release\AspnetCompileMerge\Source\visual\logo.html:155
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\image-editor-tpl.html:12
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:130
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\header.html:128
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\logo.html:155
+#: obj\Release\Package\PackageTmp\content\image-editor-tpl.html:12
+#: obj\Release\Package\PackageTmp\visual\background.html:130
+#: obj\Release\Package\PackageTmp\visual\header.html:128
+#: obj\Release\Package\PackageTmp\visual\logo.html:155
+#: visual\background.html:130
+#: visual\header.html:128
+#: visual\logo.html:155
+msgid "Somente são aceitos arquivos de imagens nos formatos JPG, PNG e GIF."
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\session.html:93
+#: obj\Release\AspnetCompileMerge\TempBuildDir\session.html:93
+#: obj\Release\Package\PackageTmp\session.html:93
+#: session.html:93
+msgid "Sua sessão expirou :("
+msgstr ""
+
+#: config\index.html:218
+#: content\map-editor-tpl.html:12
+#: content\social-editor-tpl.html:103
+#: content\video-editor-tpl.html:10
+#: help\config-size.html:7
+#: obj\Release\AspnetCompileMerge\Source\config\index.html:218
+#: obj\Release\AspnetCompileMerge\Source\content\map-editor-tpl.html:12
+#: obj\Release\AspnetCompileMerge\Source\content\social-editor-tpl.html:103
+#: obj\Release\AspnetCompileMerge\Source\content\video-editor-tpl.html:10
+#: obj\Release\AspnetCompileMerge\Source\help\config-size.html:7
+#: obj\Release\AspnetCompileMerge\Source\visual\logo.html:164
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\index.html:218
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\map-editor-tpl.html:12
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\social-editor-tpl.html:103
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\video-editor-tpl.html:10
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-size.html:7
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\logo.html:164
+#: obj\Release\Package\PackageTmp\config\index.html:218
+#: obj\Release\Package\PackageTmp\content\map-editor-tpl.html:12
+#: obj\Release\Package\PackageTmp\content\social-editor-tpl.html:103
+#: obj\Release\Package\PackageTmp\content\video-editor-tpl.html:10
+#: obj\Release\Package\PackageTmp\help\config-size.html:7
+#: obj\Release\Package\PackageTmp\visual\logo.html:164
+#: visual\logo.html:164
+msgid "Tamanho"
+msgstr ""
+
+#: help\content-map.html:10
+#: help\content-social.html:10
+#: help\content-video.html:10
+#: obj\Release\AspnetCompileMerge\Source\help\content-map.html:10
+#: obj\Release\AspnetCompileMerge\Source\help\content-social.html:10
+#: obj\Release\AspnetCompileMerge\Source\help\content-video.html:10
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-map.html:10
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-social.html:10
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-video.html:10
+#: obj\Release\Package\PackageTmp\help\content-map.html:10
+#: obj\Release\Package\PackageTmp\help\content-social.html:10
+#: obj\Release\Package\PackageTmp\help\content-video.html:10
+msgid "Tamanho – opções de dimensões."
+msgstr ""
+
+#: help\content-box.html:14
+#: help\content-image-expandable.html:13
+#: help\content-image-linked.html:14
+#: help\content-image-simple.html:13
+#: help\content-line.html:15
+#: help\content-text.html:12
+#: obj\Release\AspnetCompileMerge\Source\help\content-box.html:14
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-expandable.html:13
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-linked.html:14
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-simple.html:13
+#: obj\Release\AspnetCompileMerge\Source\help\content-line.html:15
+#: obj\Release\AspnetCompileMerge\Source\help\content-text.html:12
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-box.html:14
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-expandable.html:13
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-linked.html:14
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-simple.html:13
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-line.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-text.html:12
+#: obj\Release\Package\PackageTmp\help\content-box.html:14
+#: obj\Release\Package\PackageTmp\help\content-image-expandable.html:13
+#: obj\Release\Package\PackageTmp\help\content-image-linked.html:14
+#: obj\Release\Package\PackageTmp\help\content-image-simple.html:13
+#: obj\Release\Package\PackageTmp\help\content-line.html:15
+#: obj\Release\Package\PackageTmp\help\content-text.html:12
+msgid "Tamanho<img class=\"margin-img\" src=\"../images/help/ajuda_tamanho.png\" alt=\"\">– clique no canto inferior direito e arraste."
+msgstr ""
+
+#: main.html:423
+#: obj\Release\AspnetCompileMerge\Source\main.html:423
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:423
+#: obj\Release\Package\PackageTmp\main.html:423
+msgid "Tela e navegação"
+msgstr ""
+
+#: main.html:463
+#: obj\Release\AspnetCompileMerge\Source\main.html:463
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:463
+#: obj\Release\Package\PackageTmp\main.html:463
+msgid "Termo de Uso"
+msgstr ""
+
+#: content\contact-form-editor-tpl.html:19
+#: content\unit-add-tpl.html:14
+#: content\unit-preview-tpl.html:84
+#: content\unit-preview-tpl.html:90
+#: help\content-text.html:7
+#: obj\Release\AspnetCompileMerge\Source\content\contact-form-editor-tpl.html:19
+#: obj\Release\AspnetCompileMerge\Source\content\unit-add-tpl.html:14
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:84
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:90
+#: obj\Release\AspnetCompileMerge\Source\help\content-text.html:7
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\contact-form-editor-tpl.html:19
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-add-tpl.html:14
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:84
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:90
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-text.html:7
+#: obj\Release\Package\PackageTmp\content\contact-form-editor-tpl.html:19
+#: obj\Release\Package\PackageTmp\content\unit-add-tpl.html:14
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:84
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:90
+#: obj\Release\Package\PackageTmp\help\content-text.html:7
+msgid "Texto"
+msgstr ""
+
+#: content\contact-form-editor-tpl.html:20
+#: obj\Release\AspnetCompileMerge\Source\content\contact-form-editor-tpl.html:20
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\contact-form-editor-tpl.html:20
+#: obj\Release\Package\PackageTmp\content\contact-form-editor-tpl.html:20
+msgid "Texto a escrever"
+msgstr ""
+
+#: help\content-start.html:8
+#: obj\Release\AspnetCompileMerge\Source\help\content-start.html:8
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-start.html:8
+#: obj\Release\Package\PackageTmp\help\content-start.html:8
+msgid "Todas as páginas do seu site iniciam vazias e aqui você pode adicionar/editar conteúdos."
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\background.html:156
+#: obj\Release\AspnetCompileMerge\Source\visual\menu.html:125
+#: obj\Release\AspnetCompileMerge\Source\visual\page.html:113
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:156
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\menu.html:125
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\page.html:113
+#: obj\Release\Package\PackageTmp\visual\background.html:156
+#: obj\Release\Package\PackageTmp\visual\menu.html:125
+#: obj\Release\Package\PackageTmp\visual\page.html:113
+#: visual\background.html:156
+#: visual\menu.html:125
+#: visual\page.html:113
+msgid "Topo"
+msgstr ""
+
+#: content\line-editor-tpl.html:22
+#: obj\Release\AspnetCompileMerge\Source\content\line-editor-tpl.html:22
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\line-editor-tpl.html:22
+#: obj\Release\Package\PackageTmp\content\line-editor-tpl.html:22
+msgid "Tracejada"
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\footer.html:58
+#: obj\Release\AspnetCompileMerge\Source\visual\header.html:88
+#: obj\Release\AspnetCompileMerge\Source\visual\page.html:92
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\footer.html:58
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\header.html:88
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\page.html:92
+#: obj\Release\Package\PackageTmp\visual\footer.html:58
+#: obj\Release\Package\PackageTmp\visual\header.html:88
+#: obj\Release\Package\PackageTmp\visual\page.html:92
+#: visual\footer.html:58
+#: visual\header.html:88
+#: visual\page.html:92
+msgid "Transparente"
+msgstr ""
+
+#: content\z-index-tpl.html:4
+#: obj\Release\AspnetCompileMerge\Source\content\z-index-tpl.html:4
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\z-index-tpl.html:4
+#: obj\Release\Package\PackageTmp\content\z-index-tpl.html:4
+msgid "Trazer para frente"
+msgstr ""
+
+#: config\position.html:342
+#: obj\Release\AspnetCompileMerge\Source\config\position.html:342
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\position.html:342
+#: obj\Release\Package\PackageTmp\config\position.html:342
+msgid "Trocar"
+msgstr ""
+
+#: config\index.html:228
+#: config\index.html:230
+#: help\config-title.html:7
+#: obj\Release\AspnetCompileMerge\Source\config\index.html:228
+#: obj\Release\AspnetCompileMerge\Source\config\index.html:230
+#: obj\Release\AspnetCompileMerge\Source\help\config-title.html:7
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\index.html:228
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\index.html:230
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-title.html:7
+#: obj\Release\Package\PackageTmp\config\index.html:228
+#: obj\Release\Package\PackageTmp\config\index.html:230
+#: obj\Release\Package\PackageTmp\help\config-title.html:7
+msgid "Título"
+msgstr ""
+
+#: content\unit-add-tpl.html:8
+#: obj\Release\AspnetCompileMerge\Source\content\unit-add-tpl.html:8
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-add-tpl.html:8
+#: obj\Release\Package\PackageTmp\content\unit-add-tpl.html:8
+msgid "Unidade"
+msgstr ""
+
+#: help\content-video.html:9
+#: obj\Release\AspnetCompileMerge\Source\help\content-video.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-video.html:9
+#: obj\Release\Package\PackageTmp\help\content-video.html:9
+msgid "Url – endereço na web do vídeo."
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\index.html:981
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:981
+#: obj\Release\Package\PackageTmp\visual\index.html:981
+#: visual\index.html:981
+msgid "VISUAL"
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\background.html:196
+#: obj\Release\AspnetCompileMerge\Source\visual\logo.html:141
+#: obj\Release\AspnetCompileMerge\Source\visual\logo.html:176
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:196
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\logo.html:141
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\logo.html:176
+#: obj\Release\Package\PackageTmp\visual\background.html:196
+#: obj\Release\Package\PackageTmp\visual\logo.html:141
+#: obj\Release\Package\PackageTmp\visual\logo.html:176
+#: visual\background.html:196
+#: visual\logo.html:141
+#: visual\logo.html:176
+msgid "Vertical"
+msgstr ""
+
+#: main.html:430
+#: obj\Release\AspnetCompileMerge\Source\main.html:430
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:430
+#: obj\Release\Package\PackageTmp\main.html:430
+msgid "Visual"
+msgstr ""
+
+#: config\index.html:188
+#: content\index.html:229
+#: main.html:401
+#: obj\Release\AspnetCompileMerge\Source\config\index.html:188
+#: obj\Release\AspnetCompileMerge\Source\content\index.html:229
+#: obj\Release\AspnetCompileMerge\Source\main.html:401
+#: obj\Release\AspnetCompileMerge\Source\visual\index.html:986
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\index.html:188
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\index.html:229
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:401
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:986
+#: obj\Release\Package\PackageTmp\config\index.html:188
+#: obj\Release\Package\PackageTmp\content\index.html:229
+#: obj\Release\Package\PackageTmp\main.html:401
+#: obj\Release\Package\PackageTmp\visual\index.html:986
+#: visual\index.html:986
+msgid "Visualizar"
+msgstr ""
+
+#: config\index.html:188
+#: content\index.html:229
+#: main.html:401
+#: obj\Release\AspnetCompileMerge\Source\config\index.html:188
+#: obj\Release\AspnetCompileMerge\Source\content\index.html:229
+#: obj\Release\AspnetCompileMerge\Source\main.html:401
+#: obj\Release\AspnetCompileMerge\Source\visual\index.html:986
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\index.html:188
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\index.html:229
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:401
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:986
+#: obj\Release\Package\PackageTmp\config\index.html:188
+#: obj\Release\Package\PackageTmp\content\index.html:229
+#: obj\Release\Package\PackageTmp\main.html:401
+#: obj\Release\Package\PackageTmp\visual\index.html:986
+#: visual\index.html:986
+msgid "Visualizar projeto"
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\logo.html:130
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\logo.html:130
+#: obj\Release\Package\PackageTmp\visual\logo.html:130
+#: visual\logo.html:130
+msgid "Visualizar texto"
+msgstr ""
+
+#: config\pages.html:392
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:392
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:392
+#: obj\Release\Package\PackageTmp\config\pages.html:392
+msgid "Você pode alterar o nome do botão sempre que desejar."
+msgstr ""
+
+#: crop.html:6
+#: obj\Release\AspnetCompileMerge\Source\crop.html:6
+#: obj\Release\AspnetCompileMerge\TempBuildDir\crop.html:6
+#: obj\Release\Package\PackageTmp\crop.html:6
+msgid "Você pode recortar sua foto.<br>Arraste a ferramenta de recorte ou ajuste os cantos para mostrar apenas a melhor parte da imagem."
+msgstr ""
+
+#: help\main.html:10
+#: obj\Release\AspnetCompileMerge\Source\help\main.html:10
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\main.html:10
+#: obj\Release\Package\PackageTmp\help\main.html:10
+msgid "Você pode retornar em qualquer etapa sempre que desejar."
+msgstr ""
+
+#: config\index.html:202
+#: config\index.html:203
+#: obj\Release\AspnetCompileMerge\Source\config\index.html:202
+#: obj\Release\AspnetCompileMerge\Source\config\index.html:203
+#: obj\Release\AspnetCompileMerge\Source\visual\index.html:1001
+#: obj\Release\AspnetCompileMerge\Source\visual\index.html:1002
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\index.html:202
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\index.html:203
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:1001
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:1002
+#: obj\Release\Package\PackageTmp\config\index.html:202
+#: obj\Release\Package\PackageTmp\config\index.html:203
+#: obj\Release\Package\PackageTmp\visual\index.html:1001
+#: obj\Release\Package\PackageTmp\visual\index.html:1002
+#: visual\index.html:1001
+#: visual\index.html:1002
+msgid "Voltar"
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\session.html:94
+#: obj\Release\AspnetCompileMerge\TempBuildDir\session.html:94
+#: obj\Release\Package\PackageTmp\session.html:94
+#: session.html:94
+msgid "Vá para a <a href=\"index.html\" target=\"_top\">página de login</a> e entre novamente."
+msgstr ""
+
+#: content\unit-add-tpl.html:18
+#: help\content-video.html:7
+#: obj\Release\AspnetCompileMerge\Source\content\unit-add-tpl.html:18
+#: obj\Release\AspnetCompileMerge\Source\help\content-video.html:7
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-add-tpl.html:18
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-video.html:7
+#: obj\Release\Package\PackageTmp\content\unit-add-tpl.html:18
+#: obj\Release\Package\PackageTmp\help\content-video.html:7
+msgid "Vídeo"
+msgstr ""
+
+#: content\unit-preview-tpl.html:12
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:12
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:12
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:12
+msgid "Vídeo vimeo"
+msgstr ""
+
+#: content\unit-preview-tpl.html:6
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:6
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:6
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:6
+msgid "Vídeo youtube"
+msgstr ""
+
+#: config\index.html:5
+#: obj\Release\AspnetCompileMerge\Source\config\index.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\index.html:5
+#: obj\Release\Package\PackageTmp\config\index.html:5
+msgid "Webjato - CONFIGURAÇÃO"
+msgstr ""
+
+#: content\index.html:5
+#: obj\Release\AspnetCompileMerge\Source\content\index.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\index.html:5
+#: obj\Release\Package\PackageTmp\content\index.html:5
+msgid "Webjato - CONTEÚDO"
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\session.html:4
+#: obj\Release\AspnetCompileMerge\TempBuildDir\session.html:4
+#: obj\Release\Package\PackageTmp\session.html:4
+#: session.html:4
+msgid "Webjato - Sessão expirada"
+msgstr ""
+
+#: obj\Release\AspnetCompileMerge\Source\visual\index.html:5
+#: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:5
+#: obj\Release\Package\PackageTmp\visual\index.html:5
+#: visual\index.html:5
+msgid "Webjato - VISUAL"
+msgstr ""
+
+#: main.html:4
+#: obj\Release\AspnetCompileMerge\Source\main.html:4
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:4
+#: obj\Release\Package\PackageTmp\main.html:4
+msgid "Webjato&nbsp;&nbsp;-&nbsp;&nbsp;INÍCIO&nbsp;&nbsp;"
+msgstr ""
+
+#: config\position.html:344
+#: obj\Release\AspnetCompileMerge\Source\config\position.html:344
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\position.html:344
+#: obj\Release\Package\PackageTmp\config\position.html:344
+msgid "com"
+msgstr ""
+
+#: config\pages.html:401
+#: config\pages.html:413
+#: config\pages.html:436
+#: config\pages.html:461
+#: config\pages.html:484
+#: config\pages.html:507
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:401
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:413
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:436
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:461
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:484
+#: obj\Release\AspnetCompileMerge\Source\config\pages.html:507
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:401
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:413
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:436
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:461
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:484
+#: obj\Release\AspnetCompileMerge\TempBuildDir\config\pages.html:507
+#: obj\Release\Package\PackageTmp\config\pages.html:401
+#: obj\Release\Package\PackageTmp\config\pages.html:413
+#: obj\Release\Package\PackageTmp\config\pages.html:436
+#: obj\Release\Package\PackageTmp\config\pages.html:461
+#: obj\Release\Package\PackageTmp\config\pages.html:484
+#: obj\Release\Package\PackageTmp\config\pages.html:507
+msgid "exemplos:"
+msgstr ""
+
+#: content\social-editor-tpl.html:99
+#: obj\Release\AspnetCompileMerge\Source\content\social-editor-tpl.html:99
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\social-editor-tpl.html:99
+#: obj\Release\Package\PackageTmp\content\social-editor-tpl.html:99
+msgid "mostrar mais"
+msgstr ""
+
+#: help\config-align.html:9
+#: help\config-pages.html:9
+#: help\config-size.html:9
+#: help\config-title.html:9
+#: help\content-box.html:16
+#: help\content-contact-form.html:15
+#: help\content-image-expandable.html:15
+#: help\content-image-linked.html:16
+#: help\content-image-simple.html:15
+#: help\content-line.html:17
+#: help\content-map.html:15
+#: help\content-social.html:15
+#: help\content-text.html:14
+#: help\content-video.html:15
+#: help\visual-bg.html:14
+#: help\visual-footer.html:13
+#: help\visual-header.html:15
+#: help\visual-logo.html:15
+#: help\visual-menu.html:14
+#: obj\Release\AspnetCompileMerge\Source\help\config-align.html:9
+#: obj\Release\AspnetCompileMerge\Source\help\config-pages.html:9
+#: obj\Release\AspnetCompileMerge\Source\help\config-size.html:9
+#: obj\Release\AspnetCompileMerge\Source\help\config-title.html:9
+#: obj\Release\AspnetCompileMerge\Source\help\content-box.html:16
+#: obj\Release\AspnetCompileMerge\Source\help\content-contact-form.html:15
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-expandable.html:15
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-linked.html:16
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-simple.html:15
+#: obj\Release\AspnetCompileMerge\Source\help\content-line.html:17
+#: obj\Release\AspnetCompileMerge\Source\help\content-map.html:15
+#: obj\Release\AspnetCompileMerge\Source\help\content-social.html:15
+#: obj\Release\AspnetCompileMerge\Source\help\content-text.html:14
+#: obj\Release\AspnetCompileMerge\Source\help\content-video.html:15
+#: obj\Release\AspnetCompileMerge\Source\help\visual-bg.html:14
+#: obj\Release\AspnetCompileMerge\Source\help\visual-footer.html:13
+#: obj\Release\AspnetCompileMerge\Source\help\visual-header.html:15
+#: obj\Release\AspnetCompileMerge\Source\help\visual-logo.html:15
+#: obj\Release\AspnetCompileMerge\Source\help\visual-menu.html:14
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-align.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-pages.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-size.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-title.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-box.html:16
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-contact-form.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-expandable.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-linked.html:16
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-simple.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-line.html:17
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-map.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-social.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-text.html:14
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-video.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-bg.html:14
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-footer.html:13
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-header.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-logo.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-menu.html:14
+#: obj\Release\Package\PackageTmp\help\config-align.html:9
+#: obj\Release\Package\PackageTmp\help\config-pages.html:9
+#: obj\Release\Package\PackageTmp\help\config-size.html:9
+#: obj\Release\Package\PackageTmp\help\config-title.html:9
+#: obj\Release\Package\PackageTmp\help\content-box.html:16
+#: obj\Release\Package\PackageTmp\help\content-contact-form.html:15
+#: obj\Release\Package\PackageTmp\help\content-image-expandable.html:15
+#: obj\Release\Package\PackageTmp\help\content-image-linked.html:16
+#: obj\Release\Package\PackageTmp\help\content-image-simple.html:15
+#: obj\Release\Package\PackageTmp\help\content-line.html:17
+#: obj\Release\Package\PackageTmp\help\content-map.html:15
+#: obj\Release\Package\PackageTmp\help\content-social.html:15
+#: obj\Release\Package\PackageTmp\help\content-text.html:14
+#: obj\Release\Package\PackageTmp\help\content-video.html:15
+#: obj\Release\Package\PackageTmp\help\visual-bg.html:14
+#: obj\Release\Package\PackageTmp\help\visual-footer.html:13
+#: obj\Release\Package\PackageTmp\help\visual-header.html:15
+#: obj\Release\Package\PackageTmp\help\visual-logo.html:15
+#: obj\Release\Package\PackageTmp\help\visual-menu.html:14
+msgid "ou"
+msgstr ""
+
+#: help\config-position.html:9
+#: help\visual-page.html:14
+#: obj\Release\AspnetCompileMerge\Source\help\config-position.html:9
+#: obj\Release\AspnetCompileMerge\Source\help\visual-page.html:14
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-position.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-page.html:14
+#: obj\Release\Package\PackageTmp\help\config-position.html:9
+#: obj\Release\Package\PackageTmp\help\visual-page.html:14
+msgid "para concluir e sair."
+msgstr ""
+
+#: help\content-box.html:16
+#: help\content-contact-form.html:15
+#: help\content-image-expandable.html:15
+#: help\content-image-linked.html:16
+#: help\content-image-simple.html:15
+#: help\content-line.html:17
+#: help\content-map.html:15
+#: help\content-social.html:15
+#: help\content-text.html:14
+#: help\content-video.html:15
+#: obj\Release\AspnetCompileMerge\Source\help\content-box.html:16
+#: obj\Release\AspnetCompileMerge\Source\help\content-contact-form.html:15
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-expandable.html:15
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-linked.html:16
+#: obj\Release\AspnetCompileMerge\Source\help\content-image-simple.html:15
+#: obj\Release\AspnetCompileMerge\Source\help\content-line.html:17
+#: obj\Release\AspnetCompileMerge\Source\help\content-map.html:15
+#: obj\Release\AspnetCompileMerge\Source\help\content-social.html:15
+#: obj\Release\AspnetCompileMerge\Source\help\content-text.html:14
+#: obj\Release\AspnetCompileMerge\Source\help\content-video.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-box.html:16
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-contact-form.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-expandable.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-linked.html:16
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-image-simple.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-line.html:17
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-map.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-social.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-text.html:14
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-video.html:15
+#: obj\Release\Package\PackageTmp\help\content-box.html:16
+#: obj\Release\Package\PackageTmp\help\content-contact-form.html:15
+#: obj\Release\Package\PackageTmp\help\content-image-expandable.html:15
+#: obj\Release\Package\PackageTmp\help\content-image-linked.html:16
+#: obj\Release\Package\PackageTmp\help\content-image-simple.html:15
+#: obj\Release\Package\PackageTmp\help\content-line.html:17
+#: obj\Release\Package\PackageTmp\help\content-map.html:15
+#: obj\Release\Package\PackageTmp\help\content-social.html:15
+#: obj\Release\Package\PackageTmp\help\content-text.html:14
+#: obj\Release\Package\PackageTmp\help\content-video.html:15
+msgid "para finalizar."
+msgstr ""
+
+#: help\config-align.html:9
+#: help\config-pages.html:9
+#: help\config-size.html:9
+#: help\config-title.html:9
+#: help\visual-bg.html:14
+#: help\visual-footer.html:13
+#: help\visual-header.html:15
+#: help\visual-logo.html:15
+#: help\visual-menu.html:14
+#: obj\Release\AspnetCompileMerge\Source\help\config-align.html:9
+#: obj\Release\AspnetCompileMerge\Source\help\config-pages.html:9
+#: obj\Release\AspnetCompileMerge\Source\help\config-size.html:9
+#: obj\Release\AspnetCompileMerge\Source\help\config-title.html:9
+#: obj\Release\AspnetCompileMerge\Source\help\visual-bg.html:14
+#: obj\Release\AspnetCompileMerge\Source\help\visual-footer.html:13
+#: obj\Release\AspnetCompileMerge\Source\help\visual-header.html:15
+#: obj\Release\AspnetCompileMerge\Source\help\visual-logo.html:15
+#: obj\Release\AspnetCompileMerge\Source\help\visual-menu.html:14
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-align.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-pages.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-size.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\config-title.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-bg.html:14
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-footer.html:13
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-header.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-logo.html:15
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-menu.html:14
+#: obj\Release\Package\PackageTmp\help\config-align.html:9
+#: obj\Release\Package\PackageTmp\help\config-pages.html:9
+#: obj\Release\Package\PackageTmp\help\config-size.html:9
+#: obj\Release\Package\PackageTmp\help\config-title.html:9
+#: obj\Release\Package\PackageTmp\help\visual-bg.html:14
+#: obj\Release\Package\PackageTmp\help\visual-footer.html:13
+#: obj\Release\Package\PackageTmp\help\visual-header.html:15
+#: obj\Release\Package\PackageTmp\help\visual-logo.html:15
+#: obj\Release\Package\PackageTmp\help\visual-menu.html:14
+msgid "para ir ao próximo passo."
+msgstr ""
+
+#: help\content-start.html:16
+#: obj\Release\AspnetCompileMerge\Source\help\content-start.html:16
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-start.html:16
+#: obj\Release\Package\PackageTmp\help\content-start.html:16
+msgid "para sair."
+msgstr ""
+
+#: content\image-editor-tpl.html:25
+#: obj\Release\AspnetCompileMerge\Source\content\image-editor-tpl.html:25
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\image-editor-tpl.html:25
+#: obj\Release\Package\PackageTmp\content\image-editor-tpl.html:25
+msgid "um site externo"
+msgstr ""
+
+#: content\image-editor-tpl.html:31
+#: obj\Release\AspnetCompileMerge\Source\content\image-editor-tpl.html:31
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\image-editor-tpl.html:31
+#: obj\Release\Package\PackageTmp\content\image-editor-tpl.html:31
+msgid "uma página interna"
+msgstr ""
+
+#: main.html:465
+#: obj\Release\AspnetCompileMerge\Source\main.html:465
+#: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:465
+#: obj\Release\Package\PackageTmp\main.html:465
+msgid "© 2012-2015 WebJato - Todos os direitos reservados."
+msgstr ""
+
+#: help\visual-logo.html:10
+#: obj\Release\AspnetCompileMerge\Source\help\visual-logo.html:10
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\visual-logo.html:10
+#: obj\Release\Package\PackageTmp\help\visual-logo.html:10
+msgid "É a marca que uma empresa possui para representá-la visualmente."
+msgstr ""
+
+#: content\social-editor-tpl.html:4
+#: content\unit-preview-tpl.html:18
+#: obj\Release\AspnetCompileMerge\Source\content\social-editor-tpl.html:4
+#: obj\Release\AspnetCompileMerge\Source\content\unit-preview-tpl.html:18
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\social-editor-tpl.html:4
+#: obj\Release\AspnetCompileMerge\TempBuildDir\content\unit-preview-tpl.html:18
+#: obj\Release\Package\PackageTmp\content\social-editor-tpl.html:4
+#: obj\Release\Package\PackageTmp\content\unit-preview-tpl.html:18
+msgid "Ícones"
+msgstr ""
+
+#: help\content-social.html:9
+#: obj\Release\AspnetCompileMerge\Source\help\content-social.html:9
+#: obj\Release\AspnetCompileMerge\TempBuildDir\help\content-social.html:9
+#: obj\Release\Package\PackageTmp\help\content-social.html:9
+msgid "Ícones – habilite-o e escreva o endereço na web."
+msgstr ""

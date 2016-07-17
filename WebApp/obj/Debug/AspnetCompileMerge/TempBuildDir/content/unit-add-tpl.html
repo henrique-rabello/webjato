@@ -1,0 +1,23 @@
+﻿<div class="wj-add-unit animated">
+    <ul class="botoes-frame top-33">
+        <li>
+            <a class="linkNormal padding2 south mouse-seta" title="{{'Adicionar conteúdo'|translate}}" ng-click="Model.ShowUnity = false; Model.ContentTypeToPreview = null;" ng-class="{'linkAtivo': !Model.ShowUnity}" translate>Grupo</a>
+        </li>
+        <li>
+            <a class="linkNormal ajuste south mouse-seta" title="{{'Adicionar conteúdo'|translate}}" ng-click="Model.ShowUnity = true;" ng-class="{'linkAtivo': Model.ShowUnity}" translate>Individual</a>
+        </li>
+    </ul>
+    <div ng-show="Model.ShowUnity">
+        <button type="button" ng-class="{'selected': Model.ContentTypeToPreview == ContentType.TEXT}" ng-click="Select(ContentType.TEXT);" translate>Texto</button>
+        <button type="button" ng-class="{'selected': Model.ContentTypeToPreview == ContentType.BOX}" ng-click="Select(ContentType.BOX);" translate>Box</button>
+        <button type="button" ng-class="{'selected': Model.ContentTypeToPreview == ContentType.LINE}" ng-click="Select(ContentType.LINE);" translate>Linha</button>
+        <button type="button" ng-class="{'selected': Model.ContentTypeToPreview == ContentType.IMAGE}" ng-click="Select(ContentType.IMAGE);" translate>Imagem</button>
+        <button type="button" ng-class="{'selected': Model.ContentTypeToPreview == ContentType.VIDEO}" ng-click="Select(ContentType.VIDEO);" translate>Vídeo</button>
+        <button type="button" ng-class="{'selected': Model.ContentTypeToPreview == ContentType.MAPS}" ng-click="Select(ContentType.MAPS);" translate>Mapa</button>
+        <button type="button" ng-class="{'selected': Model.ContentTypeToPreview == ContentType.SOCIAL}" ng-click="Select(ContentType.SOCIAL);" translate>Rede Social</button>
+        <button type="button" ng-class="{'selected': Model.ContentTypeToPreview == ContentType.CONTACT_FORM}" ng-click="Select(ContentType.CONTACT_FORM);" translate>Formulário</button>
+    </div>
+    <div ng-show="!Model.ShowUnity">
+        Selecione um grupo de conteúdo ao lado
+    </div>
+</div>

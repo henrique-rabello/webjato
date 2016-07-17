@@ -1,0 +1,12 @@
+﻿<div id         =   "{{data.Id}}"
+     class      =   "wj-video animated"
+     ng-style   =   "{  'top': data.Position.Y + 'px',
+                        'left': data.Position.X + 'px',
+                        'z-index': data.Position.ZIndex }"
+     wj-animate =   "data">
+    <wj-content-click data="data" edit-mode-on="editModeOn"></wj-content-click>
+    <wj-animated-highlight data="data"></wj-animated-highlight>
+    <iframe src="{{url}}" ng-style="{'width': data.Size.Width + 'px', 'height': data.Size.Height + 'px', 'border': 'none' }" ng-if="data.VideoId != ''" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    <img src="../images/place-holder-youtube.png" ng-if="data.VideoId == '' && data.VideoType == 1" />
+    <img src="../images/place-holder-vimeo.png" ng-if="data.VideoId == '' && data.VideoType == 2" />
+</div>

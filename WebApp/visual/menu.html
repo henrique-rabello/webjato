@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="../css/tools.css" />
+    <link rel="stylesheet" type="text/css" href="../css/basic.css" />
+    <style type="text/css" media="screen">
+        .menu-panel {
+            text-align: left;
+            margin: 0 auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+        }
+
+            .menu-panel .loader-color {
+                position: relative;
+                top: 6px;
+                visibility: hidden;
+            }
+
+                .menu-panel .loader-color.updating-color {
+                    visibility: visible;
+                }
+
+            .menu-panel #tudo {
+                margin: 0 auto;
+                width: 100%;
+                height: auto;
+                border-bottom: none;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                padding-top: 40px;
+            }
+
+            .menu-panel #shot p {
+                margin-top: 0px;
+                margin-bottom: 9px;
+            }
+
+            .menu-panel #shot {
+                color: #666666;
+                font-size: 0.7em;
+                font-weight: normal;
+                width: auto;
+                height: auto;
+                margin-left: 16px;
+                margin-bottom: 30px;
+            }
+
+            .menu-panel #shotcinco {
+                width: auto;
+                height: auto;
+                margin-left: 16px;
+                margin-bottom: 28px;
+            }
+
+            .menu-panel #icon {
+                background: #000 url('../images/icon_personalizar.jpg') no-repeat top left;
+                position: absolute;
+                display: block;
+                top: 10px;
+                right: 25px;
+                width: auto;
+                height: auto;
+            }
+
+            .menu-panel #shotquatro {
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 14px;
+                width: auto;
+                height: auto;
+            }
+            /*abaixo personalização avançada*/
+            .menu-panel #shotdois {
+                width: auto;
+                height: auto;
+                margin-left: 16px;
+                margin-bottom: 12px;
+            }
+
+            .menu-panel img {
+                border: none;
+            }
+            .menu-panel #shotClearColor {
+                width: auto;
+                height: auto;
+                margin-left: 16px;
+                margin-bottom: 17px;
+            }
+            .menu-panel #shotClearColor a {
+                color: #666666;
+                text-decoration: none;
+                font-size: 0.7em;
+            }
+            .menu-panel #shotClearColor a:hover {
+                color: #666666;
+                text-decoration: underline;
+                font-size: 0.7em;
+            }
+            .menu-panel #btClearColor {
+                position: absolute;
+                top: -2px;
+                left: 20px;
+            }
+
+            .menu-panel .bota {
+                font-family: Verdana, Geneva, sans-serif;
+                font-weight: normal;
+                color: #666666;
+            }
+    </style>
+</head>
+<body>
+    <div class="menu-panel">
+        <div id="tudo">
+            <div class="container-tool" style="margin-bottom:10px;">
+                <i class="negrito" translate>Posição</i>
+            </div>
+            <div id="shot">
+                <p>
+                    <label>
+                        <input type="radio" class="ipt_radiobutton cursorpointer" name="g1" value="3" ng-model="Menu.VAlign" ng-change="OnMenuChange(false);" />
+                        <span translate class="cursorpointer" style="line-height:16px;">Normal</span>
+                    </label>
+                </p>
+                <label>
+                    <input type="radio" class="ipt_radiobutton cursorpointer" name="g1" value="1" ng-model="Menu.VAlign" ng-change="OnMenuChange(false);" />
+                    <span translate class="cursorpointer" style="line-height:16px;">Topo</span>
+                </label>
+            </div>
+            <div id="shotcinco">
+                <button type="button" class="bota" style="width: 110px; height: 29px;" ng-click="DisplayMenuSelection();" translate>Modelos</button>
+            </div>
+            <div class="container-tool" style="margin-bottom:13px;">
+                <i class="negrito" translate>Personalizar</i>
+            </div>
+            <div id="shotdois">
+                <select Style="height:22px;" ng-model="SelectedPart" ng-options="Item.Text for Item in Menu.Parts" />
+                <spectrum-colorpicker ng-model="SelectedPart.Value" options="ColorPickerConfig"></spectrum-colorpicker>
+                <img src="../images/loadinganim.gif" class="loader-color" ng-class="{'updating-color': UpdatingColor}" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+﻿<div class="wj-toolbar animated fadeIn" ng-class="{'bottom': closeToTop, 'top': !closeToTop, 'left': closeToRight }">
+    <div class="btn move" title="{{'Mover'|translate}}" ng-show="data.Editing"></div>
+    <button type="button" class="btn edit" title="{{'Editar'|translate}}" ng-click="Edit();" ng-hide="data.Editing || data.IsNewContent"></button>
+    <button type="button" class="btn duplicate" title="{{'Duplicar'|translate}}" ng-click="Duplicate();" ng-hide="data.Editing || data.IsNewContent"></button>
+    <button type="button" class="btn delete" title="{{'Excluir'|translate}}" ng-click="Delete();" ng-hide="data.Editing || data.IsNewContent"></button>
+</div>

@@ -1,0 +1,242 @@
+﻿.preview {
+    font-family: Arial;
+    padding: 0 0 100px 0;
+    position: relative;
+    margin: 0;
+    transition: all 0.3s ease-out 0;
+
+    & * {
+        transition: all 0.3s ease-out 0;
+    }
+
+    & .cont-page,
+    & .cont,
+    & .footer,
+    & .estrutura {
+        background-color: transparent;
+        position: relative;
+        width: 1000px;
+        height: auto;
+        z-index: 0;
+    }
+
+    & .cont {
+        z-index: 1;
+    }
+
+    & .cont-page {
+        margin-top: 0;
+        margin-bottom: 0;
+        z-index: 2;
+    }
+
+    & .header {
+        float: left;
+        position: relative;
+        width: 100%;
+        z-index: 0;
+
+        & .header-text {
+            background-color: transparent;
+            padding: 10px;
+            position: absolute;
+            text-align: left;
+        }
+
+        & .header-image {
+            background-color: transparent;
+            position: absolute;
+            transition: none;
+        }
+
+        & .header-image img {
+            transition: none;
+        }
+    }
+
+    & .estrutura {
+        display: table;
+        border-style: solid;
+        border-width: 0;
+    }
+
+    & .base {
+        float: left;
+        position: relative;
+        width: 1000px;
+        height: 600px;
+        background-color: transparent;
+        transition: none;
+    }
+
+    & .footer {
+        z-index: 3;
+
+        & .content {
+            border-left-color: transparent;
+            border-left-style: solid;
+            border-right-color: transparent;
+            border-right-style: solid;
+            font-family: Arial;
+            position: relative;
+            height: auto;
+            padding-top: 0.5em;
+            padding-bottom: 0.5em;
+        }
+    }
+
+    & .box {
+        border-style: solid;
+        position: absolute;
+        transition: background-color 0.3s ease-out 0, border-color 0.3s ease-out 0, border-width 0.3s ease-out 0;
+    }
+
+    & .contact-form {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 13px;
+        position: absolute;
+        text-align: left;
+        width: 306px;
+        height: auto;
+        transition: color 0.3s ease-out 0;
+
+        & input,
+        & textarea {
+            border-width: 1px;
+            border-style: solid;
+            display: block;
+            font: normal 12px Arial, Helvetica, sans-serif;
+            margin: 3px 0 14px 0;
+            padding: 3px;
+            transition: background-color 0.3s ease-out 0, border-color 0.3s ease-out 0, color 0.3s ease-out 0;
+        }
+
+        & input {
+            width: 260px;
+        }
+
+        & textarea {
+            width: 300px;
+            height: 125px;
+        }
+
+        & input[type="button"] {
+            float: right;
+            margin-bottom: initial;
+            width: auto;
+        }
+    }
+
+    & .img-regular,
+    & .img-linked,
+    & .img-expandable {
+        height: auto;
+        position: absolute;
+        transition: none;
+    }
+
+    & .img-regular .img,
+    & .img-linked .img,
+    & .img-expandable .img {
+        width: 100%;
+        height: auto;
+    }
+
+    & .img-regular .resizing,
+    & .img-linked .resizing,
+    & .img-expandable .resizing {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    & .maps {
+        position: absolute;
+        transition: none;
+
+        & iframe {
+            border: none;
+        }
+    }
+
+    & .linehv {
+        position: absolute;
+        transition: border-top-width 0.3s ease-out 0, border-left-width 0.3s ease-out 0, border-top-color 0.3s ease-out 0, border-left-color 0.3s ease-out 0;
+    }
+
+    & .social,
+    & .social * {
+        transition: none;
+    }
+
+    & .social {
+        display: inline;
+        float: left;
+        position: absolute;
+        text-align: left;
+
+        & a {
+            text-decoration: none;
+        }
+
+        & img {
+            border: none;
+            margin-right: 12px;
+            -moz-transition: width 0.3s ease-out 0, height 0.3s ease-out 0;
+            -o-transition: width 0.3s ease-out 0, height 0.3s ease-out 0;
+            -webkit-transition: width 0.3s ease-out 0, height 0.3s ease-out 0;
+            transition: width 0.3s ease-out 0, height 0.3s ease-out 0;
+        }
+    }
+
+    & .text {
+        background-color: transparent;
+        position: absolute;
+        height: auto;
+        text-align: left;
+        transition: none;
+
+        &.new-content {
+            outline: 1px solid #ddd;
+        }
+
+        & .editor {
+            overflow: auto;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    & .video {
+        position: absolute;
+        transition: width 0.3s ease-out 0, height 0.3s ease-out 0;
+    }
+
+    & .semi-transparent {
+        opacity: 0.5;
+    }
+
+    & .saving {
+        background-color: #FFF;
+        border: 1px solid #CCC;
+        border-radius: 4px;
+        box-shadow: 1px 1px 2px #CCC;
+        padding: 5px;
+        position: fixed;
+        right: 20px;
+        top: 70px;
+        z-index: 10;
+    }
+
+    & .animated.content.ng-enter {
+        animation-name: fadeIn;
+    }
+
+    & .animated.content.ng-leave {
+        animation-name: fadeOut;
+    }
+}
+
+.resizable-helper {
+    border: 2px dashed lightgray;
+}

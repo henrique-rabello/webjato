@@ -1,0 +1,30 @@
+﻿.wj-animated-highlight {
+    cursor: pointer;
+    position: absolute;
+    transition: none;
+
+    .jcrop-hline,
+    .jcrop-vline {
+        opacity: 0.4;
+        position: absolute;
+    }
+
+    .label {
+        background-color: #fff;
+        border: 1px solid #666;
+        bottom: 100%;
+        color: #333;
+        padding: 5px;
+        position: absolute;
+        right: 0;
+        white-space: nowrap;
+
+        &.ng-enter {
+            animation-name: fadeIn;
+        }
+
+        &.ng-leave {
+            animation-name: fadeOut;
+        }
+    }
+}

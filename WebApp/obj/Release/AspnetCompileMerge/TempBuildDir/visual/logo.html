@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="../css/tools.css" />
+    <link type="text/css" rel="stylesheet" href="../css/basic.css" />
+    <style type="text/css" media="screen">
+        .logo-panel {
+            text-align: left;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+            .logo-panel #tudo {
+                margin: 0 auto;
+                width: 100%;
+                height: 86px;
+                border-bottom: none;
+                padding-top: 40px;
+            }
+
+        .importar {
+            padding-left: 16px;
+            padding-top: 0;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: left;
+            overflow-x: hidden;
+            overflow-y: auto;
+            border-top: 0 solid #999;
+        }
+
+        .logo-panel .spinner {
+            width: 28px;
+            font-size: 12px;
+        }
+
+        .logo-panel .title {
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .logo-panel .especial-3 {
+            font-size: 0.65em;
+            color: #333;
+            font-weight: normal;
+        }
+
+        .logo-panel .duvida:link {
+            text-decoration: none;
+            color: #036ae8;
+            font-size: 0.7em;
+        }
+
+        .logo-panel .duvida:visited {
+            text-decoration: none;
+            color: #036ae8;
+        }
+
+        .logo-panel .duvida:hover {
+            text-decoration: underline;
+            color: #036ae8;
+        }
+
+        .logo-panel .duvida:active {
+            text-decoration: none;
+            color: #fff;
+            background-color: #036ae8;
+        }
+
+        .logo-panel .buttons {
+            margin-top: 20px;
+            margin-bottom: 25px;
+        }
+
+        .logo-panel button {
+            width: 140px;
+            height: auto;
+            padding: 5px 0;
+        }
+
+            .logo-panel button:first-child {
+                margin-bottom: 15px;
+            }
+
+        /*  STYLE LOGO IMAGEM  */
+        .logo-panel .spacer {
+            margin-top: 5px;
+        }
+
+        .logo-panel .linedois {
+            background: url(../images/f_back_explore.gif) repeat-x top left;
+            width: 154px;
+            height: 10px;
+            margin-bottom: 12px;
+        }
+
+        .logo-panel .especial-3 {
+            font-size: 0.8em;
+            color: #333;
+            font-weight: normal;
+        }
+        .logo-panel .padding2 {
+            padding-right: 9px;
+            padding-left: 9px;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-panel">
+        <div id="tudo">
+            <ul class="botoes-frame">
+                <li>
+                    <a id="btImage" href="" ng-click="View = Views.IMAGE" ng-class="{'linkAtivo':(View == Views.IMAGE), 'linkNormal':(View != Views.IMAGE)}" class="linkNormal ajuste" translate>Importar</a>
+                </li>
+                <li>
+                    <a id="btText" href="" ng-click="View = Views.TEXT" ng-class="{'linkAtivo':(View == Views.TEXT), 'linkNormal':(View != Views.TEXT)}" class="linkNormal padding2" translate>Escrever</a>
+                </li>
+            </ul>
+        </div>
+        <!-- PAINEL DE TEXTO -->
+        <div ng-if="View == Views.TEXT" class="importar" ng-animate="{enter:fade-in-enter}">
+            <div class="buttons">
+                <button type="button" ng-disabled="IsTextEditorActive" ng-click="UpdateTextAreaVisibility(true);" translate>Editar texto</button>
+                <button type="button" ng-disabled="!IsTextEditorActive" ng-click="UpdateTextAreaVisibility(false);" translate>Visualizar texto</button>
+            </div>
+            <div class="container-tool" style=" margin-bottom: 10px; margin-left:0;">
+                <i class="negrito" translate>Mover</i>
+            </div>
+            <div class="container-tool" style="margin-left:0;">
+                <i class="flutuante-1">
+                    <p translate>Horizontal</p>
+                    <input type="text" class="spinner" max="{{Position.X.Max}}" min="{{Position.X.Min}}" state-value="Data.Position.X" ui-spinner />
+                </i>
+                <i class="flutuante-2">
+                    <p translate>Vertical</p>
+                    <input type="text" class="spinner" max="{{Position.Y.Max}}" min="{{Position.Y.Min}}" state-value="Data.Position.Y" ui-spinner />
+                </i>
+            </div>
+        </div>
+        <!-- PAINEL DE IMAGEM -->
+        <div ng-if="View == Views.IMAGE" class="importar" ng-animate="{enter:fade-in-enter}">
+            <div class="container-tool top-10" style="margin-left:0;">
+                <i class="negrito" translate>Arquivo</i>
+                <i class="pequena" translate><p>&nbsp;Jpeg, Gif ou Png</p></i>
+            </div>
+            <div class="btn-upload" style="margin-left: 0;">
+                <span translate>Escolher imagem</span><input type="file" ng-file-select />
+            </div>
+            <div class="inputs invalid-file spacer" ng-show="!IsFileValid" translate>Somente são aceitos arquivos de imagens nos formatos JPG, PNG e GIF.</div>
+            <div class="arquivo" style="margin-left:0;"><span translate>Arquivo selecionado:</span></div>
+            <div class="logical-name">
+                <span ng-show="Data.LogoType == 2">{{Data.ImageName}}</span>
+            </div>
+            <button type="button" title="{{'Excluir imagem'|translate}}" ng-show="Data.LogoType == 2 && Data.ImageKey != null" ng-click="DeleteImage();" style="width: auto;">
+                <img src="../images/delete.png" />
+            </button>
+            <div class="container-tool top-22" style="margin-left:0;">
+                <i class="negrito" translate>Tamanho</i>
+                <input type="text" class="spinner" max="{{ScaleLimits.Max}}" min="{{ScaleLimits.Min}}" state-flag="ScalePosting" state-value="Data.ImageScale" on-update="OnChange();ScheduleScaleUpdate();" ui-spinner />
+            </div>
+            <div class="container-tool" style=" margin-bottom: 10px; margin-left:0;">
+                <i class="negrito" translate>Mover</i>
+            </div>
+            <div class="container-tool" style="margin-left:0;">
+                <i class="flutuante-1">
+                    <p translate>Horizontal</p>
+                    <input type="text" class="spinner" max="{{Position.X.Max}}" min="{{Position.X.Min}}" state-value="Data.Position.X" on-update="OnChange();SchedulePositionUpdate();" ui-spinner />
+                </i>
+                <i class="flutuante-2">
+                    <p translate>Vertical</p>
+                    <input type="text" class="spinner" max="{{Position.Y.Max}}" min="{{Position.Y.Min}}" state-value="Data.Position.Y" on-update="OnChange();SchedulePositionUpdate();" ui-spinner />
+                </i>
+            </div>
+            <wj-image-upload-backdrop show="Uploading" progress="UploadProgress"></wj-image-upload-backdrop>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+﻿.wj-z-index {
+    margin-left: 16px;
+
+    & .zindex {
+        margin-top: 12px;
+    }
+
+    & img {
+        width: 16px;
+        height: auto;
+    }
+
+    & button {
+        background-color: #fff;
+        border: none;
+        border-radius: 5px;
+        /* box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); */
+        cursor: pointer;
+        outline: none;
+        width: 30px;
+        height: 30px;
+        vertical-align: middle;
+        border: 1px solid #999;
+
+        &.disabled {
+            opacity: 0.3;
+            cursor: default;
+        }
+
+        &.disabled:hover {
+            background-color: #FFF;
+        }
+
+        &:hover {
+            background-color: #EEE;
+        }
+
+        &:active {
+            background-color: lightslategray;
+        }
+    }
+}

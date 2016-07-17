@@ -1,0 +1,17 @@
+﻿<div class="cropbox">
+    <p translate>
+        Texto de introdução aqui
+    </p>
+    <div class="imageBox">
+        <div class="thumbBox" ng-style="cbCtrl.thumbBoxCSS">
+            <div class="inner"></div>
+        </div>
+        <div class="spinner" style="display: none" translate>Carregando...</div>
+    </div>
+    <div class="action">
+        <input type="button" value="{{'Cancelar'|translate}}" ng-click="cbCtrl.Cancel();" />
+        <input type="button" value="{{'Confirmar'|translate}}" ng-click="cbCtrl.Confirm();" />
+        <input type="button" value="+" ng-click="cbCtrl.ZoomIn();" />
+        <input type="button" value="-" ng-click="cbCtrl.ZoomOut();" />
+    </div>
+</div>

@@ -1,0 +1,91 @@
+﻿<div class="share">
+    <style type="text/css">
+        .share {
+            position: relative;
+            width: 600px;
+            height: auto;
+            display: inline-block;
+            margin: 80px auto 0 auto;
+            background-color: transparent;
+        }
+
+        img {
+            border: none;
+        }
+
+        p img {
+            margin-right: 10px;
+            vertical-align: -2px;
+        }
+
+        .tamanho {
+            font-size: 0.8em;
+            color: #555;
+            text-align: left !important;
+            line-height: 40px;
+            margin-left: 0px;
+            font-weight: bold;
+        }
+
+        .bot-share {
+            position: relative;
+            float: left;
+            margin: 20px 0 0 23px;
+            display: inline-block;
+            border: 1px solid #ccc;
+        }
+
+            .bot-share:hover {
+                border: 1px solid #999;
+            }
+
+        .ajuste {
+            margin-left: 0px;
+        }
+
+        .box-aviso {
+            width: auto;
+            text-align: center;
+            font-size: 0.8em;
+            color: #333;
+            display: inline-block;
+            margin: 0 auto;
+            margin-top: 48px;
+            padding: 10px 13px;
+        }
+
+        .amarelo {
+            border: 1px solid #ffcc00;
+            background: #fffed7;
+        }
+    </style>
+    <div class="bot-share ajuste">
+        <img src="../images/bot_hotmail.png" alt="" title="" />
+    </div>
+    <div class="bot-share">
+        <img src="../images/bot_gmail.png" alt="" title="" />
+    </div>
+    <div class="bot-share">
+        <img src="../images/bot_yahoo.png" alt="" title="" />
+    </div>
+    <div class="bot-share">
+        <a href="http://invite.webjato.com.br:8088/api/google/contacts/import/?ref=1&name=john+smith&url=http://www.johnsmith.com&success=http://www.site.com/success&error=http://www.site.com/error" rel="nofollow">
+            Invite Gmail Contacts
+        </a>
+        <!--
+        <img src="../images/bot_facebook.png" alt="" title="" />
+        -->
+    </div>
+    <div class="bot-share">
+        <img src="../images/bot_twitter.png" alt="" title="" />
+    </div>
+    <div class="bot-share">
+        <a onclick="window.open('http://invite.webjato.com.br:8088/api/facebook/share/?url=http://www.site.com', 'Share in Facebook', 'width = 490, height = 600');">
+            Share on Facebook
+        </a>
+    </div>
+    <p class="box-aviso amarelo" ng-show="!IsPublished" translate>
+        <img src="../images/icon_alert.gif" alt="" title="" />Seu site não está online<br />
+        Vá para o <strong>Passo 2</strong> e depois retorne.
+    </p>
+</div>

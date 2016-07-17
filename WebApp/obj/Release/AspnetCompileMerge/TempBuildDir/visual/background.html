@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="../css/tools.css" />
+    <link type="text/css" rel="stylesheet" href="../css/basic.css" />
+    <style type="text/css" media="screen">
+        .bg-container {
+            text-align: left;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            overflow: hidden;
+            padding-top: 148px;
+        }
+
+            .bg-container #tudo {
+                margin: 0 auto;
+                width: 100%;
+                height: 148px;
+                border-bottom: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding-top: 40px;
+            }
+
+        .importar {
+            background: #fff url(../images/f_fundo_barra2.gif) repeat-y 189px 0;
+            padding-left: 16px;
+            padding-top: 0;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: left;
+            overflow-x: hidden;
+            overflow-y: auto;
+            border-top: 0 solid #999;
+        }
+
+            .importar h2, h3, h4, h5, h6 {
+                margin: 0 auto;
+            }
+
+            .importar h3, h4, h5, h6 {
+                color: #555;
+                font-size: 0.7em;
+                font-weight: bold;
+                padding-top: 12px;
+            }
+
+            .importar .spacer {
+                margin-top: 5px;
+            }
+
+            .importar h2 img {
+                vertical-align: -2px;
+            }
+
+            .importar h2 {
+                font-family: Verdana, Geneva, sans-serif;
+                color: #fff;
+                font-size: 0.8em;
+                font-weight: bold;
+            }
+
+            .importar #linedois {
+                background: url(../images/f_back_explore.gif) repeat-x top left;
+                width: 154px;
+                height: 10px;
+            }
+
+            .importar .especial-3 {
+                font-size: 0.8em;
+                color: #333;
+                font-weight: normal;
+            }
+
+            .importar label, .importar input[type='radio'], .importar input[type='checkbox'] {
+                cursor: pointer;
+                font-size: 0.85em;
+                color: #555;
+            }
+
+            .importar input[type='radio'], .importar input[type='checkbox'] {
+                margin: 0 0 2px 3px;
+                vertical-align: middle
+            }
+    </style>
+</head>
+<body>
+    <div class="bg-container">
+        <!-- PAINEL DE COR -->
+        <div id="tudo">
+            <div class="container-tool bottom-30">
+                <i class="negrito" translate>Cor</i><spectrum-colorpicker class="color-picker" ng-model="DisplayColor" options="ColorPickerConfig"></spectrum-colorpicker>
+            </div>
+            <ul class="botoes-frame">
+                <li>
+                    <a id="btEffects" href="" ng-click="View = Views.EFFECT" ng-class="{'linkAtivo':(View == 'EFFECT'), 'linkNormal':(View != 'EFFECT')}" class="linkNormal ajuste" translate>Efeitos</a>
+                </li>
+                <li>
+                    <a id="btImport" href="" ng-click="View = Views.IMAGE" ng-class="{'linkAtivo':(View == 'IMAGE'), 'linkNormal':(View != 'IMAGE')}" class="linkNormal" translate>Importar</a>
+                </li>
+            </ul>
+        </div>
+        <!-- PAINEL DE EFEITOS -->
+        <div ng-if="View == Views.EFFECT" class="effects" ng-animate="{enter:fade-in-enter}">
+            <ul>
+                <li ng-repeat="Effect in Effects">
+                    <a ng-class="{'selected':Effect.ImageName == Data.ImageName, 'normal':Effect.ImageName != Data.ImageName}" href="" ng-click="OnEffectSelected(Effect);" class="effect" ng-style="{'background-image':'url(../images/background/' + Effect.ImageKeyPreview + ')', 'background-color':Effect.ColorPreview }">
+                        <img src="../images/spacer2.gif" alt="" title="{{Effect.ImageName}}" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- PAINEL DE UPLOAD -->
+        <div ng-if="View == Views.IMAGE" class="importar" ng-animate="{enter:fade-in-enter}">
+            <div class="container-tool" style="margin-left:0;">
+                <i class="negrito" translate>Arquivo</i>
+                <i class="pequena" translate><p>&nbsp;Jpeg, Gif ou Png</p></i>
+            </div>
+            <div class="btn-upload" style="margin-left: 0;">
+                <span translate>Escolher imagem</span>
+                <input type="file" ng-file-select />
+            </div>
+            <div class="inputs invalid-file spacer" ng-show="!IsFileValid" translate>Somente são aceitos arquivos de imagens nos formatos JPG, PNG e GIF.</div>
+            <div class="arquivo" style="margin-left:0;">
+                <span translate>Arquivo selecionado:</span>
+            </div>
+            <div class="logical-name">
+                <span ng-show="Data.BgType == 2">{{Data.ImageName}}</span>
+            </div>
+            <button type="button" title="{{'Excluir imagem de fundo'|translate}}" ng-show="Data.BgType == 2 && Data.ImageKey != null" ng-click="DeleteImage();">
+                <img src="../images/delete.png" />
+            </button>
+            <h4 class="spacer" style=" margin-top: 0;" translate>Fixa</h4>
+            <div class="inputs spacer">
+                <label>
+                    <input type="radio" ng-model="Data.IsFixed" value="1" name="rdFixed" ng-change="OnPropertyChanged();" ng-disabled="Data.BgType != 2" />
+                    <span translate>Sim</span>
+                </label>
+                <label>
+                    <input type="radio" ng-model="Data.IsFixed" value="0" name="rdFixed" ng-change="OnPropertyChanged();" ng-disabled="Data.BgType != 2" />
+                    <span translate>Não</span>
+                </label>
+            </div>
+            <h5 class="spacer" translate>Posição</h5>
+            <div class="inputs spacer">
+                <div style="float:left;">
+                    <label>
+                        <input type="radio" ng-model="Data.VAlign" value="1" name="rdVAlign" ng-change="OnPropertyChanged();" ng-disabled="Data.BgType != 2" />
+                        <span translate>Topo</span>
+                    </label>
+                    <br />
+                    <label>
+                        <input type="radio" ng-model="Data.VAlign" value="2" name="rdVAlign" ng-change="OnPropertyChanged();" ng-disabled="Data.BgType != 2" />
+                        <span translate>Centro</span>
+                    </label>
+                    <br />
+                    <label>
+                        <input type="radio" ng-model="Data.VAlign" value="3" name="rdVAlign" ng-change="OnPropertyChanged();" ng-disabled="Data.BgType != 2" />
+                        <span translate>Inferior</span>
+                    </label>
+                </div>
+                <div style="float: left;">
+                    <label>
+                        <input type="radio" ng-model="Data.HAlign" value="1" name="rdHAlign" ng-change="OnPropertyChanged();" ng-disabled="Data.BgType != 2" />
+                        <span translate>Esquerda</span>
+                    </label>
+                    <br />
+                    <label>
+                        <input type="radio" ng-model="Data.HAlign" value="2" name="rdHAlign" ng-change="OnPropertyChanged();" ng-disabled="Data.BgType != 2" />
+                        <span translate>Centro</span>
+                    </label>
+                    <br />
+                    <label>
+                        <input type="radio" ng-model="Data.HAlign" value="3" name="rdHAlign" ng-change="OnPropertyChanged();" ng-disabled="Data.BgType != 2" />
+                        <span translate>Direita</span>
+                    </label>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+            <h6 class="spacer" translate>Repetição</h6>
+            <div class="inputs spacer">
+                <label>
+                    <input type="checkbox" ng-model="Data.HRepeat" ng-change="OnPropertyChanged();" ng-disabled="Data.BgType != 2" />
+                    <span translate>Horizontal</span>
+                </label>
+                <br />
+                <label>
+                    <input type="checkbox" ng-model="Data.VRepeat" ng-change="OnPropertyChanged();" ng-disabled="Data.BgType != 2" />
+                    <span translate>Vertical</span>
+                </label>
+            </div>
+            <wj-image-upload-backdrop show="Uploading" progress="UploadProgress"></wj-image-upload-backdrop>
+        </div>
+    </div>
+</body>
+</html>

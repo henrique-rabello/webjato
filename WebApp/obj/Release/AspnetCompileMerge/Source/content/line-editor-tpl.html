@@ -1,0 +1,27 @@
+﻿<div class="content-editor line-editor animated">
+       <div class="container-tool top-33 bottom-15">
+        <i class="negrito" translate>Cor</i>
+        <spectrum-colorpicker class="color-picker" ng-model="data.Color" options="ColorPickerConfig"></spectrum-colorpicker>
+    </div>
+    <div class="container-tool bottom-20">
+        <i class="negrito" translate>Espessura</i>
+        <select ng-model="data.Width">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+        </select>
+    </div>
+    <div class="container-tool bottom-20">
+        <i class="negrito" translate>Estilo</i>
+        <select style="width:90px;" ng-model="data.LineStyle">
+            <option value="0" translate>Normal</option>
+            <option value="1" translate>Pontilhada</option>
+            <option value="2" translate>Tracejada</option>
+        </select>
+    </div>
+    <wj-zindex state="zindex"></wj-zindex>
+    <wj-ok-cancel data="data"></wj-ok-cancel>
+</div>

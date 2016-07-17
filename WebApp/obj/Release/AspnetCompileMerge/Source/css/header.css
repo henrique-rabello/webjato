@@ -1,0 +1,349 @@
+﻿#page {
+    margin: 0 auto;
+    position: relative;
+    width: 1000px;
+    height: 61px;
+    display: table;
+}
+
+#logo {
+    background-color: transparent;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+#linha-frame-header {
+    background: url('../images/f_fundo_frame.gif') repeat-x left bottom;
+    position: absolute;
+    top: 58px;
+    left: 189px;
+    width: 100%;
+    height: 3px;
+    z-index: 1;
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #2C65B9;
+    font-size: small;
+    font-weight: bold;
+    margin: 0 auto;
+    position: absolute;
+    top: 42px;
+    left: 10px;
+    width: auto;
+    height: auto;
+}
+/* XXXXXXXXX Visualizar, Ajuda, Início XXXXXXXXX */
+#bot-visualizar {
+    top: 39px;
+    right: 0px;
+    position: absolute;
+    width: 116px;
+    height: 21px;
+    background: transparent url(../images/f_fundo_visualizar.gif) no-repeat top left;
+    z-index: 1;
+}
+
+#lado, #lado * {
+    margin: 0;
+    padding: 0;
+}
+
+#lado {
+    position: relative;
+    width: auto;
+    height: auto;
+    list-style: none;
+    font-size: small;
+    font-weight: normal;
+}
+
+    #lado li a {
+        background-color: transparent;
+        margin-top: 1px;
+        padding-top: 2px;
+        display: block;
+        text-decoration: none;
+        color: #000;
+        cursor: pointer;
+    }
+
+        #lado li a:hover {
+            text-decoration: underline;
+        }
+
+#cont {
+    position: absolute;
+    display: table;
+    top: 11px;
+    right: 32px;
+    width: auto;
+    height: auto;
+    background: transparent;
+}
+
+.botao-ajuda {
+    float: left;
+    position: relative;
+    width: 18px;
+    height: 18px;
+    }
+
+    .botao-ajuda a {
+        text-decoration: none;
+        display: block;
+        background: url(../images/btn_ajuda_inicio.png) no-repeat -19px 0px;
+    }
+
+        .botao-ajuda a:hover {
+            text-decoration: none;
+            background: url(../images/btn_ajuda_inicio.png) no-repeat 0px 0px;
+        }
+
+.botao-inicio {
+    border-left: 0px solid #333;
+    margin-left: 34px;
+    position: relative;
+    width: 18px;
+    height: 18px;
+}
+
+    .botao-inicio a {
+        display: block;
+        text-decoration: none;
+        background: url(../images/btn_ajuda_inicio.png) no-repeat -38px 0px;
+    }
+
+        .botao-inicio a:hover {
+            color: #000;
+            text-decoration: none;
+            background: url(../images/btn_ajuda_inicio.png) no-repeat -57px 0px;
+        }
+/* XXXXXXXX WIZARD XXXXXXXX */
+#padrao, #padrao * {
+    margin: 0;
+    padding: 0;
+}
+
+#padrao {
+    position: absolute;
+    top: 0px;
+    left: 180px;
+    width: auto;
+    height: auto;
+    list-style: none;
+    float: left;
+    font-size: 0.70em;
+    font-family: Verdana, Geneva, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 2.15em;
+    background-color: transparent;
+}
+
+    #padrao li {
+        float: left;
+    }
+
+        #padrao li a {
+            display: block;
+            margin-right: 20px;
+            padding: 8px 7px 4px 7px;
+            text-decoration: none;
+            color: #999;
+        }
+
+            #padrao li a:hover {
+                text-decoration: none;
+                color: #333;
+            }
+
+    #padrao .linkNormal {
+        background: transparent url('../images/f_step_circulo0.png') no-repeat center 8px;
+        text-decoration: none;
+        color: #ccc;
+    }
+
+    #padrao .linkAtivo {
+        background: url('../images/f_step_circulo1.png') no-repeat center 8px;
+        text-decoration: none;
+        color: #333;
+        border-radius: 0.2em;
+    }
+
+    #padrao .especial {
+        text-decoration: none;
+        font-size: 0.9em;
+        color: #f1f1f1;
+    }
+
+    #padrao .especialAtivo {
+        text-decoration: none;
+        font-size: 0.9em;
+        color: #fff;
+    }
+
+        #padrao .especial p, #padrao .especialAtivo p {
+            margin-top: 0px;
+            margin-bottom: -1px;
+        }
+/* XXXXXXXX BOTÃO SETA XXXXXXXXX */
+#container-header-seta {
+    position: absolute;
+    top: 14px;
+    left: 720px;
+    width: 100px;
+    height: auto;
+    border: 0px solid #000;
+}
+
+#bot-seta img {
+    vertical-align: 0px;
+}
+
+#bot-seta, #bot-seta * {
+    margin: 0;
+    padding: 0;
+}
+
+#bot-seta {
+    font-family: Verdana, Geneva, sans-serif;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: auto;
+    height: auto;
+    font-weight: bold;
+    list-style: none;
+    font-size: 0.95em;
+}
+
+    #bot-seta li {
+        float: left;
+    }
+
+        #bot-seta li a {
+            background-color: #4584ee;
+            text-decoration: none;
+            display: block;
+            color: #fff;
+            position: relative;
+            width: auto;
+            height: auto;
+            margin-right: 13px;
+            padding: 9px 13px 6px 13px;
+            border: 0px solid #2f77e8;
+            border-radius: 0.2em;
+        }
+
+            #bot-seta li a:hover {
+                text-decoration: none;
+                background-color: #3d7adf;
+            }
+
+    #bot-seta .active {
+        cursor: pointer;
+        color: white;
+    }
+
+    #bot-seta .inactive {
+        cursor: default;
+        color: lightgray;
+        opacity: 0.60;
+        -moz-opacity: 0.60;
+        filter: alpha(opacity=60);
+    }
+/* XXXXXXXX BOTÃO PADRÃO XXXXXXXXX */
+.bot-azul {
+    font-family: Verdana, Geneva, sans-serif;
+    position: relative;
+    width: auto;
+    height: auto;
+    display: block;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-top: 16px;
+}
+
+    .bot-azul a {
+        background-color: #4584ee;
+        text-decoration: none;
+        color: #fff;
+        padding-top: 7px;
+        padding-right: 17px;
+        padding-bottom: 7px;
+        padding-left: 17px;
+        border-radius: 0.2em;
+        float: left;
+    }
+
+        .bot-azul a:hover {
+            text-decoration: none;
+            background-color: #3d7adf;
+        }
+
+/* xxxxxx  BOTÃO UNIDADE E GRUPO xxxxxx */
+.container-cont {
+    position: absolute;
+    top: 15px;
+    left: 190px;
+    width: auto;
+    height: auto;
+    background: transparent;
+    color: #444;
+}
+
+#bot-conteudo img {
+    vertical-align: -4px;
+    margin-right: 8px;
+}
+
+#bot-conteudo, #bot-conteudo * {
+    margin: 0;
+    padding: 0;
+}
+
+#bot-conteudo {
+    position: relative;
+    width: auto;
+    height: auto;
+    list-style: none;
+    float: right;
+    font-size: 0.75em;
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: bold;
+    line-height: 1.85em;
+    background-color: transparent;
+}
+
+    #bot-conteudo li {
+        float: left;
+    }
+
+        #bot-conteudo li a {
+            display: block;
+            margin-right: 50px;
+            padding: 0;
+            text-decoration: none;
+            color: #333;
+        }
+
+            #bot-conteudo li a:hover {
+                text-decoration: underline;
+                color: #333;
+            }
+
+.tamanho-pagina img {
+    vertical-align: -3px;
+}
+
+.tamanho-pagina {
+    position: relative;
+    width: auto;
+    height: auto;
+    margin-left: 260px;
+    text-align: left;
+    padding-top: 1px;
+}

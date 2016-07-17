@@ -1,0 +1,58 @@
+﻿.crop-tool {
+    background-color: #D7E5F7;
+    border: 2px solid #9BAFCA;
+    display: none;
+    padding: 10px;
+    text-align: left;
+}
+
+    .crop-tool .please-hold, .crop-tool .please-hold .backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .crop-tool .please-hold {
+        background-image: url(../images/loadinganim.gif);
+        background-position: bottom left;
+        background-repeat: no-repeat;
+    }
+
+        .crop-tool .please-hold .backdrop {
+            background-color: #000000;
+            opacity: 0.3;
+        }
+
+    .crop-tool .title {
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .crop-tool p {
+        margin: 0;
+        padding: 10px 0;
+        font-size: 12px;
+    }
+
+    .crop-tool .crop-area {
+        background-color: white;
+        overflow: hidden;
+    }
+
+        .crop-tool .crop-area.header {
+            width: 1000px;
+            height: 200px;
+        }
+
+        .crop-tool .crop-area.logo {
+            width: 640px;
+            height: 480px;
+        }
+
+    .crop-tool .buttons {
+        margin-top: 10px;
+    }

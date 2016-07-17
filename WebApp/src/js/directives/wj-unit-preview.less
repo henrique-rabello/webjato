@@ -1,0 +1,111 @@
+﻿.wj-unit-preview {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+
+    & #firefox {
+        margin: 0;
+        position: relative;
+        width: 100%;
+        height: 31px;
+    }
+
+    & .fundo {
+        background-color: #fff;
+        opacity: 0.9;
+        filter: alpha(opacity=90); /* For IE8 and earlier */
+        position: absolute;
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+    & #container {
+        float: left;
+        margin: 0 130px 0 20px;
+        position: relative;
+        width: auto;
+        height: auto;
+    }
+
+    & .close {
+        cursor: pointer;
+        position: fixed;
+        width: auto;
+        height: auto;
+        top: 127px;
+        right: 57px;
+        
+        & a {
+            display: block;
+            padding: 9px 16px 9px 16px;
+            text-decoration: none;
+            background: url(../images/add_cont_fechar.png) no-repeat 0px 0px;
+
+            &:hover {
+                color: #000;
+                text-decoration: none;
+                background: url(../images/add_cont_fechar.png) no-repeat 0px 0px;
+            }
+        }
+    }
+
+    & .item {
+        float: left;
+        margin-top: 35px;
+        margin-left: 35px;
+        position: relative;
+        text-align: left;
+        vertical-align: top;
+        border: 1px solid #ccc;
+        background: #fff;
+
+        & img {
+            position: relative;
+            z-index: 1;
+            border-bottom: 1px solid #ddd;
+        }
+
+        & .ribbon {
+            position: relative;
+            width: 329px;
+            background-color: #fff;
+            opacity: 0.5;
+            filter: alpha(opacity=50); /* For IE8 and earlier */
+            display: block;
+            padding-top: 10px;
+            padding-bottom: 12px;
+            text-align: center;
+            z-index: 100;
+
+            & button {
+                color: #fff;
+                font-size: 0.8em;
+                border-radius: 0.2em;
+                cursor: pointer;
+                outline: none;
+                padding: 7px 17px !important;
+                border: 0 solid #0078d7;
+                background-color: #4584ee;
+
+                &:hover {
+                    text-decoration: none;
+                    background-color: #3d7adf;
+                }
+
+                &[disabled] {
+                    cursor: default;
+                    opacity: 0.5;
+                }
+            }
+        }
+
+        &:hover .ribbon {
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,166 @@
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Resources: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Application: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ApplicationCollection: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ApplicationDefaults: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ApplicationDomain: type has no family visible contructors.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ApplicationDomainCollection: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ApplicationPool: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ApplicationPoolCollection: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ApplicationPoolCpu: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ApplicationPoolDefaults: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ApplicationPoolFailure: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ApplicationPoolPeriodicRestart: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ApplicationPoolProcessModel: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ApplicationPoolRecycling: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.AuthenticationLogonMethod: type is a value type.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Binding: type has no family visible contructors.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.BindingCollection: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.BindingManager: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Configuration: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostChangeHandler: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ConfigurationAttribute: type has no family visible contructors.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ConfigurationAttributeCollection: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ConfigurationAttributeSchema: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ConfigurationAttributeSchemaCollection: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ConfigurationCollectionSchema: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ConfigurationChildElementCollection: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ConfigurationElementSchema: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ConfigurationElementSchemaCollection: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ConfigurationEnumValue: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ConfigurationEnumValueCollection: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ConfigurationManager: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostPathMapper2: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ConfigurationMethod: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ConfigurationMethodCollection: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ConfigurationMethodInstance: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ConfigurationMethodSchema: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostAdminManager: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostWritableAdminManager: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.AppHostWritableAdminManager: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.AppHostAdminManager: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostMethod: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostMethodSchema: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostMethodCollection: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostMethodInstance: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostConstantValue: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostConstantValueCollection: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostChildElementCollection: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostCollectionSchema: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostConfigException: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostConfigFile: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostConfigLocation: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostConfigLocationCollection: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostConfigManager: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostElement: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostElementCollection: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostElementSchema: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostElementSchemaCollection: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostPropertySchemaCollection: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostPathMapper: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostProperty: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostPropertyCollection: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostPropertyException: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostPropertySchema: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostSectionDefinition: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostSectionDefinitionCollection: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Interop.IAppHostSectionGroup: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.LoadBalancerCapabilities: type is a value type.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.LogExtFileFlags: type is a value type.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.LogFormat: type is a value type.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.LoggingRolloverPeriod: type is a value type.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ManagedPipelineMode: type is a value type.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.OverrideMode: type is a value type.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ObjectState: type is a value type.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.PipelineState: type is a value type.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ProcessModelIdentityType: type is a value type.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ProcessorAction: type is a value type.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.RecyclingLogEventOnRecycle: type is a value type.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Request: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.RequestCollection: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Schedule: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ScheduleCollection: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.SectionGroup: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.SectionGroupCollection: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.SectionDefinition: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.SectionDefinitionCollection: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ServerManager: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ServerManagerException: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.Site: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.SiteCollection: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.SiteDefaults: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.SiteLimits: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.SiteLogFile: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.SiteTraceFailedRequestsLogging: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.VirtualDirectory: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.VirtualDirectoryCollection: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.VirtualDirectoryDefaults: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.WebConfigurationManager: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.WorkerProcess: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.WorkerProcessCollection: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.WorkerProcessState: type is a value type.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.SharedGlobals: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Administration.ShimGlobals: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Management.Utility.BindingUtility: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Management.Utility.HttpApiWrapper: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Management.Utility.ImpersonationHelper: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for Microsoft.Web.Management.Utility.SafeGlobalAllocHandle: type is sealed.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate stub for <PrivateImplementationDetails>{2E016C1C-320B-4F76-93A2-7DFC7EECAB00}: type is not supported because of internal limitations.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Resources: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.ConfigurationElementCollectionBase`1+<>c__DisplayClass1: type is not supported because of internal limitations.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.ConfigurationElementCollectionBase`1+<>c__DisplayClass4: type is not supported because of internal limitations.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.ConfigurationElementCollectionBase`1+<>c__DisplayClass7: type is not supported because of internal limitations.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.AuthenticationLogonMethod: type is an enum.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.BindingManager: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Configuration+NativeConfigurationChangeHandler: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostChangeHandler: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.ConfigurationManager: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostPathMapper2: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostAdminManager: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostWritableAdminManager: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.AppHostWritableAdminManager: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.AppHostAdminManager: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostMethod: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostMethodSchema: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostMethodCollection: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostMethodInstance: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostConstantValue: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostConstantValueCollection: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostChildElementCollection: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostCollectionSchema: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostConfigException: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostConfigFile: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostConfigLocation: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostConfigLocationCollection: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostConfigManager: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostElement: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostElementCollection: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostElementSchema: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostElementSchemaCollection: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostPropertySchemaCollection: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostPathMapper: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostProperty: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostPropertyCollection: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostPropertyException: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostPropertySchema: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostSectionDefinition: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostSectionDefinitionCollection: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.Interop.IAppHostSectionGroup: type is an interface.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.LoadBalancerCapabilities: type is an enum.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.LogExtFileFlags: type is an enum.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.LogFormat: type is an enum.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.LoggingRolloverPeriod: type is an enum.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.ManagedPipelineMode: type is an enum.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.OverrideMode: type is an enum.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.ObjectState: type is an enum.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.PipelineState: type is an enum.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.ProcessModelIdentityType: type is an enum.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.ProcessorAction: type is an enum.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.RecyclingLogEventOnRecycle: type is an enum.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.WorkerProcessState: type is an enum.
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.SharedGlobals: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Administration.ShimGlobals: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Management.Utility.BindingUtility: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Management.Utility.HttpApiWrapper: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Management.Utility.ImpersonationHelper: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for Microsoft.Web.Management.Utility.SafeGlobalAllocHandle: type is not visible to exported or assembly(Microsoft.Web.Administration.7.0.0.0.Fakes).
+C:\GD\WK\WJ\Webjato.Tests\Fakes\Microsoft.Web.Administration.fakes : warning : Cannot generate shim for <PrivateImplementationDetails>{2E016C1C-320B-4F76-93A2-7DFC7EECAB00}: type is not supported because of internal limitations.

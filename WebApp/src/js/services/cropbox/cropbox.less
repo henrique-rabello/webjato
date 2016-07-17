@@ -1,0 +1,82 @@
+.cropbox {
+    background-color: #CCC;
+    width: 1020px;
+    height: 620px;
+
+    .imageBox {
+        position: relative;
+        width: 1010px;
+        height: 550px;
+        margin: 0 auto;
+        border: 1px solid #aaa;
+        background: #fff;
+        overflow: hidden;
+        background-repeat: no-repeat;
+        cursor: move;
+
+        .thumbBox {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            box-sizing: border-box;
+            border: solid 2px rgba(222,60,80, 0.9);
+            /*box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);*/
+            background: none repeat scroll 0% 0% transparent;
+
+            &:after,
+            &:before {
+                border-left: dashed 2px rgba(222,60,80,.9);
+                border-right: dashed 2px rgba(222,60,80,.9);
+                content: '';
+                display: block;
+                height: 40px;
+                margin-left: -2px;
+                position: absolute;
+            }
+
+            &:after {
+                bottom: 0;
+                margin-bottom: -40px;
+            }
+
+            &:before {
+                top: 0;
+                margin-top: -40px;
+            }
+
+            .inner {
+                &:after {
+                    right: 0;
+                    margin-right: -40px;
+                }
+
+                &:before {
+                    left: 0;
+                    margin-left: -40px;
+                }
+
+                &:after,
+                &:before {
+                    border-bottom: dashed 2px rgba(222,60,80,.9);
+                    border-top: dashed 2px rgba(222,60,80,.9);
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    margin-top: -2px;
+                    width: 40px;
+                }
+            }
+        }
+
+        .spinner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            text-align: center;
+            line-height: 400px;
+            background: rgba(0,0,0,0.7);
+        }
+    }
+}

@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="../css/tools.css" />
+    <link rel="stylesheet" type="text/css" href="../css/basic.css" />
+    <link type="text/css" rel="stylesheet" href="../css/tipsy.css" />
+    <link type="text/css" rel="stylesheet" href="../css/basic.css" />
+    <style type="text/css" media="screen">
+        .page-container {
+            text-align: left;
+            margin: 0 auto;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: auto;
+        }
+
+            .page-container .loader-color {
+                position: relative;
+                top: 6px;
+                visibility: hidden;
+            }
+
+                .page-container .loader-color.updating-color {
+                    visibility: visible;
+                }
+
+            .page-container .loader-transparency {
+                position: relative;
+                top: 4px;
+                visibility: hidden;
+            }
+
+                .page-container .loader-transparency.updating-transparency {
+                    visibility: visible;
+                }
+
+            .page-container .loader-margin {
+                position: relative;
+                top: 4px;
+                visibility: hidden;
+            }
+
+                .page-container .loader-margin.updating-margin {
+                    visibility: visible;
+                }
+
+            .page-container #tudo {
+                margin: 0 auto;
+                width: 100%;
+                height: auto;
+                border-bottom: none;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                padding-top: 40px;
+            }
+
+            .page-container button {
+                cursor: pointer;
+                margin: 0;
+                padding: 0;
+                width: auto;
+                height: auto;
+                background-color: transparent;
+            }
+
+            .page-container .btn {
+                margin: 0;
+                padding: 0;
+                height: auto;
+                width: auto;
+                border: none;
+                outline: none;
+            }
+
+            .page-container #shot {
+                color: #666666;
+                font-size: 0.7em;
+                font-weight: normal;
+                width: auto;
+                height: auto;
+                margin-left: 16px;
+                margin-bottom: 30px;
+            }
+
+            .page-container #shottres {
+                width: auto;
+                height: auto;
+                margin-left: 16px;
+                margin-bottom: 10px;
+            }
+    </style>
+    <script type='text/javascript'>
+        $(document).ready(function () {
+            $('body').layout({ applyDefaultStyles: false });
+        });
+
+        $(function () {
+            $('.north').tipsy({ gravity: 'n' });
+            $('.south').tipsy({ gravity: 's' });
+            $('.east').tipsy({ gravity: 'e' });
+            $('.west').tipsy({ gravity: 'w' });
+            $('.north-west').tipsy({ gravity: 'nw' });
+            $('.north-east').tipsy({ gravity: 'ne' });
+            $('.south-west').tipsy({ gravity: 'sw' });
+            $('.south-east').tipsy({ gravity: 'se' });
+        });
+    </script>
+</head>
+<body>
+    <div class="page-container">
+        <div id="tudo">
+            <div class="container-tool" style="margin-bottom:13px;">
+                <i class="negrito" translate>Cor</i>
+                <spectrum-colorpicker ng-model="DisplayColor" options="ColorPicker1Config"></spectrum-colorpicker>
+                <img src="../images/loadinganim.gif" class="loader-color" ng-class="{'updating-color': UpdatingColor}" />
+            </div>
+            <div id="shot">
+                <label>
+                    <input type="checkbox" class="ipt_checkbox cursorpointer" style="float: none; margin: 0;" ng-model="Data.IsTransparent" ng-change="OnTransparencyChange();" />
+                    <span translate style="line-height:16px;">Transparente</span>
+                </label>
+                <img class="loader-transparency" src="../images/loadinganim.gif" ng-class="{'updating-transparency': UpdatingTransparency}" />
+            </div>
+            <div class="container-tool bottom-28">
+                <i class="negrito" translate>Margem</i>
+                <select ng-model="Data.MarginTop" ng-change="OnMarginTopChange();">
+                    <option value="0">0</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="35">35</option>
+                </select>
+                <i class="pequena">px</i>
+                <img class="loader-margin" src="../images/loadinganim.gif" ng-class="{'updating-margin': UpdatingMargin}" />
+            </div>
+            <div class="container-tool bottom-titulo">
+                <i class="negrito" translate>Borda</i>
+            </div>
+            <div id="shottres">
+                <button type="button" class="btn north mouse-seta" title="{{'Lateral'|translate}}" ng-click="Borders.ChangeState(Borders.States.SIDES);">
+                    <img src="../images/f_bot_borda_1a.png" ng-show="Borders.CurrentState != Borders.States.SIDES" />
+                    <img src="../images/f_bot_borda_1b.png" ng-show="Borders.CurrentState == Borders.States.SIDES" />
+                </button>
+                <button type="button" class="btn north mouse-seta" title="{{'Topo'|translate}}" ng-click="Borders.ChangeState(Borders.States.TOP);">
+                    <img src="../images/f_bot_borda_2a.png" ng-show="Borders.CurrentState != Borders.States.TOP" />
+                    <img src="../images/f_bot_borda_2b.png" ng-show="Borders.CurrentState == Borders.States.TOP" />
+                </button>
+                <button type="button" class="btn north mouse-seta" title="{{'Inferior'|translate}}" ng-click="Borders.ChangeState(Borders.States.BOTTOM);">
+                    <img src="../images/f_bot_borda_3a.png" ng-show="Borders.CurrentState != Borders.States.BOTTOM" />
+                    <img src="../images/f_bot_borda_3b.png" ng-show="Borders.CurrentState == Borders.States.BOTTOM" />
+                </button>
+            </div>
+            <div class="container-tool">
+                <select style="width:45px; height:22px;" ng-model="Borders.Width" ng-change="OnBorderChange();">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="6">6</option>
+                    <option value="9">9</option>
+                    <option value="15">15</option>
+                </select>
+                <spectrum-colorpicker ng-model="Borders.Color" options="ColorPicker2Config"></spectrum-colorpicker>
+                <img src="../images/loadinganim.gif" class="loader-color" ng-class="{'updating-color': UpdatingBorder}" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

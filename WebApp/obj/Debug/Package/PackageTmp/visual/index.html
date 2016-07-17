@@ -1,0 +1,1238 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" id="ng-app" ng-app="VisualApp">
+<head>
+    <meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
+    <title translate>Webjato - VISUAL</title>
+    <link type="text/css" rel="stylesheet" href="../css/animate.css" />
+    <link type="text/css" rel="stylesheet" href="../css/crop.css" />
+    <link type="text/css" rel="stylesheet" href="../css/header.css" />
+    <link type="text/css" rel="stylesheet" href="../css/help.css" />
+    <link type="text/css" rel="stylesheet" href="../css/jquery.jcrop.css" />
+    <link type="text/css" rel="stylesheet" href="../css/jquery-ui.min.css" />
+    <link type="text/css" rel="stylesheet" href="../css/layout-default.css" />
+    <link type="text/css" rel="stylesheet" href="../css/jquery.dropdown.css" />
+    <link type="text/css" rel="stylesheet" href="../css/menu.css" />
+    <link type="text/css" rel="stylesheet" href="../css/spectrum.css" />
+     <link type="text/css" rel="stylesheet" href="../css/tipsy.css" />
+    <link type="text/css" rel="stylesheet" href="../css/wj.css" />
+    <link type="text/css" rel="stylesheet" href="../css/wj-animate.css" />
+    <link type="text/css" rel="stylesheet" href="../css/basic.css" />
+    <style type="text/css" media="screen">
+        body {
+            font-family: Verdana, Geneva, sans-serif;
+            text-align: center;
+            margin: 0;
+        }
+
+        .ui-layout-north img {
+            border: none;
+        }
+
+        #bot-visualizar {
+            top: 37px;
+        }
+
+        .menu-choice {
+            display: none;
+        }
+
+            .menu-choice .items {
+                background-color: white;
+                border: 1px solid #9BAFCA;
+                overflow-x: hidden;
+                overflow-y: auto;
+                padding: 10px;
+                width: 800px;
+                height: 600px;
+            }
+
+                .menu-choice .items .item {
+                    border-bottom: 1px dotted lightgrey;
+                    margin: 10px 0;
+                    padding: 5px 5px 5px 85px;
+                    position: relative;
+                }
+
+                    .menu-choice .items .item button {
+                        position: absolute;
+                        bottom: 0;
+                        left: 2px;
+                        z-index: 1;
+                    }
+
+                    .menu-choice .items .item .clear {
+                        clear: both;
+                    }
+    </style>
+    <script type="text/javascript" src="../scripts/wj-libs.js"></script>
+    <script type="text/javascript" src="../scripts/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript" src="../scripts/wj.js"></script>
+     <script type='text/javascript'>
+  $(function() {
+    $('.north').tipsy({gravity: 'n'});
+    $('.south').tipsy({gravity: 's'});
+    $('.east').tipsy({gravity: 'e'});
+    $('.west').tipsy({gravity: 'w'});
+    $('.north-west').tipsy({gravity: 'nw'});
+    $('.north-east').tipsy({gravity: 'ne'});
+    $('.south-west').tipsy({gravity: 'sw'});
+    $('.south-east').tipsy({gravity: 'se'});
+  });
+</script>
+    <script type="text/javascript">
+        var Sair = null;
+        angular.module("VisualApp", ["gettext", "ngCookies", "ngAnimate", "ngRoute", "ngSanitize", "pasvaz.bindonce", "ui.utils", "ui.tinymce", "ui.spinner", "angularSpectrumColorpicker", "angularFileUpload", "WebjatoConfig", "WebjatoFactories", "WebjatoServices", "AngularJCrop", "WebjatoDirectives"])
+            .config(["$routeProvider", function ($routeProvider) {
+                $routeProvider
+                    .when("/background.html", {
+                        templateUrl: "background.html",
+                        controller: "BackgroundCrtl"
+                    })
+                    .when("/header.html", {
+                        templateUrl: "header.html",
+                        controller: "HeaderCrtl"
+                    })
+                    .when("/footer.html", {
+                        templateUrl: "footer.html",
+                        controller: "FooterCrtl"
+                    })
+                    .when("/logo.html", {
+                        templateUrl: "logo.html",
+                        controller: "LogoCrtl"
+                    })
+                    .when("/menu.html", {
+                        templateUrl: "menu.html",
+                        controller: "SiteMenuCrtl"
+                    })
+                    .when("/page.html", {
+                        templateUrl: "page.html",
+                        controller: "PageCrtl"
+                    })
+            }])
+            .controller("MenuCrtl", function ($scope, $location, $timeout, $rootScope) {
+                var pages = [{ first: true, last: false, index: 0, url: "#/background.html", helpId: "visual/bg" },
+                                { first: false, last: false, index: 1, url: "#/header.html", helpId: "visual/header" },
+                                { first: false, last: false, index: 2, url: "#/footer.html", helpId: "visual/footer" },
+                                { first: false, last: false, index: 3, url: "#/logo.html", helpId: "visual/logo" },
+                                { first: false, last: false, index: 4, url: "#/menu.html", helpId: "visual/menu" },
+                                { first: false, last: true, index: 5, url: "#/page.html", helpId: "visual/page" }];
+                $scope.CurrentPage = null;
+                $scope.PrevPageUrl = "";
+                $scope.NextPageUrl = "";
+                $scope.Url = "";
+                $scope.GoTo = function (url, viaBtnNext) {
+                    if (url == "") return;
+                    if (url == "#/footer.html") {
+                        $(".ui-layout-center").animate({ scrollTop: $(".ui-layout-center").height() }, 500);
+                    }
+                    else {
+                        $(".ui-layout-center").animate({ scrollTop: 0 }, 500);
+                    }
+                    if ($scope.CurrentPage && $scope.CurrentPage.last && viaBtnNext) {
+                        $scope.$emit("HelpDisplay", "visual/finish");
+                    }
+                    $timeout(
+                        function () {
+                            $scope.CurrentPage = _.find(pages, function (key) { return key.url == url; });
+                            $scope.PrevPageUrl = $scope.CurrentPage.first ? "" : pages[$scope.CurrentPage.index - 1].url;
+                            $scope.NextPageUrl = $scope.CurrentPage.last ? $scope.CurrentPage.url : pages[$scope.CurrentPage.index + 1].url;
+                            $scope.Url = url;
+                            $scope.$emit("HelpAutoDisplay", $scope.CurrentPage.helpId);
+                            $scope.$emit("OnSiteChange", "OnSectionChange");
+                        }, 100
+                    );
+                };
+                $scope.ShowHelp = function (id) {
+                    $scope.$emit("HelpDisplay", id);
+                };
+                $scope.GoTo("#" + $location.url());
+            })
+            .controller("BackgroundCrtl", function ($scope, $http, FileUploader, $timeout, ColorPickerConfig, HandleServerException) {
+                var GetBgInfo = function (emitEvent) {
+                    $http({ method: "GET", url: "../api/background/get" })
+                        .success(function (data, status, headers, config) {
+                            $scope.Data = data;
+                            switch (parseInt($scope.Data.BgType)) {
+                                case 1:
+                                    $scope.View = $scope.Views.EFFECT;  //Efeito selecionado
+                                    $scope.DisplayColor = "";
+                                    break;
+                                case 2:
+                                    $scope.View = $scope.Views.IMAGE;   //Imagem selecionada
+                                    $scope.DisplayColor = $scope.Data.Color;
+                                    break;
+                                default:
+                                    $scope.View = $scope.Views.NONE;
+                                    $scope.DisplayColor = $scope.Data.Color;
+                                    break;
+                            }
+                            if (emitEvent) {
+                                $scope.$emit("OnSiteChange", "OnBackgroundChange", data);
+                            }
+                        }).error(HandleServerException);
+                };
+                var OnColorChanged = function () {
+                    $scope.UpdatingColor = true;
+                    $http({ method: "POST", url: "../api/background/color", params: { color: $scope.DisplayColor } })
+                        .success(function (data) {
+                            $scope.Data = data;
+                            $scope.$emit("OnSiteChange", "OnBackgroundChange", data);
+                            $scope.UpdatingColor = false;
+                        })
+                        .error(HandleServerException);
+                };
+                $scope.UpdatingColor = false;
+                $scope.DisplayColor = "";
+                $scope.IsFileValid = true;
+                $scope.Uploading = false;
+                $scope.UploadProgress = 0;
+                $scope.Views = { NONE: "NONE", EFFECT: "EFFECT", IMAGE: "IMAGE" };
+                $scope.View = $scope.Views.NONE;
+                $scope.Data = null;
+                $scope.ColorPickerConfig = angular.extend({ change: OnColorChanged }, ColorPickerConfig);
+                $scope.Effects = [
+                    { ImageKeyNormal: "degrade_pink.jpg", ImageKeyPreview: "prev_efeito_degrade_pink.jpg", ImageName: "Degradê rosa", ColorNormal: "#ED008C", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
+                    { ImageKeyNormal: "icne.gif", ImageKeyPreview: "icne.gif", ImageName: "Retícula", ColorNormal: "#AAAFB5", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
+                    { ImageKeyNormal: "dvzb.gif", ImageKeyPreview: "dvzb.gif", ImageName: "Diagonal", ColorNormal: "#FFFFFF", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
+                    { ImageKeyNormal: "degrade_purple.jpg", ImageKeyPreview: "prev_efeito_degrade_purple.jpg", ImageName: "Degradê vinho", ColorNormal: "#91278F", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
+                    { ImageKeyNormal: "estudy.gif", ImageKeyPreview: "estudy.gif", ImageName: "Musgo", ColorNormal: "#414F52", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
+                    { ImageKeyNormal: "luni.jpg", ImageKeyPreview: "prev_efeito_luni.gif", ImageName: "Céu", ColorNormal: "#FFFFFF", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
+                    { ImageKeyNormal: "degrade_marine.jpg", ImageKeyPreview: "prev_efeito_degrade_marine.jpg", ImageName: "Degradê marinho", ColorNormal: "#0072BC", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
+                    { ImageKeyNormal: "lupa.jpg", ImageKeyPreview: "lupa.jpg", ImageName: "Vertical", ColorNormal: "#131313", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
+                    { ImageKeyNormal: "angel_red.jpg", ImageKeyPreview: "angel_red.jpg", ImageName: "Vermelho 45º", ColorNormal: "#6D0C0C", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
+                    { ImageKeyNormal: "degrade_blue.jpg", ImageKeyPreview: "prev_efeito_degrade_blue.jpg", ImageName: "Degradê azul", ColorNormal: "#00AEEF", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
+                    { ImageKeyNormal: "tgeffe.jpg", ImageKeyPreview: "prev_efeito_tgeffe.jpg", ImageName: "Ornamental", ColorNormal: "#F0F0F0", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
+                    { ImageKeyNormal: "state.png", ImageKeyPreview: "prev_efeito_state.gif", ImageName: "Reflexo", ColorNormal: "#000000", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
+                    { ImageKeyNormal: "degrade_jade.jpg", ImageKeyPreview: "prev_efeito_degrade_jade.jpg", ImageName: "Degradê jade", ColorNormal: "#00A99E", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
+                    { ImageKeyNormal: "luxtron.gif", ImageKeyPreview: "luxtron.gif", ImageName: "Diagonal amarelo", ColorNormal: "#FFD800", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
+                    { ImageKeyNormal: "sewg.gif", ImageKeyPreview: "prev_efeito_sewg.gif", ImageName: "Geométrico", ColorNormal: "#050817", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
+                    { ImageKeyNormal: "degrade_green.jpg", ImageKeyPreview: "prev_efeito_degrade_green.jpg", ImageName: "Degradê verde", ColorNormal: "#37B44A", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
+                    { ImageKeyNormal: "dvz.gif", ImageKeyPreview: "dvz.gif", ImageName: "Diagonal beje", ColorNormal: "#E6E7E1", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
+                    { ImageKeyNormal: "bierib.gif", ImageKeyPreview: "prev_efeito_bierib.gif", ImageName: "Noite", ColorNormal: "#030303", ColorPreview: "#000000", HRepeat: true, VRepeat: false },
+                    { ImageKeyNormal: "degrade_greeny.jpg", ImageKeyPreview: "prev_efeito_degrade_greeny.jpg", ImageName: "Degradê oliva", ColorNormal: "#8FC63D", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
+                    { ImageKeyNormal: "seck.gif", ImageKeyPreview: "seck.gif", ImageName: "Malha", ColorNormal: "#F1F1F1", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
+                    { ImageKeyNormal: "default.gif", ImageKeyPreview: "prev_efeito_default.jpg", ImageName: "Flores", ColorNormal: "#1A1A1A", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
+                    { ImageKeyNormal: "degrade_yelow.jpg", ImageKeyPreview: "prev_efeito_degrade_yelow.jpg", ImageName: "Degradê amarelo", ColorNormal: "#FFF100", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
+                    { ImageKeyNormal: "sof.gif", ImageKeyPreview: "prev_efeito_sof.gif", ImageName: "Moderno", ColorNormal: "#1B1B1B", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
+                    { ImageKeyNormal: "angel_blue.jpg", ImageKeyPreview: "angel_blue.jpg", ImageName: "Azul 45º", ColorNormal: "#004066", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
+                    { ImageKeyNormal: "degrade_orange.jpg", ImageKeyPreview: "prev_efeito_degrade_orange.jpg", ImageName: "Degradê laranja", ColorNormal: "#F7941D", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
+                    { ImageKeyNormal: "annias.jpg", ImageKeyPreview: "prev_efeito_annias.jpg", ImageName: "Carvão", ColorNormal: "#030303", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
+                    { ImageKeyNormal: "body.jpg", ImageKeyPreview: "prev_efeito_body.jpg", ImageName: "Neutro", ColorNormal: "#EEEEEE", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
+                    { ImageKeyNormal: "degrade_red.jpg", ImageKeyPreview: "prev_efeito_degrade_red.jpg", ImageName: "Degradê vermelho", ColorNormal: "#EE1D24", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
+                    { ImageKeyNormal: "bg1.gif", ImageKeyPreview: "bg1.gif", ImageName: "Pastilha", ColorNormal: "#EEEEEE", ColorPreview: "#EEEEEE", HRepeat: true, VRepeat: true },
+                    { ImageKeyNormal: "bg2.gif", ImageKeyPreview: "bg2.gif", ImageName: "Pontos", ColorNormal: "#FFFFFF", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
+                    { ImageKeyNormal: "degrade_black.jpg", ImageKeyPreview: "prev_efeito_degrade_black.jpg", ImageName: "Degradê preto", ColorNormal: "#444444", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
+                    { ImageKeyNormal: "bieri.gif", ImageKeyPreview: "prev_efeito_bieri.gif", ImageName: "Gradiente", ColorNormal: "#FAFAFA", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
+                    { ImageKeyNormal: "angel_green.jpg", ImageKeyPreview: "angel_green.jpg", ImageName: "Verde 45º", ColorNormal: "#03594C", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
+                    { ImageKeyNormal: "degrade_grey.jpg", ImageKeyPreview: "prev_efeito_degrade_grey.jpg", ImageName: "Degradê cinza", ColorNormal: "#90ABBD", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
+                    { ImageKeyNormal: "grsg.gif", ImageKeyPreview: "grsg.gif", ImageName: "Listras", ColorNormal: "#FFFFFF", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
+                    { ImageKeyNormal: "icneb.gif", ImageKeyPreview: "icneb.gif", ImageName: "Pixelado", ColorNormal: "#AAAFB5", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true }
+                ];
+                $scope.OnEffectSelected = function (effect) {
+                    var params = {
+                        imageKey: effect.ImageKeyNormal,
+                        imageName: effect.ImageName,
+                        color: effect.ColorNormal,
+                        isFixed: false,
+                        halign: "1",
+                        valign: "1",
+                        hrepeat: effect.HRepeat,
+                        vrepeat: effect.VRepeat
+                    };
+                    effect.Loading = true;
+                    $http({ method: "POST", url: "../api/background/effect", params: params })
+                        .success(function (data) {
+                            $scope.Data = data;
+                            $scope.DisplayColor = "";
+                            $scope.$emit("OnSiteChange", "OnBackgroundChange", data);
+                            effect.Loading = false;
+                        })
+                        .error(HandleServerException);
+                };
+                $scope.OnPropertyChanged = function () {
+                    $http({ method: "POST", url: "../api/background/update", params: { color: $scope.Data.Color, isFixed: ($scope.Data.IsFixed == 1), hRepeat: $scope.Data.HRepeat, vRepeat: $scope.Data.VRepeat, align: $scope.Data.HAlign, valign: $scope.Data.VAlign } })
+                        .success(function (data) {
+                            $scope.Data = data;
+                            $scope.$emit("OnSiteChange", "OnBackgroundChange", data);
+                        })
+                        .error(HandleServerException);
+                };
+                $scope.DeleteImage = function () {
+                    $http({ method: "POST", url: "../api/background/deleteimage" })
+                        .success(function (data) {
+                            $scope.Data = data;
+                            $scope.$emit("OnSiteChange", "OnBackgroundChange", data);
+                        })
+                        .error(HandleServerException);
+                };
+                $scope.uploader = new FileUploader({ scope: $scope, url: "../api/background/postimage", formData: [{ key: "value" }] });
+                $scope.uploader.onAfterAddingFile = function (item) {
+                    var type = "|" + item.file.type.slice(item.file.type.lastIndexOf("/") + 1) + "|";
+                    $scope.IsFileValid = ("|jpg|png|jpeg|gif|".indexOf(type) !== -1);
+                    if (!$scope.IsFileValid) {
+                        item.remove();
+                        $timeout(function () { $scope.IsFileValid = true; }, 5000);
+                    }
+                    else {
+                        $scope.Uploading = true;
+                        item.upload();
+                    }
+                };
+                $scope.uploader.onProgressItem = function (item, progress) {
+                    $scope.UploadProgress = progress;
+                };
+                $scope.uploader.onSuccessItem = function (item, response) {
+                    $scope.Uploading = false;
+                    item.remove();
+                    GetBgInfo(true);
+                };
+                GetBgInfo(false);
+            })
+            .controller("HeaderCrtl", function ($scope, $q, $http, FileUploader, $timeout, $location, ColorPickerConfig, HandleServerException) {
+                var GetHeaderInfo = function (emitEvent) {
+                    $http({ method: "GET", url: "../api/header/get" })
+                        .success(function (data, status, headers, config) {
+                            $scope.Data = data;
+                            switch (parseInt($scope.Data.BgType)) {
+                                case 1:
+                                    $scope.View = $scope.Views.EFFECT;  //Efeito selecionado
+                                    $scope.DisplayColor = "";
+                                    break;
+                                case 2:
+                                    $scope.View = $scope.Views.IMAGE;   //Image selecionada
+                                    $scope.DisplayColor = $scope.Data.Color;
+                                    break;
+                                default:
+                                    $scope.View = $scope.Views.NONE;
+                                    $scope.DisplayColor = $scope.Data.Color;
+                                    break;
+                            }
+                            if (emitEvent) {
+                                $scope.$emit("OnSiteChange", "OnHeaderChange", data);
+                            }
+                        })
+                        .error(HandleServerException);
+                };
+                var OnColorChanged = function () {
+                    $scope.UpdatingColor = true;
+                    $http({ method: "POST", url: "../api/header/color", params: { color: $scope.DisplayColor } })
+                    .success(function (data) {
+                        $scope.Data = data;
+                        $scope.$emit("OnSiteChange", "OnHeaderChange", data);
+                        $scope.UpdatingColor = false;
+                    })
+                    .error(HandleServerException);
+                };
+                $scope.UpdatingColor = false;
+                $scope.UpdatingTransparency = false;
+                $scope.UpdatingHeight = false;
+                $scope.DisplayColor = "";
+                $scope.IsFileValid = true;
+                $scope.Uploading = false;
+                $scope.UploadProgress = 0;
+                $scope.Views = { NONE: "NONE", EFFECT: "EFFECT", IMAGE: "IMAGE" };
+                $scope.View = $scope.Views.NONE;
+                $scope.Data = null;
+                $scope.ColorPickerConfig = angular.extend({ change: OnColorChanged }, ColorPickerConfig);
+                $scope.Effects = [
+                    { ImageName: "Efeito 6", ImageKey: "t06_todos.png", Color: "#002397", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 6", ImageKey: "t06_todos.png", Color: "#002397", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 6", ImageKey: "t06_todos.png", Color: "#002397", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 200 },
+                    { ImageName: "Efeito 7", ImageKey: "t07_todos.png", Color: "#008B00", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 7", ImageKey: "t07_todos.png", Color: "#008B00", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 7", ImageKey: "t07_todos.png", Color: "#008B00", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 200 },
+                    { ImageName: "Efeito 8", ImageKey: "t08_todos.png", Color: "#890503", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 8", ImageKey: "t08_todos.png", Color: "#890503", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 8", ImageKey: "t08_todos.png", Color: "#890503", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 200 },
+                    { ImageName: "Efeito 9", ImageKey: "t09_todos.png", Color: "#C2C203", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 9", ImageKey: "t09_todos.png", Color: "#C2C203", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 9", ImageKey: "t09_todos.png", Color: "#C2C203", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 200 },
+                    { ImageName: "Efeito 10", ImageKey: "t10_todos.png", Color: "#010101", HAlign: "0", VAlign: "500", HRepeat: false, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 10", ImageKey: "t10_todos.png", Color: "#010101", HAlign: "0", VAlign: "500", HRepeat: false, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 10", ImageKey: "t10_todos.png", Color: "#010101", HAlign: "0", VAlign: "500", HRepeat: false, VRepeat: false, Height: 200 },
+                    { ImageName: "Efeito 11", ImageKey: "t11_todos.jpg", Color: "#001826", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 11", ImageKey: "t11_todos.jpg", Color: "#001826", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 11", ImageKey: "t11_todos.jpg", Color: "#001826", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: false, Height: 200 },
+                    { ImageName: "Efeito 12", ImageKey: "t12_100.jpg", Color: "#000000", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 12", ImageKey: "t12_150.jpg", Color: "#000000", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 12", ImageKey: "t12_200.jpg", Color: "#000000", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 200 },
+                    { ImageName: "Efeito 13", ImageKey: "t13_100.jpg", Color: "#000000", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 13", ImageKey: "t13_150.jpg", Color: "#000000", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 13", ImageKey: "t13_200.jpg", Color: "#000000", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 200 },
+                    { ImageName: "Efeito 14", ImageKey: "t14_todos.gif", Color: "#262626", HAlign: "2", VAlign: "2", HRepeat: true, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 14", ImageKey: "t14_todos.gif", Color: "#262626", HAlign: "2", VAlign: "2", HRepeat: true, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 14", ImageKey: "t14_todos.gif", Color: "#262626", HAlign: "2", VAlign: "2", HRepeat: true, VRepeat: false, Height: 200 },
+                    { ImageName: "Efeito 15", ImageKey: "t15_100.jpg", Color: "#547085", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 15", ImageKey: "t15_150.jpg", Color: "#547085", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 15", ImageKey: "t15_200.jpg", Color: "#547085", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 200 },
+                    { ImageName: "Efeito 16", ImageKey: "t16_100.jpg", Color: "#000000", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 16", ImageKey: "t16_150.jpg", Color: "#000000", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 16", ImageKey: "t16_200.jpg", Color: "#000000", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 200 },
+                    { ImageName: "Efeito 17", ImageKey: "t17_100.gif", Color: "#0C5677", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 17", ImageKey: "t17_150.gif", Color: "#0C5677", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 17", ImageKey: "t17_200.gif", Color: "#0C5677", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 200 },
+                    { ImageName: "Efeito 18", ImageKey: "t18_todos.jpg", Color: "#0EA9F9", HAlign: "1", VAlign: "3", HRepeat: true, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 18", ImageKey: "t18_todos.jpg", Color: "#0EA9F9", HAlign: "1", VAlign: "3", HRepeat: true, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 18", ImageKey: "t18_todos.jpg", Color: "#0EA9F9", HAlign: "1", VAlign: "3", HRepeat: true, VRepeat: false, Height: 200 },
+                    { ImageName: "Efeito 19", ImageKey: "t19_todos.jpg", Color: "#54BBE2", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: true, Height: 100 },
+                    { ImageName: "Efeito 19", ImageKey: "t19_todos.jpg", Color: "#54BBE2", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: true, Height: 150 },
+                    { ImageName: "Efeito 19", ImageKey: "t19_todos.jpg", Color: "#54BBE2", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: true, Height: 200 },
+                    { ImageName: "Efeito 20", ImageKey: "t20_todos.jpg", Color: "#53E263", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: true, Height: 100 },
+                    { ImageName: "Efeito 20", ImageKey: "t20_todos.jpg", Color: "#53E263", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: true, Height: 150 },
+                    { ImageName: "Efeito 20", ImageKey: "t20_todos.jpg", Color: "#53E263", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: true, Height: 200 },
+                    { ImageName: "Efeito 21", ImageKey: "t21_todos.jpg", Color: "#F2CF40", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: true, Height: 100 },
+                    { ImageName: "Efeito 21", ImageKey: "t21_todos.jpg", Color: "#F2CF40", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: true, Height: 150 },
+                    { ImageName: "Efeito 21", ImageKey: "t21_todos.jpg", Color: "#F2CF40", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: true, Height: 200 },
+                    { ImageName: "Efeito 22", ImageKey: "t22_todos.jpg", Color: "#E152CF", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: true, Height: 100 },
+                    { ImageName: "Efeito 22", ImageKey: "t22_todos.jpg", Color: "#E152CF", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: true, Height: 150 },
+                    { ImageName: "Efeito 22", ImageKey: "t22_todos.jpg", Color: "#E152CF", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: true, Height: 200 },
+                    { ImageName: "Efeito 23", ImageKey: "t23_100.jpg", Color: "#5A747E", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 23", ImageKey: "t23_150.jpg", Color: "#5A747E", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 23", ImageKey: "t23_200.jpg", Color: "#5A747E", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 200 },
+                    { ImageName: "Efeito 24", ImageKey: "t24_todos.png", Color: "#B7BDBF", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 24", ImageKey: "t24_todos.png", Color: "#B7BDBF", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 24", ImageKey: "t24_todos.png", Color: "#B7BDBF", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: false, Height: 200 },
+                    { ImageName: "Efeito 25", ImageKey: "t25_100.jpg", Color: "#DDE8F1", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 25", ImageKey: "t25_150.jpg", Color: "#DDE8F1", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 25", ImageKey: "t25_200.jpg", Color: "#DDE8F1", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 200 },
+                    { ImageName: "Efeito 26", ImageKey: "t26_todos.jpg", Color: "#FAAF34", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 26", ImageKey: "t26_todos.jpg", Color: "#FAAF34", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 26", ImageKey: "t26_todos.jpg", Color: "#FAAF34", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: false, Height: 200 },
+                    { ImageName: "Efeito 27", ImageKey: "t27_todos.jpg", Color: "#4A7BCC", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 27", ImageKey: "t27_todos.jpg", Color: "#4A7BCC", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 27", ImageKey: "t27_todos.jpg", Color: "#4A7BCC", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 200 },
+                    { ImageName: "Efeito 28", ImageKey: "t28_todos.jpg", Color: "#000000", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 28", ImageKey: "t28_todos.jpg", Color: "#000000", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 28", ImageKey: "t28_todos.jpg", Color: "#000000", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: false, Height: 200 },
+                    { ImageName: "Efeito 29", ImageKey: "t29_todos.jpg", Color: "#F7F7F7", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 29", ImageKey: "t29_todos.jpg", Color: "#F7F7F7", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 29", ImageKey: "t29_todos.jpg", Color: "#F7F7F7", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: false, Height: 200 },
+                    { ImageName: "Efeito 30", ImageKey: "t30_todos.jpg", Color: "#4A7D19", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 30", ImageKey: "t30_todos.jpg", Color: "#4A7D19", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 30", ImageKey: "t30_todos.jpg", Color: "#4A7D19", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: false, Height: 200 },
+                    { ImageName: "Efeito 31", ImageKey: "t31_100.jpg", Color: "#000000", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 31", ImageKey: "t31_200_150.jpg", Color: "#000000", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 31", ImageKey: "t31_200_150.jpg", Color: "#000000", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 200 },
+                    { ImageName: "Efeito 32", ImageKey: "t32_todos.jpg", Color: "#292929", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: true, Height: 100 },
+                    { ImageName: "Efeito 32", ImageKey: "t32_todos.jpg", Color: "#292929", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: true, Height: 150 },
+                    { ImageName: "Efeito 32", ImageKey: "t32_todos.jpg", Color: "#292929", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: true, Height: 200 },
+                    { ImageName: "Efeito 33", ImageKey: "t33_todos.jpg", Color: "#0398C2", HAlign: "1", VAlign: "3", HRepeat: true, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 33", ImageKey: "t33_todos.jpg", Color: "#0398C2", HAlign: "1", VAlign: "3", HRepeat: true, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 33", ImageKey: "t33_todos.jpg", Color: "#0398C2", HAlign: "1", VAlign: "3", HRepeat: true, VRepeat: false, Height: 200 },
+                    { ImageName: "Listra", ImageKey: "menu_bacaninha_100.png", Color: "#FFFFFF", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: false, Height: 100 },
+                    { ImageName: "Listra", ImageKey: "menu_bacaninha_150.png", Color: "#FFFFFF", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: false, Height: 150 },
+                    { ImageName: "Listra", ImageKey: "menu_bacaninha_200.png", Color: "#FFFFFF", HAlign: "3", VAlign: "1", HRepeat: false, VRepeat: false, Height: 200 },
+                    { ImageName: "Relevo", ImageKey: "xfx_placa_100.gif", Color: "#777777", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: true, Height: 100 },
+                    { ImageName: "Relevo", ImageKey: "xfx_placa_150.gif", Color: "#777777", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: true, Height: 150 },
+                    { ImageName: "Relevo", ImageKey: "xfx_placa_200.gif", Color: "#777777", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: true, Height: 200 },
+                    { ImageName: "Efeito 3", ImageKey: "t03_100.gif", Color: "#000000", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 3", ImageKey: "t03_150.gif", Color: "#000000", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 3", ImageKey: "t03_200.gif", Color: "#000000", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 200 },
+                    { ImageName: "Efeito 4", ImageKey: "t04_100.gif", Color: "#000000", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 4", ImageKey: "t04_150.gif", Color: "#000000", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 4", ImageKey: "t04_200.gif", Color: "#000000", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 200 },
+                    { ImageName: "Efeito 5", ImageKey: "t05_todos.gif", Color: "#000000", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 100 },
+                    { ImageName: "Efeito 5", ImageKey: "t05_todos.gif", Color: "#000000", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 150 },
+                    { ImageName: "Efeito 5", ImageKey: "t05_todos.gif", Color: "#000000", HAlign: "1", VAlign: "1", HRepeat: true, VRepeat: false, Height: 200 }
+                ];
+                $scope.EffectsPreview = [
+                    { ImageName: "Efeito 6", ImageKey: "pt_06.png", Color: "#0041D3", Position: "center left", Repeat: "repeat-x" },
+                    { ImageName: "Efeito 7", ImageKey: "pt_07.png", Color: "#009300", Position: "center left", Repeat: "repeat-x" },
+                    { ImageName: "Efeito 8", ImageKey: "pt_08.png", Color: "#C81610", Position: "center left", Repeat: "repeat-x" },
+                    { ImageName: "Efeito 9", ImageKey: "pt_09.png", Color: "#CFCF05", Position: "center left", Repeat: "repeat-x" },
+                    { ImageName: "Efeito 10", ImageKey: "pt_10.gif", Color: "#000000", Position: "center right", Repeat: "no-repeat" },
+                    { ImageName: "Efeito 11", ImageKey: "pt_11.png", Color: "#00262C", Position: "center right", Repeat: "no-repeat" },
+                    { ImageName: "Efeito 12", ImageKey: "pt_12.gif", Color: "#000000", Position: "center left", Repeat: "repeat-x" },
+                    { ImageName: "Efeito 13", ImageKey: "pt_13.gif", Color: "#0E0E0E", Position: "center center", Repeat: "repeat-x" },
+                    { ImageName: "Efeito 14", ImageKey: "pt_14.gif", Color: "#262626", Position: "center left", Repeat: "repeat-x" },
+                    { ImageName: "Efeito 15", ImageKey: "pt_15.png", Color: "#526E83", Position: "center left", Repeat: "repeat-x" },
+                    { ImageName: "Efeito 16", ImageKey: "pt_16.gif", Color: "#1D1C1B", Position: "center left", Repeat: "repeat-x" },
+                    { ImageName: "Efeito 17", ImageKey: "pt_17.gif", Color: "#0C5576", Position: "center left", Repeat: "repeat-x" },
+                    { ImageName: "Efeito 18", ImageKey: "pt_18.gif", Color: "#03A8F7", Position: "center left", Repeat: "repeat-x" },
+                    { ImageName: "Efeito 19", ImageKey: "pt_19.png", Color: "#58BCE3", Position: "center center", Repeat: "repeat-y" },
+                    { ImageName: "Efeito 20", ImageKey: "pt_20.png", Color: "#55E264", Position: "center center", Repeat: "repeat-y" },
+                    { ImageName: "Efeito 21", ImageKey: "pt_21.png", Color: "#F3D144", Position: "center center", Repeat: "repeat-y" },
+                    { ImageName: "Efeito 22", ImageKey: "pt_22.png", Color: "#E255D0", Position: "center center", Repeat: "repeat-y" },
+                    { ImageName: "Efeito 23", ImageKey: "pt_23.gif", Color: "#5C7781", Position: "center left", Repeat: "repeat-x" },
+                    { ImageName: "Efeito 24", ImageKey: "pt_24.jpg", Color: "#9BA4A6", Position: "center center", Repeat: "no-repeat" },
+                    { ImageName: "Efeito 25", ImageKey: "pt_25.png", Color: "#BAC5D0", Position: "center left", Repeat: "repeat-x" },
+                    { ImageName: "Efeito 26", ImageKey: "pt_26.jpg", Color: "#FBBF51", Position: "center center", Repeat: "no-repeat" },
+                    { ImageName: "Efeito 27", ImageKey: "pt_27.jpg", Color: "#2F57AE", Position: "center center", Repeat: "no-repeat" },
+                    { ImageName: "Efeito 28", ImageKey: "pt_28.jpg", Color: "#000000", Position: "center right", Repeat: "no-repeat" },
+                    { ImageName: "Efeito 29", ImageKey: "pt_29.jpg", Color: "#ECECEC", Position: "center center", Repeat: "no-repeat" },
+                    { ImageName: "Efeito 30", ImageKey: "pt_30.jpg", Color: "#477618", Position: "center center", Repeat: "no-repeat" },
+                    { ImageName: "Efeito 31", ImageKey: "pt_31.gif", Color: "#60523B", Position: "center left", Repeat: "repeat-x" },
+                    { ImageName: "Efeito 32", ImageKey: "pt_32.jpg", Color: "#272727", Position: "center center", Repeat: "no-repeat" },
+                    { ImageName: "Efeito 33", ImageKey: "pt_33.gif", Color: "#089CC8", Position: "center left", Repeat: "repeat-x" },
+                    { ImageName: "Listra", ImageKey: "menu_bacaninha.gif", Color: "#FFFFFF", Position: "top left", Repeat: "no-repeat" },
+                    { ImageName: "Relevo", ImageKey: "xfx_placa.png", Color: "#6B6B6B", Position: "center left", Repeat: "repeat-x" },
+                    { ImageName: "Efeito 3", ImageKey: "pt_03.gif", Color: "#000000", Position: "center left", Repeat: "repeat-x" },
+                    { ImageName: "Efeito 4", ImageKey: "pt_04.gif", Color: "#000000", Position: "center left", Repeat: "repeat-x" },
+                    { ImageName: "Efeito 5", ImageKey: "pt_05.gif", Color: "#000000", Position: "center left", Repeat: "repeat-x" }
+                ];
+                $scope.OnEffectSelected = function (imageName, effectPreview) {
+                    var d = $q.defer();
+                    effectPreview = effectPreview || {};
+                    effectPreview.Loading = true;
+                    var effect = _.findWhere($scope.Effects, { ImageName: imageName, Height: parseInt($scope.Data.Height) });
+                    var params = {
+                        imageKey: effect.ImageKey,
+                        imageName: effect.ImageName,
+                        color: effect.Color,
+                        halign: effect.HAlign,
+                        valign: effect.VAlign,
+                        hrepeat: effect.HRepeat,
+                        vrepeat: effect.VRepeat,
+                        height: effect.Height
+                    };
+                    $http({ method: "POST", url: "../api/header/effect", params: effect })
+                        .success(function (data) {
+                            $scope.Data = data;
+                            $scope.DisplayColor = "";
+                            $scope.$emit("OnSiteChange", "OnHeaderChange", data);
+                            effectPreview.Loading = false;
+                            d.resolve();
+                        })
+                        .error(HandleServerException);
+                    return d.promise;
+                };
+                $scope.OnHeightChange = function (nv, ov) {
+                    $scope.UpdatingHeight = true;
+                    if (parseInt($scope.Data.BgType) == 1) {
+                        $scope.OnEffectSelected($scope.Data.ImageName).then(function () {
+                            $scope.UpdatingHeight = false;
+                        });
+                    }
+                    else {
+                        $http({ method: "POST", url: "../api/header/height", params: { height: $scope.Data.Height } })
+                            .success(function (data) {
+                                $scope.Data = data;
+                                $scope.$emit("OnSiteChange", "OnHeaderChange", data);
+                                $scope.UpdatingHeight = false;
+                            })
+                            .error(HandleServerException);
+                    }
+                };
+                $scope.$watch("Data.Height", function (newValue, oldValue) {
+                    if (newValue && oldValue && newValue != oldValue) {
+                        var deltaY = newValue - oldValue;
+                        $http({ method: "POST", url: "../api/content/UpdateY", params: { deltaY: deltaY } });
+                    }
+                });
+                $scope.OnTransparencyChange = function () {
+                    $scope.UpdatingTransparency = true;
+                    $http({ method: "POST", url: "../api/header/transparency", params: { isTransparent: $scope.Data.IsTransparent } })
+                        .success(function (data) {
+                            $scope.Data = data;
+                            $scope.DisplayColor = $scope.Data.IsTransparent ? "" : $scope.Data.Color;
+                            $scope.$emit("OnSiteChange", "OnHeaderChange", data);
+                            $scope.UpdatingTransparency = false;
+                        })
+                        .error(HandleServerException);
+                };
+                $scope.DeleteImage = function () {
+                    $http({ method: "POST", url: "../api/header/deleteimage" })
+                        .success(function (data) {
+                            $scope.Data = data;
+                            $scope.$emit("OnSiteChange", "OnHeaderChange", data);
+                        })
+                        .error(HandleServerException);
+                };
+                var CallCrop = function (temporaryImage) {
+                    var deferred = $q.defer();
+                    deferred.promise.then(OnCropFinish, OnCropCancel);
+                    $scope.$emit(
+                        "OnCropRequest",
+                        temporaryImage,
+                        deferred,
+                        {
+                            allowResize: false,
+                            boxWidth: 1000,
+                            boxHeight: 200,
+                            setSelect: [0, 0, 1000, 200],
+                            type: "header",
+                            keepOriginalImage: false
+                        });
+                }
+                var OnCropFinish = function (temporaryImage) {
+                    $http({ method: "POST", url: "../api/header/FromTmpImage", data: temporaryImage })
+                        .success(function (data) {
+                            GetHeaderInfo(true);
+                        })
+                        .error(HandleServerException);
+                };
+                var OnCropCancel = function () { }
+                $scope.uploader = new FileUploader({ scope: $scope, url: "../api/tmpimg/newWithCanvas?width=1000&height=200" });
+                $scope.uploader.onAfterAddingFile = function (item) {
+                    var type = "|" + item.file.type.slice(item.file.type.lastIndexOf("/") + 1) + "|";
+                    $scope.IsFileValid = ("|jpg|png|jpeg|gif|".indexOf(type) !== -1);
+                    if (!$scope.IsFileValid) {
+                        item.remove();
+                        $timeout(function () { $scope.IsFileValid = true; }, 5000);
+                    }
+                    else {
+                        $scope.Uploading = true;
+                        item.upload();
+                    }
+                };
+                $scope.uploader.onProgressItem = function (item, progress) {
+                    $scope.UploadProgress = progress;
+                };
+                $scope.uploader.onSuccessItem = function (item, response) {
+                    //Older IE's
+                    if (typeof (response) == "string") {
+                        var aux = response.replace("<PRE>", "").replace("</PRE>", "");
+                        response = JSON.parse(aux);
+                    }
+                    $scope.Uploading = false;
+                    item.remove();
+                    CallCrop(response);
+                };
+                GetHeaderInfo(false);
+            })
+            .controller("FooterCrtl", function ($scope, $http, ColorPickerConfig, HandleServerException) {
+                $scope.UpdatingColor = false;
+                $scope.UpdatingTransparency = false;
+                $scope.Data = null;
+                $scope.DisplayColor = "";
+                var OnColorChanged = function () {
+                    $scope.UpdatingColor = true;
+                    $http({ method: "POST", url: "../api/footer/color", params: { color: $scope.DisplayColor } })
+                        .success(function (data) {
+                            $scope.Data = data;
+                            $scope.$emit("OnSiteChange", "OnFooterChange", data);
+                            $scope.UpdatingColor = false;
+                        })
+                        .error(HandleServerException);
+                };
+                $scope.OnTransparencyChange = function () {
+                    $scope.UpdatingTransparency = true;
+                    $http({ method: "POST", url: "../api/footer/transparency", params: { isTransparent: $scope.Data.IsTransparent } })
+                        .success(function (data) {
+                            $scope.Data = data;
+                            $scope.DisplayColor = $scope.Data.IsTransparent ? "" : $scope.Data.Color;
+                            $scope.$emit("OnSiteChange", "OnFooterChange", data);
+                            $scope.UpdatingTransparency = false;
+                        })
+                        .error(HandleServerException);
+                };
+                $scope.ColorPickerConfig = angular.extend({ change: OnColorChanged }, ColorPickerConfig);
+                $http({ method: "GET", url: "../api/footer/get" })
+                    .success(function (data) {
+                        $scope.Data = data;
+                        $scope.DisplayColor = $scope.Data.IsTransparent ? "" : $scope.Data.Color;
+                    }).error(HandleServerException);
+            })
+            .controller("LogoCrtl", function ($scope, $q, $http, $timeout, FileUploader, HandleServerException) {
+                $scope.OnChange = function () {
+                    $scope.$emit("OnSiteChange", "OnLogoChange", $scope.Data);
+                };
+                $scope.SchedulePositionUpdate = _.debounce(function () {
+                    $http({ method: "POST", url: "../api/logo/position", params: { x: $scope.Data.Position.X, y: $scope.Data.Position.Y } })
+                        .success(function (data) {
+                            $scope.Data = data;
+                            $scope.$emit("OnSiteChange", "OnLogoChange", data);
+                        }).error(HandleServerException);
+                }, 500);
+                $scope.ScheduleScaleUpdate = _.debounce(function () {
+                    $scope.ScalePosting = true;
+                    $http({ method: "POST", url: "../api/logo/scale", params: { scale: $scope.Data.ImageScale } })
+                        .success(function (data) {
+                            $scope.Data = data;
+                            $scope.$emit("OnSiteChange", "OnLogoChange", data);
+                            $scope.ScalePosting = false;
+                        }).error(HandleServerException);
+                }, 500);
+                var GetLogoInfo = function (emitEvent) {
+                    $http({ method: "GET", url: "../api/logo/get" })
+                        .success(function (data) {
+                            $scope.Data = data;
+                            switch (parseInt($scope.Data.LogoType)) {
+                                case 1:
+                                    $scope.View = $scope.Views.TEXT;
+                                    break;
+                                case 2:
+                                    $scope.View = $scope.Views.IMAGE;
+                                    break;
+                                default:
+                                    $scope.View = $scope.Views.NONE;
+                                    break;
+                            }
+                            if (emitEvent) {
+                                $scope.$emit("OnSiteChange", "OnLogoChange", data);
+                            }
+                        }).error(HandleServerException);
+                };
+                $scope.Data = null;
+                $scope.IsFileValid = true;
+                $scope.Uploading = false;
+                $scope.UploadProgress = 0;
+                $scope.ScalePosting = false;
+                $scope.Views = { NONE: "NONE", TEXT: "TEXT", IMAGE: "IMAGE" };
+                $scope.View = $scope.Views.NONE;
+                $scope.Position = { X: { Min: 0, Max: 1000 }, Y: { Min: 0, Max: 145 } };
+                $scope.ScaleLimits = { Min: 5, Max: 100 };
+                $scope.IsTextEditorActive = false;
+                $scope.UpdateTextAreaVisibility = function (isVisible) {
+                    $scope.IsTextEditorActive = isVisible;
+                    $scope.$parent.TextEditor.Header.Active = isVisible;
+                    if (!isVisible) {
+                        GetLogoInfo(true);
+                    }
+                };
+                $scope.DeleteImage = function () {
+                    $http({ method: "POST", url: "../api/logo/deleteimage" })
+                        .success(function (data) {
+                            $scope.Data = data;
+                            $scope.$emit("OnSiteChange", "OnLogoChange", data);
+                        })
+                        .error(HandleServerException);
+                };
+                $scope.$on("OnLogoChangeFromPreview", function (sender, data) { $scope.Data = data; });
+                var OnCropFinish = function (temporaryImage) {
+                    $http({ method: "POST", url: "../api/logo/FromTmpImage", data: temporaryImage })
+                        .success(function (data) {
+                            GetLogoInfo(true);
+                        })
+                        .error(HandleServerException);
+                };
+                var OnCropCancel = function () { }
+                $scope.uploader = new FileUploader({ scope: $scope, url: "../api/tmpimg/new" });
+                $scope.uploader.onAfterAddingFile = function (item) {
+                    var type = "|" + item.file.type.slice(item.file.type.lastIndexOf("/") + 1) + "|";
+                    $scope.IsFileValid = ("|jpg|png|jpeg|gif|".indexOf(type) !== -1);
+                    if (!$scope.IsFileValid) {
+                        item.remove();
+                        $timeout(function () { $scope.IsFileValid = true; }, 5000);
+                    }
+                    else {
+                        $scope.Uploading = true;
+                        item.upload();
+                    }
+                };
+                $scope.uploader.onProgressItem = function (item, progress) {
+                    $scope.UploadProgress = progress;
+                };
+                $scope.uploader.onSuccessItem = function (item, response) {
+                    //Older IE's
+                    if (typeof (response) == "string") {
+                        var aux = response.replace("<PRE>", "").replace("</PRE>", "");
+                        response = JSON.parse(aux);
+                    }
+                    $scope.Uploading = false;
+                    item.remove();
+                    var deferred = $q.defer();
+                    deferred.promise.then(OnCropFinish, OnCropCancel);
+                    $scope.$emit(
+                        "OnCropRequest",
+                        response,
+                        deferred,
+                        {
+                            allowResize: true,
+                            boxWidth: 640,
+                            boxHeight: 480,
+                            setSelect: [0, 0, response.Width * 0.7, response.Height * 0.7],
+                            type: "logo",
+                            keepOriginalImage: false
+                        });
+                };
+                GetLogoInfo(false);
+            })
+            .controller("SiteMenuCrtl", function ($scope, $cookies, $http, $rootScope, ColorPickerConfig, MenuConfig, HandleServerException) {
+                var MenuPartsLocalized = [
+                    { Id: "Bg1", Localization: [{ Id: "pt_BR", Text: "Fundo" }, { Id: "en_US", Text: "Background" }] },
+                    { Id: "Bg2", Localization: [{ Id: "pt_BR", Text: "Fundo 2" }, { Id: "en_US", Text: "Background 2" }] },
+                    { Id: "BgActive", Localization: [{ Id: "pt_BR", Text: "Fundo ativo" }, { Id: "en_US", Text: "Active background" }] },
+                    { Id: "Line", Localization: [{ Id: "pt_BR", Text: "Linha" }, { Id: "en_US", Text: "Line" }] },
+                    { Id: "LineActive", Localization: [{ Id: "pt_BR", Text: "Linha ativa" }, { Id: "en_US", Text: "Active line" }] },
+                    { Id: "Text", Localization: [{ Id: "pt_BR", Text: "Texto" }, { Id: "en_US", Text: "Text" }] },
+                    { Id: "TextActive", Localization: [{ Id: "pt_BR", Text: "Texto ativo" }, { Id: "en_US", Text: "Active text" }] }
+                ];
+                var SetMenu = function (menu) {
+                    for (var i = 0; i < menu.Parts.length; i++) {
+                        var localization = _.findWhere(MenuPartsLocalized, { Id: menu.Parts[i].Id });
+                        menu.Parts[i].Text = _.findWhere(localization.Localization, { Id: $cookies.language }).Text;
+                    }
+                    $scope.Menu = menu;
+                    if ($scope.SelectedPart != null) {
+                        var thePart = _.findWhere($scope.Menu.Parts, { Id: $scope.SelectedPart.Id });
+                        if (thePart) {
+                            $scope.SelectedPart = thePart;
+                        }
+                    }
+                    else {
+                        $scope.SelectedPart = $scope.Menu.Parts[0];
+                    }
+                };
+                $scope.UpdatingColor = false;
+                $scope.OnMenuChange = function (triggeredByColorPicker) {
+                    if (triggeredByColorPicker) {
+                        $scope.UpdatingColor = true;
+                    }
+                    $http({ method: "POST", url: "../api/site/menu", data: $scope.Menu })
+                        .success(function (data) {
+                            SetMenu(data.Menu);
+                            $scope.$emit("OnSiteChange", "OnMenuChange", data);
+                            $scope.UpdatingColor = false;
+                        }).error(HandleServerException);
+                };
+                $scope.RestoreDefaultColor = function () {
+                    var modelMenu = _.findWhere(MenuConfig.Menus, { Id: $scope.Menu.Id });
+                    var modelPart = _.findWhere(modelMenu.Parts, { Id: $scope.SelectedPart.Id });
+                    $scope.SelectedPart.Value = modelPart.Value;
+                    $scope.OnMenuChange(false);
+                };
+                $scope.DisplayMenuSelection = function () {
+                    $(".menu-choice").lightbox_me({ centered: true, destroyOnClose: false });
+                };
+                $rootScope.$on("OnMenuSelect",
+                    function (sender, data) {
+                        $scope.Menu.Id = data.Id;
+                        angular.copy(data.Parts, $scope.Menu.Parts);
+                        $scope.OnMenuChange(false);
+                    });
+                $scope.Menu = null;
+                $scope.SelectedPart = null;
+                $scope.ColorPickerConfig = angular.extend({ change: function () { $scope.OnMenuChange(true); } }, ColorPickerConfig);
+                $http({ method: "GET", url: "../api/site/get" })
+                    .success(function (data) {
+                        SetMenu(data.Menu);
+                    }).error(HandleServerException);
+            })
+            .controller("PageCrtl", function ($scope, $http, ColorPickerConfig, HandleServerException) {
+                var OnColorChanged = function () {
+                    $scope.UpdatingColor = true;
+                    $http({ method: "POST", url: "../api/frame/color", params: { color: $scope.DisplayColor } })
+                        .success(function (data) {
+                            $scope.Data = data;
+                            $scope.$emit("OnSiteChange", "OnFrameChange", data);
+                            $scope.UpdatingColor = false;
+                        })
+                        .error(HandleServerException);
+                };
+                $scope.UpdatingColor = false;
+                $scope.UpdatingTransparency = false;
+                $scope.UpdatingMargin = false;
+                $scope.UpdatingBorder = false;
+                $scope.Data = null;
+                $scope.DisplayColor = "";
+                $scope.Borders = {
+                    States: { TOP: 0, BOTTOM: 1, SIDES: 2, NONE: 3 },
+                    CurrentState: 3,
+                    Color: "",
+                    Width: 0,
+                    ChangeState: function (newState) {
+                        switch (parseInt(newState)) {
+                            case this.States.TOP:
+                                this.Color = $scope.Data.BorderTop.Color;
+                                this.Width = $scope.Data.BorderTop.Width;
+                                break;
+                            case this.States.BOTTOM:
+                                this.Color = $scope.Data.BorderBottom.Color;
+                                this.Width = $scope.Data.BorderBottom.Width;
+                                break;
+                            case this.States.SIDES:
+                                this.Color = $scope.Data.BorderSides.Color;
+                                this.Width = $scope.Data.BorderSides.Width;
+                                break;
+                        }
+                        this.CurrentState = newState;
+                    }
+                };
+                $scope.OnBorderChange = function () {
+                    $scope.UpdatingBorder = true;
+                    $http({ method: "POST", url: "../api/frame/border", params: { type: $scope.Borders.CurrentState, color: $scope.Borders.Color, width: $scope.Borders.Width } })
+                        .success(function (data) {
+                            $scope.Data = data;
+                            $scope.$emit("OnSiteChange", "OnFrameChange", data);
+                            $scope.UpdatingBorder = false;
+                        }).error(HandleServerException);
+                };
+                $scope.ColorPicker1Config = angular.extend({ change: OnColorChanged }, ColorPickerConfig);
+                $scope.ColorPicker2Config = angular.extend({ change: $scope.OnBorderChange }, ColorPickerConfig);
+                $scope.OnTransparencyChange = function () {
+                    $scope.UpdatingTransparency = true;
+                    $http({ method: "POST", url: "../api/frame/transparency", params: { isTransparent: $scope.Data.IsTransparent } })
+                        .success(function (data) {
+                            $scope.Data = data;
+                            $scope.DisplayColor = data.IsTransparent ? "" : data.Color;
+                            $scope.$emit("OnSiteChange", "OnFrameChange", data);
+                            $scope.UpdatingTransparency = false;
+                        }).error(HandleServerException);
+                };
+                $scope.OnMarginTopChange = function () {
+                    $scope.UpdatingMargin = true;
+                    $http({ method: "POST", url: "../api/frame/margin", params: { margin: $scope.Data.MarginTop } })
+                        .success(function (data) {
+                            $scope.Data = data;
+                            $scope.$emit("OnSiteChange", "OnFrameChange", data);
+                            $scope.UpdatingMargin = false;
+                        }).error(HandleServerException);
+                };
+                $http({ method: "GET", url: "../api/frame/get" })
+                    .success(function (data) {
+                        $scope.Data = data;
+                        $scope.Borders.ChangeState($scope.Borders.States.SIDES);
+                        $scope.DisplayColor = data.IsTransparent ? "" : data.Color;
+                    }).error(HandleServerException);
+            })
+            .controller("PreviewCrtl", function ($scope, $q, $http, $cookies, $sce, $timeout, gettextCatalog, MenuConfig, HandleServerException, SiteStyle, WebjatoConfig) {
+                $scope.ShakeIt = false;
+                $scope.TextEditor = {
+                    Header: {
+                        Active: false,
+                        Model: "",
+                        TrustedModel: function () {
+                            return $sce.trustAsHtml(this.Model);
+                        },
+                        TimeoutPromisse: null,
+                        Options: {
+                            font_formats: "Arial=arial;Courier New=courier new;Times New Roman=times new roman;Verdana=verdana",
+                            language: ($cookies.language != "en_US") ? $cookies.language : null,
+                            inline: false,
+                            menubar: false,
+                            plugins: "textcolor",
+                            resize: false,
+                            statusbar: false,
+                            toolbar: "fontselect | fontsizeselect | forecolor | bold | italic"
+                        }
+                    },
+                    Footer: {
+                        Model: "",
+                        TimeoutPromisse: null,
+                        Options: {
+                            font_formats: "Arial=arial;Courier New=courier new;Times New Roman=times new roman;Verdana=verdana",
+                            language: ($cookies.language != "en_US") ? $cookies.language : null,
+                            inline: true,
+                            menubar: false,
+                            plugins: "textcolor",
+                            resize: false,
+                            statusbar: false,
+                            toolbar: "fontselect | fontsizeselect | forecolor | bold italic | alignleft aligncenter alignright"
+                        }
+                    }
+                };
+                $scope.UI_Animate_Menu = true;
+                $scope.Site = SiteStyle.Site;
+                $scope.Pages = null;
+                $scope.Background = SiteStyle.Background;
+                $scope.Header = SiteStyle.Header;
+                $scope.Footer = SiteStyle.Footer;
+                $scope.Logo = SiteStyle.Logo;
+                $scope.Frame = SiteStyle.Frame;
+                $scope.CropUrl = null;
+                var UpdateSite = function (data) {
+                    if (($scope.Site.Data != null) && ($scope.Site.Data.Menu.Id != data.Menu.Id)) { //Trocou o Menu
+                        $scope.UI_Animate_Menu = false;
+                        $timeout(function () { $scope.UI_Animate_Menu = true; }, 50);
+                    }
+                    $scope.Site.Data = angular.copy(data);
+                    $scope.Site.Style["margin"] = parseInt($scope.Site.Data.Alignment) == 1 ? "0" : "0 auto";
+                    MenuConfig.ApplyCSS($scope.Site.Data.Menu);
+                }
+                var UpdatePages = function (data) {
+                    data = _.filter(data, function (key) { return key.Title != null; });
+                    $scope.Pages = _.chain(data)
+                                        .filter(function (key) { return key.Title != "" && key.Title != null; })
+                                        .sortBy(function (key) { return key.Position; }).value();
+                };
+                $scope.CropDefer = null;
+                $scope.OnCropFinish = function (data) {
+                    $scope.CropUrl = null;
+                    $scope.CropDefer.resolve(data);
+                };
+                $scope.OnCropCancel = function () {
+                    $scope.CropUrl = null;
+                    $scope.CropDefer.reject();
+                };
+                var HandleFooterEditor = function () {
+                    var ignoreFirstFooterChange = true;
+                    $scope.$watch(
+                        "TextEditor.Footer.Model",
+                        function (text) {
+                            if (ignoreFirstFooterChange) {
+                                ignoreFirstFooterChange = false;
+                                return;
+                            }
+                            $timeout.cancel($scope.TextEditor.Footer.TimeoutPromisse);
+                            $scope.TextEditor.Footer.TimeoutPromisse = $timeout(
+                                function () {
+                                    $http({ method: "POST", url: "../api/footer/text", data: text }).error(HandleServerException);
+                                }
+                            , 500);
+                        });
+                };
+                var HandleHeaderEditor = function () {
+                    $scope.$watch(
+                        function () { return $scope.TextEditor.Header.Model; },
+                        function (text) {
+                            if (!$scope.TextEditor.Header.Active) {
+                                return;
+                            }
+                            $timeout.cancel($scope.TextEditor.Header.TimeoutPromisse);
+                            $scope.TextEditor.Header.TimeoutPromisse = $timeout(
+                                function () {
+                                    $http({ method: "POST", url: "../api/logo/text", data: text })
+                                        .success(function (data) {
+                                            $scope.$broadcast("OnLogoChangeFromPreview", data);
+                                        })
+                                        .error(HandleServerException);
+                                }
+                            , 500);
+                        });
+                };
+
+                var unwatch1 = $scope.$watch(function () {
+                    return $scope.Footer.Data;
+                }, function () {
+                    if (!$scope.Footer.Data) {
+                        return;
+                    }
+                    $scope.TextEditor.Footer.Model = $scope.Footer.Data.Text;
+                    HandleFooterEditor();
+                    unwatch1();
+                });
+
+                var unwatch2 = $scope.$watch(function () {
+                    return $scope.Logo.Data;
+                }, function () {
+                    if (!$scope.Logo.Data) {
+                        return;
+                    }
+                    $scope.TextEditor.Header.Model = $scope.Logo.Data.Text;
+                    HandleHeaderEditor();
+                    unwatch2();
+                });
+
+                $http({ method: "GET", url: "../api/page/get" })
+                    .success(function (data) {
+                        UpdatePages(data);
+                    }).error(HandleServerException);
+
+                $scope.$on("OnSiteChange", function (sender, changeType, data) {
+                    switch (changeType) {
+                        case "OnBackgroundChange":
+                            $scope.Background.Refresh(data, $scope.Site.Data, WebjatoConfig.AssetsPath);
+                            break;
+                        case "OnHeaderChange":
+                            $scope.Header.Refresh(data, WebjatoConfig.AssetsPath);
+                            break;
+                        case "OnFooterChange":
+                            $scope.Footer.Refresh(data, $scope.Site.Data, $scope.Frame.Data);
+                            break;
+                        case "OnLogoChange":
+                            $scope.Logo.Refresh(data, WebjatoConfig.AssetsPath);
+                            break;
+                        case "OnFrameChange":
+                            $scope.Frame.Refresh(data, $scope.Site.Data);
+                            $scope.Footer.Refresh($scope.Footer.Data, $scope.Site.Data, data);
+                            break;
+                        case "OnSectionChange":
+                            $scope.TextEditor.Header.Active = false;
+                            break;
+                        case "OnMenuChange":
+                            UpdateSite(data);
+                            $scope.ShakeIt = true;
+                            break;
+                    }
+                });
+                $scope.$on("OnCropRequest", function (sender, temporaryImage, deferred, options) {
+                    var myDefer = $q.defer();
+                    myDefer.promise.then($scope.OnCropFinish, $scope.OnCropCancel);
+                    $scope.CropDefer = deferred;
+                    $scope.CropInfo = {
+                        temporaryImage: temporaryImage,
+                        deferred: myDefer,
+                        options: options
+                    };
+                    $scope.CropUrl = "../crop.html";
+                    $scope.$apply();
+                });
+                gettextCatalog.currentLanguage = $cookies.language;
+                $scope.Logout = function () {
+                    $http({ method: "POST", url: "../api/user/logout" })
+                        .success(function (data, status, headers, config) {
+                            top.location.href = "../index.html";
+                        }).error(HandleServerException);
+                };
+                $http({ method: "GET", url: "../api/user/get" })
+                    .success(function (data) {
+                        $scope.User = data;
+                    }).error(HandleServerException);
+                Sair = $scope.Logout;
+            })
+            .controller("MenuSelectionCrtl", function ($scope, $cookies, $rootScope, MenuConfig) {
+                $scope.MenuSelectionItems = MenuConfig.Menus;
+                var FakeItemName = $cookies.language == "pt_BR" ? "Exemplo" : "Example";
+                $scope.FakeItems = [{ Title: FakeItemName }, { Title: FakeItemName }, { Title: FakeItemName }, { Title: FakeItemName }, { Title: FakeItemName }, { Title: FakeItemName }];
+                $scope.OnMenuSelect = function (newModel) {
+                    $rootScope.$emit("OnMenuSelect", newModel);
+                    $(".menu-choice").trigger("close");
+                };
+            });
+
+        var myLayout = null;
+        $(document).ready(function () {
+            myLayout = $("body").layout({ applyDefaultStyles: false });
+        });
+    </script>
+</head>
+<body ng-controller="PreviewCrtl">
+    <wj-help></wj-help>
+    <div class="ui-layout-center">
+        <div class="preview" ng-style="Background.Style">
+            <div class="temporario" ng-class="{'centralizado': Site.Data.Alignment == 2, 'esquerda': Site.Data.Alignment == 1}">
+                <div class="cont-page" ng-style="Frame.StyleContPage">
+                    <div class="cont" ng-style="Site.Style">
+                        <div class="estrutura" ng-style="Frame.StyleEstrutura">
+                            <div class="animated" ng-class="{'shake': ShakeIt}" ng-show="UI_Animate_Menu && Site.Data.Menu.VAlign == 1">
+                                <ul class="menu custom" ng-class="Site.Data.Menu.Id">
+                                    <li ng-repeat="Page in Pages">
+                                        <a href="">{{Page.Title}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="header" ng-style="Header.Style">
+                                <div class="header-text" ng-style="Logo.StyleText">
+                                    <div ng-show="Logo.Data.LogoType == 1 && !TextEditor.Header.Active" ng-bind-html="TextEditor.Header.TrustedModel();"></div>
+                                </div>
+                                <div class="header-image" ng-style="Logo.StyleImageContainer">
+                                    <img ng-src="{{Logo.ImagePath}}" ng-style="Logo.StyleImage" />
+                                </div>
+                                <div ng-show="TextEditor.Header.Active">
+                                    <div id="tinymce1" ui-tinymce config="TextEditor.Header.Options" ng-model="TextEditor.Header.Model"></div>
+                                </div>
+                            </div>
+                            <div class="animated" ng-class="{'shake': ShakeIt}" ng-show="UI_Animate_Menu && Site.Data.Menu.VAlign == 3">
+                                <ul class="menu custom" ng-class="Site.Data.Menu.Id">
+                                    <li ng-repeat="Page in Pages">
+                                        <a href="">{{Page.Title}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="base" ng-style="Frame.StyleBase">&nbsp;</div>
+                        </div>
+                        <div>
+                            <!-- CONTEÚDO TODAS AS PÁGINAS -->
+                        </div>
+                    </div>
+                    <div>
+                        <!-- CONTEÚDO DESTA PÁGINA -->
+                    </div>
+                </div>
+            </div>
+            <div class="footer" ng-style="Site.Style">
+                <div class="content" ng-style="Footer.Style">
+                    <div id="tinymce3" ui-tinymce config="TextEditor.Footer.Options" ng-model="TextEditor.Footer.Model"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui-layout-north" ng-controller="MenuCrtl">
+        <div id="linha-frame-header">&nbsp;</div>
+        <div id="logo"><a href="../main.html"><img src="../images/spacer_logo.png" alt="" title="{{'Início'|translate}}" translate /></a></div>
+        <h1 translate><img src="../images/icon-peq-visual.png" alt="" title="" />Visual</h1>
+        <div id="page">
+           <div id="cont">
+  
+           <div class="bot-side float-left">
+                 <a href="../preview/index.html" target="_preview" class="north mouse-seta" title="{{'Ver construção'|translate}}" translate>
+                    <img src="../images/bot_visualizar.png" alt=""/>
+                 </a>
+            </div>
+            <div class="bot-side ajudyz">
+                 <a href ng-click="ShowHelp(CurrentPage.helpId);" class="north mouse-seta" title="{{'Ajuda'|translate}}" translate>
+                     <img src="../images/bot_ajuda.png" alt="" />
+                 </a>
+            </div>
+            <div class="bot-side ajudyz margemtop-zero">
+                 <div class="account" title="{{'Conta'|translate}}" translate>
+                     <img src="../images/bot_user.png" alt="" />
+                     <div class="dropdown dropdown-tip dropdown-anchor-right">
+                         <ul class="dropdown-menu">
+                             <li class="padding-rl12 bold top-10 bottom-15">{{User.FullName}}</li>
+                             <li class="bottom-10">
+                                 <a href="#" onclick="Sair();">Sair</a>
+                             </li>
+                         </ul>
+                     </div>
+                 </div>
+            </div>
+            </div>
+            <ul id="padrao">
+            <li>
+                <a href="#/background.html" ng-click="GoTo('#/background.html');" ng-class="{'linkAtivo': (Url == '#/background.html'), 'linkNormal': (Url != '#/background.html')}" title="{{'Plano de fundo'|translate}}">
+                    <span ng-class="{'especialAtivo': (Url == '#/background.html'), 'especial': (Url != '#/background.html')}"><p>1</p></span>
+                    <span translate>Fundo</span>
+                </a>
+            </li>
+            <li>
+                <a href="#/header.html" ng-click="GoTo('#/header.html');" ng-class="{'linkAtivo': (Url == '#/header.html'), 'linkNormal': (Url != '#/header.html')}" title="{{'Cabeçalho'|translate}}">
+                    <span ng-class="{'especialAtivo': (Url == '#/header.html'), 'especial': (Url != '#/header.html')}"><p>2</p></span>
+                    <span translate>Cabeçalho</span>
+                </a>
+            </li>
+            <li>
+                <a href="#/footer.html" ng-click="GoTo('#/footer.html');" ng-class="{'linkAtivo': (Url == '#/footer.html'), 'linkNormal': (Url != '#/footer.html')}" title="{{'Rodapé'|translate}}">
+                    <span ng-class="{'especialAtivo': (Url == '#/footer.html'), 'especial': (Url != '#/footer.html')}"><p>3</p></span>
+                    <span translate>Rodapé</span>
+                </a>
+            </li>
+            <li>
+                <a href="#/logo.html" ng-click="GoTo('#/logo.html');" ng-class="{'linkAtivo': (Url == '#/logo.html'), 'linkNormal': (Url != '#/logo.html')}" title="{{'Nome'|translate}}">
+                    <span ng-class="{'especialAtivo': (Url == '#/logo.html'), 'especial': (Url != '#/Logo.html')}"><p style="margin-right:1px;">4</p></span>
+                    <span translate>Logo</span>
+                </a>
+            </li>
+            <li>
+                <a href="#/menu.html" ng-click="GoTo('#/menu.html');" ng-class="{'linkAtivo': (Url == '#/menu.html'), 'linkNormal': (Url != '#/menu.html')}" title="{{'Menu'|translate}}">
+                    <span ng-class="{'especialAtivo': (Url == '#/menu.html'), 'especial': (Url != '#/menu.html')}"><p>5</p></span>
+                    <span translate>Menu</span>
+                </a>
+            </li>
+            <li>
+                <a href="#/page.html" ng-click="GoTo('#/page.html');" ng-class="{'linkAtivo': (Url == '#/page.html'), 'linkNormal': (Url != '#/page.html')}" title="{{'Página'|translate}}">
+                    <span ng-class="{'especialAtivo': (Url == '#/page.html'), 'especial': (Url != '#/page.html')}"><p style="margin-right:1px;">6</p></span>
+                    <span translate>Página</span>
+                </a>
+            </li>
+        </ul>
+         <div id="container-header-seta">
+                <ul id="bot-seta">
+                    <li>
+                        <a ng-href="{{PrevPageUrl}}" ng-click="GoTo(PrevPageUrl);" title="{{'Voltar'|translate}}" ng-class="{'inactive': CurrentPage.first}">
+                            <img src="../images/seta_left.png" alt="" title="{{'Voltar'|translate}}" />
+                        </a>
+                    </li>
+                    <li>
+                        <a ng-href="{{NextPageUrl}}" ng-click="GoTo(NextPageUrl, true);" title="{{'Avançar'|translate}}" ng-class="{'inactive': CurrentPage.last}">
+                            <img src="../images/seta_right.png" alt="" title="{{'Avançar'|translate}}" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    <div class="ui-layout-west">
+        <div ng-view></div>
+        <a href="" onclick="myLayout.toggle('west')" class="seta-ocultar">
+            <img src="../images/toggler_oculta.gif" alt="" title="Ocultar painel" />
+        </a>
+    </div>
+    <div class="preview menu-choice" ng-controller="MenuSelectionCrtl">
+        <div class="items">
+            <div class="item" ng-repeat="Item in MenuSelectionItems" bindonce>
+                <button type="button" ng-click="OnMenuSelect(Item);" translate>Aplicar</button>
+                <ul class="menu" ng-class="Item.Id">
+                    <li ng-repeat="FakeItem in FakeItems">
+                        <a href="" bo-text="FakeItem.Title"></a>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div ng-include="CropUrl" class="crop-tool"></div>
+</body>
+</html>

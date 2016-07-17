@@ -1,0 +1,6 @@
+C:\GD\WK\WJ\WebSite\bin\WebSite.dll.config
+C:\GD\WK\WJ\WebSite\bin\WebSite.dll
+C:\GD\WK\WJ\WebSite\bin\WebSite.pdb
+C:\GD\WK\WJ\WebSite\obj\Debug\WebSite.csprojResolveAssemblyReference.cache
+C:\GD\WK\WJ\WebSite\obj\Debug\WebSite.dll
+C:\GD\WK\WJ\WebSite\obj\Debug\WebSite.pdb

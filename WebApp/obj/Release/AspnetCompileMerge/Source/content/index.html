@@ -1,0 +1,271 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" id="ng-app" ng-app="ContentEditApp">
+<head>
+    <meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
+    <title translate>Webjato - CONTEÚDO</title>
+    <link type="text/css" rel="stylesheet" href="../css/adicionar.css" />
+    <link type="text/css" rel="stylesheet" href="../css/animate.css" />
+    <link type="text/css" rel="stylesheet" href="../css/crop.css" />
+    <link type="text/css" rel="stylesheet" href="../css/header.css" />
+    <link type="text/css" rel="stylesheet" href="../css/help.css" />
+    <link type="text/css" rel="stylesheet" href="../css/jquery.jcrop.css" />
+    <link rel="stylesheet" type="text/css" href="../css/jquery.selectboxit-grey.css" />
+    <link type="text/css" rel="stylesheet" href="../css/jquery-ui.min.css" />
+    <link type="text/css" rel="stylesheet" href="../css/layout-default.css" />
+    <link type="text/css" rel="stylesheet" href="../css/menu.css" />
+    <link type="text/css" rel="stylesheet" href="../css/spectrum.css" />
+    <link type="text/css" rel="stylesheet" href="../css/tipsy.css" />
+    <link type="text/css" rel="stylesheet" href="../css/tools.css" />
+    <link type="text/css" rel="stylesheet" href="../css/wj.css" />
+    <link type="text/css" rel="stylesheet" href="../css/basic.css" />
+    <style type="text/css" media="screen">
+        body {
+            font-family: Verdana, Geneva, sans-serif;
+            text-align: center;
+            margin: 0;
+        }
+
+        img {
+            border: none;
+        }
+        /* HEADER */
+        #bot-visualizar {
+            top: 37px;
+        }
+
+        .container-cont select {
+            font-family: Verdana;
+            font-weight: bold;
+            color: #FFF;
+            border: 0px inset #FFF;
+            background: #4584EE;
+            border-radius: 3px;
+            padding: 7px 5px 7px 10px;
+            width: 167px;
+        }
+
+        .container-cont option {
+            background: #fff;
+            color: #333;
+        }
+
+        .container-cont button {
+            margin-left: 24px;
+        }
+
+        .container-cont .disabled {
+            opacity: 0.2;
+            background: #FFF !important;
+            border: 1px solid #666 !important;
+            color: #000 !important;
+            margin-right: 4px !important;
+        }
+
+        /*ESTILOS DE DRAG / RESIZE / TEXT EDITOR */
+        .ui-draggable-disabled, .ui-resizable-disabled {
+            cursor: auto;
+        }
+
+        .mce-edit-focus {
+            outline: none !important;
+        }
+
+        .handle {
+            background-color: #EEE;
+            border: 1px solid #CCC;
+            cursor: pointer;
+            position: absolute;
+            width: 30px;
+            height: 30px;
+        }
+
+            .handle:hover {
+                background-color: #DDD;
+            }
+
+            .handle.move {
+                top: -32px;
+                left: -1px;
+            }
+
+            .handle img {
+                position: absolute;
+                top: 6px;
+                left: 6px;
+            }
+
+            .handle.delete {
+                top: -32px;
+                right: 0;
+            }
+
+        .spinner {
+            text-align: center;
+            width: 49px;
+        }
+
+        .div-spinner, .btn-tools {
+            position: absolute;
+            left: 240px;
+            top: 3px;
+            text-align: initial;
+            width: 300px;
+            z-index: -1;
+        }
+
+            .div-spinner.ng-enter, .btn-tools.ng-enter {
+                -moz-animation-name: fadeInLeft;
+                -o-animation-name: fadeInLeft;
+                -webkit-animation-name: fadeInLeft;
+                animation-name: fadeInLeft;
+            }
+
+            .div-spinner.ng-leave, .btn-tools.ng-leave {
+                -moz-animation-name: fadeOutLeft;
+                -o-animation-name: fadeOutLeft;
+                -webkit-animation-name: fadeOutLeft;
+                animation-name: fadeOutLeft;
+            }
+    </style>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="../scripts/wj-libs.js"></script>
+    <script type="text/javascript" src="../scripts/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript" src="../scripts/wj.js"></script>
+    <script type='text/javascript'>
+        $(document).ready(function () {
+            $('body').layout({ applyDefaultStyles: false });
+        });
+
+        $(function () {
+            $('.north').tipsy({ gravity: 'n' });
+            $('.south').tipsy({ gravity: 's' });
+            $('.east').tipsy({ gravity: 'e' });
+            $('.west').tipsy({ gravity: 'w' });
+            $('.north-west').tipsy({ gravity: 'nw' });
+            $('.north-east').tipsy({ gravity: 'ne' });
+            $('.south-west').tipsy({ gravity: 'sw' });
+            $('.south-east').tipsy({ gravity: 'se' });
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            //Calls the selectBoxIt method on your HTML select box.
+            $('.drop-local').selectBoxIt();
+        });
+    </script>
+</head>
+<body ng-controller="ContentEditCrtl">
+    <wj-help></wj-help>
+    <!-- PREVIEW -->
+    <div class="ui-layout-center">
+        <div class="preview" ng-style="SiteStyle.Background.Style">
+            <div class="saving" ng-show="ServerSync.isBusy">
+                <img src="../images/loadinganim.gif" />
+                <span translate>Gravando</span>
+            </div>
+            <div class="cont-page" ng-style="SiteStyle.Frame.StyleContPage">
+                <div class="cont" ng-style="SiteStyle.Site.Style">
+                    <div class="estrutura" ng-style="SiteStyle.Frame.StyleEstrutura">
+                        <div ng-show="SiteStyle.Site.Data.Menu.VAlign == 1">
+                            <ul class="menu custom" ng-class="SiteStyle.Site.Data.Menu.Id">
+                                <li ng-repeat="Page in Pages">
+                                    <a href="">{{Page.Title}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="header" ng-style="SiteStyle.Header.Style">
+                            <div class="header-text" ng-style="SiteStyle.Logo.StyleText">
+                                <div ng-show="SiteStyle.Logo.Data.Type == 1" ng-bind-html="SiteStyle.Logo.Data.TrustedText()"></div>
+                            </div>
+                            <div class="header-image" ng-style="SiteStyle.Logo.StyleImageContainer">
+                                <img ng-src="{{SiteStyle.Logo.ImagePath}}" ng-style="SiteStyle.Logo.StyleImage" />
+                            </div>
+                        </div>
+                        <div ng-show="SiteStyle.Site.Data.Menu.VAlign == 3">
+                            <ul class="menu custom" ng-class="SiteStyle.Site.Data.Menu.Id">
+                                <li ng-repeat="Page in Pages">
+                                    <a href="">{{Page.Title}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="base" ng-style="{'height': SelectedPage.Height + 'px', 'background-color': SiteStyle.Frame.Data.IsTransparent? 'transparent' : SiteStyle.Frame.Data.Color }">&nbsp;</div>
+                    </div>
+                    <div>
+                        <!-- ALL PAGES -->
+                    </div>
+                </div>
+                <div>
+                    <!-- SINGLE PAGE -->
+                    <wj-box ng-repeat="Item in PageContents.ByType.Box" data="Item" edit-mode-on="ActiveContent != null"></wj-box>
+                    <wj-contact-form ng-repeat="Item in PageContents.ByType.ContactForm" data="Item" edit-mode-on="ActiveContent != null"></wj-contact-form>
+                    <wj-img ng-repeat="Item in PageContents.ByType.RegularImage" data="Item" folder="{{Config.AssetsPath}}" edit-mode-on="ActiveContent != null"></wj-img>
+                    <wj-img-lnk ng-repeat="Item in PageContents.ByType.LinkedImage" data="Item" folder="{{Config.AssetsPath}}" edit-mode-on="ActiveContent != null"></wj-img-lnk>
+                    <wj-img-exp ng-repeat="Item in PageContents.ByType.ExpandableImage" data="Item" folder="{{Config.AssetsPath}}" edit-mode-on="ActiveContent != null"></wj-img-exp>
+                    <wj-map ng-repeat="Item in PageContents.ByType.Maps" data="Item" edit-mode-on="ActiveContent != null"></wj-map>
+                    <wj-line ng-repeat="Item in PageContents.ByType.Line" data="Item" edit-mode-on="ActiveContent != null"></wj-line>
+                    <wj-social ng-repeat="Item in PageContents.ByType.Social" data="Item" edit-mode-on="ActiveContent != null"></wj-social>
+                    <wj-text ng-repeat="Item in PageContents.ByType.Text" data="Item" lang="{{language}}" edit-mode-on="ActiveContent != null"></wj-text>
+                    <wj-video ng-repeat="Item in PageContents.ByType.Video" data="Item" edit-mode-on="ActiveContent != null"></wj-video>
+                    <wj-highlight data="HighlightedContent"></wj-highlight>
+                </div>
+            </div>
+            <div class="footer" ng-style="SiteStyle.Site.Style">
+                <div class="content" ng-style="SiteStyle.Footer.Style" ng-bind-html="SiteStyle.Footer.Data.TrustedText()"></div>
+            </div>
+            <wj-unit-preview></wj-unit-preview>
+        </div>
+    </div>
+    <!-- Splitter Topo -->
+    <div class="ui-layout-north bg-transition">
+        <div id="linha-frame-header">&nbsp;</div>
+        <div id="logo">
+            <img src="../images/logowj.png" alt="" title="" />
+        </div>
+        <h1 translate>CONTEÚDO</h1>
+        <div id="page">
+            <div id="bot-visualizar">
+                <ul id="lado">
+                    <li>
+                        <a href="" title="{{'Visualizar projeto'|translate}}" translate>Visualizar</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="cont">
+                <div class="botao-ajuda">
+                    <a href="" title="{{'Ajuda'|translate}}" ng-click="ShowHelp();">&nbsp;</a>
+                </div>
+                <div class="botao-inicio">
+                    <a href="../main.html" target="_top" title="{{'Início'|translate}}">&nbsp;</a>
+                </div>
+            </div>
+        </div>
+        <div class="container-cont">
+            <i class="negrito" translate>Página</i>
+            <select ng-model="SelectedPage" ng-options="Page.Title for Page in Pages" ng-change="FetchPageContent();" ng-disabled="ActiveContent != null" ng-class="{'disabled': ActiveContent != null}"></select>
+            <div class="animated div-spinner" ng-if="ActiveContent">
+                <i class="negrito" translate>Altura</i>
+                <input type="text" class="spinner" min="100" max="5000" state-value="SelectedPage.Height" on-update="OnPageHeightChange();" ui-spinner=ui-spinner />
+            </div>
+            <div class="animated btn-tools" ng-if="!ActiveContent">
+                <button type="button" ng-click="DismissAddContentPreview();" disabled translate>Mover junto</button>
+                <button type="button" ng-click="DismissAddContentPreview();" disabled translate>Ferramenta de duplicar</button>
+            </div>
+        </div>
+    </div>
+    <!-- Splitter Esquerdo -->
+    <div class="ui-layout-west bg-transition">
+        <div class="ui-layout-content" style="overflow-x: hidden;">
+            <wj-unit-add ng-if="CurrentPanel == 'ADD-UNIT'"></wj-unit-add>
+            <wj-box-editor ng-if="CurrentPanel == 'BOX'" data="ActiveContent" zindex="ZIndexState"></wj-box-editor>
+            <wj-line-editor ng-if="CurrentPanel == 'LINE'" data="ActiveContent" zindex="ZIndexState"></wj-line-editor>
+            <wj-image-editor ng-if="CurrentPanel == 'REGULARIMAGE' || CurrentPanel == 'LINKEDIMAGE' || CurrentPanel == 'EXPANDABLEIMAGE'" data="ActiveContent" zindex="ZIndexState"></wj-image-editor>
+            <wj-video-editor ng-if="CurrentPanel == 'VIDEO'" data="ActiveContent" zindex="ZIndexState"></wj-video-editor>
+            <wj-map-editor ng-if="CurrentPanel == 'MAPS'" data="ActiveContent" zindex="ZIndexState"></wj-map-editor>
+            <wj-social-editor ng-if="CurrentPanel == 'SOCIAL'" data="ActiveContent" zindex="ZIndexState"></wj-social-editor>
+            <wj-contact-form-editor ng-if="CurrentPanel == 'CONTACTFORM'" data="ActiveContent" zindex="ZIndexState"></wj-contact-form-editor>
+            <wj-text-edit-panel ng-if="CurrentPanel == 'TEXT'" data="ActiveContent" zindex="ZIndexState"></wj-text-edit-panel>
+        </div>
+    </div>
+    <div ng-include="CropUrl" class="crop-tool"></div>
+</body>
+</html>
