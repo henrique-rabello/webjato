@@ -2837,6 +2837,7 @@ msgstr ""
 #: index.html:244
 #: index_2015.html:322
 #: inscrever-se.html:235
+#: lang_en-us\index.html:244
 #: obj\Debug\AspnetCompileMerge\Source\index.html:244
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:322
 #: obj\Debug\AspnetCompileMerge\Source\inscrever-se.html:235
@@ -3665,6 +3666,7 @@ msgstr ""
 
 #: index.html:241
 #: inscrever-se.html:232
+#: lang_en-us\index.html:241
 #: obj\Debug\AspnetCompileMerge\Source\index.html:241
 #: obj\Debug\AspnetCompileMerge\Source\inscrever-se.html:232
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\index.html:241
@@ -5736,6 +5738,7 @@ msgstr ""
 #: help\visual-menu.html:14
 #: index.html:233
 #: inscrever-se.html:224
+#: lang_en-us\index.html:233
 #: obj\Debug\AspnetCompileMerge\Source\content\duplicate-editor.html:10
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:405
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:420

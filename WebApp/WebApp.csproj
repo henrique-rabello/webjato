@@ -279,6 +279,7 @@
     <Content Include="images\social\icone_pinte_med.png" />
     <Content Include="index_2015.html" />
     <Content Include="inscrever-se.html" />
+    <Content Include="lang_en-us\index.html" />
     <Content Include="modal-alert.html" />
     <None Include="src\js\services\cropbox\cropbox.less" />
     <Content Include="css\tipsy.css" />
