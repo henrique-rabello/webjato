@@ -310,33 +310,39 @@
   ga('send', 'pageview');
 </script>
 </head>
-<body ng-controller="MainCrtl">
+<body ng-controller="MainCrtl" ng-cloak>
     <wj-help></wj-help>
     <div class="logo-home">
         <img src="images/logowj.png" alt="" title="" />
     </div>
-    <h1 translate><img src="../images/icon-peq-inicio.png" alt="" title="" />Início</h1>
+    <h1>
+        <img src="images/icon-peq-inicio.png" alt="" title="" />
+        Início
+    </h1>
     <div id="page">
         <div class="bot-azul">
             <a href="planos.html" translate>Aprimorar</a>
         </div>
         <div id="cont">
             <div class="bot-side float-left">
-                <a href="preview/index.html" target="_preview" class="north mouse-seta" title="{{'Ver construção'|translate}}" translate>
+                <a href="preview/index.html" target="_preview" class="north mouse-seta" title="{{'Ver construção'|translate}}">
                     <img src="images/bot_visualizar.png" alt="" />
                 </a>
             </div>
             <div class="bot-side ajudyz">
-                <a href="#" ng-click="ShowHelp();" class="north mouse-seta" title="{{'Ajuda'|translate}}" translate>
+                <a href="#" ng-click="ShowHelp();" class="north mouse-seta" title="{{'Ajuda'|translate}}">
                     <img src="images/bot_ajuda.png" alt="" />
                 </a>
             </div>
            <div class="bot-side ajudyz margemtop-zero">
-                 <div class="account" title="{{'Conta'|translate}}" translate>
+                 <div class="account" title="{{'Conta'|translate}}">
                      <img src="../images/bot_user.png" alt="" />
                      <div class="dropdown dropdown-tip dropdown-anchor-right">
                          <ul class="dropdown-menu">
                              <li class="padding-rl12 bold top-10 bottom-15">{{User.FullName}}</li>
+                             <li class="bottom-10" ng-if="User.Role === Roles.Admin">
+                                <a href="reports/sites.html" target="_blank" translate>Todos os sites</a>
+                             </li>
                              <li class="bottom-10">
                                  <a href="#" onclick="Sair();">Sair</a>
                              </li>
@@ -347,7 +353,7 @@
         </div>
         <div id="ligado">
             <input type="checkbox" id="ckAjuda" class="ipt_checkbox cursorpointer" ng-model="IsHelpEnabled" ng-change="OnHelpStateChange();" />
-            <label for="ckAjuda" class="cursorpointer" title="{{''|translate}}" translate>Exibir ajuda</label>
+            <label for="ckAjuda" class="cursorpointer" translate>Exibir ajuda</label>
         </div>
     </div>
     <div id="container">
