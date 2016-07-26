@@ -1,3 +1,0 @@
-FTP Virtual Folder
-
-DO NOT DELETE THIS FOLDER
