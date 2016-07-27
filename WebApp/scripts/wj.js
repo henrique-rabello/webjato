@@ -130,6 +130,73 @@ var ScalableImage = (function (_super) {
     return ScalableImage;
 }(SimpleImage));
 
+angular.module("WebjatoConfig").config(function ($provide) {
+    $provide.factory("ColorPickerConfig",
+        function () {
+            var config = {
+                allowEmpty: true,
+                showPaletteOnly: true,
+                showSelectionPalette: false,
+                preferredFormat: "hex",
+                palette: [
+                    ["#FFFFFF", "#C00000", "#FF0000", "#490000", "#790000", "#C00000", "#EE1D24", "#F16C4D", "#F7977A", "#FBD0C3", "#FDE8E1"],
+                    ["#000000", "#CC5200", "#FF6600", "#461C00", "#7B3000", "#A1410D", "#F16522", "#F68E54", "#FBAD82", "#FDDAC7", "#FEEDE3"],
+                    ["#333333", "#FFD800", "#FFFF00", "#4F2F00", "#7C4900", "#A36209", "#F7941D", "#FFBF05", "#FFD45C", "#FFECB5", "#FFF6DA"],
+                    ["#666666", "#92D14F", "#99FF33", "#5B5600", "#827A00", "#ABA000", "#FFF100", "#FFF467", "#FFF799", "#FFFBD1", "#FFFDE8"],
+                    ["#999999", "#00AF50", "#00FF00", "#253D0E", "#3E6617", "#588528", "#8FC63D", "#93D14F", "#ADDC7A", "#DAEFC3", "#EDF7E1"],
+                    ["#CCCCCC", "#03B1F0", "#00FFFF", "#033813", "#045F20", "#197B30", "#35b449", "#7DC473", "#A4D49D", "#D6ECD3", "#EBF6E9"],
+                    ["#DDDDDD", "#0071C1", "#0000FF", "#003E19", "#005824", "#007236", "#00A650", "#39B778", "#81CA9D", "#C6E7D3", "#E3F3E9"],
+                    ["#EEEEEE", "#7030A0", "#FF00FF", "#003531", "#005951", "#00736A", "#00A99E", "#16BCB4", "#7BCDC9", "#C3E8E7", "#E1F4F3"],
+                    ["#41484D", "#42260D", "#362F2C", "#00364B", "#005B7E", "#0076A4", "#00AEEF", "#00BFF3", "#6CCFF7", "#BDE9FB", "#DEF4FD"],
+                    ["#5C676E", "#613813", "#423A34", "#002D53", "#003562", "#004A80", "#0072BC", "#438CCB", "#7CA6D8", "#C7D9EE", "#E3ECF7"],
+                    ["#5F6D84", "#744B24", "#534841", "#001A45", "#002056", "#003370", "#0054A5", "#5573B7", "#8293CA", "#CAD0E8", "#E5E8F4"],
+                    ["#758792", "#8C623A", "#726357", "#0C004B", "#1D1363", "#2A2C70", "#393B97", "#5E5CA7", "#8881BE", "#CCC9E3", "#E6E4F1"],
+                    ["#90ABBD", "#A77C50", "#9A8575", "#30004A", "#450E61", "#5A2680", "#7030A0", "#855FA8", "#A286BD", "#D5C8E1", "#EAE4F0"],
+                    ["#A6BCCA", "#C69C6D", "#C7B198", "#390037", "#4B0048", "#62055F", "#91278F", "#A763A9", "#BC8CBF", "#E1CBE2", "#F0E5F1"],
+                    ["#C4D2DC", "#E2CDB6", "#D9CAB9", "#490029", "#7A0045", "#9D005C", "#ED008C", "#EF6EA8", "#f39bc1", "#FAD8E7", "#FDECF3"],
+                    ["#E2E9EE", "#F1E6DB", "#ECE5DC", "#58001B", "#7A0026", "#9D0039", "#EE105A", "#F16D7E", "#F5999D", "#FAD1D3", "#FDE8E9"]]
+            };
+            return config;
+        }
+    );
+});
+angular.module("WebjatoConfig").factory("WebjatoConfig", function ($http, $location) {
+    var qs = "";
+    if ($location.search().siteId) {
+        qs = "?siteId=" + $location.search().siteId;
+    }
+    var Config = {
+        AssetsPath: "",
+        AssetsLocalPath: "/tmp/"
+    };
+    $http({
+        method: "GET",
+        url: "../api/site/config" + qs
+    })
+    .success(
+        function (data) {
+            Config.AssetsPath = data.AssetsPath;
+        });
+    return Config;
+});
+angular.module("WebjatoConstants").constant("ServerSyncCommands", {
+    ALL: "ALL",
+    DELETE: "DELETE",
+    DUPLICATE: "DUPLICATE",
+    POSITION: "POSITION",
+    ZINDEX: "Z-INDEX"
+});
+angular.module("WebjatoConstants").constant("SocialIconSize", {
+    SMALL: 16,
+    REGULAR: 24,
+    LARGE: 32
+});
+angular.module("WebjatoConstants").constant("zIndexChange", {
+    ONE_UP: 1,
+    ONE_DOWN: 2,
+    BRING_TO_FRONT: 3,
+    SEND_TO_BACK: 4
+});
 var Sair = null;
 var dependencies = [
     "angularFileUpload",
@@ -682,73 +749,126 @@ var CropImageCrtl = function ($scope, $http, $cookies, gettextCatalog, WebjatoCo
     });
     gettextCatalog.currentLanguage = $cookies.language;
 };
-angular.module("WebjatoConfig").config(function ($provide) {
-    $provide.factory("ColorPickerConfig",
-        function () {
-            var config = {
-                allowEmpty: true,
-                showPaletteOnly: true,
-                showSelectionPalette: false,
-                preferredFormat: "hex",
-                palette: [
-                    ["#FFFFFF", "#C00000", "#FF0000", "#490000", "#790000", "#C00000", "#EE1D24", "#F16C4D", "#F7977A", "#FBD0C3", "#FDE8E1"],
-                    ["#000000", "#CC5200", "#FF6600", "#461C00", "#7B3000", "#A1410D", "#F16522", "#F68E54", "#FBAD82", "#FDDAC7", "#FEEDE3"],
-                    ["#333333", "#FFD800", "#FFFF00", "#4F2F00", "#7C4900", "#A36209", "#F7941D", "#FFBF05", "#FFD45C", "#FFECB5", "#FFF6DA"],
-                    ["#666666", "#92D14F", "#99FF33", "#5B5600", "#827A00", "#ABA000", "#FFF100", "#FFF467", "#FFF799", "#FFFBD1", "#FFFDE8"],
-                    ["#999999", "#00AF50", "#00FF00", "#253D0E", "#3E6617", "#588528", "#8FC63D", "#93D14F", "#ADDC7A", "#DAEFC3", "#EDF7E1"],
-                    ["#CCCCCC", "#03B1F0", "#00FFFF", "#033813", "#045F20", "#197B30", "#35b449", "#7DC473", "#A4D49D", "#D6ECD3", "#EBF6E9"],
-                    ["#DDDDDD", "#0071C1", "#0000FF", "#003E19", "#005824", "#007236", "#00A650", "#39B778", "#81CA9D", "#C6E7D3", "#E3F3E9"],
-                    ["#EEEEEE", "#7030A0", "#FF00FF", "#003531", "#005951", "#00736A", "#00A99E", "#16BCB4", "#7BCDC9", "#C3E8E7", "#E1F4F3"],
-                    ["#41484D", "#42260D", "#362F2C", "#00364B", "#005B7E", "#0076A4", "#00AEEF", "#00BFF3", "#6CCFF7", "#BDE9FB", "#DEF4FD"],
-                    ["#5C676E", "#613813", "#423A34", "#002D53", "#003562", "#004A80", "#0072BC", "#438CCB", "#7CA6D8", "#C7D9EE", "#E3ECF7"],
-                    ["#5F6D84", "#744B24", "#534841", "#001A45", "#002056", "#003370", "#0054A5", "#5573B7", "#8293CA", "#CAD0E8", "#E5E8F4"],
-                    ["#758792", "#8C623A", "#726357", "#0C004B", "#1D1363", "#2A2C70", "#393B97", "#5E5CA7", "#8881BE", "#CCC9E3", "#E6E4F1"],
-                    ["#90ABBD", "#A77C50", "#9A8575", "#30004A", "#450E61", "#5A2680", "#7030A0", "#855FA8", "#A286BD", "#D5C8E1", "#EAE4F0"],
-                    ["#A6BCCA", "#C69C6D", "#C7B198", "#390037", "#4B0048", "#62055F", "#91278F", "#A763A9", "#BC8CBF", "#E1CBE2", "#F0E5F1"],
-                    ["#C4D2DC", "#E2CDB6", "#D9CAB9", "#490029", "#7A0045", "#9D005C", "#ED008C", "#EF6EA8", "#f39bc1", "#FAD8E7", "#FDECF3"],
-                    ["#E2E9EE", "#F1E6DB", "#ECE5DC", "#58001B", "#7A0026", "#9D0039", "#EE105A", "#F16D7E", "#F5999D", "#FAD1D3", "#FDE8E9"]]
-            };
-            return config;
-        }
-    );
-});
-angular.module("WebjatoConfig").factory("WebjatoConfig", function ($http, $location) {
-    var qs = "";
-    if ($location.search().siteId) {
-        qs = "?siteId=" + $location.search().siteId;
+var Page = (function () {
+    function Page() {
     }
-    var Config = {
-        AssetsPath: "",
-        AssetsLocalPath: "/tmp/"
+    return Page;
+}());
+
+angular.module("WebjatoModels").factory("UnitContentModel", function () {
+	return {
+		ContentTypeToPreview: null,
+		ShowUnity: true
     };
-    $http({
-        method: "GET",
-        url: "../api/site/config" + qs
-    })
-    .success(
-        function (data) {
-            Config.AssetsPath = data.AssetsPath;
-        });
-    return Config;
 });
-angular.module("WebjatoConstants").constant("ServerSyncCommands", {
-    ALL: "ALL",
-    DELETE: "DELETE",
-    DUPLICATE: "DUPLICATE",
-    POSITION: "POSITION",
-    ZINDEX: "Z-INDEX"
-});
-angular.module("WebjatoConstants").constant("SocialIconSize", {
-    SMALL: 16,
-    REGULAR: 24,
-    LARGE: 32
-});
-angular.module("WebjatoConstants").constant("zIndexChange", {
-    ONE_UP: 1,
-    ONE_DOWN: 2,
-    BRING_TO_FRONT: 3,
-    SEND_TO_BACK: 4
-});
+var Help = (function () {
+    function Help() {
+        this.items = [];
+        this.enabled = false;
+        this.cookieHelpItems = "HelpItems";
+        this.cookieHelpState = "HelpState";
+        this.enabled = this.RetrieveHelpState();
+        var identifiers = [
+            "main",
+            "config/size",
+            "config/align",
+            "config/title",
+            "config/pages",
+            "config/position",
+            "visual/bg",
+            "visual/header",
+            "visual/footer",
+            "visual/logo",
+            "visual/menu",
+            "visual/page",
+            "content/start",
+            "content/text",
+            "content/box",
+            "content/line",
+            "content/image-simple",
+            "content/image-expandable",
+            "content/image-linked",
+            "content/video",
+            "content/map",
+            "content/social",
+            "content/contact-form",
+            "content/move",
+            "content/duplicate",
+            "publish/address",
+            "publish/display",
+            "publish/share",
+            "publish/hide"
+        ];
+        var itemsState = this.RetrieveHelpItems();
+        for (var i = 0; i < identifiers.length; i++) {
+            var helpItem = new HelpItem(identifiers[i], (itemsState != "") ? (itemsState.charAt(i) == "1") : false);
+            this.items.push(helpItem);
+        }
+    }
+    Help.prototype.ExportHelpItems = function () {
+        var helpState = "";
+        var helpItem;
+        for (var i = 0; i < this.items.length; i++) {
+            helpItem = this.items[i];
+            helpState += (helpItem.displayed ? "1" : "0");
+        }
+        $.cookie(this.cookieHelpItems, helpState, { path: "/" });
+    };
+    Help.prototype.RetrieveHelpItems = function () {
+        var state = $.cookie(this.cookieHelpItems);
+        return ((state == undefined) ? "" : state);
+    };
+    Help.prototype.ExportHelpState = function () {
+        $.cookie(this.cookieHelpState, this.enabled ? "1" : "0", { path: "/" });
+    };
+    Help.prototype.RetrieveHelpState = function () {
+        var state = $.cookie(this.cookieHelpState);
+        return ((state == undefined) ? false : (state == "1"));
+    };
+    Help.prototype.Show = function (id) {
+        if (!this.enabled) {
+            return false;
+        }
+        var item = this.GetHelpItem(id);
+        if (!item.displayed) {
+            item.displayed = true;
+            this.ExportHelpItems();
+            return true;
+        }
+        return false;
+    };
+    Help.prototype.GetHelpItem = function (id) {
+        for (var i = 0; i < this.items.length; i++) {
+            if (this.items[i].id == id) {
+                return this.items[i];
+            }
+        }
+        return null;
+    };
+    Help.prototype.ResetAllItemsState = function () {
+        for (var i = 0; i < this.items.length; i++) {
+            this.items[i].displayed = false;
+        }
+        this.ExportHelpItems();
+    };
+    Help.prototype.SetEnabled = function (state, reset) {
+        this.enabled = state;
+        if (reset) {
+            this.ResetAllItemsState();
+        }
+        this.ExportHelpState();
+    };
+    return Help;
+}());
+
+var HelpItem = (function () {
+    function HelpItem(id, displayed) {
+        this.id = id;
+        this.displayed = displayed;
+    }
+    return HelpItem;
+}());
+
 angular.module("WebjatoDirectives").directive("wjAnimate", function ($timeout, $parse, ServerSync, ServerSyncCommands) {
     return {
         restrict: "A",
@@ -2149,12 +2269,6 @@ angular.module("WebjatoDirectives").directive("wjZindex", function (zIndexChange
         }
     };
 });
-var Page = (function () {
-    function Page() {
-    }
-    return Page;
-}());
-
 angular.module("WebjatoFactories")
 .factory("WebjatoCssHandler",
     function () {
@@ -2846,120 +2960,6 @@ angular.module("WebjatoFactories")
         };
     }
 );
-var Help = (function () {
-    function Help() {
-        this.items = [];
-        this.enabled = false;
-        this.cookieHelpItems = "HelpItems";
-        this.cookieHelpState = "HelpState";
-        this.enabled = this.RetrieveHelpState();
-        var identifiers = [
-            "main",
-            "config/size",
-            "config/align",
-            "config/title",
-            "config/pages",
-            "config/position",
-            "visual/bg",
-            "visual/header",
-            "visual/footer",
-            "visual/logo",
-            "visual/menu",
-            "visual/page",
-            "content/start",
-            "content/text",
-            "content/box",
-            "content/line",
-            "content/image-simple",
-            "content/image-expandable",
-            "content/image-linked",
-            "content/video",
-            "content/map",
-            "content/social",
-            "content/contact-form",
-            "content/move",
-            "content/duplicate",
-            "publish/address",
-            "publish/display",
-            "publish/share",
-            "publish/hide"
-        ];
-        var itemsState = this.RetrieveHelpItems();
-        for (var i = 0; i < identifiers.length; i++) {
-            var helpItem = new HelpItem(identifiers[i], (itemsState != "") ? (itemsState.charAt(i) == "1") : false);
-            this.items.push(helpItem);
-        }
-    }
-    Help.prototype.ExportHelpItems = function () {
-        var helpState = "";
-        var helpItem;
-        for (var i = 0; i < this.items.length; i++) {
-            helpItem = this.items[i];
-            helpState += (helpItem.displayed ? "1" : "0");
-        }
-        $.cookie(this.cookieHelpItems, helpState, { path: "/" });
-    };
-    Help.prototype.RetrieveHelpItems = function () {
-        var state = $.cookie(this.cookieHelpItems);
-        return ((state == undefined) ? "" : state);
-    };
-    Help.prototype.ExportHelpState = function () {
-        $.cookie(this.cookieHelpState, this.enabled ? "1" : "0", { path: "/" });
-    };
-    Help.prototype.RetrieveHelpState = function () {
-        var state = $.cookie(this.cookieHelpState);
-        return ((state == undefined) ? false : (state == "1"));
-    };
-    Help.prototype.Show = function (id) {
-        if (!this.enabled) {
-            return false;
-        }
-        var item = this.GetHelpItem(id);
-        if (!item.displayed) {
-            item.displayed = true;
-            this.ExportHelpItems();
-            return true;
-        }
-        return false;
-    };
-    Help.prototype.GetHelpItem = function (id) {
-        for (var i = 0; i < this.items.length; i++) {
-            if (this.items[i].id == id) {
-                return this.items[i];
-            }
-        }
-        return null;
-    };
-    Help.prototype.ResetAllItemsState = function () {
-        for (var i = 0; i < this.items.length; i++) {
-            this.items[i].displayed = false;
-        }
-        this.ExportHelpItems();
-    };
-    Help.prototype.SetEnabled = function (state, reset) {
-        this.enabled = state;
-        if (reset) {
-            this.ResetAllItemsState();
-        }
-        this.ExportHelpState();
-    };
-    return Help;
-}());
-
-var HelpItem = (function () {
-    function HelpItem(id, displayed) {
-        this.id = id;
-        this.displayed = displayed;
-    }
-    return HelpItem;
-}());
-
-angular.module("WebjatoModels").factory("UnitContentModel", function () {
-	return {
-		ContentTypeToPreview: null,
-		ShowUnity: true
-    };
-});
 angular.module("WebjatoServices").service("ContentTypeList", function () {
     return [{ Crtl: "Box", Enum: 1 },
             { Crtl: "ContactForm", Enum: 2 },
@@ -3466,38 +3466,6 @@ angular.module("WebjatoServices").service("URLParser", function () {
 });
 
 
-angular.module("WebjatoDirectives").directive("wjHelp", function () {
-    return {
-        restrict: "E",
-        replace: true,
-        scope: true,
-        template: "<div class='wj-help' ng-include='Url' onload='OnLoad();'></div>",
-        controller: function ($rootScope, $scope, HelpIndexer) {
-            $scope.Url = null;
-            $scope.OnLoad = function () {
-                $(".wj-help").lightbox_me({
-                    destroyOnClose: true,
-                    onClose: function () {
-                        $scope.Url = null;
-                        $scope.$apply();
-                    }
-                });
-            };
-            $rootScope.$on("HelpDisplay", function (e, id) {
-                $scope.Url = HelpIndexer.GetUrl(id);
-            });
-            $rootScope.$on("HelpAutoDisplay", function (e, id) {
-                if (new Help().Show(id)) {
-                    $scope.Url = HelpIndexer.GetUrl(id);
-                }
-            });
-            $rootScope.$on("HelpSetState", function (e, newState, reset) {
-                new Help().SetEnabled(newState, reset);
-            });
-        }
-    };
-});
-
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -3636,6 +3604,38 @@ var HelpBit = (function () {
     }
     return HelpBit;
 }());
+
+angular.module("WebjatoDirectives").directive("wjHelp", function () {
+    return {
+        restrict: "E",
+        replace: true,
+        scope: true,
+        template: "<div class='wj-help' ng-include='Url' onload='OnLoad();'></div>",
+        controller: function ($rootScope, $scope, HelpIndexer) {
+            $scope.Url = null;
+            $scope.OnLoad = function () {
+                $(".wj-help").lightbox_me({
+                    destroyOnClose: true,
+                    onClose: function () {
+                        $scope.Url = null;
+                        $scope.$apply();
+                    }
+                });
+            };
+            $rootScope.$on("HelpDisplay", function (e, id) {
+                $scope.Url = HelpIndexer.GetUrl(id);
+            });
+            $rootScope.$on("HelpAutoDisplay", function (e, id) {
+                if (new Help().Show(id)) {
+                    $scope.Url = HelpIndexer.GetUrl(id);
+                }
+            });
+            $rootScope.$on("HelpSetState", function (e, newState, reset) {
+                new Help().SetEnabled(newState, reset);
+            });
+        }
+    };
+});
 
 var CropBoxCtrl = (function () {
     function CropBoxCtrl($scope) {
