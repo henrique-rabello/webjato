@@ -120,7 +120,12 @@
                 $scope.Logout = function () {
                     $http({ method: "POST", url: "../api/user/logout" })
                         .success(function (data, status, headers, config) {
-                            top.location.href = "../index.html";
+                            if (gettextCatalog.currentLanguage == "en_US") {
+                                top.location.href = "/lang_en-us/index.html";
+                            }
+                            else {
+                                top.location.href = "/lang_pt-br/index.html";
+                            }
                         }).error(HandleServerException);
                 };
                 $http({ method: "GET", url: "../api/user/get" })

@@ -16,15 +16,14 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="imagetoolbar" content="no" />
     <meta name="title" content="a forma mais rápida e fácil de criar de verdade o próprio site" />
-    <meta name="description" content="A maneira mais rápida e fácil de criar sites de verdade. Crie seu site 100% grátis com vários recursos que ajudam a criar sites modernos sem dificuldades."
-    />
+    <meta name="description" content="A maneira mais rápida e fácil de criar sites de verdade. Crie seu site 100% grátis com vários recursos que ajudam a criar sites modernos sem dificuldades." />
     <!-- FIM DO CÓDIGO DO GOOGLE -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css' />
     <link rel="stylesheet" type="text/css" href="/css/animate.css" />
     <link rel="stylesheet" type="text/css" href="/css/site-institucional.css" />
     <link type="text/css" rel="stylesheet" href="/css/tipsy.css" />
-    <script src="https://apis.google.com/js/platform.js" async defer>{lang: 'pt-BR'}</script>
+    <script src="https://apis.google.com/js/platform.js" async=async defer=defer>{ lang: 'pt-BR' }</script>
     <script type="text/javascript" src="/scripts/wj-libs.js"></script>
     <script type="text/javascript" src="/scripts/wj.js"></script>
     <script type="text/javascript" src="/scripts/login.js"></script>
@@ -32,7 +31,7 @@
         body {
             background: url(/images/site_wj/bg_planet.jpg) no-repeat right 66px;
         }
-        
+
         .working {
             border: 0;
             position: absolute;
@@ -42,34 +41,37 @@
         }
     </style>
     <script type='text/javascript'>
-  $(function() {
-    $('.container-conta [title]').tipsy({trigger: 'focus', gravity: 'e'});
-  });
-</script>
+        $(function () {
+            $('.container-conta [title]').tipsy({ trigger: 'focus', gravity: 'e' });
+        });
+    </script>
     <!-- Google Analytics -->
     <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-  ga('create', 'UA-33853723-1', 'auto');
-  ga('send', 'pageview');
-</script>
+        ga('create', 'UA-33853723-1', 'auto');
+        ga('send', 'pageview');
+    </script>
 
 </head>
 
 <body ng-controller="LoginCrtl">
     <wj-help></wj-help>
     <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.6";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-</script>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.6";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
     <!-- INICIO DO SITE  -->
     <div id="header">
 
@@ -95,45 +97,45 @@
         </div>
         <!-- Form inscrever-se -->
         <div class="container-box float-right margin-side shadow margin-top-form">
-            <div class="container-conta">
+            <form class="container-conta">
                 <h2>Novo no Webjato?</h2>
                 <div class="font-medio">Grátis hoje e sempre.</div>
                 <div class="btn-face"><img src="/images/site_wj/face_login.png" alt="" title="" />Entrar com o Facebook</div>
                 <fb:login-button id="btn-fb" show-faces="false" size="xlarge" max-rows="1" scope="public_profile,email" onlogin="LoginWithFacebook();">Entrar com Facebook</fb:login-button>
                 <img class="working" src="/images/loadinganim2.gif" ng-show="WorkingFB" />
                 <div class="cont-line">
-                    <div class="ou"><span translate>ou</span></div>
+                    <div class="ou">ou</div>
                 </div>
                 <input id="f3" type="text" title="O nome deve ter pelo menos 6 caracteres" maxlength="132" placeholder="Nome e sobrenome"
-                    ng-model="FullName" />
+                       ng-model="FullName" />
                 <!-- E-mail -->
                 <input id="f4" type="text" title="Entre com um e-mail válido" maxlength="132" placeholder="E-mail" ng-model="Email" />
                 <!-- Assunto -->
-                <input id="f5" type="password" title="A senha deve ter pelo menos 5 caracteres" maxlength="16" placeholder="Senha" ng-model="Password"
-                />
+                <input id="f5" type="password" title="A senha deve ter pelo menos 5 caracteres" maxlength="16" placeholder="Senha" ng-model="Password" />
                 <!-- Mensagem -->
-                <button type="submit" id="f3Confirm" ng-disabled="!IsEmailValid() || !IsPasswordValid() || !IsFullNameValid()" ng-class="{'disabled': !IsEmailValid() || !IsPasswordValid() || !IsFullNameValid(), 'enabled': IsEmailValid() && IsPasswordValid() && IsFullNameValid() }"
-                    ng-click="NewAccount();" translate>Inscrever-se
-    </button>
+                <button type="submit" id="f3Confirm" ng-disabled="!IsEmailValid() || !IsPasswordValid() || !IsFullNameValid()" ng-class="{'disabled': !IsEmailValid() || !IsPasswordValid() || !IsFullNameValid(), 'enabled': IsEmailValid() && IsPasswordValid() && IsFullNameValid() }" ng-click="NewAccount();">
+                    Inscrever-se
+                </button>
                 <img class="working" src="/images/loadinganim2.gif" ng-show="Working" />
-                <span class="error animated shake" ng-show="ShowEmailInUse" translate>Este e-mail já está em uso, por favor tente de novo.</span>
-                <p>Ao inscrever-se, você concorda com nossos <a href="termos.html" class="" title="">Termos</a>, <a href="politica_de_privacidade.html"
-                        class="" title="">Política de Privacidade</a> e <a href="conteudo.html" class="" title="">Conteúdo</a>.</p>
-            </div>
+                <span class="error animated shake" ng-show="ShowEmailInUse">Este e-mail já está em uso, por favor tente de novo.</span>
+                <p>
+                    Ao inscrever-se, você concorda com nossos <a href="termos.html" class="" title="">Termos</a>, <a href="politica_de_privacidade.html" class="" title="">Política de Privacidade</a> e <a href="conteudo.html" class="" title="">Conteúdo</a>.
+                </p>
+            </form>
         </div>
         <!-- Botão curtir -->
         <div class="container-box float-left margin-side width-txt margin-top-botcurtir">
             <div class="fb-like" data-href="https://www.facebook.com/webjato" data-layout="button_count" data-action="like" data-show-faces="false"
-                data-share="false"></div>
+                 data-share="false"></div>
             <div class="g-follow" data-annotation="bubble" data-height="20" data-href="https://plus.google.com/110858575825087737383"
-                data-rel="publisher"></div>
+                 data-rel="publisher"></div>
             <div class="gmais">
                 <div class="g-plusone" data-size="medium" data-annotation="none" data-href="https://plus.google.com/+Webjato"></div>
             </div>
         </div>
         <!-- Recursos -->
         <div class="space opacity margin-top-space1">
-            <a href="#recursos" class="" title="" du-smooth-scroll><img src="/images/site_wj/seta_scrool.png" alt="" title="" /></a>
+            <a href="#recursos" class="" title="" du-smooth-scroll=du-smooth-scroll><img src="/images/site_wj/seta_scrool.png" alt="" title="" /></a>
         </div>
         <div id="recursos" class="margin-bottom-recursos"></div>
         <div class="container-box float-left margin-side">

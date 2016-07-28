@@ -224,7 +224,6 @@
     <Content Include="content\social-editor-tpl.html" />
     <Content Include="content\video-tpl.html" />
     <Content Include="content\z-index-tpl.html" />
-    <Content Include="conteudo.html" />
     <Content Include="cropbox.html" />
     <Content Include="crop.html" />
     <Content Include="css\adicionar.css" />
@@ -253,8 +252,6 @@
     <Content Include="css\jquery.selectboxit-grey.css" />
     <Content Include="css\landpage.css" />
     <Content Include="css\site-institucional.css" />
-    <Content Include="entrar.html" />
-    <Content Include="esqueci-a-senha.html" />
     <Content Include="images\icon_copiar.png" />
     <Content Include="images\loadinganim2.gif" />
     <Content Include="images\place-holder-mapa_1000x400.png" />
@@ -278,8 +275,23 @@
     <Content Include="images\social\icone_pinte_gran.png" />
     <Content Include="images\social\icone_pinte_med.png" />
     <Content Include="index_2015.html" />
-    <Content Include="inscrever-se.html" />
+    <Content Include="lang_en-us\about.html" />
+    <Content Include="lang_en-us\contents.html" />
     <Content Include="lang_en-us\index.html" />
+    <Content Include="lang_en-us\login.html" />
+    <Content Include="lang_en-us\privacy_policy.html" />
+    <Content Include="lang_en-us\signup.html" />
+    <Content Include="lang_en-us\support.html" />
+    <Content Include="lang_en-us\terms.html" />
+    <Content Include="lang_pt-br\conteudo.html" />
+    <Content Include="lang_pt-br\entrar.html" />
+    <Content Include="lang_pt-br\esqueci-a-senha.html" />
+    <Content Include="lang_pt-br\index.html" />
+    <Content Include="lang_pt-br\inscrever-se.html" />
+    <Content Include="lang_pt-br\politica_de_privacidade.html" />
+    <Content Include="lang_pt-br\sobre.html" />
+    <Content Include="lang_pt-br\suporte.html" />
+    <Content Include="lang_pt-br\termos.html" />
     <Content Include="modal-alert.html" />
     <None Include="src\js\services\cropbox\cropbox.less" />
     <Content Include="css\tipsy.css" />
@@ -932,7 +944,6 @@
     <Content Include="index.html" />
     <Content Include="main.html" />
     <Content Include="modal.html" />
-    <Content Include="politica_de_privacidade.html" />
     <Content Include="preview\box-tpl.html" />
     <Content Include="preview\contact-form-tpl.html" />
     <Content Include="preview\image-expandable-tpl.html" />
@@ -1054,7 +1065,6 @@
     <Content Include="scripts\tinymce\plugins\visualblocks\plugin.min.js" />
     <Content Include="scripts\tinymce\plugins\visualchars\plugin.min.js" />
     <Content Include="scripts\tinymce\plugins\wordcount\plugin.min.js" />
-    <Content Include="sobre.html" />
     <Content Include="src\js\controllers\webjato-content-editor.js" />
     <Content Include="src\js\controllers\webjato-crop-crtl.js" />
     <Content Include="scripts\tinymce\langs\pt_BR.js" />
@@ -1193,8 +1203,6 @@
     <Content Include="src\libs\js\underscore.min.js" />
     <Content Include="src\libs\js\uri.js" />
     <Content Include="src\po\en_US.js" />
-    <Content Include="suporte.html" />
-    <Content Include="termos.html" />
     <Content Include="tmp\readme.txt" />
     <Content Include="tour.html" />
     <Content Include="visual\background.html" />
