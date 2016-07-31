@@ -278,6 +278,7 @@
     <Content Include="index_2015.html" />
     <Content Include="lang_en-us\about.html" />
     <Content Include="lang_en-us\contents.html" />
+    <Content Include="lang_en-us\retrieve-password.html" />
     <Content Include="lang_en-us\index.html" />
     <Content Include="lang_en-us\login.html" />
     <Content Include="lang_en-us\privacy_policy.html" />
@@ -1005,6 +1006,7 @@
     <Content Include="scripts\jquery.blueberry.js" />
     <Content Include="scripts\jquery.dropdown.js" />
     <Content Include="scripts\jquery.tipsy.js" />
+    <Content Include="scripts\login.js" />
     <Content Include="scripts\suporte.js" />
     <Content Include="scripts\tinymce\plugins\advlist\plugin.min.js" />
     <Content Include="scripts\tinymce\plugins\anchor\plugin.min.js" />
