@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" id="ng-app" ng-app="NgApp">
+<html xmlns="http://www.w3.org/1999/xhtml" id="ng-app" ng-app="SessionApp">
 <head>
     <title translate>Webjato - Sessão expirada</title>
     <style type="text/css" media="screen">
@@ -68,18 +68,26 @@
         }
         -->
     </style>
-    <!-- Google Analytics -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-  ga('create', 'UA-33853723-1', 'auto');
-  ga('send', 'pageview');
-</script>
+        ga('create', 'UA-33853723-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <script src="scripts/wj-libs.js"></script>
+    <script>
+        angular.module('SessionApp', ['gettext', 'ngCookies']).controller('SessionCtrl', function ($scope, $cookies, gettextCatalog) {
+            gettextCatalog.currentLanguage = $cookies.language;
+            $scope.url = $cookies.language == 'en_US' ? '/lang_en-us/index.html' : '/lang_pt-br/index.html';
+        });
+    </script>
 </head>
-<body ng-controller="GenCrtl">
+<body ng-controller="SessionCtrl">
     <div id="page">
         <div id="texto-a">
             <img src="images/icon_atencion.gif" alt="" title="" /><span translate>AVISO</span>
@@ -89,7 +97,7 @@
         </div>
         <div id="texto-b">
             <p translate>Sua sessão expirou :(</p>
-            <span translate>Vá para a <a href="index.html" target="_top">página de login</a> e entre novamente.</span>
+            <span translate>Vá para a</span> <a ng-href="{{url}}" target="_top" translate>página de login</a> <span translate>e entre novamente.</span>
         </div>
     </div>
 </body>

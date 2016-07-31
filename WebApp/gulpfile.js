@@ -17,7 +17,7 @@ gulp.task('Watches', function () {
 
 gulp.task('BrowserSync', function () {
     browserSync({
-        files: ['*.html', 'config/*.html', 'content/*.html', 'css/*.css', 'help/*.html', 'preview/*.html', 'publish/**/*.*', 'scripts/*.js', 'visual/*.html'],
+        files: ['*.html', 'config/*.html', 'content/*.html', 'css/*.css', 'help/*.html', 'preview/*.html', 'publish/**/*.*', 'scripts/*.js', 'visual/*.html', 'lang_pt-br/*.html', 'lang_en-us/*.html'],
         proxy: "http://local-tool-v2.webjato.com.br",
         reloadDelay: 2000
     });

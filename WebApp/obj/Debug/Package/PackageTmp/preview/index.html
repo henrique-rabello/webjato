@@ -1,0 +1,156 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" id="ng-app" ng-app="PreviewApp">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="../css/animate.css" />
+    <link type="text/css" rel="stylesheet" href="../css/menu.css" />
+    <link type="text/css" rel="stylesheet" href="../css/wj.css" />
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="../scripts/wj-libs.js"></script>
+    <script type="text/javascript" src="../scripts/wj.js"></script>
+    <script type="text/javascript">
+        var dependencies = [
+            "gettext",
+            "WebjatoConfig",
+            "WebjatoConstants",
+            "WebjatoDirectives",
+            "WebjatoModels",
+            "WebjatoFactories",
+            "WebjatoServices"
+        ];
+        angular.module("PreviewApp", dependencies)
+            .controller("PreviewCrtl", function ($scope, $http, $location, gettextCatalog, ContentType, ContentTypeList, MultiSelectionMode, SiteStyle, WebjatoConfig, ServerSync, ServerSyncCommands, HandleServerException, zIndexChange, HelpIndexer) {
+                $scope.Config = WebjatoConfig;
+                $scope.SiteStyle = SiteStyle;
+                $scope.SiteContents = [];
+                $scope.Pages = [];
+                $scope.SelectedPage = null;
+                $scope.PageContents = {
+                    Raw: [],
+                    ByType: {
+                        Box: [], ContactForm: [], Maps: [], Image: [], LinkedImage: [], Line: [], Social: [], Text: [], Video: []
+                    }
+                };
+
+                $scope.FetchPageContent = function () {
+                    $scope.PageContents.Raw = _.chain($scope.SiteContents).where({ PageId: $scope.SelectedPage.Id }).sortBy(function (content) { return content.Position.ZIndex; }).value();
+                    _.each(ContentTypeList, function (contentType) {
+                        $scope.PageContents.ByType[contentType.Crtl] = _.where($scope.PageContents.Raw, { Type: contentType.Enum });
+                    });
+                };
+
+                var qs = "";
+                if ($location.search().siteId) {
+                    qs = "?siteId=" + $location.search().siteId;
+                }
+
+                var FetchPages = function () {
+                    $http({ method: "GET", url: "../api/page/get" + qs })
+                        .success(function (data) {
+                            $scope.Pages = _.chain(data)
+                                                .filter(function (key) { return key.Title != "" && key.Title != null; })
+                                                .sortBy(function (key) { return key.Position; }).value();
+                            if ($location.search().p) {
+                                $scope.SelectedPage = _.findWhere($scope.Pages, { Id: $location.search().p });
+                            }
+                            else {
+                                $scope.SelectedPage = $scope.Pages[0];
+                            }
+                            $scope.FetchPageContent();
+                        }).error(HandleServerException);
+                };
+
+                $http({ method: "GET", url: "../api/content/get" + qs })
+                    .success(function (data) {
+                        $scope.SiteContents = data;
+                        _.each($scope.SiteContents, function (content) {
+                            content.IsNewContent = false;
+                            content.Editing = false;
+                            content.Position.ozIndex = null;
+                        });
+                        FetchPages();
+                    }).error(HandleServerException);
+
+                var ChangePage = function (targetPageId) {
+                    $scope.SelectedPage = _.findWhere($scope.Pages, { Id: targetPageId });
+                    $scope.FetchPageContent();
+                };
+
+                $scope.$on("ChangePage", function (e, targetPageId) {
+                    ChangePage(targetPageId);
+                });
+
+                $scope.$on("$locationChangeSuccess", function () {
+                    if ($scope.Pages.length == 0) {
+                        return;
+                    }
+                    ChangePage($location.search().p);
+                });
+            });
+    </script>
+</head>
+<body ng-controller="PreviewCrtl">
+    <div class="preview" ng-style="SiteStyle.Background.Style" style="height: 100%;">
+        <div class="cont-page" ng-style="SiteStyle.Frame.StyleContPage">
+            <div class="cont" ng-style="SiteStyle.Site.Style">
+                <div class="estrutura" ng-style="SiteStyle.Frame.StyleEstrutura">
+                    <div ng-show="SiteStyle.Site.Data.Menu.VAlign == 1">
+                        <ul class="menu custom" ng-class="SiteStyle.Site.Data.Menu.Id">
+                            <li ng-repeat="Page in Pages">
+                                <a href="" ng-click="$parent.SelectedPage = Page; $parent.FetchPageContent();" ng-class="{'active': Page == $parent.SelectedPage}">{{Page.Title}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header" ng-style="SiteStyle.Header.Style">
+                        <div class="header-text" ng-style="SiteStyle.Logo.StyleText">
+                            <div ng-show="SiteStyle.Logo.Data.LogoType == 1" ng-bind-html="SiteStyle.Logo.Data.TrustedText()"></div>
+                        </div>
+                        <div class="header-image" ng-style="SiteStyle.Logo.StyleImageContainer">
+                            <img ng-src="{{SiteStyle.Logo.ImagePath}}" ng-style="SiteStyle.Logo.StyleImage" />
+                        </div>
+                    </div>
+                    <div ng-show="SiteStyle.Site.Data.Menu.VAlign == 3">
+                        <ul class="menu custom" ng-class="SiteStyle.Site.Data.Menu.Id">
+                            <li ng-repeat="Page in Pages">
+                                <a href="" ng-click="$parent.SelectedPage = Page; $parent.FetchPageContent();" ng-class="{'active': Page == $parent.SelectedPage}">{{Page.Title}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="base" ng-style="{'height': SelectedPage.Height + 'px', 'background-color': SiteStyle.Frame.Data.IsTransparent? 'transparent' : SiteStyle.Frame.Data.Color }">&nbsp;</div>
+                </div>
+                <div>
+                    <!-- ALL PAGES -->
+                </div>
+            </div>
+            <div>
+                <!-- SINGLE PAGE -->
+                <wj-box ng-repeat="Item in PageContents.ByType.Box" data="Item"></wj-box>
+                <wj-contact-form ng-repeat="Item in PageContents.ByType.ContactForm" data="Item"></wj-contact-form>
+                <wj-img ng-repeat="Item in PageContents.ByType.RegularImage" data="Item" folder="{{Config.AssetsPath}}"></wj-img>
+                <wj-img-lnk ng-repeat="Item in PageContents.ByType.LinkedImage" data="Item" folder="{{Config.AssetsPath}}"></wj-img-lnk>
+                <wj-img-exp ng-repeat="Item in PageContents.ByType.ExpandableImage" data="Item" folder="{{Config.AssetsPath}}" is-preview="1"></wj-img-exp>
+                <wj-map ng-repeat="Item in PageContents.ByType.Maps" data="Item"></wj-map>
+                <wj-line ng-repeat="Item in PageContents.ByType.Line" data="Item"></wj-line>
+                <wj-social ng-repeat="Item in PageContents.ByType.Social" data="Item"></wj-social>
+                <wj-text ng-repeat="Item in PageContents.ByType.Text" data="Item"></wj-text>
+                <wj-video ng-repeat="Item in PageContents.ByType.Video" data="Item"></wj-video>
+            </div>
+        </div>
+        <div class="footer" ng-style="SiteStyle.Site.Style">
+            <div class="content" ng-style="SiteStyle.Footer.Style" ng-bind-html="SiteStyle.Footer.Data.TrustedText()"></div>
+        </div>
+    </div>
+</body>
+</html>

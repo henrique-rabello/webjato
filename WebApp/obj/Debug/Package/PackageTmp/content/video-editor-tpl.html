@@ -1,0 +1,22 @@
+﻿<div class="content-editor video-editor animated">
+    <div class="container-tool bottom-titulo top-33">
+        <i class="negrito">Url</i>
+        <a href="#" ng-if="data.VideoType == 1">
+            <img class="icon-ajuda" src="../images/icon_ajuda1.png" data-dropdown="#jq-dropdown-3-youtube" alt="" title="" />
+        </a>
+        <a href="#" ng-if="data.VideoType == 2">
+            <img class="icon-ajuda" src="../images/icon_ajuda1.png" data-dropdown="#jq-dropdown-3-vimeo" alt="" title="" />
+        </a>
+    </div>
+    <div class="container-tool bottom-20">
+        <input type="text" class="form-text1" placeholder="{{'Escreva aqui...'|translate}}" ng-model="data.RawURL" ng-change="OnRawURLChange();" />
+    </div>
+    <div class="container-tool bottom-titulo">
+        <i class="negrito" translate>Tamanho</i>
+    </div>
+    <div class="container-tool bottom-22">
+        <select ng-model="data.SelectedSize" ng-options="Size.Label for Size in VideoSizeOptions" ng-change="OnVideoSizeChange();"></select>
+    </div>
+    <wj-zindex state="zindex"></wj-zindex>
+    <wj-ok-cancel data="data" event-ok="OnContentCommit" event-cancel="OnContentRollback"></wj-ok-cancel>
+</div>

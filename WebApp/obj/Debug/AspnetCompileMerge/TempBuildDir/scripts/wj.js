@@ -130,6 +130,630 @@ var ScalableImage = (function (_super) {
     return ScalableImage;
 }(SimpleImage));
 
+angular.module("WebjatoConfig").config(function ($provide) {
+    $provide.factory("ColorPickerConfig",
+        function () {
+            var config = {
+                allowEmpty: true,
+                showPaletteOnly: true,
+                showSelectionPalette: false,
+                preferredFormat: "hex",
+                palette: [
+                    ["#FFFFFF", "#C00000", "#FF0000", "#490000", "#790000", "#C00000", "#EE1D24", "#F16C4D", "#F7977A", "#FBD0C3", "#FDE8E1"],
+                    ["#000000", "#CC5200", "#FF6600", "#461C00", "#7B3000", "#A1410D", "#F16522", "#F68E54", "#FBAD82", "#FDDAC7", "#FEEDE3"],
+                    ["#333333", "#FFD800", "#FFFF00", "#4F2F00", "#7C4900", "#A36209", "#F7941D", "#FFBF05", "#FFD45C", "#FFECB5", "#FFF6DA"],
+                    ["#666666", "#92D14F", "#99FF33", "#5B5600", "#827A00", "#ABA000", "#FFF100", "#FFF467", "#FFF799", "#FFFBD1", "#FFFDE8"],
+                    ["#999999", "#00AF50", "#00FF00", "#253D0E", "#3E6617", "#588528", "#8FC63D", "#93D14F", "#ADDC7A", "#DAEFC3", "#EDF7E1"],
+                    ["#CCCCCC", "#03B1F0", "#00FFFF", "#033813", "#045F20", "#197B30", "#35b449", "#7DC473", "#A4D49D", "#D6ECD3", "#EBF6E9"],
+                    ["#DDDDDD", "#0071C1", "#0000FF", "#003E19", "#005824", "#007236", "#00A650", "#39B778", "#81CA9D", "#C6E7D3", "#E3F3E9"],
+                    ["#EEEEEE", "#7030A0", "#FF00FF", "#003531", "#005951", "#00736A", "#00A99E", "#16BCB4", "#7BCDC9", "#C3E8E7", "#E1F4F3"],
+                    ["#41484D", "#42260D", "#362F2C", "#00364B", "#005B7E", "#0076A4", "#00AEEF", "#00BFF3", "#6CCFF7", "#BDE9FB", "#DEF4FD"],
+                    ["#5C676E", "#613813", "#423A34", "#002D53", "#003562", "#004A80", "#0072BC", "#438CCB", "#7CA6D8", "#C7D9EE", "#E3ECF7"],
+                    ["#5F6D84", "#744B24", "#534841", "#001A45", "#002056", "#003370", "#0054A5", "#5573B7", "#8293CA", "#CAD0E8", "#E5E8F4"],
+                    ["#758792", "#8C623A", "#726357", "#0C004B", "#1D1363", "#2A2C70", "#393B97", "#5E5CA7", "#8881BE", "#CCC9E3", "#E6E4F1"],
+                    ["#90ABBD", "#A77C50", "#9A8575", "#30004A", "#450E61", "#5A2680", "#7030A0", "#855FA8", "#A286BD", "#D5C8E1", "#EAE4F0"],
+                    ["#A6BCCA", "#C69C6D", "#C7B198", "#390037", "#4B0048", "#62055F", "#91278F", "#A763A9", "#BC8CBF", "#E1CBE2", "#F0E5F1"],
+                    ["#C4D2DC", "#E2CDB6", "#D9CAB9", "#490029", "#7A0045", "#9D005C", "#ED008C", "#EF6EA8", "#f39bc1", "#FAD8E7", "#FDECF3"],
+                    ["#E2E9EE", "#F1E6DB", "#ECE5DC", "#58001B", "#7A0026", "#9D0039", "#EE105A", "#F16D7E", "#F5999D", "#FAD1D3", "#FDE8E9"]]
+            };
+            return config;
+        }
+    );
+});
+angular.module("WebjatoConfig").factory("WebjatoConfig", function ($http, $location) {
+    var qs = "";
+    if ($location.search().siteId) {
+        qs = "?siteId=" + $location.search().siteId;
+    }
+    var Config = {
+        AssetsPath: "",
+        AssetsLocalPath: "/tmp/"
+    };
+    $http({
+        method: "GET",
+        url: "../api/site/config" + qs
+    })
+    .success(
+        function (data) {
+            Config.AssetsPath = data.AssetsPath;
+        });
+    return Config;
+});
+angular.module("WebjatoConstants").constant("ServerSyncCommands", {
+    ALL: "ALL",
+    DELETE: "DELETE",
+    DUPLICATE: "DUPLICATE",
+    POSITION: "POSITION",
+    ZINDEX: "Z-INDEX"
+});
+angular.module("WebjatoConstants").constant("SocialIconSize", {
+    SMALL: 16,
+    REGULAR: 24,
+    LARGE: 32
+});
+angular.module("WebjatoConstants").constant("zIndexChange", {
+    ONE_UP: 1,
+    ONE_DOWN: 2,
+    BRING_TO_FRONT: 3,
+    SEND_TO_BACK: 4
+});
+var Sair = null;
+var dependencies = [
+    "angularFileUpload",
+    "AngularJCrop",
+    "angularSpectrumColorpicker",
+    "gettext",
+    "ngCookies",
+    "ngAnimate",
+    "ui.spinner",
+    "ui.tinymce",
+    "WebjatoConfig",
+    "WebjatoConstants",
+    "WebjatoDirectives",
+    "WebjatoModels",
+    "WebjatoFactories",
+    "WebjatoServices"
+];
+angular.module("ContentEditApp", dependencies)
+    .controller("ContentEditCrtl", function ($scope, $cookies, $http, $q, $timeout, $document, gettextCatalog, ContentType, ContentTypeList, MultiSelectionMode, SiteStyle, WebjatoConfig, ServerSync, ServerSyncCommands, HandleServerException, zIndexChange, HelpIndexer, UnitContentModel, ModalService, ContentUtils) {
+        var commitZindex = false;
+        var multiSelectionPanel = [];
+		var currentHelpId = "content/start";
+        multiSelectionPanel[MultiSelectionMode.MOVE] = "MOVE-TOGETHER";
+        multiSelectionPanel[MultiSelectionMode.DUPLICATE] = "DUPLICATE";
+        multiSelectionPanel[MultiSelectionMode.MOVE_AFTER_DUPLICATE] = "MOVE_AFTER_DUPLICATE";
+        //PROPS
+        $scope.MultiSelection = MultiSelectionMode.OFF;
+        $scope.MultiSelectionMode = MultiSelectionMode;
+        $scope.ActiveContent = null;
+        $scope.CurrentPanel = "ADD-UNIT";
+        $scope.HighlightedContent = null;
+        $scope.ServerSync = ServerSync;
+        $scope.Config = WebjatoConfig;
+        $scope.language = $cookies.language;
+        $scope.CropDefer = null;
+        $scope.CropInfo = null;
+        $scope.CropUrl = null;
+        $scope.Pages = [];
+        $scope.SiteContents = [];
+        $scope.SiteStyle = SiteStyle;
+        $scope.SelectedPage = null;
+        $scope.ContentTypeList = ContentTypeList;
+        $scope.PageContents = {
+            Raw: [],
+            ByType: {
+                Box: [], ContactForm: [], Maps: [], Image: [], LinkedImage: [], Line: [], Social: [], Text: [], Video: []
+            }
+        };
+        $scope.ZIndexState = {
+            BRING_TO_FRONT: true,
+            SEND_TO_BACK: true,
+            ONE_UP: true,
+            ONE_DOWN: true
+        };
+        $scope.DuplicateBg = {
+            zindex: 0,
+            show: false
+        };
+        var AddNewContentItemToScope = function (data) {
+            data.IsNewContent = true;
+            $scope.SiteContents.push(data);
+            $scope.FetchPageContent();
+            commitZindex = false;
+        };
+        var DeleteContent = function (data) {
+            ServerSync.SyncItem(data, ServerSyncCommands.DELETE).then(function () {
+                $scope.SiteContents = _.without($scope.SiteContents, data);
+                $scope.FetchPageContent();
+                $scope.ClearEditPanel();
+                var zindex = [];
+                _.chain($scope.PageContents.Raw)
+                    .filter(function (content) {
+                        return content.Position.ZIndex > data.Position.ZIndex;
+                    })
+                    .forEach(function (content) {
+                        content.Position.ZIndex -= 1;
+                        var obj = _.pick(content, "Id", "Type");
+                        obj.ZIndex = content.Position.ZIndex;
+                        zindex.push(obj);
+                    });
+                if (zindex.length > 0) {
+                    ServerSync.SyncItem(zindex, ServerSyncCommands.ZINDEX);
+                }
+            }, HandleServerException);
+        };
+        var GetCurrentPageMaxZIndex = function () {
+            if ($scope.PageContents.Raw.length == 0) {
+                return 0;
+            }
+            else {
+                return _.chain($scope.PageContents.Raw)
+                            .pluck("Position")
+                            .max(function (position) { return position.ZIndex; })
+                            .value().ZIndex;
+            }
+        };
+        var MoveTogetherCommitOrCancel = function () {
+            $scope.MultiSelection = MultiSelectionMode.OFF;
+            $scope.ClearEditPanel();
+            $scope.DuplicateBg.show = false;
+            _.each($scope.PageContents.Raw, function (content) {
+                content.Selected = false;
+                content.Editing = false;
+                content.IsNewContent = false;
+            });
+            CalculateRightMostPoint();
+        };
+        //SCOPE METHODS
+        $scope.EditContent = function (content) {
+            _.each($scope.SiteContents, function (item) {
+                item.Editing = false;
+                item.Position.ozIndex = null;
+            });
+            content.Editing = true;
+            $scope.ActiveContent = content;
+            $scope.UpdateZIndexOptions();
+            $scope.CurrentPanel = _.findWhere(ContentTypeList, { Enum: content.Type }).Crtl.toUpperCase();
+            commitZindex = false;
+            $scope.$emit("HelpAutoDisplay", HelpIndexer.GetIdByContentType(content.Type));
+        };
+        $scope.FetchPageContent = function () {
+            $scope.PageContents.Raw = _.chain($scope.SiteContents).where({ PageId: $scope.SelectedPage.Id }).sortBy(function (content) { return content.Position.ZIndex; }).value();
+            _.each(ContentTypeList, function (contentType) {
+                $scope.PageContents.ByType[contentType.Crtl] = _.where($scope.PageContents.Raw, { Type: contentType.Enum });
+            });
+        };
+        $scope.ClearEditPanel = function () {
+            $scope.CurrentPanel = "ADD-UNIT";
+            $scope.ActiveContent = null;
+            $scope.HighlightedContent = null;
+            _.each($scope.SiteContents, function (item) { item.Editing = false; });
+        };
+        $scope.$on("ZIndexChangeRequest", function (sender, change) {
+            var DoIt = function (list, filter, action) {
+                _.chain(list).filter(filter).forEach(action);
+            };
+            var oneUp = function (content) {
+                if (!content.Position.ozIndex) {
+                    content.Position.ozIndex = content.Position.ZIndex;
+                }
+                content.Position.ZIndex += 1;
+            };
+            var oneDown = function (content) {
+                if (!content.Position.ozIndex) {
+                    content.Position.ozIndex = content.Position.ZIndex;
+                }
+                content.Position.ZIndex -= 1;
+            };
+            switch (change) {
+                case zIndexChange.ONE_UP:
+                    DoIt($scope.PageContents.Raw, function (content) { return content.Position.ZIndex === $scope.ActiveContent.Position.ZIndex + 1; }, oneDown);
+                    $scope.ActiveContent.Position.ZIndex += 1;
+                    break;
+                case zIndexChange.ONE_DOWN:
+                    DoIt($scope.PageContents.Raw, function (content) { return content.Position.ZIndex === $scope.ActiveContent.Position.ZIndex - 1; }, oneUp);
+                    $scope.ActiveContent.Position.ZIndex -= 1;
+                    break;
+                case zIndexChange.BRING_TO_FRONT:
+                    var maxZIndex = GetCurrentPageMaxZIndex();
+                    DoIt($scope.PageContents.Raw, function (content) { return content.Position.ZIndex > $scope.ActiveContent.Position.ZIndex; }, oneDown);
+                    $scope.ActiveContent.Position.ZIndex = maxZIndex;
+                    break;
+                case zIndexChange.SEND_TO_BACK:
+                    DoIt($scope.PageContents.Raw, function (content) { return content.Position.ZIndex < $scope.ActiveContent.Position.ZIndex; }, oneUp);
+                    $scope.ActiveContent.Position.ZIndex = 1;
+                    break;
+            }
+            $scope.UpdateZIndexOptions();
+            commitZindex = true;
+            $scope.$broadcast("OnZIndexChange", $scope.ActiveContent);
+        });
+        $scope.UpdateZIndexOptions = function () {
+            var maxZIndex = _.chain($scope.PageContents.Raw).pluck("Position").max(function (position) { return position.ZIndex; }).value().ZIndex;
+            var zindex = $scope.ActiveContent.Position.ZIndex;
+            $scope.ZIndexState.BRING_TO_FRONT = (zindex < maxZIndex);
+            $scope.ZIndexState.SEND_TO_BACK = (zindex > 1);
+            $scope.ZIndexState.ONE_UP = (zindex < maxZIndex);
+            $scope.ZIndexState.ONE_DOWN = (zindex > 1);
+        };
+        $scope.DismissAddContentPreview = function () {
+            $scope.$broadcast("DismissAddContentPreview");
+        };
+        $scope.ShowHelp = function () {
+            if ($scope.ActiveContent) {
+                $scope.$emit("HelpDisplay", HelpIndexer.GetIdByContentType($scope.ActiveContent.Type));
+            }
+            else {
+                $scope.$emit("HelpDisplay", currentHelpId);
+            }
+        };
+        $scope.EnterMultiSelectionMode = function (multiSelectionMode) {
+            if ($scope.PageContents.Raw.length == 0) {
+                $(".modal-no-content").lightbox_me();
+            }
+            else {
+                $scope.MultiSelection = multiSelectionMode;
+                $scope.CurrentPanel = multiSelectionPanel[multiSelectionMode];
+                $scope.$broadcast("OnEnterMultiSelectionMode", multiSelectionMode);
+                currentHelpId = multiSelectionMode == MultiSelectionMode.MOVE? "content/move" : "content/duplicate";
+                $scope.$emit("HelpAutoDisplay", currentHelpId);
+            }
+            UnitContentModel.ContentTypeToPreview = null;
+        };
+        //EVENT LISTENERS
+        $scope.OnPageHeightChange = _.debounce(function () {
+            $http({ method: "POST", url: "../api/page/height", data: $scope.SelectedPage });
+        }, 500);
+        $scope.$on("OnCropRequest", function (sender, temporaryImage, deferred, options) {
+            var myDefer = $q.defer();
+            myDefer.promise.then($scope.OnCropFinish, $scope.OnCropCancel);
+            $scope.CropDefer = deferred;
+            $scope.CropInfo = {
+                temporaryImage: temporaryImage,
+                deferred: myDefer,
+                options: options
+            };
+            $scope.CropUrl = "../crop.html";
+            $scope.$apply();
+        });
+        $scope.$on("Edit", function (sender, data) {
+            $scope.EditContent(data);
+        });
+        $scope.$on("DeleteRequest", function (sender, data) {
+            DeleteContent(data);
+        });
+        $scope.$on("DuplicateRequest", function (sender, source, targetPageId) {
+            ServerSync.SyncItem(source, ServerSyncCommands.DUPLICATE, { zIndex: GetCurrentPageMaxZIndex() + 1, targetPageId: targetPageId }).then(function (data) {
+            	data.Duplicated = true;
+            	data.DuplicatedMove = true;
+                AddNewContentItemToScope(data);
+                $scope.EditContent(data);
+                $scope.HighlightedContent = data;
+                $scope.DismissAddContentPreview();
+            });
+        });
+        $scope.$on("NewContentRequest", function (sender, type, query) {
+            var crtl = _.findWhere(ContentTypeList, { Enum: type }).Crtl;
+            $http({
+                method: "POST",
+                url: "../api/" + crtl + "/new" + query,
+                params: {
+                    zindex: GetCurrentPageMaxZIndex() + 1
+                },
+                data: "\"" + $scope.SelectedPage.Id + "\""
+            }).success(function (data) {
+                AddNewContentItemToScope(data);
+                $scope.EditContent(data);
+                $scope.HighlightedContent = data;
+                $scope.DismissAddContentPreview();
+                $(".ui-layout-center").animate({ scrollTop: 0 }, 500);
+            }).error(HandleServerException);
+        });
+        $scope.$on("OnContentCommit", function (sender, data) {
+            $scope.ActiveContent = null;
+            $scope.CurrentPanel = "ADD-UNIT";
+            $scope.HighlightedContent = null;
+            if (commitZindex) {
+                var zindex = [];
+                _.forEach($scope.PageContents.Raw, function (content) {
+                    var obj = _.pick(content, "Id", "Type");
+                    obj.ZIndex = content.Position.ZIndex;
+                    zindex.push(obj);
+                });
+                ServerSync.SyncItem(zindex, ServerSyncCommands.ZINDEX);
+            }
+            ServerSync.SyncItem(data, ServerSyncCommands.ALL).then(function (updatedData) {
+                angular.copy(updatedData, data);
+                data.Editing = false;
+                data.IsNewContent = false;
+                data.Selected = false;
+                data.Position.ozIndex = null;
+            });
+        });
+        $scope.$on("OnContentRollback", function (sender, data, backup) {
+            _.each($scope.SiteContents, function (item) {
+                if (item.Position.ozIndex) {
+                    item.Position.ZIndex = item.Position.ozIndex;
+                    item.Position.ozIndex = null;
+                }
+            });
+            if (data.IsNewContent) {
+                DeleteContent(data);
+            }
+            else {
+                backup.Editing = false;
+                backup.IsNewContent = false;
+                angular.copy(backup, data);
+            }
+            $scope.ActiveContent = null;
+            $scope.CurrentPanel = "ADD-UNIT";
+            $scope.HighlightedContent = null;
+        });
+        $scope.$on("OnContentClick", function (sender, data) {
+            if ($scope.ActiveContent) {
+                return;
+            }
+            if ($scope.MultiSelection != MultiSelectionMode.OFF) {
+                data.Selected = true;
+                data.Editing = false;
+                CalculateRightMostPoint();
+                return;
+            }
+            $scope.HighlightedContent = data;
+        });
+        $scope.$on("SelectAll", function () {
+            _.each($scope.PageContents.Raw, function (content) {
+                content.Selected = true;
+                content.Editing = false;
+            });
+            CalculateRightMostPoint();
+        });
+        $scope.$on("DeselectAll", function () {
+            _.each($scope.PageContents.Raw, function (content) {
+                content.Selected = false;
+                content.Editing = false;
+            });
+            CalculateRightMostPoint();
+        });
+        $scope.$on("OnMoveTogetherCommit", function () {
+        	currentHelpId = "content/start";
+            MoveTogetherCommitOrCancel();
+        });
+        $scope.$on("OnMoveTogetherRollback", function () {
+			currentHelpId = "content/start";
+            MoveTogetherCommitOrCancel();
+        });
+        $scope.$on("OnMassDuplicateRequest", function (sender, targetPages) {
+            currentHelpId = "content/start";
+            var itemsToDuplicate = _.where($scope.PageContents.Raw, { Selected: true });
+            if (itemsToDuplicate.length == 0) {
+                ModalService.Show("Você deve selecionar ao menos um conteúdo para continuar.");
+                return;
+        	}
+        	_.each($scope.PageContents.Raw, function (content) {    //Reset nos conteúdos originais
+        		content.Selected = false;
+        		content.Editing = false;
+        	});
+        	if (targetPages.length == 0 || itemsToDuplicate.length == 0) {
+        		MoveTogetherCommitOrCancel();
+        		return;
+        	}
+        	$scope.DuplicateBg.show = true;
+        	var DuplicateItemsOnPage = function (pageId, items) {
+        		$scope.SelectedPage = _.findWhere($scope.Pages, { Id: pageId });
+        		$scope.FetchPageContent();
+        		var zindexDuplicateBG = GetCurrentPageMaxZIndex() + 1;
+        		var totalItemsToDuplicate = items.length;
+        		var defer = $q.defer();
+        		$scope.DuplicateBg.zindex = zindexDuplicateBG;
+        		_.each(items, function (item, i) {
+        			ServerSync.SyncItem(item, ServerSyncCommands.DUPLICATE, { zIndex: zindexDuplicateBG + i + 1, targetPageId: pageId }).then(function (newContent) {
+        				AddNewContentItemToScope(newContent);
+        				newContent.Duplicated = true;
+        				newContent.DuplicatedMove = false;
+        				newContent.Selected = false;
+        				newContent.Editing = false;
+        				newContent.IsNewContent = false;
+        				totalItemsToDuplicate--;
+        				if (totalItemsToDuplicate == 0) {
+        					defer.resolve();
+        				}
+        			});
+        		});
+        		return defer.promise;
+        	};
+        	var currentPage = -1;
+        	var AfterContentIsDuplicatedOnPage = function () {
+        		currentPage++;
+        		if (currentPage < targetPages.length) {
+        			DuplicateItemsOnPage(targetPages[currentPage], itemsToDuplicate).then(AfterContentIsDuplicatedOnPage);
+        			return;
+        		}
+        		$timeout(function () {
+        			MoveTogetherCommitOrCancel();
+        		}, 500);
+        	};
+        	AfterContentIsDuplicatedOnPage();
+        });
+        $scope.$on("OnMassDuplicateRollback", function (sender) {
+            _.chain($scope.PageContents.Raw).where({ IsNewContent: true }).each(function (content) {
+                ServerSync.SyncItem(content, ServerSyncCommands.DELETE);
+                $scope.SiteContents = _.without($scope.SiteContents, content);
+            });
+            $scope.FetchPageContent();
+            MoveTogetherCommitOrCancel();
+        });
+        $scope.$on("OnTemplateRequest", function (sender, templateId) {
+        	$http({
+        		method: "POST",
+        		url: "../api/template/apply",
+        		params: {
+        			templateId: templateId,
+        			targetPageId: $scope.SelectedPage.Id,
+        			zindex: GetCurrentPageMaxZIndex() + 1
+        		}
+        	}).success(function (items) {
+        		_.each(items, function (item) {
+        			AddNewContentItemToScope(item);
+        			item.Duplicated = true;
+        			item.DuplicatedMove = false;
+        			item.Selected = false;
+        			item.Editing = false;
+        			item.IsNewContent = false;
+        		});
+        		$http({ method: "GET", url: "../api/page/single", params: { pageId: $scope.SelectedPage.Id } })
+                    .success(function (page) {
+                        if (page.Height > $scope.SelectedPage.Height) {
+                            $scope.SelectedPage.Height = page.Height;
+                        }
+                    });
+        	});
+        });
+        $scope.$on("OnContentDeselected", function () {
+            CalculateRightMostPoint();
+        });
+        $scope.$on("OnMoveTogetherStop", function() {
+            CalculateRightMostPoint();
+        });
+        var CalculateRightMostPoint = function () {
+            if (($scope.MultiSelection != MultiSelectionMode.MOVE) || !_.findWhere($scope.PageContents.Raw, { "Selected": true })) {
+                $scope.$broadcast("OnRightMostPointChange", null);
+                return;
+            }
+            var leftMostItem = _.chain($scope.PageContents.Raw)
+                                .where({ "Selected": true })
+                                .min(function (item) {
+                                    return item.Position.X;
+                                })
+                                .value();
+            var rightMostItem = _.chain($scope.PageContents.Raw)
+                                 .where({ "Selected": true })
+                                 .max(function (item, i) {
+                                     return item.Position.X + ContentUtils.GetSizeForHighlightedContent(item).Width;
+                                 })
+                                 .value();
+            $scope.$broadcast("OnRightMostPointChange", leftMostItem.Position.X, (rightMostItem.Position.X + ContentUtils.GetSizeForHighlightedContent(rightMostItem).Width));
+        };
+        angular.element($document).on("click", function (e) {
+            if (($scope.HighlightedContent != null) && ($scope.ActiveContent == null)) {
+                if (angular.element(e.target).parent("#" + $scope.HighlightedContent.Id).length == 0) {
+                    $scope.HighlightedContent = null;
+                    $scope.$digest();
+                }
+            }
+        });
+        $scope.OnCropFinish = function (data) {
+            $scope.CropUrl = null;
+            $scope.CropDefer.resolve(data);
+        };
+        $scope.OnCropCancel = function () {
+            $scope.CropUrl = null;
+            $scope.CropDefer.reject();
+        };
+        $scope.OnPageChange = function (pageTitle, trigger) {
+            if ($scope.ActiveContent) {
+                return;
+            }
+            $scope.SelectedPage = _.findWhere($scope.Pages, { Title: pageTitle });
+            $scope.FetchPageContent();
+            gaEvent("UX001_PAGE_CHANGE", trigger);
+        };
+        //PRIVATE METHODS
+        var FetchPages = function () {
+            $http({ method: "GET", url: "../api/page/get" })
+                .success(function (data) {
+                    $scope.Pages = _.chain(data)
+                                        .filter(function (key) { return key.Title != "" && key.Title != null; })
+                                        .sortBy(function (key) { return key.Position; }).value();
+                    //O mapeamento abaixo é pro componente wj-select-box-it
+                    _.each($scope.Pages, function (key) {
+                        key.value = key.Title;
+                        key.text = key.Title;
+                    });
+                    $scope.SelectedPage = $scope.Pages[0];
+                    $scope.FetchPageContent();
+                    $scope.$emit("HelpAutoDisplay", "content/start");
+                }).error(HandleServerException);
+        };
+        //CODE STARTS HERE
+        $http({ method: "GET", url: "../api/content/get" })
+            .success(function (data) {
+                $scope.SiteContents = data;
+                _.each($scope.SiteContents, function (content) {
+                    content.IsNewContent = false;
+                    content.Editing = false;
+                    content.Position.ozIndex = null;
+                });
+                FetchPages();
+            }).error(HandleServerException);
+        gettextCatalog.currentLanguage = $cookies.language;
+        $scope.Logout = function () {
+        	$http({ method: "POST", url: "../api/user/logout" })
+				.success(function (data, status, headers, config) {
+				    if (gettextCatalog.currentLanguage == "en_US") {
+				        top.location.href = "/lang_en-us/index.html";
+				    }
+				    else {
+				        top.location.href = "/lang_pt-br/index.html";
+				    }
+				}).error(HandleServerException);
+        };
+        $http({ method: "GET", url: "../api/user/get" })
+			.success(function (data) {
+				$scope.User = data;
+			}).error(HandleServerException);
+        Sair = $scope.Logout;
+    });
+var CropImageCrtl = function ($scope, $http, $cookies, gettextCatalog, WebjatoConfig, HandleServerException) {
+    $scope.working = false;
+    $scope.temporaryImage = null;
+    $scope.deferred = null;
+    $scope.Config = WebjatoConfig;
+    $scope.CropArea = { x: 0, y: 0, w: 0, h: 0 };
+    $scope.CropOptions = null;
+    $scope.img = "";
+    $scope.OnSelect = function (coords) {
+        $scope.CropArea = {
+            x: ~~coords.x,
+            y: ~~coords.y,
+            w: ~~coords.w,
+            h: ~~coords.h
+        };
+    };
+    $scope.OnImageLoad = function () {
+        $scope.working = false;
+        $scope.$apply();
+    }
+    $scope.Crop = function () {
+        $scope.working = true;
+        $http({ method: "POST", url: "../api/tmpimg/crop", data: { id: $scope.temporaryImage.Id, x: $scope.CropArea.x, y: $scope.CropArea.y, w: $scope.CropArea.w, h: $scope.CropArea.h, keepOriginalImage: $scope.CropOptions.keepOriginalImage } })
+            .success(function (data) {
+                $scope.deferred.resolve(data);
+                $(".crop-tool").trigger("close");
+            }).error(HandleServerException);
+    };
+    $scope.KeepOriginal = function () {
+        $scope.deferred.resolve($scope.temporaryImage);
+        $(".crop-tool").trigger("close");
+    };
+    $scope.Cancel = function () {
+        $http({ method: "POST", url: "../api/tmpimg/delete", data: $scope.temporaryImage });
+        $scope.deferred.reject();
+        $(".crop-tool").trigger("close");
+    };
+    $scope.temporaryImage = $scope.$parent.CropInfo.temporaryImage;
+    $scope.deferred = $scope.$parent.CropInfo.deferred;
+    $scope.CropOptions = $scope.$parent.CropInfo.options;
+    $scope.img = $scope.Config.AssetsPath + $scope.temporaryImage.Key;
+    $scope.working = true;
+    $(".crop-tool").lightbox_me({
+        centered: true,
+        closeClick: false,
+        closeEsc: false,
+        destroyOnClose: true
+    });
+    gettextCatalog.currentLanguage = $cookies.language;
+};
 var Page = (function () {
     function Page() {
     }
@@ -827,12 +1451,6 @@ angular.module("WebjatoFactories")
         };
     }
 );
-angular.module("WebjatoModels").factory("UnitContentModel", function () {
-	return {
-		ContentTypeToPreview: null,
-		ShowUnity: true
-    };
-});
 var Help = (function () {
     function Help() {
         this.items = [];
@@ -941,6 +1559,12 @@ var HelpItem = (function () {
     return HelpItem;
 }());
 
+angular.module("WebjatoModels").factory("UnitContentModel", function () {
+	return {
+		ContentTypeToPreview: null,
+		ShowUnity: true
+    };
+});
 angular.module("WebjatoServices").service("ContentTypeList", function () {
     return [{ Crtl: "Box", Enum: 1 },
             { Crtl: "ContactForm", Enum: 2 },
@@ -1447,625 +2071,6 @@ angular.module("WebjatoServices").service("URLParser", function () {
 });
 
 
-angular.module("WebjatoConfig").config(function ($provide) {
-    $provide.factory("ColorPickerConfig",
-        function () {
-            var config = {
-                allowEmpty: true,
-                showPaletteOnly: true,
-                showSelectionPalette: false,
-                preferredFormat: "hex",
-                palette: [
-                    ["#FFFFFF", "#C00000", "#FF0000", "#490000", "#790000", "#C00000", "#EE1D24", "#F16C4D", "#F7977A", "#FBD0C3", "#FDE8E1"],
-                    ["#000000", "#CC5200", "#FF6600", "#461C00", "#7B3000", "#A1410D", "#F16522", "#F68E54", "#FBAD82", "#FDDAC7", "#FEEDE3"],
-                    ["#333333", "#FFD800", "#FFFF00", "#4F2F00", "#7C4900", "#A36209", "#F7941D", "#FFBF05", "#FFD45C", "#FFECB5", "#FFF6DA"],
-                    ["#666666", "#92D14F", "#99FF33", "#5B5600", "#827A00", "#ABA000", "#FFF100", "#FFF467", "#FFF799", "#FFFBD1", "#FFFDE8"],
-                    ["#999999", "#00AF50", "#00FF00", "#253D0E", "#3E6617", "#588528", "#8FC63D", "#93D14F", "#ADDC7A", "#DAEFC3", "#EDF7E1"],
-                    ["#CCCCCC", "#03B1F0", "#00FFFF", "#033813", "#045F20", "#197B30", "#35b449", "#7DC473", "#A4D49D", "#D6ECD3", "#EBF6E9"],
-                    ["#DDDDDD", "#0071C1", "#0000FF", "#003E19", "#005824", "#007236", "#00A650", "#39B778", "#81CA9D", "#C6E7D3", "#E3F3E9"],
-                    ["#EEEEEE", "#7030A0", "#FF00FF", "#003531", "#005951", "#00736A", "#00A99E", "#16BCB4", "#7BCDC9", "#C3E8E7", "#E1F4F3"],
-                    ["#41484D", "#42260D", "#362F2C", "#00364B", "#005B7E", "#0076A4", "#00AEEF", "#00BFF3", "#6CCFF7", "#BDE9FB", "#DEF4FD"],
-                    ["#5C676E", "#613813", "#423A34", "#002D53", "#003562", "#004A80", "#0072BC", "#438CCB", "#7CA6D8", "#C7D9EE", "#E3ECF7"],
-                    ["#5F6D84", "#744B24", "#534841", "#001A45", "#002056", "#003370", "#0054A5", "#5573B7", "#8293CA", "#CAD0E8", "#E5E8F4"],
-                    ["#758792", "#8C623A", "#726357", "#0C004B", "#1D1363", "#2A2C70", "#393B97", "#5E5CA7", "#8881BE", "#CCC9E3", "#E6E4F1"],
-                    ["#90ABBD", "#A77C50", "#9A8575", "#30004A", "#450E61", "#5A2680", "#7030A0", "#855FA8", "#A286BD", "#D5C8E1", "#EAE4F0"],
-                    ["#A6BCCA", "#C69C6D", "#C7B198", "#390037", "#4B0048", "#62055F", "#91278F", "#A763A9", "#BC8CBF", "#E1CBE2", "#F0E5F1"],
-                    ["#C4D2DC", "#E2CDB6", "#D9CAB9", "#490029", "#7A0045", "#9D005C", "#ED008C", "#EF6EA8", "#f39bc1", "#FAD8E7", "#FDECF3"],
-                    ["#E2E9EE", "#F1E6DB", "#ECE5DC", "#58001B", "#7A0026", "#9D0039", "#EE105A", "#F16D7E", "#F5999D", "#FAD1D3", "#FDE8E9"]]
-            };
-            return config;
-        }
-    );
-});
-angular.module("WebjatoConfig").factory("WebjatoConfig", function ($http, $location) {
-    var qs = "";
-    if ($location.search().siteId) {
-        qs = "?siteId=" + $location.search().siteId;
-    }
-    var Config = {
-        AssetsPath: "",
-        AssetsLocalPath: "/tmp/"
-    };
-    $http({
-        method: "GET",
-        url: "../api/site/config" + qs
-    })
-    .success(
-        function (data) {
-            Config.AssetsPath = data.AssetsPath;
-        });
-    return Config;
-});
-var Sair = null;
-var dependencies = [
-    "angularFileUpload",
-    "AngularJCrop",
-    "angularSpectrumColorpicker",
-    "gettext",
-    "ngCookies",
-    "ngAnimate",
-    "ui.spinner",
-    "ui.tinymce",
-    "WebjatoConfig",
-    "WebjatoConstants",
-    "WebjatoDirectives",
-    "WebjatoModels",
-    "WebjatoFactories",
-    "WebjatoServices"
-];
-angular.module("ContentEditApp", dependencies)
-    .controller("ContentEditCrtl", function ($scope, $cookies, $http, $q, $timeout, $document, gettextCatalog, ContentType, ContentTypeList, MultiSelectionMode, SiteStyle, WebjatoConfig, ServerSync, ServerSyncCommands, HandleServerException, zIndexChange, HelpIndexer, UnitContentModel, ModalService, ContentUtils) {
-        var commitZindex = false;
-        var multiSelectionPanel = [];
-		var currentHelpId = "content/start";
-        multiSelectionPanel[MultiSelectionMode.MOVE] = "MOVE-TOGETHER";
-        multiSelectionPanel[MultiSelectionMode.DUPLICATE] = "DUPLICATE";
-        multiSelectionPanel[MultiSelectionMode.MOVE_AFTER_DUPLICATE] = "MOVE_AFTER_DUPLICATE";
-        //PROPS
-        $scope.MultiSelection = MultiSelectionMode.OFF;
-        $scope.MultiSelectionMode = MultiSelectionMode;
-        $scope.ActiveContent = null;
-        $scope.CurrentPanel = "ADD-UNIT";
-        $scope.HighlightedContent = null;
-        $scope.ServerSync = ServerSync;
-        $scope.Config = WebjatoConfig;
-        $scope.language = $cookies.language;
-        $scope.CropDefer = null;
-        $scope.CropInfo = null;
-        $scope.CropUrl = null;
-        $scope.Pages = [];
-        $scope.SiteContents = [];
-        $scope.SiteStyle = SiteStyle;
-        $scope.SelectedPage = null;
-        $scope.ContentTypeList = ContentTypeList;
-        $scope.PageContents = {
-            Raw: [],
-            ByType: {
-                Box: [], ContactForm: [], Maps: [], Image: [], LinkedImage: [], Line: [], Social: [], Text: [], Video: []
-            }
-        };
-        $scope.ZIndexState = {
-            BRING_TO_FRONT: true,
-            SEND_TO_BACK: true,
-            ONE_UP: true,
-            ONE_DOWN: true
-        };
-        $scope.DuplicateBg = {
-            zindex: 0,
-            show: false
-        };
-        var AddNewContentItemToScope = function (data) {
-            data.IsNewContent = true;
-            $scope.SiteContents.push(data);
-            $scope.FetchPageContent();
-            commitZindex = false;
-        };
-        var DeleteContent = function (data) {
-            ServerSync.SyncItem(data, ServerSyncCommands.DELETE).then(function () {
-                $scope.SiteContents = _.without($scope.SiteContents, data);
-                $scope.FetchPageContent();
-                $scope.ClearEditPanel();
-                var zindex = [];
-                _.chain($scope.PageContents.Raw)
-                    .filter(function (content) {
-                        return content.Position.ZIndex > data.Position.ZIndex;
-                    })
-                    .forEach(function (content) {
-                        content.Position.ZIndex -= 1;
-                        var obj = _.pick(content, "Id", "Type");
-                        obj.ZIndex = content.Position.ZIndex;
-                        zindex.push(obj);
-                    });
-                if (zindex.length > 0) {
-                    ServerSync.SyncItem(zindex, ServerSyncCommands.ZINDEX);
-                }
-            }, HandleServerException);
-        };
-        var GetCurrentPageMaxZIndex = function () {
-            if ($scope.PageContents.Raw.length == 0) {
-                return 0;
-            }
-            else {
-                return _.chain($scope.PageContents.Raw)
-                            .pluck("Position")
-                            .max(function (position) { return position.ZIndex; })
-                            .value().ZIndex;
-            }
-        };
-        var MoveTogetherCommitOrCancel = function () {
-            $scope.MultiSelection = MultiSelectionMode.OFF;
-            $scope.ClearEditPanel();
-            $scope.DuplicateBg.show = false;
-            _.each($scope.PageContents.Raw, function (content) {
-                content.Selected = false;
-                content.Editing = false;
-                content.IsNewContent = false;
-            });
-            CalculateRightMostPoint();
-        };
-        //SCOPE METHODS
-        $scope.EditContent = function (content) {
-            _.each($scope.SiteContents, function (item) {
-                item.Editing = false;
-                item.Position.ozIndex = null;
-            });
-            content.Editing = true;
-            $scope.ActiveContent = content;
-            $scope.UpdateZIndexOptions();
-            $scope.CurrentPanel = _.findWhere(ContentTypeList, { Enum: content.Type }).Crtl.toUpperCase();
-            commitZindex = false;
-            $scope.$emit("HelpAutoDisplay", HelpIndexer.GetIdByContentType(content.Type));
-        };
-        $scope.FetchPageContent = function () {
-            $scope.PageContents.Raw = _.chain($scope.SiteContents).where({ PageId: $scope.SelectedPage.Id }).sortBy(function (content) { return content.Position.ZIndex; }).value();
-            _.each(ContentTypeList, function (contentType) {
-                $scope.PageContents.ByType[contentType.Crtl] = _.where($scope.PageContents.Raw, { Type: contentType.Enum });
-            });
-        };
-        $scope.ClearEditPanel = function () {
-            $scope.CurrentPanel = "ADD-UNIT";
-            $scope.ActiveContent = null;
-            $scope.HighlightedContent = null;
-            _.each($scope.SiteContents, function (item) { item.Editing = false; });
-        };
-        $scope.$on("ZIndexChangeRequest", function (sender, change) {
-            var DoIt = function (list, filter, action) {
-                _.chain(list).filter(filter).forEach(action);
-            };
-            var oneUp = function (content) {
-                if (!content.Position.ozIndex) {
-                    content.Position.ozIndex = content.Position.ZIndex;
-                }
-                content.Position.ZIndex += 1;
-            };
-            var oneDown = function (content) {
-                if (!content.Position.ozIndex) {
-                    content.Position.ozIndex = content.Position.ZIndex;
-                }
-                content.Position.ZIndex -= 1;
-            };
-            switch (change) {
-                case zIndexChange.ONE_UP:
-                    DoIt($scope.PageContents.Raw, function (content) { return content.Position.ZIndex === $scope.ActiveContent.Position.ZIndex + 1; }, oneDown);
-                    $scope.ActiveContent.Position.ZIndex += 1;
-                    break;
-                case zIndexChange.ONE_DOWN:
-                    DoIt($scope.PageContents.Raw, function (content) { return content.Position.ZIndex === $scope.ActiveContent.Position.ZIndex - 1; }, oneUp);
-                    $scope.ActiveContent.Position.ZIndex -= 1;
-                    break;
-                case zIndexChange.BRING_TO_FRONT:
-                    var maxZIndex = GetCurrentPageMaxZIndex();
-                    DoIt($scope.PageContents.Raw, function (content) { return content.Position.ZIndex > $scope.ActiveContent.Position.ZIndex; }, oneDown);
-                    $scope.ActiveContent.Position.ZIndex = maxZIndex;
-                    break;
-                case zIndexChange.SEND_TO_BACK:
-                    DoIt($scope.PageContents.Raw, function (content) { return content.Position.ZIndex < $scope.ActiveContent.Position.ZIndex; }, oneUp);
-                    $scope.ActiveContent.Position.ZIndex = 1;
-                    break;
-            }
-            $scope.UpdateZIndexOptions();
-            commitZindex = true;
-            $scope.$broadcast("OnZIndexChange", $scope.ActiveContent);
-        });
-        $scope.UpdateZIndexOptions = function () {
-            var maxZIndex = _.chain($scope.PageContents.Raw).pluck("Position").max(function (position) { return position.ZIndex; }).value().ZIndex;
-            var zindex = $scope.ActiveContent.Position.ZIndex;
-            $scope.ZIndexState.BRING_TO_FRONT = (zindex < maxZIndex);
-            $scope.ZIndexState.SEND_TO_BACK = (zindex > 1);
-            $scope.ZIndexState.ONE_UP = (zindex < maxZIndex);
-            $scope.ZIndexState.ONE_DOWN = (zindex > 1);
-        };
-        $scope.DismissAddContentPreview = function () {
-            $scope.$broadcast("DismissAddContentPreview");
-        };
-        $scope.ShowHelp = function () {
-            if ($scope.ActiveContent) {
-                $scope.$emit("HelpDisplay", HelpIndexer.GetIdByContentType($scope.ActiveContent.Type));
-            }
-            else {
-                $scope.$emit("HelpDisplay", currentHelpId);
-            }
-        };
-        $scope.EnterMultiSelectionMode = function (multiSelectionMode) {
-            if ($scope.PageContents.Raw.length == 0) {
-                $(".modal-no-content").lightbox_me();
-            }
-            else {
-                $scope.MultiSelection = multiSelectionMode;
-                $scope.CurrentPanel = multiSelectionPanel[multiSelectionMode];
-                $scope.$broadcast("OnEnterMultiSelectionMode", multiSelectionMode);
-                currentHelpId = multiSelectionMode == MultiSelectionMode.MOVE? "content/move" : "content/duplicate";
-                $scope.$emit("HelpAutoDisplay", currentHelpId);
-            }
-            UnitContentModel.ContentTypeToPreview = null;
-        };
-        //EVENT LISTENERS
-        $scope.OnPageHeightChange = _.debounce(function () {
-            $http({ method: "POST", url: "../api/page/height", data: $scope.SelectedPage });
-        }, 500);
-        $scope.$on("OnCropRequest", function (sender, temporaryImage, deferred, options) {
-            var myDefer = $q.defer();
-            myDefer.promise.then($scope.OnCropFinish, $scope.OnCropCancel);
-            $scope.CropDefer = deferred;
-            $scope.CropInfo = {
-                temporaryImage: temporaryImage,
-                deferred: myDefer,
-                options: options
-            };
-            $scope.CropUrl = "../crop.html";
-            $scope.$apply();
-        });
-        $scope.$on("Edit", function (sender, data) {
-            $scope.EditContent(data);
-        });
-        $scope.$on("DeleteRequest", function (sender, data) {
-            DeleteContent(data);
-        });
-        $scope.$on("DuplicateRequest", function (sender, source, targetPageId) {
-            ServerSync.SyncItem(source, ServerSyncCommands.DUPLICATE, { zIndex: GetCurrentPageMaxZIndex() + 1, targetPageId: targetPageId }).then(function (data) {
-            	data.Duplicated = true;
-            	data.DuplicatedMove = true;
-                AddNewContentItemToScope(data);
-                $scope.EditContent(data);
-                $scope.HighlightedContent = data;
-                $scope.DismissAddContentPreview();
-            });
-        });
-        $scope.$on("NewContentRequest", function (sender, type, query) {
-            var crtl = _.findWhere(ContentTypeList, { Enum: type }).Crtl;
-            $http({
-                method: "POST",
-                url: "../api/" + crtl + "/new" + query,
-                params: {
-                    zindex: GetCurrentPageMaxZIndex() + 1
-                },
-                data: "\"" + $scope.SelectedPage.Id + "\""
-            }).success(function (data) {
-                AddNewContentItemToScope(data);
-                $scope.EditContent(data);
-                $scope.HighlightedContent = data;
-                $scope.DismissAddContentPreview();
-                $(".ui-layout-center").animate({ scrollTop: 0 }, 500);
-            }).error(HandleServerException);
-        });
-        $scope.$on("OnContentCommit", function (sender, data) {
-            $scope.ActiveContent = null;
-            $scope.CurrentPanel = "ADD-UNIT";
-            $scope.HighlightedContent = null;
-            if (commitZindex) {
-                var zindex = [];
-                _.forEach($scope.PageContents.Raw, function (content) {
-                    var obj = _.pick(content, "Id", "Type");
-                    obj.ZIndex = content.Position.ZIndex;
-                    zindex.push(obj);
-                });
-                ServerSync.SyncItem(zindex, ServerSyncCommands.ZINDEX);
-            }
-            ServerSync.SyncItem(data, ServerSyncCommands.ALL).then(function (updatedData) {
-                angular.copy(updatedData, data);
-                data.Editing = false;
-                data.IsNewContent = false;
-                data.Selected = false;
-                data.Position.ozIndex = null;
-            });
-        });
-        $scope.$on("OnContentRollback", function (sender, data, backup) {
-            _.each($scope.SiteContents, function (item) {
-                if (item.Position.ozIndex) {
-                    item.Position.ZIndex = item.Position.ozIndex;
-                    item.Position.ozIndex = null;
-                }
-            });
-            if (data.IsNewContent) {
-                DeleteContent(data);
-            }
-            else {
-                backup.Editing = false;
-                backup.IsNewContent = false;
-                angular.copy(backup, data);
-            }
-            $scope.ActiveContent = null;
-            $scope.CurrentPanel = "ADD-UNIT";
-            $scope.HighlightedContent = null;
-        });
-        $scope.$on("OnContentClick", function (sender, data) {
-            if ($scope.ActiveContent) {
-                return;
-            }
-            if ($scope.MultiSelection != MultiSelectionMode.OFF) {
-                data.Selected = true;
-                data.Editing = false;
-                CalculateRightMostPoint();
-                return;
-            }
-            $scope.HighlightedContent = data;
-        });
-        $scope.$on("SelectAll", function () {
-            _.each($scope.PageContents.Raw, function (content) {
-                content.Selected = true;
-                content.Editing = false;
-            });
-            CalculateRightMostPoint();
-        });
-        $scope.$on("DeselectAll", function () {
-            _.each($scope.PageContents.Raw, function (content) {
-                content.Selected = false;
-                content.Editing = false;
-            });
-            CalculateRightMostPoint();
-        });
-        $scope.$on("OnMoveTogetherCommit", function () {
-        	currentHelpId = "content/start";
-            MoveTogetherCommitOrCancel();
-        });
-        $scope.$on("OnMoveTogetherRollback", function () {
-			currentHelpId = "content/start";
-            MoveTogetherCommitOrCancel();
-        });
-        $scope.$on("OnMassDuplicateRequest", function (sender, targetPages) {
-            currentHelpId = "content/start";
-            var itemsToDuplicate = _.where($scope.PageContents.Raw, { Selected: true });
-            if (itemsToDuplicate.length == 0) {
-                ModalService.Show("Você deve selecionar ao menos um conteúdo para continuar.");
-                return;
-        	}
-        	_.each($scope.PageContents.Raw, function (content) {    //Reset nos conteúdos originais
-        		content.Selected = false;
-        		content.Editing = false;
-        	});
-        	if (targetPages.length == 0 || itemsToDuplicate.length == 0) {
-        		MoveTogetherCommitOrCancel();
-        		return;
-        	}
-        	$scope.DuplicateBg.show = true;
-        	var DuplicateItemsOnPage = function (pageId, items) {
-        		$scope.SelectedPage = _.findWhere($scope.Pages, { Id: pageId });
-        		$scope.FetchPageContent();
-        		var zindexDuplicateBG = GetCurrentPageMaxZIndex() + 1;
-        		var totalItemsToDuplicate = items.length;
-        		var defer = $q.defer();
-        		$scope.DuplicateBg.zindex = zindexDuplicateBG;
-        		_.each(items, function (item, i) {
-        			ServerSync.SyncItem(item, ServerSyncCommands.DUPLICATE, { zIndex: zindexDuplicateBG + i + 1, targetPageId: pageId }).then(function (newContent) {
-        				AddNewContentItemToScope(newContent);
-        				newContent.Duplicated = true;
-        				newContent.DuplicatedMove = false;
-        				newContent.Selected = false;
-        				newContent.Editing = false;
-        				newContent.IsNewContent = false;
-        				totalItemsToDuplicate--;
-        				if (totalItemsToDuplicate == 0) {
-        					defer.resolve();
-        				}
-        			});
-        		});
-        		return defer.promise;
-        	};
-        	var currentPage = -1;
-        	var AfterContentIsDuplicatedOnPage = function () {
-        		currentPage++;
-        		if (currentPage < targetPages.length) {
-        			DuplicateItemsOnPage(targetPages[currentPage], itemsToDuplicate).then(AfterContentIsDuplicatedOnPage);
-        			return;
-        		}
-        		$timeout(function () {
-        			MoveTogetherCommitOrCancel();
-        		}, 500);
-        	};
-        	AfterContentIsDuplicatedOnPage();
-        });
-        $scope.$on("OnMassDuplicateRollback", function (sender) {
-            _.chain($scope.PageContents.Raw).where({ IsNewContent: true }).each(function (content) {
-                ServerSync.SyncItem(content, ServerSyncCommands.DELETE);
-                $scope.SiteContents = _.without($scope.SiteContents, content);
-            });
-            $scope.FetchPageContent();
-            MoveTogetherCommitOrCancel();
-        });
-        $scope.$on("OnTemplateRequest", function (sender, templateId) {
-        	$http({
-        		method: "POST",
-        		url: "../api/template/apply",
-        		params: {
-        			templateId: templateId,
-        			targetPageId: $scope.SelectedPage.Id,
-        			zindex: GetCurrentPageMaxZIndex() + 1
-        		}
-        	}).success(function (items) {
-        		_.each(items, function (item) {
-        			AddNewContentItemToScope(item);
-        			item.Duplicated = true;
-        			item.DuplicatedMove = false;
-        			item.Selected = false;
-        			item.Editing = false;
-        			item.IsNewContent = false;
-        		});
-        		$http({ method: "GET", url: "../api/page/single", params: { pageId: $scope.SelectedPage.Id } })
-                    .success(function (page) {
-                        if (page.Height > $scope.SelectedPage.Height) {
-                            $scope.SelectedPage.Height = page.Height;
-                        }
-                    });
-        	});
-        });
-        $scope.$on("OnContentDeselected", function () {
-            CalculateRightMostPoint();
-        });
-        $scope.$on("OnMoveTogetherStop", function() {
-            CalculateRightMostPoint();
-        });
-        var CalculateRightMostPoint = function () {
-            if (($scope.MultiSelection != MultiSelectionMode.MOVE) || !_.findWhere($scope.PageContents.Raw, { "Selected": true })) {
-                $scope.$broadcast("OnRightMostPointChange", null);
-                return;
-            }
-            var leftMostItem = _.chain($scope.PageContents.Raw)
-                                .where({ "Selected": true })
-                                .min(function (item) {
-                                    return item.Position.X;
-                                })
-                                .value();
-            var rightMostItem = _.chain($scope.PageContents.Raw)
-                                 .where({ "Selected": true })
-                                 .max(function (item, i) {
-                                     return item.Position.X + ContentUtils.GetSizeForHighlightedContent(item).Width;
-                                 })
-                                 .value();
-            $scope.$broadcast("OnRightMostPointChange", leftMostItem.Position.X, (rightMostItem.Position.X + ContentUtils.GetSizeForHighlightedContent(rightMostItem).Width));
-        };
-        angular.element($document).on("click", function (e) {
-            if (($scope.HighlightedContent != null) && ($scope.ActiveContent == null)) {
-                if (angular.element(e.target).parent("#" + $scope.HighlightedContent.Id).length == 0) {
-                    $scope.HighlightedContent = null;
-                    $scope.$digest();
-                }
-            }
-        });
-        $scope.OnCropFinish = function (data) {
-            $scope.CropUrl = null;
-            $scope.CropDefer.resolve(data);
-        };
-        $scope.OnCropCancel = function () {
-            $scope.CropUrl = null;
-            $scope.CropDefer.reject();
-        };
-        $scope.OnPageChange = function (pageTitle, trigger) {
-            if ($scope.ActiveContent) {
-                return;
-            }
-            $scope.SelectedPage = _.findWhere($scope.Pages, { Title: pageTitle });
-            $scope.FetchPageContent();
-            gaEvent("UX001_PAGE_CHANGE", trigger);
-        };
-        //PRIVATE METHODS
-        var FetchPages = function () {
-            $http({ method: "GET", url: "../api/page/get" })
-                .success(function (data) {
-                    $scope.Pages = _.chain(data)
-                                        .filter(function (key) { return key.Title != "" && key.Title != null; })
-                                        .sortBy(function (key) { return key.Position; }).value();
-                    //O mapeamento abaixo é pro componente wj-select-box-it
-                    _.each($scope.Pages, function (key) {
-                        key.value = key.Title;
-                        key.text = key.Title;
-                    });
-                    $scope.SelectedPage = $scope.Pages[0];
-                    $scope.FetchPageContent();
-                    $scope.$emit("HelpAutoDisplay", "content/start");
-                }).error(HandleServerException);
-        };
-        //CODE STARTS HERE
-        $http({ method: "GET", url: "../api/content/get" })
-            .success(function (data) {
-                $scope.SiteContents = data;
-                _.each($scope.SiteContents, function (content) {
-                    content.IsNewContent = false;
-                    content.Editing = false;
-                    content.Position.ozIndex = null;
-                });
-                FetchPages();
-            }).error(HandleServerException);
-        gettextCatalog.currentLanguage = $cookies.language;
-        $scope.Logout = function () {
-        	$http({ method: "POST", url: "../api/user/logout" })
-				.success(function (data, status, headers, config) {
-					top.location.href = "../index.html";
-				}).error(HandleServerException);
-        };
-        $http({ method: "GET", url: "../api/user/get" })
-			.success(function (data) {
-				$scope.User = data;
-			}).error(HandleServerException);
-        Sair = $scope.Logout;
-    });
-var CropImageCrtl = function ($scope, $http, $cookies, gettextCatalog, WebjatoConfig, HandleServerException) {
-    $scope.working = false;
-    $scope.temporaryImage = null;
-    $scope.deferred = null;
-    $scope.Config = WebjatoConfig;
-    $scope.CropArea = { x: 0, y: 0, w: 0, h: 0 };
-    $scope.CropOptions = null;
-    $scope.img = "";
-    $scope.OnSelect = function (coords) {
-        $scope.CropArea = {
-            x: ~~coords.x,
-            y: ~~coords.y,
-            w: ~~coords.w,
-            h: ~~coords.h
-        };
-    };
-    $scope.OnImageLoad = function () {
-        $scope.working = false;
-        $scope.$apply();
-    }
-    $scope.Crop = function () {
-        $scope.working = true;
-        $http({ method: "POST", url: "../api/tmpimg/crop", data: { id: $scope.temporaryImage.Id, x: $scope.CropArea.x, y: $scope.CropArea.y, w: $scope.CropArea.w, h: $scope.CropArea.h, keepOriginalImage: $scope.CropOptions.keepOriginalImage } })
-            .success(function (data) {
-                $scope.deferred.resolve(data);
-                $(".crop-tool").trigger("close");
-            }).error(HandleServerException);
-    };
-    $scope.KeepOriginal = function () {
-        $scope.deferred.resolve($scope.temporaryImage);
-        $(".crop-tool").trigger("close");
-    };
-    $scope.Cancel = function () {
-        $http({ method: "POST", url: "../api/tmpimg/delete", data: $scope.temporaryImage });
-        $scope.deferred.reject();
-        $(".crop-tool").trigger("close");
-    };
-    $scope.temporaryImage = $scope.$parent.CropInfo.temporaryImage;
-    $scope.deferred = $scope.$parent.CropInfo.deferred;
-    $scope.CropOptions = $scope.$parent.CropInfo.options;
-    $scope.img = $scope.Config.AssetsPath + $scope.temporaryImage.Key;
-    $scope.working = true;
-    $(".crop-tool").lightbox_me({
-        centered: true,
-        closeClick: false,
-        closeEsc: false,
-        destroyOnClose: true
-    });
-    gettextCatalog.currentLanguage = $cookies.language;
-};
-angular.module("WebjatoConstants").constant("ServerSyncCommands", {
-    ALL: "ALL",
-    DELETE: "DELETE",
-    DUPLICATE: "DUPLICATE",
-    POSITION: "POSITION",
-    ZINDEX: "Z-INDEX"
-});
-angular.module("WebjatoConstants").constant("SocialIconSize", {
-    SMALL: 16,
-    REGULAR: 24,
-    LARGE: 32
-});
-angular.module("WebjatoConstants").constant("zIndexChange", {
-    ONE_UP: 1,
-    ONE_DOWN: 2,
-    BRING_TO_FRONT: 3,
-    SEND_TO_BACK: 4
-});
 angular.module("WebjatoDirectives").directive("wjAnimate", function ($timeout, $parse, ServerSync, ServerSyncCommands) {
     return {
         restrict: "A",
@@ -3466,6 +3471,15 @@ angular.module("WebjatoDirectives").directive("wjZindex", function (zIndexChange
         }
     };
 });
+var HelpBit = (function () {
+    function HelpBit(Id, Url, Enabled) {
+        this.Id = Id;
+        this.Url = Url;
+        this.Enabled = Enabled;
+    }
+    return HelpBit;
+}());
+
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -3595,15 +3609,6 @@ var Video = (function (_super) {
     }
     return Video;
 }(ContentBase));
-
-var HelpBit = (function () {
-    function HelpBit(Id, Url, Enabled) {
-        this.Id = Id;
-        this.Url = Url;
-        this.Enabled = Enabled;
-    }
-    return HelpBit;
-}());
 
 var CropBoxCtrl = (function () {
     function CropBoxCtrl($scope) {

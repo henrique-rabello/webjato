@@ -15,7 +15,7 @@
             text-align: center;
             background: #fff url(images/bg_header1.png) repeat-x top left;
             margin: 0;
-            }
+        }
 
         img {
             border: none;
@@ -24,6 +24,7 @@
         #page {
             z-index: 10;
         }
+
         #ligado {
             color: #000;
             font-size: 0.75em;
@@ -234,6 +235,7 @@
             font-size: medium;
             font-weight: bold;
         }
+
         .bot-azul {
             display: none;
         }
@@ -261,7 +263,12 @@
                     $scope.Logout = function () {
                         $http({ method: "POST", url: "api/user/logout" })
                             .success(function (data, status, headers, config) {
-                                top.location.href = "index.html";
+                                if ($scope.CurrentLanguage == "en_US") {
+                                    top.location.href = "/lang_en-us/index.html";
+                                }
+                                else {
+                                    top.location.href = "/lang_pt-br/index.html";
+                                }
                             }).error(HandleServerException);
                     };
                     $scope.ShowHelp = function () {
@@ -295,59 +302,65 @@
     </script>
     <script type="text/javascript">
         $(function () {
-            //Calls the selectBoxIt method on your HTML select box.
             $('.drop-local').selectBoxIt();
         });
     </script>
-    <!-- Google Analytics -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-  ga('create', 'UA-33853723-1', 'auto');
-  ga('send', 'pageview');
-</script>
+        ga('create', 'UA-33853723-1', 'auto');
+        ga('send', 'pageview');
+    </script>
 </head>
-<body ng-controller="MainCrtl">
+<body ng-controller="MainCrtl" ng-cloak>
     <wj-help></wj-help>
     <div class="logo-home">
         <img src="images/logowj.png" alt="" title="" />
     </div>
-    <h1 translate><img src="../images/icon-peq-inicio.png" alt="" title="" />Início</h1>
+    <h1>
+        <img src="images/icon-peq-inicio.png" alt="" title="" />
+        Início
+    </h1>
     <div id="page">
         <div class="bot-azul">
             <a href="planos.html" translate>Aprimorar</a>
         </div>
         <div id="cont">
             <div class="bot-side float-left">
-                <a href="preview/index.html" target="_preview" class="north mouse-seta" title="{{'Ver construção'|translate}}" translate>
+                <a href="preview/index.html" target="_preview" class="north mouse-seta" title="{{'Ver construção'|translate}}">
                     <img src="images/bot_visualizar.png" alt="" />
                 </a>
             </div>
             <div class="bot-side ajudyz">
-                <a href="#" ng-click="ShowHelp();" class="north mouse-seta" title="{{'Ajuda'|translate}}" translate>
+                <a href="#" ng-click="ShowHelp();" class="north mouse-seta" title="{{'Ajuda'|translate}}">
                     <img src="images/bot_ajuda.png" alt="" />
                 </a>
             </div>
-           <div class="bot-side ajudyz margemtop-zero">
-                 <div class="account" title="{{'Conta'|translate}}" translate>
-                     <img src="../images/bot_user.png" alt="" />
-                     <div class="dropdown dropdown-tip dropdown-anchor-right">
-                         <ul class="dropdown-menu">
-                             <li class="padding-rl12 bold top-10 bottom-15">{{User.FullName}}</li>
-                             <li class="bottom-10">
-                                 <a href="#" onclick="Sair();">Sair</a>
-                             </li>
-                         </ul>
-                     </div>
-                 </div>
+            <div class="bot-side ajudyz margemtop-zero">
+                <div class="account" title="{{'Conta'|translate}}">
+                    <img src="../images/bot_user.png" alt="" />
+                    <div class="dropdown dropdown-tip dropdown-anchor-right">
+                        <ul class="dropdown-menu">
+                            <li class="padding-rl12 bold top-10 bottom-15">{{User.FullName}}</li>
+                            <li class="bottom-10" ng-if="User.Role === Roles.Admin">
+                                <a href="reports/sites.html" target="_blank" translate>Todos os sites</a>
+                            </li>
+                            <li class="bottom-10">
+                                <a href="#" onclick="Sair();">Sair</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="ligado">
             <input type="checkbox" id="ckAjuda" class="ipt_checkbox cursorpointer" ng-model="IsHelpEnabled" ng-change="OnHelpStateChange();" />
-            <label for="ckAjuda" class="cursorpointer" title="{{''|translate}}" translate>Exibir ajuda</label>
+            <label for="ckAjuda" class="cursorpointer" translate>Exibir ajuda</label>
         </div>
     </div>
     <div id="container">

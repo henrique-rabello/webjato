@@ -1559,518 +1559,6 @@ var HelpItem = (function () {
     return HelpItem;
 }());
 
-angular.module("WebjatoModels").factory("UnitContentModel", function () {
-	return {
-		ContentTypeToPreview: null,
-		ShowUnity: true
-    };
-});
-angular.module("WebjatoServices").service("ContentTypeList", function () {
-    return [{ Crtl: "Box", Enum: 1 },
-            { Crtl: "ContactForm", Enum: 2 },
-            { Crtl: "Maps", Enum: 3 },
-            { Crtl: "RegularImage", Enum: 4 },
-            { Crtl: "LinkedImage", Enum: 5 },
-            { Crtl: "Line", Enum: 6 },
-            { Crtl: "Social", Enum: 7 },
-            { Crtl: "Text", Enum: 8 },
-            { Crtl: "Video", Enum: 9 },
-            { Crtl: "ExpandableImage", Enum: 10 }];
-});
-angular.module("WebjatoServices").service("ContentType", function () {
-    return ContentType;
-});
-angular.module("WebjatoServices").service("ContentUtils", function (ContentType, SocialIconSize, SocialUtil) {
-    var GetResizeOptionsForNewLine = function (data, newContentDelta) {
-        if (data.IsHorizontal) {
-            return {
-                handles: "w, e",
-                minHeight: newContentDelta,
-                maxHeight: newContentDelta
-            };
-        }
-        else {
-            return {
-                handles: "n, s",
-                minWidth: newContentDelta,
-                maxWidth: newContentDelta
-            };
-        }
-    };
-    var GetResizeOptionsForHighlightedLine = function (data) {
-        if (data.IsHorizontal) {
-            return {
-                handles: "w, e",
-                maxHeight: 1
-            };
-        }
-        else {
-            return {
-                handles: "n, s",
-                maxWidth: 1
-            };
-        }
-    };
-    var defaultImages = [];
-        defaultImages[ContentType.IMAGE] = "/images/place-holder-img-normal.png";
-        defaultImages[ContentType.LINKED_IMAGE] = "/images/place-holder-img-link.png";
-        defaultImages[ContentType.EXPANDABLE_IMAGE] = "/images/place-holder-img-expandable.png";
-    return {
-        GetSizeForHighlightedContent: function (data) {
-            var defaultPlaceHolderSize = new ContentSize(300, 200);
-            switch (data.Type) {
-                case ContentType.BOX:
-                    var delta = data.Border.Exists ? data.Border.Width * 2 : 0;
-                    return new ContentSize(data.Size.Width + delta, data.Size.Height + delta);
-                case ContentType.LINE:
-                    if (data.IsHorizontal) {
-                        return new ContentSize(data.Size, 6);
-                    }
-                    else {
-                        return new ContentSize(6, data.Size);
-                    }
-                case ContentType.TEXT:
-                    return data.Size;
-                case ContentType.IMAGE:
-                case ContentType.LINKED_IMAGE:
-                case ContentType.EXPANDABLE_IMAGE:
-                    if (data.ImageExportedKey == null) {
-                        return defaultPlaceHolderSize;
-                    }
-                    else {
-                        return data.ImageExportedSize;
-                    }
-                case ContentType.VIDEO:
-                    return data.Size;
-                case ContentType.MAPS:
-                    return data.Size;
-                case ContentType.CONTACT_FORM:
-                    var elem = angular.element("#" + data.Id);
-                    return new ContentSize(elem.width() + 2, elem.height());
-                case ContentType.SOCIAL:
-                    var elem = angular.element("#" + data.Id);
-                    if (SocialUtil.AnyPluginEnabled(data)) {
-                        var height = (parseInt(data.Size) == 0) ?
-                                        SocialIconSize.SMALL :
-                                        (parseInt(data.Size) == 1) ?
-                                            SocialIconSize.REGULAR :
-                                            SocialIconSize.LARGE;
-
-                        return new ContentSize(elem.width() - 12, height);
-                    }
-                    else {
-                        return new ContentSize(elem.width(), elem.height());
-                    }
-            }
-        },
-        GetSizeForNewContent: function (data) {
-            var defaultPlaceHolderSize = new ContentSize(300, 200);
-            switch (data.Type) {
-                case ContentType.BOX:
-                    return data.Size;
-                case ContentType.LINE:
-                    if (data.IsHorizontal) {
-                        return new ContentSize(data.Size, -data.Width);
-                    }
-                    else {
-                        return new ContentSize(-data.Width, data.Size);
-                    }
-                case ContentType.TEXT:
-                    return data.Size;
-                case ContentType.IMAGE:
-                case ContentType.LINKED_IMAGE:
-                case ContentType.EXPANDABLE_IMAGE:
-                    if (data.ImageExportedKey == null) {
-                        return defaultPlaceHolderSize;
-                    }
-                    else {
-                        return data.ImageExportedSize;
-                    }
-                case ContentType.VIDEO:
-                    return data.Size;
-                case ContentType.MAPS:
-                    return data.Size;
-                case ContentType.CONTACT_FORM:
-                    var elem = angular.element("#" + data.Id);
-                    return new ContentSize(elem.width() + 2, elem.height());
-                case ContentType.SOCIAL:
-                    var elem = angular.element("#" + data.Id);
-                    if (SocialUtil.AnyPluginEnabled(data)) {
-                        var height = (parseInt(data.Size) == 0) ?
-                                        SocialIconSize.SMALL :
-                                        (parseInt(data.Size) == 1) ?
-                                            SocialIconSize.REGULAR :
-                                            SocialIconSize.LARGE;
-
-                        return new ContentSize(elem.width() - 12, height);
-                    }
-                    else {
-                        return new ContentSize(elem.width(), elem.height());
-                    }
-            }
-        },
-        SetContentSize: function (data, w, h) {
-            switch (data.Type) {
-                case ContentType.BOX:
-                    if (data.Border.Exists) {
-                        w -= (data.Border.Width * 2)
-                        h -= (data.Border.Width * 2)
-                    }
-                    break;
-            }
-            switch (data.Type) {
-                case ContentType.LINE:
-                    data.Size = data.IsHorizontal ? parseInt(w, 10) : parseInt(h, 10);
-                    break;
-                case ContentType.IMAGE:
-                case ContentType.LINKED_IMAGE:
-                case ContentType.EXPANDABLE_IMAGE:
-                    var scale = Math.floor((w / data.ImageSize.Width) * 100);
-                    data.ImageScale = scale;
-                    data.ImageExportedSize.Width = w;
-                    data.ImageExportedSize.Height = h;
-                    break;
-                default:
-                    data.Size.Width = w;
-                    data.Size.Height = h;
-                    break;
-            }
-        },
-        GetImageURL: function(data, folder) {
-            if (data.ImageKey == null) {
-                return defaultImages[data.Type];
-            }
-            else {
-                return folder + (data.Editing ? data.ImageKey : data.ImageExportedKey);
-            }
-        },
-        GetExpandedImageUrl: function(data, folder) {
-            if (data.ImageKey == null) {
-                return defaultImages[data.Type];
-            }
-            else {
-                return folder + data.ExpandedImage.ImageKey;
-            }
-        },
-        GetResizeOptions: function (data, newContentDelta) {
-            switch (data.Type) {
-                case ContentType.BOX:
-                    return {
-                        id: data.Id,
-                        isNew: data.IsNewContent,
-                        handles: "all",
-                        minWidth: 50,
-                        minHeight: 50
-                    };
-                case ContentType.TEXT:
-                    return {
-                        handles: "all",
-                        minWidth: 100,
-                        minHeight: 100
-                    };
-                case ContentType.LINE:
-                    return data.IsNewContent ?
-                                GetResizeOptionsForNewLine(data, newContentDelta) :
-                                GetResizeOptionsForHighlightedLine(data);
-                case ContentType.IMAGE:
-                case ContentType.LINKED_IMAGE:
-                case ContentType.EXPANDABLE_IMAGE:
-                    return {
-                        aspectRatio: true,
-                        handles: "all",
-                        minWidth: data.IsNewContent? newContentDelta + 20 : 20,
-                        minHeight: data.IsNewContent? newContentDelta + 20: 20,
-                        maxHeight: (data.ImageKey != null) ? data.ImageSize.Height + (data.IsNewContent? newContentDelta : 0) : undefined,
-                        maxWidth: (data.ImageKey != null) ? data.ImageSize.Width + (data.IsNewContent ? newContentDelta : 0) : undefined
-                    }
-                default:
-                    return {};
-            }
-        },
-        IsContentResizable: function (data) {
-            return ((data.Type == ContentType.BOX) ||
-                    (data.Type == ContentType.EXPANDABLE_IMAGE && data.ImageKey != null) ||
-                    (data.Type == ContentType.IMAGE && data.ImageKey != null) ||
-                    (data.Type == ContentType.LINKED_IMAGE && data.ImageKey != null) ||
-                    (data.Type == ContentType.LINE) ||
-                    (data.Type == ContentType.TEXT));
-        },
-        IsContentResizableFromHighlightBox: function (data) {
-            return ((data.Type == ContentType.BOX) ||
-                    (data.Type == ContentType.EXPANDABLE_IMAGE && data.ImageKey != null) ||
-                    (data.Type == ContentType.IMAGE && data.ImageKey != null) ||
-                    (data.Type == ContentType.LINKED_IMAGE && data.ImageKey != null) ||
-                    (data.Type == ContentType.LINE));
-        }
-    };
-});
-var CssService = (function () {
-    function CssService($document) {
-        this.rulesCount = 0;
-        var style = document.createElement('style');
-        style.appendChild(document.createTextNode(''));
-        document.head.appendChild(style);
-        this.sheet = style.sheet;
-    }
-    CssService.prototype.ApplyCSS = function (rules) {
-        var _this = this;
-        _.each(rules, function (rule) {
-            if (_this.sheet.insertRule) {
-                _this.sheet.insertRule(rule.selector + ' { ' + rule.selectorText + ' }', _this.rulesCount);
-            }
-            else if (_this.sheet.addRule) {
-                _this.sheet.addRule(rule.selector, rule.selectorText, _this.rulesCount);
-            }
-            _this.rulesCount++;
-        });
-    };
-    CssService.$inject = ['$document'];
-    return CssService;
-}());
-angular.module("WebjatoServices").service("CssService", CssService);
-
-angular.module("WebjatoServices").service("HandleServerException", function () {
-    return function (data, status, headers, config) {
-        switch (status) {
-            case 401:
-                top.location.href = "../session.html";
-                break;
-            default:
-                alert("Status '" + status + "' não tratado.");
-                break;
-        }
-    };
-});
-angular.module("WebjatoServices").service("HelpIndexer", function (ContentType) {
-    var folder = "/help/";
-    var items = [
-        new HelpBit("main", "main.html", false),
-        new HelpBit("config/size", "config-size.html", false),
-        new HelpBit("config/align", "config-align.html", false),
-        new HelpBit("config/title", "config-title.html", false),
-        new HelpBit("config/pages", "config-pages.html", false),
-        new HelpBit("config/position", "config-position.html", false),
-        new HelpBit("config/finish", "config-finish.html", false),
-        new HelpBit("visual/bg", "visual-bg.html", false),
-        new HelpBit("visual/header", "visual-header.html", false),
-        new HelpBit("visual/footer", "visual-footer.html", false),
-        new HelpBit("visual/logo", "visual-logo.html", false),
-        new HelpBit("visual/menu", "visual-menu.html", false),
-        new HelpBit("visual/page", "visual-page.html", false),
-        new HelpBit("visual/finish", "visual-finish.html", false),
-        new HelpBit("content/start", "content-start.html", false),
-        new HelpBit("content/text", "content-text.html", false),
-        new HelpBit("content/box", "content-box.html", false),
-        new HelpBit("content/line", "content-line.html", false),
-        new HelpBit("content/image-simple", "content-image-simple.html", false),
-        new HelpBit("content/image-expandable", "content-image-expandable.html", false),
-        new HelpBit("content/image-linked", "content-image-linked.html", false),
-        new HelpBit("content/video", "content-video.html", false),
-        new HelpBit("content/map", "content-map.html", false),
-        new HelpBit("content/social", "content-social.html", false),
-        new HelpBit("content/contact-form", "content-contact-form.html", false),
-        new HelpBit("content/move", "content-move.html", false),
-        new HelpBit("content/duplicate", "content-duplicate.html", false),
-        new HelpBit("publish/address", "publish-address.html", false),
-        new HelpBit("publish/display", "publish-display.html", false),
-        new HelpBit("publish/share", "publish-share.html", false),
-        new HelpBit("publish/hide", "publish-hide.html", false)
-    ];
-    return {
-        GetUrl: function (id) {
-            return folder + _.find(items, function (item) { return item.Id === id; }).Url;
-        },
-        GetIdByContentType: function (type) {
-            switch (type) {
-                case ContentType.BOX: return "content/box";
-                case ContentType.CONTACT_FORM: return "content/contact-form";
-                case ContentType.MAPS: return "content/map";
-                case ContentType.IMAGE: return "content/image-simple";
-                case ContentType.LINKED_IMAGE: return "content/image-linked";
-                case ContentType.LINE: return "content/line";
-                case ContentType.SOCIAL: return "content/social";
-                case ContentType.TEXT: return "content/text";
-                case ContentType.VIDEO: return "content/video";
-                case ContentType.EXPANDABLE_IMAGE: return "content/image-expandable";
-            }
-        }
-    };
-});
-
-var ModalService = (function () {
-    function ModalService($rootScope, $q, $compile) {
-        this.$inject = ["$rootScope", "$q", "$compile"];
-        this.$rootScope = $rootScope;
-        this.$q = $q;
-        this.$compile = $compile;
-    }
-    ModalService.prototype.Show = function (message) {
-        var _this = this;
-        this.defer = this.$q.defer();
-        this.$modalScope = this.$rootScope.$new(true);
-        this.$modalScope.onClickOk = function () { _this.OnClickOk(); };
-        this.$modalScope.message = message;
-        this.modalId = "modal" + new Date().getTime().toString();
-        $("body").append("<div id='" + this.modalId + "'><modal on-click-ok='onClickOk();' message='{{message}}'></modal></div>");
-        this.$compile($("#" + this.modalId))(this.$modalScope);
-        $("#" + this.modalId).lightbox_me({
-            destroyOnClose: true,
-            centered: true,
-            closeEsc: false,
-            closeClick: false
-        });
-        return this.defer.promise;
-    };
-    ModalService.prototype.OnClickOk = function () {
-        this.defer.resolve();
-        this.$Destroy();
-    };
-    ModalService.prototype.$Destroy = function () {
-        this.$modalScope.$destroy();
-        $("#" + this.modalId).trigger("close");
-    };
-    return ModalService;
-}());
-angular.module("WebjatoServices")
-    .service("ModalService", ModalService)
-    .directive("modal", function () {
-    return {
-        replace: true,
-        restrict: "E",
-        templateUrl: "/modal-alert.html",
-        scope: {
-            message: "@",
-            onClickOk: "&"
-        },
-        controller: function ($scope, $sce) {
-            $scope.GetTrustedMessage = function () {
-                return $sce.trustAsHtml($scope.message);
-            };
-        }
-    };
-});
-
-angular.module("WebjatoServices").service("MultiSelectionMode", function () {
-    return MultiSelectionModeList;
-});
-
-angular.module("WebjatoServices").service("ServerSync", function ($rootScope, $http, $q, ContentTypeList, ServerSyncCommands) {
-    return {
-        isBusy: false,
-        itemsToSync: [],
-        deletedItems: [],
-        Sync: function () {
-            var _this = this;
-            this.itemsToSync = _.reject(this.itemsToSync, function (item) {
-                return _.contains(_this.deletedItems, item.data.Id);
-            });
-            if ((this.itemsToSync.length == 0) || this.isBusy) return;
-            this.isBusy = true;
-            var currentItem = this.itemsToSync.shift();
-            var promisse_OnComplete = function (success, data, error) {
-                if (success) {
-                    currentItem.deferred.resolve(data);
-                }
-                else {
-                    currentItem.deferred.reject(error);
-                }
-                if (currentItem.cmd == "DELETE") {
-                    _this.deletedItems.push(currentItem.data.Id);
-                }
-                _this.isBusy = false;
-                _this.Sync();
-            };
-            var promise = null;
-            switch (currentItem.cmd) {
-                case ServerSyncCommands.ALL:
-                    promise = $http({ method: "POST", url: "../api/" + _.findWhere(ContentTypeList, { Enum: currentItem.data.Type }).Crtl + "/update", data: currentItem.data });
-                    break;
-                case ServerSyncCommands.POSITION:
-                    promise = $http({ method: "POST", url: "../api/content/position", data: currentItem.data });
-                    break;
-                case ServerSyncCommands.DELETE:
-                    promise = $http({ method: "POST", url: "../api/content/delete", data: currentItem.data });
-                    break;
-                case ServerSyncCommands.ZINDEX:
-                    promise = $http({ method: "POST", url: "../api/content/UpdateZIndex", data: currentItem.data });
-                    break;
-                case ServerSyncCommands.DUPLICATE:
-                    promise = $http({
-                        method: "POST",
-                        url: "../api/" + _.findWhere(ContentTypeList, { Enum: currentItem.data.Type }).Crtl + "/duplicate",
-                        params: {
-                            zindex: currentItem.args.zIndex,
-                            targetPageId: currentItem.args.targetPageId
-                        },
-                        data: currentItem.data
-                    });
-                    break;
-            }
-            promise.success(function (data) {
-                promisse_OnComplete(true, data, null);
-            });
-            promise.error(function (error) {
-                promisse_OnComplete(false, null, error);
-            });
-        },
-        SyncItem: function (item, operation, args) {
-            var deferred = $q.defer();
-            this.itemsToSync.push({
-                data: item,
-                cmd: operation,
-                deferred: deferred,
-                args: args
-            });
-            this.Sync();
-            return deferred.promise;
-        }
-    }
-});
-angular.module("WebjatoServices").service("SiteStyle", function ($http, $location, WebjatoConfig, WebjatoFormatter, HandleServerException) {
-    var qs = "";
-    if ($location.search().siteId) {
-        qs = "?siteId=" + $location.search().siteId;
-    }
-    $http({ method: "GET", url: "../api/site/get" + qs })
-        .success(function (siteData) {
-            WebjatoFormatter.Site.Refresh(siteData);
-            $http({ method: "GET", url: "../api/frame/get" + qs })
-                .success(function (frameData) {
-                    WebjatoFormatter.Frame.Refresh(frameData, siteData);
-                    $http({ method: "GET", url: "../api/background/get" + qs })
-                        .success(function (data) {
-                            WebjatoFormatter.Background.Refresh(data, siteData, WebjatoConfig.AssetsPath);
-                        }).error(HandleServerException);
-                    $http({ method: "GET", url: "../api/header/get" + qs })
-                        .success(function (data) {
-                            WebjatoFormatter.Header.Refresh(data, WebjatoConfig.AssetsPath);
-                        }).error(HandleServerException);
-                    $http({ method: "GET", url: "../api/footer/get" + qs })
-                        .success(function (data) {
-                            WebjatoFormatter.Footer.Refresh(data, siteData, frameData);
-                        }).error(HandleServerException);
-                    $http({ method: "GET", url: "../api/logo/get" + qs })
-                        .success(function (data) {
-                            WebjatoFormatter.Logo.Refresh(data, WebjatoConfig.AssetsPath);
-                        }).error(HandleServerException);
-                }).error(HandleServerException);
-        }).error(HandleServerException);
-    return WebjatoFormatter;
-});
-angular.module("WebjatoServices").service("SocialUtil", function () {
-    return {
-        AnyPluginEnabled: function (data) {
-            return data.Facebook.Enabled || data.Twitter.Enabled || data.LinkedIn.Enabled || data.YouTube.Enabled || data.GooglePlus.Enabled || data.Pinterest.Enabled || data.Instagram.Enabled;
-        }
-    };
-});
-angular.module("WebjatoServices").service("URLParser", function () {
-    return function (url) {
-        return new URI(url);
-    };
-});
-
-
 angular.module("WebjatoDirectives").directive("wjAnimate", function ($timeout, $parse, ServerSync, ServerSyncCommands) {
     return {
         restrict: "A",
@@ -3471,6 +2959,518 @@ angular.module("WebjatoDirectives").directive("wjZindex", function (zIndexChange
         }
     };
 });
+angular.module("WebjatoServices").service("ContentTypeList", function () {
+    return [{ Crtl: "Box", Enum: 1 },
+            { Crtl: "ContactForm", Enum: 2 },
+            { Crtl: "Maps", Enum: 3 },
+            { Crtl: "RegularImage", Enum: 4 },
+            { Crtl: "LinkedImage", Enum: 5 },
+            { Crtl: "Line", Enum: 6 },
+            { Crtl: "Social", Enum: 7 },
+            { Crtl: "Text", Enum: 8 },
+            { Crtl: "Video", Enum: 9 },
+            { Crtl: "ExpandableImage", Enum: 10 }];
+});
+angular.module("WebjatoServices").service("ContentType", function () {
+    return ContentType;
+});
+angular.module("WebjatoServices").service("ContentUtils", function (ContentType, SocialIconSize, SocialUtil) {
+    var GetResizeOptionsForNewLine = function (data, newContentDelta) {
+        if (data.IsHorizontal) {
+            return {
+                handles: "w, e",
+                minHeight: newContentDelta,
+                maxHeight: newContentDelta
+            };
+        }
+        else {
+            return {
+                handles: "n, s",
+                minWidth: newContentDelta,
+                maxWidth: newContentDelta
+            };
+        }
+    };
+    var GetResizeOptionsForHighlightedLine = function (data) {
+        if (data.IsHorizontal) {
+            return {
+                handles: "w, e",
+                maxHeight: 1
+            };
+        }
+        else {
+            return {
+                handles: "n, s",
+                maxWidth: 1
+            };
+        }
+    };
+    var defaultImages = [];
+        defaultImages[ContentType.IMAGE] = "/images/place-holder-img-normal.png";
+        defaultImages[ContentType.LINKED_IMAGE] = "/images/place-holder-img-link.png";
+        defaultImages[ContentType.EXPANDABLE_IMAGE] = "/images/place-holder-img-expandable.png";
+    return {
+        GetSizeForHighlightedContent: function (data) {
+            var defaultPlaceHolderSize = new ContentSize(300, 200);
+            switch (data.Type) {
+                case ContentType.BOX:
+                    var delta = data.Border.Exists ? data.Border.Width * 2 : 0;
+                    return new ContentSize(data.Size.Width + delta, data.Size.Height + delta);
+                case ContentType.LINE:
+                    if (data.IsHorizontal) {
+                        return new ContentSize(data.Size, 6);
+                    }
+                    else {
+                        return new ContentSize(6, data.Size);
+                    }
+                case ContentType.TEXT:
+                    return data.Size;
+                case ContentType.IMAGE:
+                case ContentType.LINKED_IMAGE:
+                case ContentType.EXPANDABLE_IMAGE:
+                    if (data.ImageExportedKey == null) {
+                        return defaultPlaceHolderSize;
+                    }
+                    else {
+                        return data.ImageExportedSize;
+                    }
+                case ContentType.VIDEO:
+                    return data.Size;
+                case ContentType.MAPS:
+                    return data.Size;
+                case ContentType.CONTACT_FORM:
+                    var elem = angular.element("#" + data.Id);
+                    return new ContentSize(elem.width() + 2, elem.height());
+                case ContentType.SOCIAL:
+                    var elem = angular.element("#" + data.Id);
+                    if (SocialUtil.AnyPluginEnabled(data)) {
+                        var height = (parseInt(data.Size) == 0) ?
+                                        SocialIconSize.SMALL :
+                                        (parseInt(data.Size) == 1) ?
+                                            SocialIconSize.REGULAR :
+                                            SocialIconSize.LARGE;
+
+                        return new ContentSize(elem.width() - 12, height);
+                    }
+                    else {
+                        return new ContentSize(elem.width(), elem.height());
+                    }
+            }
+        },
+        GetSizeForNewContent: function (data) {
+            var defaultPlaceHolderSize = new ContentSize(300, 200);
+            switch (data.Type) {
+                case ContentType.BOX:
+                    return data.Size;
+                case ContentType.LINE:
+                    if (data.IsHorizontal) {
+                        return new ContentSize(data.Size, -data.Width);
+                    }
+                    else {
+                        return new ContentSize(-data.Width, data.Size);
+                    }
+                case ContentType.TEXT:
+                    return data.Size;
+                case ContentType.IMAGE:
+                case ContentType.LINKED_IMAGE:
+                case ContentType.EXPANDABLE_IMAGE:
+                    if (data.ImageExportedKey == null) {
+                        return defaultPlaceHolderSize;
+                    }
+                    else {
+                        return data.ImageExportedSize;
+                    }
+                case ContentType.VIDEO:
+                    return data.Size;
+                case ContentType.MAPS:
+                    return data.Size;
+                case ContentType.CONTACT_FORM:
+                    var elem = angular.element("#" + data.Id);
+                    return new ContentSize(elem.width() + 2, elem.height());
+                case ContentType.SOCIAL:
+                    var elem = angular.element("#" + data.Id);
+                    if (SocialUtil.AnyPluginEnabled(data)) {
+                        var height = (parseInt(data.Size) == 0) ?
+                                        SocialIconSize.SMALL :
+                                        (parseInt(data.Size) == 1) ?
+                                            SocialIconSize.REGULAR :
+                                            SocialIconSize.LARGE;
+
+                        return new ContentSize(elem.width() - 12, height);
+                    }
+                    else {
+                        return new ContentSize(elem.width(), elem.height());
+                    }
+            }
+        },
+        SetContentSize: function (data, w, h) {
+            switch (data.Type) {
+                case ContentType.BOX:
+                    if (data.Border.Exists) {
+                        w -= (data.Border.Width * 2)
+                        h -= (data.Border.Width * 2)
+                    }
+                    break;
+            }
+            switch (data.Type) {
+                case ContentType.LINE:
+                    data.Size = data.IsHorizontal ? parseInt(w, 10) : parseInt(h, 10);
+                    break;
+                case ContentType.IMAGE:
+                case ContentType.LINKED_IMAGE:
+                case ContentType.EXPANDABLE_IMAGE:
+                    var scale = Math.floor((w / data.ImageSize.Width) * 100);
+                    data.ImageScale = scale;
+                    data.ImageExportedSize.Width = w;
+                    data.ImageExportedSize.Height = h;
+                    break;
+                default:
+                    data.Size.Width = w;
+                    data.Size.Height = h;
+                    break;
+            }
+        },
+        GetImageURL: function(data, folder) {
+            if (data.ImageKey == null) {
+                return defaultImages[data.Type];
+            }
+            else {
+                return folder + (data.Editing ? data.ImageKey : data.ImageExportedKey);
+            }
+        },
+        GetExpandedImageUrl: function(data, folder) {
+            if (data.ImageKey == null) {
+                return defaultImages[data.Type];
+            }
+            else {
+                return folder + data.ExpandedImage.ImageKey;
+            }
+        },
+        GetResizeOptions: function (data, newContentDelta) {
+            switch (data.Type) {
+                case ContentType.BOX:
+                    return {
+                        id: data.Id,
+                        isNew: data.IsNewContent,
+                        handles: "all",
+                        minWidth: 50,
+                        minHeight: 50
+                    };
+                case ContentType.TEXT:
+                    return {
+                        handles: "all",
+                        minWidth: 100,
+                        minHeight: 100
+                    };
+                case ContentType.LINE:
+                    return data.IsNewContent ?
+                                GetResizeOptionsForNewLine(data, newContentDelta) :
+                                GetResizeOptionsForHighlightedLine(data);
+                case ContentType.IMAGE:
+                case ContentType.LINKED_IMAGE:
+                case ContentType.EXPANDABLE_IMAGE:
+                    return {
+                        aspectRatio: true,
+                        handles: "all",
+                        minWidth: data.IsNewContent? newContentDelta + 20 : 20,
+                        minHeight: data.IsNewContent? newContentDelta + 20: 20,
+                        maxHeight: (data.ImageKey != null) ? data.ImageSize.Height + (data.IsNewContent? newContentDelta : 0) : undefined,
+                        maxWidth: (data.ImageKey != null) ? data.ImageSize.Width + (data.IsNewContent ? newContentDelta : 0) : undefined
+                    }
+                default:
+                    return {};
+            }
+        },
+        IsContentResizable: function (data) {
+            return ((data.Type == ContentType.BOX) ||
+                    (data.Type == ContentType.EXPANDABLE_IMAGE && data.ImageKey != null) ||
+                    (data.Type == ContentType.IMAGE && data.ImageKey != null) ||
+                    (data.Type == ContentType.LINKED_IMAGE && data.ImageKey != null) ||
+                    (data.Type == ContentType.LINE) ||
+                    (data.Type == ContentType.TEXT));
+        },
+        IsContentResizableFromHighlightBox: function (data) {
+            return ((data.Type == ContentType.BOX) ||
+                    (data.Type == ContentType.EXPANDABLE_IMAGE && data.ImageKey != null) ||
+                    (data.Type == ContentType.IMAGE && data.ImageKey != null) ||
+                    (data.Type == ContentType.LINKED_IMAGE && data.ImageKey != null) ||
+                    (data.Type == ContentType.LINE));
+        }
+    };
+});
+var CssService = (function () {
+    function CssService($document) {
+        this.rulesCount = 0;
+        var style = document.createElement('style');
+        style.appendChild(document.createTextNode(''));
+        document.head.appendChild(style);
+        this.sheet = style.sheet;
+    }
+    CssService.prototype.ApplyCSS = function (rules) {
+        var _this = this;
+        _.each(rules, function (rule) {
+            if (_this.sheet.insertRule) {
+                _this.sheet.insertRule(rule.selector + ' { ' + rule.selectorText + ' }', _this.rulesCount);
+            }
+            else if (_this.sheet.addRule) {
+                _this.sheet.addRule(rule.selector, rule.selectorText, _this.rulesCount);
+            }
+            _this.rulesCount++;
+        });
+    };
+    CssService.$inject = ['$document'];
+    return CssService;
+}());
+angular.module("WebjatoServices").service("CssService", CssService);
+
+angular.module("WebjatoServices").service("HandleServerException", function () {
+    return function (data, status, headers, config) {
+        switch (status) {
+            case 401:
+                top.location.href = "../session.html";
+                break;
+            default:
+                alert("Status '" + status + "' não tratado.");
+                break;
+        }
+    };
+});
+angular.module("WebjatoServices").service("HelpIndexer", function (ContentType) {
+    var folder = "/help/";
+    var items = [
+        new HelpBit("main", "main.html", false),
+        new HelpBit("config/size", "config-size.html", false),
+        new HelpBit("config/align", "config-align.html", false),
+        new HelpBit("config/title", "config-title.html", false),
+        new HelpBit("config/pages", "config-pages.html", false),
+        new HelpBit("config/position", "config-position.html", false),
+        new HelpBit("config/finish", "config-finish.html", false),
+        new HelpBit("visual/bg", "visual-bg.html", false),
+        new HelpBit("visual/header", "visual-header.html", false),
+        new HelpBit("visual/footer", "visual-footer.html", false),
+        new HelpBit("visual/logo", "visual-logo.html", false),
+        new HelpBit("visual/menu", "visual-menu.html", false),
+        new HelpBit("visual/page", "visual-page.html", false),
+        new HelpBit("visual/finish", "visual-finish.html", false),
+        new HelpBit("content/start", "content-start.html", false),
+        new HelpBit("content/text", "content-text.html", false),
+        new HelpBit("content/box", "content-box.html", false),
+        new HelpBit("content/line", "content-line.html", false),
+        new HelpBit("content/image-simple", "content-image-simple.html", false),
+        new HelpBit("content/image-expandable", "content-image-expandable.html", false),
+        new HelpBit("content/image-linked", "content-image-linked.html", false),
+        new HelpBit("content/video", "content-video.html", false),
+        new HelpBit("content/map", "content-map.html", false),
+        new HelpBit("content/social", "content-social.html", false),
+        new HelpBit("content/contact-form", "content-contact-form.html", false),
+        new HelpBit("content/move", "content-move.html", false),
+        new HelpBit("content/duplicate", "content-duplicate.html", false),
+        new HelpBit("publish/address", "publish-address.html", false),
+        new HelpBit("publish/display", "publish-display.html", false),
+        new HelpBit("publish/share", "publish-share.html", false),
+        new HelpBit("publish/hide", "publish-hide.html", false)
+    ];
+    return {
+        GetUrl: function (id) {
+            return folder + _.find(items, function (item) { return item.Id === id; }).Url;
+        },
+        GetIdByContentType: function (type) {
+            switch (type) {
+                case ContentType.BOX: return "content/box";
+                case ContentType.CONTACT_FORM: return "content/contact-form";
+                case ContentType.MAPS: return "content/map";
+                case ContentType.IMAGE: return "content/image-simple";
+                case ContentType.LINKED_IMAGE: return "content/image-linked";
+                case ContentType.LINE: return "content/line";
+                case ContentType.SOCIAL: return "content/social";
+                case ContentType.TEXT: return "content/text";
+                case ContentType.VIDEO: return "content/video";
+                case ContentType.EXPANDABLE_IMAGE: return "content/image-expandable";
+            }
+        }
+    };
+});
+
+var ModalService = (function () {
+    function ModalService($rootScope, $q, $compile) {
+        this.$inject = ["$rootScope", "$q", "$compile"];
+        this.$rootScope = $rootScope;
+        this.$q = $q;
+        this.$compile = $compile;
+    }
+    ModalService.prototype.Show = function (message) {
+        var _this = this;
+        this.defer = this.$q.defer();
+        this.$modalScope = this.$rootScope.$new(true);
+        this.$modalScope.onClickOk = function () { _this.OnClickOk(); };
+        this.$modalScope.message = message;
+        this.modalId = "modal" + new Date().getTime().toString();
+        $("body").append("<div id='" + this.modalId + "'><modal on-click-ok='onClickOk();' message='{{message}}'></modal></div>");
+        this.$compile($("#" + this.modalId))(this.$modalScope);
+        $("#" + this.modalId).lightbox_me({
+            destroyOnClose: true,
+            centered: true,
+            closeEsc: false,
+            closeClick: false
+        });
+        return this.defer.promise;
+    };
+    ModalService.prototype.OnClickOk = function () {
+        this.defer.resolve();
+        this.$Destroy();
+    };
+    ModalService.prototype.$Destroy = function () {
+        this.$modalScope.$destroy();
+        $("#" + this.modalId).trigger("close");
+    };
+    return ModalService;
+}());
+angular.module("WebjatoServices")
+    .service("ModalService", ModalService)
+    .directive("modal", function () {
+    return {
+        replace: true,
+        restrict: "E",
+        templateUrl: "/modal-alert.html",
+        scope: {
+            message: "@",
+            onClickOk: "&"
+        },
+        controller: function ($scope, $sce) {
+            $scope.GetTrustedMessage = function () {
+                return $sce.trustAsHtml($scope.message);
+            };
+        }
+    };
+});
+
+angular.module("WebjatoServices").service("MultiSelectionMode", function () {
+    return MultiSelectionModeList;
+});
+
+angular.module("WebjatoServices").service("ServerSync", function ($rootScope, $http, $q, ContentTypeList, ServerSyncCommands) {
+    return {
+        isBusy: false,
+        itemsToSync: [],
+        deletedItems: [],
+        Sync: function () {
+            var _this = this;
+            this.itemsToSync = _.reject(this.itemsToSync, function (item) {
+                return _.contains(_this.deletedItems, item.data.Id);
+            });
+            if ((this.itemsToSync.length == 0) || this.isBusy) return;
+            this.isBusy = true;
+            var currentItem = this.itemsToSync.shift();
+            var promisse_OnComplete = function (success, data, error) {
+                if (success) {
+                    currentItem.deferred.resolve(data);
+                }
+                else {
+                    currentItem.deferred.reject(error);
+                }
+                if (currentItem.cmd == "DELETE") {
+                    _this.deletedItems.push(currentItem.data.Id);
+                }
+                _this.isBusy = false;
+                _this.Sync();
+            };
+            var promise = null;
+            switch (currentItem.cmd) {
+                case ServerSyncCommands.ALL:
+                    promise = $http({ method: "POST", url: "../api/" + _.findWhere(ContentTypeList, { Enum: currentItem.data.Type }).Crtl + "/update", data: currentItem.data });
+                    break;
+                case ServerSyncCommands.POSITION:
+                    promise = $http({ method: "POST", url: "../api/content/position", data: currentItem.data });
+                    break;
+                case ServerSyncCommands.DELETE:
+                    promise = $http({ method: "POST", url: "../api/content/delete", data: currentItem.data });
+                    break;
+                case ServerSyncCommands.ZINDEX:
+                    promise = $http({ method: "POST", url: "../api/content/UpdateZIndex", data: currentItem.data });
+                    break;
+                case ServerSyncCommands.DUPLICATE:
+                    promise = $http({
+                        method: "POST",
+                        url: "../api/" + _.findWhere(ContentTypeList, { Enum: currentItem.data.Type }).Crtl + "/duplicate",
+                        params: {
+                            zindex: currentItem.args.zIndex,
+                            targetPageId: currentItem.args.targetPageId
+                        },
+                        data: currentItem.data
+                    });
+                    break;
+            }
+            promise.success(function (data) {
+                promisse_OnComplete(true, data, null);
+            });
+            promise.error(function (error) {
+                promisse_OnComplete(false, null, error);
+            });
+        },
+        SyncItem: function (item, operation, args) {
+            var deferred = $q.defer();
+            this.itemsToSync.push({
+                data: item,
+                cmd: operation,
+                deferred: deferred,
+                args: args
+            });
+            this.Sync();
+            return deferred.promise;
+        }
+    }
+});
+angular.module("WebjatoServices").service("SiteStyle", function ($http, $location, WebjatoConfig, WebjatoFormatter, HandleServerException) {
+    var qs = "";
+    if ($location.search().siteId) {
+        qs = "?siteId=" + $location.search().siteId;
+    }
+    $http({ method: "GET", url: "../api/site/get" + qs })
+        .success(function (siteData) {
+            WebjatoFormatter.Site.Refresh(siteData);
+            $http({ method: "GET", url: "../api/frame/get" + qs })
+                .success(function (frameData) {
+                    WebjatoFormatter.Frame.Refresh(frameData, siteData);
+                    $http({ method: "GET", url: "../api/background/get" + qs })
+                        .success(function (data) {
+                            WebjatoFormatter.Background.Refresh(data, siteData, WebjatoConfig.AssetsPath);
+                        }).error(HandleServerException);
+                    $http({ method: "GET", url: "../api/header/get" + qs })
+                        .success(function (data) {
+                            WebjatoFormatter.Header.Refresh(data, WebjatoConfig.AssetsPath);
+                        }).error(HandleServerException);
+                    $http({ method: "GET", url: "../api/footer/get" + qs })
+                        .success(function (data) {
+                            WebjatoFormatter.Footer.Refresh(data, siteData, frameData);
+                        }).error(HandleServerException);
+                    $http({ method: "GET", url: "../api/logo/get" + qs })
+                        .success(function (data) {
+                            WebjatoFormatter.Logo.Refresh(data, WebjatoConfig.AssetsPath);
+                        }).error(HandleServerException);
+                }).error(HandleServerException);
+        }).error(HandleServerException);
+    return WebjatoFormatter;
+});
+angular.module("WebjatoServices").service("SocialUtil", function () {
+    return {
+        AnyPluginEnabled: function (data) {
+            return data.Facebook.Enabled || data.Twitter.Enabled || data.LinkedIn.Enabled || data.YouTube.Enabled || data.GooglePlus.Enabled || data.Pinterest.Enabled || data.Instagram.Enabled;
+        }
+    };
+});
+angular.module("WebjatoServices").service("URLParser", function () {
+    return function (url) {
+        return new URI(url);
+    };
+});
+
+
+angular.module("WebjatoModels").factory("UnitContentModel", function () {
+	return {
+		ContentTypeToPreview: null,
+		ShowUnity: true
+    };
+});
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -3610,6 +3610,38 @@ var HelpBit = (function () {
     return HelpBit;
 }());
 
+angular.module("WebjatoDirectives").directive("wjHelp", function () {
+    return {
+        restrict: "E",
+        replace: true,
+        scope: true,
+        template: "<div class='wj-help' ng-include='Url' onload='OnLoad();'></div>",
+        controller: function ($rootScope, $scope, HelpIndexer) {
+            $scope.Url = null;
+            $scope.OnLoad = function () {
+                $(".wj-help").lightbox_me({
+                    destroyOnClose: true,
+                    onClose: function () {
+                        $scope.Url = null;
+                        $scope.$apply();
+                    }
+                });
+            };
+            $rootScope.$on("HelpDisplay", function (e, id) {
+                $scope.Url = HelpIndexer.GetUrl(id);
+            });
+            $rootScope.$on("HelpAutoDisplay", function (e, id) {
+                if (new Help().Show(id)) {
+                    $scope.Url = HelpIndexer.GetUrl(id);
+                }
+            });
+            $rootScope.$on("HelpSetState", function (e, newState, reset) {
+                new Help().SetEnabled(newState, reset);
+            });
+        }
+    };
+});
+
 var CropBoxCtrl = (function () {
     function CropBoxCtrl($scope) {
         this.$scope = $scope;
@@ -3701,38 +3733,6 @@ angular.module("WebjatoServices")
         controller: CropBoxCtrl,
         controllerAs: 'cbCtrl',
         link: CropBoxLink
-    };
-});
-
-angular.module("WebjatoDirectives").directive("wjHelp", function () {
-    return {
-        restrict: "E",
-        replace: true,
-        scope: true,
-        template: "<div class='wj-help' ng-include='Url' onload='OnLoad();'></div>",
-        controller: function ($rootScope, $scope, HelpIndexer) {
-            $scope.Url = null;
-            $scope.OnLoad = function () {
-                $(".wj-help").lightbox_me({
-                    destroyOnClose: true,
-                    onClose: function () {
-                        $scope.Url = null;
-                        $scope.$apply();
-                    }
-                });
-            };
-            $rootScope.$on("HelpDisplay", function (e, id) {
-                $scope.Url = HelpIndexer.GetUrl(id);
-            });
-            $rootScope.$on("HelpAutoDisplay", function (e, id) {
-                if (new Help().Show(id)) {
-                    $scope.Url = HelpIndexer.GetUrl(id);
-                }
-            });
-            $rootScope.$on("HelpSetState", function (e, newState, reset) {
-                new Help().SetEnabled(newState, reset);
-            });
-        }
     };
 });
 

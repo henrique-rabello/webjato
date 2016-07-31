@@ -142,7 +142,6 @@
     <Compile Include="Repositories\SiteRepos\BackgroundRepositoryTest.cs" />
     <Compile Include="Repositories\UserRepositoryTest.cs" />
     <Compile Include="Utilities\GeneralTest.cs" />
-    <Compile Include="Utilities\MailManagerTest.cs" />
     <Compile Include="Utilities\PublisherTest.cs" />
   </ItemGroup>
   <ItemGroup>

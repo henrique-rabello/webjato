@@ -1,0 +1,9 @@
+<div id             =   "{{data.Id}}"
+     class          =   "wj-image-regular animated"
+     ng-style       =   "{  'top': data.Position.Y + 'px',
+                            'left': data.Position.X + 'px',
+                            'z-index': data.Position.ZIndex,
+                            'width': data.ImageExportedSize.Width + 'px' }"
+     wj-animate     =   "data">
+    <img class="img" ng-src="{{ImageURL}}" />
+</div>

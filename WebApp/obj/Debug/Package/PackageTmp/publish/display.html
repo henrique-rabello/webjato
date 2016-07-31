@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../css/tools.css" />
+    <style type="text/css" media="screen">
+        body {
+            font-family: Verdana, Geneva, sans-serif;
+            background-color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            border: none;
+        }
+        p img {
+            margin-right: 10px;
+            vertical-align: -2px;
+        }
+        #publicar {
+            position: relative;
+            width: 525px;
+            height: auto;
+            display: inline-block;
+            margin: 95px auto 0 auto;
+            background-color: transparent;
+        }
+        .button-style {
+            padding: 6px 33px;
+            /* cursor: pointer; */
+        }
+         .box-aviso {
+            width: auto;
+            text-align: center;
+            font-size: 0.8em;
+            color: #333;
+            display: table;
+            margin: 0 auto;
+            margin-top: 48px;
+            padding: 10px 13px;
+        }
+        .amarelo {
+            border: 1px solid #ffcc00;
+            background: #fffed7;
+        }
+        .verde {
+            border: 1px solid #9bcd69;
+            background: #d7ffe1;
+        }
+    </style>
+</head>
+<body>
+    <div id="publicar">
+        <button type="button" class="button-style" ng-click="Publish();" ng-disabled="Publishing || CandidateDNS.Value == ''" translate>Exibir / Atualizar</button>
+        <img ng-show="Publishing" src="../images/loadinganim.gif" />
+        <p class="box-aviso amarelo" ng-show="ActivePublish == null && CandidateDNS.Value == ''" translate>
+            <img src="../images/icon_alert.gif" alt="" title="" />Você ainda não definiu um endereço.<br />
+            Volte para o <strong>Passo 1</strong>.
+        </p>
+        <p class="box-aviso amarelo" ng-show="ActivePublish == null && CandidateDNS.Value != ''" translate>
+           <img src="../images/icon_alert.gif" alt="" title="" />Seu site não está online.
+        </p>
+        <p class="box-aviso amarelo" ng-show="ActivePublish != null && CandidateDNS.Value != '' && ActivePublish.Subdomain != CandidateDNS.Value" translate>
+            <img src="../images/icon_alert.gif" alt="" title="" />A versão online do seu site está desatualizada.<br />
+            <a href="{{'http://' + ActivePublish.DNS}}" target="_blank">{{ActivePublish.DNS}}</a>
+        </p>
+        <p class="box-aviso verde" ng-show="ActivePublish != null && (CandidateDNS.Value == '' || CandidateDNS.Value == ActivePublish.Subdomain)" translate>
+            <img src="../images/icon_accept.gif" alt="" title="" />Seu site está online e atualizado.<br />
+            <a href="{{'http://' + ActivePublish.DNS}}" target="_blank">{{ActivePublish.DNS}}</a>
+        </p>
+    </div>
+</body>
+</html>

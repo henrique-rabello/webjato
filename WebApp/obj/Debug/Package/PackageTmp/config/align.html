@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="../css/basic.css" />
+    <style type="text/css" media="screen">
+        body {
+            font-family: Verdana, Geneva, sans-serif;
+            text-align: center;
+            background-color: #fff;
+            margin: 0;
+        }
+
+        #page-align {
+            background-color: transparent;
+            margin: 0 auto;
+            position: relative;
+            width: 760px;
+            height: 300px;
+            border: 0px solid #ddd;
+        }
+
+        #page-align label, #page-align label span {
+            cursor: pointer;
+        }
+
+        #monitor {
+            background-color: transparent;
+            position: absolute;
+            top: 85px;
+            right: 120px;
+            width: auto;
+            height: auto;
+        }
+
+        #telacenter {
+            background: transparent url('../images/f_monitor_posit_1.png') no-repeat center;
+            display: block;
+            position: absolute;
+            top: 6px;
+            left: 3px;
+            width: 192px;
+            height: 140px;
+        }
+
+        #telaleft {
+            background: transparent url('../images/f_monitor_posit_2.png') no-repeat center;
+            display: block;
+            position: absolute;
+            top: 6px;
+            left: 3px;
+            width: 192px;
+            height: 140px;
+        }
+
+        #shot {
+            background-color: transparent;
+            color: #000;
+            font-size: 0.8em;
+            text-align: left;
+            line-height: normal;
+            position: absolute;
+            font-weight: normal;
+            top: 100px;
+            left: 120px;
+            width: auto;
+            height: auto;
+        }
+
+        .tamanho {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 35px;
+            margin-left: 3px;
+            font-weight: bold;
+        }
+
+        .marcatu {
+            line-height: normal;
+            font-size: 0.85em;
+            margin-left: 0;
+            font-weight: normal;
+        }
+   </style>
+</head>
+<body>
+    <div id="page-align">
+        <div id="monitor">
+            <img src="../images/f_monitor_simples.jpg" alt="" />
+            <div id="telacenter" ng-show="Site.Alignment == 2">&nbsp;</div>
+            <div id="telaleft" ng-show="Site.Alignment == 1">&nbsp;</div>
+        </div>
+        <div id="shot">
+            <br />
+            <input type="radio" class="ipt_radiobutton cursorpointer" name="rd1" id="rd1a" ng-model="Site.Alignment" value="2" ng-change="UpdateAlignment();" />
+            <label for="rd1a" class="cursorpointer">
+                <span translate>Centralizado</span>
+                <span class="marcatu" translate>(mais utilizado)</span>
+            </label>
+            <br /><br />
+            <input type="radio" class="ipt_radiobutton cursorpointer" name="rd1" id="rd1b" ng-model="Site.Alignment" value="1" ng-change="UpdateAlignment();" />
+            <label for="rd1b">
+                <span class="cursorpointer" translate>Esquerda</span>
+            </label>
+        </div>
+    </div>
+</body>
+</html>

@@ -67,7 +67,12 @@ namespace WebV2.App_Code {
             Bind<IPath>().To<PathWrap>();
             Bind<IFile>().To<FileWrap>();
             Bind<IDirectory>().To<DirectoryWrap>();
-            Bind<MailServerConfig>().ToMethod<MailServerConfig>(x => new MailServerConfig { HostURL = Constants.MailHost, HostLogin = Constants.MailLogin, HostPwd = Constants.MailPassword });
+            Bind<MailServerConfig>().ToMethod<MailServerConfig>(x => new MailServerConfig {
+                HostURL = Constants.MailHost,
+                HostPort = Constants.MailPort,
+                HostLogin = Constants.MailLogin,
+                HostPwd = Constants.MailPassword
+            });
             if (backgroundType == "Header") {
                 Bind<BackgroundBase>().To<Header>();
             }

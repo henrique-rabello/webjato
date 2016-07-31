@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net.Mail;
 using Webjato.Entities;
 
 namespace Webjato.Utilities {
     public interface ISmtpClient {
-        string Host { get; set; }
-        bool EnableSsl { get; set; }
-        ICredentialsByHost Credentials { get; set; }
-        void Send(MailMessage msg);
+        void Send(string host, int port, string login, string password, MailMessage msg);
     }
     
     public class MailManager {
@@ -24,17 +15,14 @@ namespace Webjato.Utilities {
         }
 
         public virtual void SendMail(string addressFrom, string addressTo, string subject, string body, bool useHtml) {
-            var msg = new MailMessage {
-                From = new MailAddress(addressFrom),
-                Subject = subject,
-                Body = body,
-                IsBodyHtml = useHtml
-            };
-            msg.To.Add(new MailAddress(addressTo));
-            client.Host = server.HostURL;
-            client.EnableSsl = true;
-            client.Credentials = new NetworkCredential(server.HostLogin, server.HostPwd);
-            client.Send(msg);
+            using (var msg = new MailMessage()) {
+                msg.From = new MailAddress(addressFrom);
+                msg.Subject = subject;
+                msg.Body = body;
+                msg.IsBodyHtml = useHtml;
+                msg.To.Add(new MailAddress(addressTo));
+                client.Send(server.HostURL, server.HostPort, server.HostLogin, server.HostPwd, msg);
+            }
         }
     }
 }

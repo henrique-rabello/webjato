@@ -252,6 +252,7 @@
     <Content Include="css\jquery.selectboxit-grey.css" />
     <Content Include="css\landpage.css" />
     <Content Include="css\site-institucional.css" />
+    <Content Include="css\suporte.css" />
     <Content Include="images\icon_copiar.png" />
     <Content Include="images\loadinganim2.gif" />
     <Content Include="images\place-holder-mapa_1000x400.png" />
@@ -1004,6 +1005,7 @@
     <Content Include="scripts\jquery.blueberry.js" />
     <Content Include="scripts\jquery.dropdown.js" />
     <Content Include="scripts\jquery.tipsy.js" />
+    <Content Include="scripts\suporte.js" />
     <Content Include="scripts\tinymce\plugins\advlist\plugin.min.js" />
     <Content Include="scripts\tinymce\plugins\anchor\plugin.min.js" />
     <Content Include="scripts\tinymce\plugins\autolink\plugin.min.js" />

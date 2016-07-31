@@ -31,6 +31,12 @@ namespace WebV2.App_Code {
             }
         }
 
+        public static int MailPort {
+            get {
+                return Int32.Parse(ConfigurationManager.AppSettings["MailPort"]);
+            }
+        }
+
         public static string MailLogin {
             get {
                 return ConfigurationManager.AppSettings["mailLogin"];

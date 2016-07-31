@@ -27,3 +27,4 @@ C:\GD\WK\WJ\Webjato.Tests\bin\Debug\Newtonsoft.Json.xml
 C:\GD\WK\WJ\Webjato.Tests\obj\Debug\Webjato.Tests.csprojFakesResolveAssemblyReference.cache
 C:\GD\WK\WJ\Webjato.Tests\obj\Debug\Webjato.Tests.dll
 C:\GD\WK\WJ\Webjato.Tests\obj\Debug\Webjato.Tests.pdb
+C:\GD\WK\WJ\Webjato.Tests\obj\Debug\Webjato.Tests.csprojResolveAssemblyReference.cache
