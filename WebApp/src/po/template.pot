@@ -698,13 +698,9 @@ msgid "A senha deve ter pelo menos 5 caracteres"
 msgstr ""
 
 #: index_2015.html:342
-#: lang_pt-br\esqueci-a-senha.html:77
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:342
-#: obj\Debug\AspnetCompileMerge\Source\lang_pt-br\esqueci-a-senha.html:77
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\index_2015.html:342
-#: obj\Debug\AspnetCompileMerge\TempBuildDir\lang_pt-br\esqueci-a-senha.html:77
 #: obj\Debug\Package\PackageTmp\index_2015.html:342
-#: obj\Debug\Package\PackageTmp\lang_pt-br\esqueci-a-senha.html:77
 #: obj\Release\AspnetCompileMerge\Source\index.html:322
 #: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:322
 #: obj\Release\Package\PackageTmp\index.html:342
@@ -2547,13 +2543,6 @@ msgstr ""
 msgid "Enviando imagem..."
 msgstr ""
 
-#: lang_pt-br\esqueci-a-senha.html:74
-#: obj\Debug\AspnetCompileMerge\Source\lang_pt-br\esqueci-a-senha.html:74
-#: obj\Debug\AspnetCompileMerge\TempBuildDir\lang_pt-br\esqueci-a-senha.html:74
-#: obj\Debug\Package\PackageTmp\lang_pt-br\esqueci-a-senha.html:74
-msgid "Enviar"
-msgstr ""
-
 #: content\z-index-tpl.html:13
 #: obj\Debug\AspnetCompileMerge\Source\content\z-index-tpl.html:13
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\content\z-index-tpl.html:13
@@ -2794,13 +2783,9 @@ msgid "Esta página ainda não possui conteúdo."
 msgstr ""
 
 #: index_2015.html:343
-#: lang_pt-br\esqueci-a-senha.html:78
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:343
-#: obj\Debug\AspnetCompileMerge\Source\lang_pt-br\esqueci-a-senha.html:78
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\index_2015.html:343
-#: obj\Debug\AspnetCompileMerge\TempBuildDir\lang_pt-br\esqueci-a-senha.html:78
 #: obj\Debug\Package\PackageTmp\index_2015.html:343
-#: obj\Debug\Package\PackageTmp\lang_pt-br\esqueci-a-senha.html:78
 #: obj\Release\AspnetCompileMerge\Source\index.html:323
 #: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:323
 #: obj\Release\Package\PackageTmp\index.html:343
@@ -2822,13 +2807,9 @@ msgid "Este e-mail já está em uso, por favor tente de novo."
 msgstr ""
 
 #: index_2015.html:341
-#: lang_pt-br\esqueci-a-senha.html:76
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:341
-#: obj\Debug\AspnetCompileMerge\Source\lang_pt-br\esqueci-a-senha.html:76
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\index_2015.html:341
-#: obj\Debug\AspnetCompileMerge\TempBuildDir\lang_pt-br\esqueci-a-senha.html:76
 #: obj\Debug\Package\PackageTmp\index_2015.html:341
-#: obj\Debug\Package\PackageTmp\lang_pt-br\esqueci-a-senha.html:76
 #: obj\Release\AspnetCompileMerge\Source\index.html:321
 #: obj\Release\AspnetCompileMerge\TempBuildDir\index.html:321
 #: obj\Release\Package\PackageTmp\index.html:341

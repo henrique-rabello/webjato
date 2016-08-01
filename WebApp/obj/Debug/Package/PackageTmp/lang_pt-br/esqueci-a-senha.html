@@ -1,16 +1,13 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" id="ng-app" ng-app="LoginApp">
+<html xmlns="http://www.w3.org/1999/xhtml" id="ng-app">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="title" content="Esqueci a Senha" />
     <meta name="description" content="Recupere sua senha. Entre com o e-mail cadastrado" />
     <title>Esqueci a Senha</title>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css' />
     <link rel="stylesheet" type="text/css" href="/css/animate.css" />
     <link rel="stylesheet" type="text/css" href="/css/site-institucional.css" />
-    <link type="text/css" rel="stylesheet" href="/css/tipsy.css" />
-    <script type="text/javascript" src="/scripts/wj-libs.js"></script>
-    <script type="text/javascript" src="/scripts/wj.js"></script>
     <style type="text/css" media="screen">
         #btn-fb {
             position: absolute !important;
@@ -18,43 +15,51 @@
             left: 19px;
             opacity: 0;
         }
-        
+
         .container-conta p {
             margin-top: 20px;
         }
     </style>
-    <script type='text/javascript'>
-        $(function() {
-        $('.container-conta [title]').tipsy({trigger: 'focus', gravity: 'w'});
-        });
-    </script>
     <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
         ga('create', 'UA-33853723-1', 'auto');
         ga('send', 'pageview');
-</script>
+    </script>
+    <script src="../scripts/angular.min.js"></script>
+    <script>
+        angular.module('PwdApp', []).controller('PwdCtrl', function ($scope, $http) {
+            $scope.data = {
+                email: '',
+                status: '-1',
+                working: false
+            };
+            $scope.go = function (form) {
+                if (!form.$valid) {
+                    return;
+                }
+                $scope.data.status = '-1';
+                $scope.data.working = true;
+                $http({ method: 'POST', url: '/api/user/retrievepassword', params: { language: 'ptBR', email: $scope.data.email } })
+                    .success(function (data) {
+                        $scope.data.working = false;
+                        $scope.data.status = data;
+                    });
+            };
+        });
+    </script>
 </head>
 <body ng-controller="LoginCrtl">
-    <wj-help></wj-help>
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.6";
-        fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-</script>
     <div id="header">
         <div id="cont_menu">
             <ul id="bot">
                 <li><a href="inscrever-se.html" class="lup lup2" title="">Inscreva-se</a></li>
                 <li class="lup3">ou</li>
-                <!-- <li class="lup3">Já tem uma conta?</li> -->
                 <li><a href="entrar.html" class="lup lup2" title="">Entrar</a></li>
             </ul>
         </div>
@@ -67,17 +72,28 @@
         <h1 class="light align-center bottom-1 margin-top-form">Esqueci a Senha</h1>
         <!-- Form inscrever-se -->
         <div class="container-box margin-side">
-            <div class="container-conta">
-                <!-- E-mail -->
-                <input id="f6" type="text" maxlength="132" placeholder="E-mail" ng-model="Email" autofocus />
-                <!-- Btn -->
-                <button type="submit" id="f4SendPassword" ng-disabled="!IsEmailValid()" ng-class="{'disabled': !IsEmailValid(), 'enabled': IsEmailValid()}"
-                    ng-click="RetrievePassword();" translate>Enviar</button>
-                <span class="error animated shake" ng-show="RetrievePasswordStatus == 1" translate>Este e-mail não está cadastrado em nosso sistema.</span>
-                <span class="error animated shake" ng-show="RetrievePasswordStatus == 0" translate>A senha foi enviada para o seu e-mail.</span>
-                <span class="error animated shake" ng-show="RetrievePasswordStatus == 2" translate>Este e-mail está associado a uma conta de Facebook. Utilize o facebook para entrar no site.</span>
-                <p><a href="entrar.html" class="" title="">De repente lembrou?</a></p>
-            </div>
+            <form class="container-conta" ng-app="PwdApp" ng-controller="PwdCtrl" novalidate name="form">
+                <input type="email" maxlength="132" placeholder="E-mail" ng-model="data.email" name="email" required autofocus />
+                <div ng-show="form.$submitted || form.email.$touched" class="warning">
+                    <span ng-show="form.email.$error.required">Informe seu e-mail.</span>
+                    <span ng-show="form.email.$error.email">Este e-mail não é válido.</span>
+                </div>
+                <button type="submit" ng-click="go(form);" ng-disabled="data.working">
+                    <span ng-show="!data.working">
+                        Recuperar senha
+                    </span>
+                    <span ng-show="data.working">
+                        Aguarde...
+                        <img src="../images/loadinganim.gif" />
+                    </span>
+                </button>
+                <span class="error animated shake" ng-show="data.status == 1">Este e-mail não está cadastrado no Webjato.</span>
+                <span class="error animated shake" ng-show="data.status == 0" style="color: green;">Sua senha foi enviada para o seu e-mail.</span>
+                <span class="error animated shake" ng-show="data.status == 2">Este e-mail está associado a uma conta de Facebook. Utilize o Facebook para entrar no Webjato.</span>
+                <p>
+                    <a href="entrar.html" class="" title="">De repente lembrou?</a>
+                </p>
+            </form>
         </div>
     </div>
     <!-- Rodapé -->

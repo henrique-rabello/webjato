@@ -12,10 +12,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 01:01:26</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>07/30/2016 19:06:22</publishTime>
+      <publishTime>07/31/2016 21:07:20</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>07/30/2016 19:06:22</publishTime>
+      <publishTime>07/31/2016 21:07:20</publishTime>
     </File>
     <File Include="bin/AWSSDK.dll">
       <publishTime>07/26/2016 01:08:38</publishTime>
@@ -75,16 +75,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 01:09:03</publishTime>
     </File>
     <File Include="bin/WebApp.dll">
-      <publishTime>07/30/2016 19:05:19</publishTime>
+      <publishTime>07/31/2016 21:00:07</publishTime>
     </File>
     <File Include="bin/WebApp.pdb">
-      <publishTime>07/30/2016 19:05:19</publishTime>
+      <publishTime>07/31/2016 21:00:07</publishTime>
     </File>
     <File Include="bin/Webjato.dll">
-      <publishTime>07/30/2016 13:17:01</publishTime>
+      <publishTime>07/31/2016 21:00:03</publishTime>
     </File>
     <File Include="bin/Webjato.pdb">
-      <publishTime>07/30/2016 13:17:01</publishTime>
+      <publishTime>07/31/2016 21:00:03</publishTime>
     </File>
     <File Include="bin/WebV2.dll">
       <publishTime>12/06/2015 21:17:41</publishTime>
@@ -339,7 +339,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 00:58:02</publishTime>
     </File>
     <File Include="css/wj.css">
-      <publishTime>07/30/2016 13:17:43</publishTime>
+      <publishTime>07/31/2016 21:00:42</publishTime>
+    </File>
+    <File Include="email-templates/en-us/esqueci-minha-senha.html">
+      <publishTime>07/31/2016 20:57:28</publishTime>
+    </File>
+    <File Include="email-templates/pt-br/esqueci-minha-senha.html">
+      <publishTime>07/31/2016 20:57:25</publishTime>
     </File>
     <File Include="entrar.html">
       <publishTime>07/08/2016 22:48:03</publishTime>
@@ -2361,7 +2367,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 00:58:18</publishTime>
     </File>
     <File Include="index.html">
-      <publishTime>07/26/2016 21:44:11</publishTime>
+      <publishTime>07/31/2016 14:42:15</publishTime>
     </File>
     <File Include="index_2015.html">
       <publishTime>07/26/2016 01:01:31</publishTime>
@@ -2376,13 +2382,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/24/2016 21:25:12</publishTime>
     </File>
     <File Include="lang_en-us/index.html">
-      <publishTime>07/28/2016 20:18:45</publishTime>
+      <publishTime>07/31/2016 20:19:48</publishTime>
     </File>
     <File Include="lang_en-us/login.html">
-      <publishTime>07/28/2016 20:18:58</publishTime>
+      <publishTime>07/31/2016 14:19:00</publishTime>
     </File>
     <File Include="lang_en-us/privacy_policy.html">
       <publishTime>07/24/2016 18:42:43</publishTime>
+    </File>
+    <File Include="lang_en-us/retrieve-password.html">
+      <publishTime>07/31/2016 20:53:50</publishTime>
     </File>
     <File Include="lang_en-us/signup.html">
       <publishTime>07/26/2016 20:52:09</publishTime>
@@ -2400,7 +2409,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/28/2016 19:58:19</publishTime>
     </File>
     <File Include="lang_pt-br/esqueci-a-senha.html">
-      <publishTime>07/26/2016 20:52:48</publishTime>
+      <publishTime>07/31/2016 20:53:53</publishTime>
     </File>
     <File Include="lang_pt-br/index.html">
       <publishTime>07/28/2016 19:59:52</publishTime>
@@ -2436,7 +2445,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/08/2016 22:48:03</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>07/30/2016 19:05:56</publishTime>
+      <publishTime>07/31/2016 21:07:12</publishTime>
     </File>
     <File Include="preview/box-tpl.html">
       <publishTime>07/26/2016 01:05:39</publishTime>
@@ -2487,28 +2496,28 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 00:58:19</publishTime>
     </File>
     <File Include="publish/tpl/box-tpl.html">
-      <publishTime>07/30/2016 19:05:27</publishTime>
+      <publishTime>07/31/2016 21:07:09</publishTime>
     </File>
     <File Include="publish/tpl/contact-form-tpl.html">
-      <publishTime>07/30/2016 19:05:40</publishTime>
+      <publishTime>07/31/2016 21:07:09</publishTime>
     </File>
     <File Include="publish/tpl/css/animate.css">
-      <publishTime>07/30/2016 19:05:27</publishTime>
+      <publishTime>07/31/2016 21:07:09</publishTime>
     </File>
     <File Include="publish/tpl/css/menu.css">
-      <publishTime>07/30/2016 19:05:40</publishTime>
+      <publishTime>07/31/2016 21:07:08</publishTime>
     </File>
     <File Include="publish/tpl/css/wj.css">
-      <publishTime>07/30/2016 19:05:40</publishTime>
+      <publishTime>07/31/2016 21:00:31</publishTime>
     </File>
     <File Include="publish/tpl/image-expandable-tpl.html">
-      <publishTime>07/30/2016 19:05:40</publishTime>
+      <publishTime>07/31/2016 21:00:31</publishTime>
     </File>
     <File Include="publish/tpl/image-link-tpl.html">
-      <publishTime>07/30/2016 13:17:31</publishTime>
+      <publishTime>07/31/2016 21:00:33</publishTime>
     </File>
     <File Include="publish/tpl/image-tpl.html">
-      <publishTime>07/30/2016 13:17:32</publishTime>
+      <publishTime>07/31/2016 21:00:34</publishTime>
     </File>
     <File Include="publish/tpl/images/logo_webjato.png">
       <publishTime>07/26/2016 00:58:19</publishTime>
@@ -2574,28 +2583,28 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 00:58:19</publishTime>
     </File>
     <File Include="publish/tpl/js/wj-libs.js">
-      <publishTime>07/30/2016 19:05:27</publishTime>
+      <publishTime>07/31/2016 21:07:09</publishTime>
     </File>
     <File Include="publish/tpl/js/wj.js">
-      <publishTime>07/30/2016 19:05:40</publishTime>
+      <publishTime>07/31/2016 21:07:09</publishTime>
     </File>
     <File Include="publish/tpl/line-tpl.html">
-      <publishTime>07/30/2016 13:17:33</publishTime>
+      <publishTime>07/31/2016 21:00:34</publishTime>
     </File>
     <File Include="publish/tpl/map-tpl.html">
-      <publishTime>07/30/2016 13:17:33</publishTime>
+      <publishTime>07/31/2016 21:00:34</publishTime>
     </File>
     <File Include="publish/tpl/offline.html">
       <publishTime>07/26/2016 00:58:19</publishTime>
     </File>
     <File Include="publish/tpl/social-tpl.html">
-      <publishTime>07/30/2016 13:17:35</publishTime>
+      <publishTime>07/31/2016 21:00:35</publishTime>
     </File>
     <File Include="publish/tpl/text-tpl.html">
-      <publishTime>07/30/2016 13:17:36</publishTime>
+      <publishTime>07/31/2016 21:00:35</publishTime>
     </File>
     <File Include="publish/tpl/video-tpl.html">
-      <publishTime>07/30/2016 13:17:36</publishTime>
+      <publishTime>07/31/2016 21:00:35</publishTime>
     </File>
     <File Include="registros.html">
       <publishTime>12/21/2015 23:27:50</publishTime>
@@ -2620,6 +2629,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="scripts/jquery.tipsy.js">
       <publishTime>07/26/2016 00:58:19</publishTime>
+    </File>
+    <File Include="scripts/login.js">
+      <publishTime>07/26/2016 20:47:57</publishTime>
     </File>
     <File Include="scripts/suporte.js">
       <publishTime>07/30/2016 14:03:52</publishTime>
@@ -2865,13 +2877,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 00:58:21</publishTime>
     </File>
     <File Include="scripts/wj-libs.js">
-      <publishTime>07/30/2016 13:17:41</publishTime>
+      <publishTime>07/31/2016 21:00:40</publishTime>
     </File>
     <File Include="scripts/wj.js">
-      <publishTime>07/30/2016 13:17:53</publishTime>
+      <publishTime>07/31/2016 21:00:51</publishTime>
     </File>
     <File Include="scripts/_references.js">
-      <publishTime>07/30/2016 14:01:02</publishTime>
+      <publishTime>07/31/2016 13:48:52</publishTime>
     </File>
     <File Include="session.html">
       <publishTime>07/28/2016 20:42:46</publishTime>
@@ -2907,7 +2919,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 00:58:22</publishTime>
     </File>
     <File Include="src/js/directives/general/wj-help.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/directives/general/wj-help.js.map">
       <publishTime>04/21/2016 14:24:51</publishTime>
@@ -2919,7 +2931,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 00:58:23</publishTime>
     </File>
     <File Include="src/js/directives/wj-animated-highlight.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/directives/wj-animated-highlight.js.map">
       <publishTime>04/21/2016 14:24:51</publishTime>
@@ -2961,7 +2973,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 00:58:23</publishTime>
     </File>
     <File Include="src/js/directives/wj-duplicate-editor.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/directives/wj-duplicate-editor.js.map">
       <publishTime>04/21/2016 14:24:51</publishTime>
@@ -3021,7 +3033,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 00:58:23</publishTime>
     </File>
     <File Include="src/js/directives/wj-move-after-duplicate-editor.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/directives/wj-move-after-duplicate-editor.js.map">
       <publishTime>04/21/2016 14:24:51</publishTime>
@@ -3030,7 +3042,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 00:58:23</publishTime>
     </File>
     <File Include="src/js/directives/wj-move-together-editor.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/directives/wj-move-together-editor.js.map">
       <publishTime>04/21/2016 14:24:51</publishTime>
@@ -3039,7 +3051,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 00:58:23</publishTime>
     </File>
     <File Include="src/js/directives/wj-ok-cancel.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/directives/wj-ok-cancel.js.map">
       <publishTime>04/21/2016 14:24:51</publishTime>
@@ -3054,7 +3066,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 00:58:23</publishTime>
     </File>
     <File Include="src/js/directives/wj-select-box-it.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/directives/wj-select-box-it.js.map">
       <publishTime>04/21/2016 14:24:51</publishTime>
@@ -3105,157 +3117,157 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 00:58:23</publishTime>
     </File>
     <File Include="src/js/entities/content/Box.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/content/Box.js.map">
       <publishTime>04/21/2016 14:24:51</publishTime>
     </File>
     <File Include="src/js/entities/content/BoxBorder.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/content/BoxBorder.js.map">
       <publishTime>04/21/2016 14:24:51</publishTime>
     </File>
     <File Include="src/js/entities/content/ContactForm.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/content/ContactForm.js.map">
       <publishTime>04/21/2016 14:24:51</publishTime>
     </File>
     <File Include="src/js/entities/content/ContentBase.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/content/ContentBase.js.map">
       <publishTime>04/21/2016 14:24:51</publishTime>
     </File>
     <File Include="src/js/entities/content/ContentPosition.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/content/ContentPosition.js.map">
       <publishTime>04/21/2016 14:24:51</publishTime>
     </File>
     <File Include="src/js/entities/content/ContentSize.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/content/ContentSize.js.map">
       <publishTime>04/21/2016 14:24:51</publishTime>
     </File>
     <File Include="src/js/entities/content/ExpandableImage.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/content/ExpandableImage.js.map">
       <publishTime>04/21/2016 14:24:52</publishTime>
     </File>
     <File Include="src/js/entities/content/GoogleMaps.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/content/GoogleMaps.js.map">
       <publishTime>04/21/2016 14:24:52</publishTime>
     </File>
     <File Include="src/js/entities/content/Line.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/content/Line.js.map">
       <publishTime>04/21/2016 14:24:51</publishTime>
     </File>
     <File Include="src/js/entities/content/LinkedImage.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/content/LinkedImage.js.map">
       <publishTime>04/21/2016 14:24:52</publishTime>
     </File>
     <File Include="src/js/entities/content/RegularImage.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/content/RegularImage.js.map">
       <publishTime>04/21/2016 14:24:52</publishTime>
     </File>
     <File Include="src/js/entities/content/ScalableImage.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/content/ScalableImage.js.map">
       <publishTime>04/21/2016 14:24:52</publishTime>
     </File>
     <File Include="src/js/entities/content/SimpleImage.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/content/SimpleImage.js.map">
       <publishTime>04/21/2016 14:24:52</publishTime>
     </File>
     <File Include="src/js/entities/content/SocialPlugin.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/content/SocialPlugin.js.map">
       <publishTime>04/21/2016 14:24:52</publishTime>
     </File>
     <File Include="src/js/entities/content/SocialPlugins.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/content/SocialPlugins.js.map">
       <publishTime>04/21/2016 14:24:52</publishTime>
     </File>
     <File Include="src/js/entities/content/TextWJ.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/content/TextWJ.js.map">
       <publishTime>04/21/2016 14:24:52</publishTime>
     </File>
     <File Include="src/js/entities/content/Video.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/content/Video.js.map">
       <publishTime>04/21/2016 14:24:52</publishTime>
     </File>
     <File Include="src/js/entities/enums/ContentType.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/enums/ContentType.js.map">
       <publishTime>04/21/2016 14:24:51</publishTime>
     </File>
     <File Include="src/js/entities/enums/LineStyle.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/enums/LineStyle.js.map">
       <publishTime>04/21/2016 14:24:51</publishTime>
     </File>
     <File Include="src/js/entities/enums/LinkType.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/enums/LinkType.js.map">
       <publishTime>04/21/2016 14:24:52</publishTime>
     </File>
     <File Include="src/js/entities/enums/MultiSelectionModeList.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/enums/MultiSelectionModeList.js.map">
       <publishTime>04/21/2016 14:24:51</publishTime>
     </File>
     <File Include="src/js/entities/enums/Roles.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/enums/Roles.js.map">
       <publishTime>04/21/2016 14:24:52</publishTime>
     </File>
     <File Include="src/js/entities/enums/SocialPluginSize.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/enums/SocialPluginSize.js.map">
       <publishTime>04/21/2016 14:24:52</publishTime>
     </File>
     <File Include="src/js/entities/enums/VideoType.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/enums/VideoType.js.map">
       <publishTime>04/21/2016 14:24:52</publishTime>
     </File>
     <File Include="src/js/entities/help/HelpBit.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/help/HelpBit.js.map">
       <publishTime>04/21/2016 14:24:52</publishTime>
     </File>
     <File Include="src/js/entities/Page.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/entities/Page.js.map">
       <publishTime>04/21/2016 14:24:51</publishTime>
@@ -3270,13 +3282,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 00:58:25</publishTime>
     </File>
     <File Include="src/js/general/Help.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/general/Help.js.map">
       <publishTime>04/21/2016 14:24:51</publishTime>
     </File>
     <File Include="src/js/general/HelpItem.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/general/HelpItem.js.map">
       <publishTime>04/21/2016 14:24:51</publishTime>
@@ -3300,31 +3312,31 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 00:58:25</publishTime>
     </File>
     <File Include="src/js/services/cropbox/CropSVC.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/services/cropbox/CropSVC.js.map">
       <publishTime>04/21/2016 14:24:52</publishTime>
     </File>
     <File Include="src/js/services/css-service.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/services/handle-server-exception.js">
       <publishTime>07/26/2016 00:58:25</publishTime>
     </File>
     <File Include="src/js/services/help-indexer.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/services/help-indexer.js.map">
       <publishTime>04/21/2016 14:24:52</publishTime>
     </File>
     <File Include="src/js/services/modal-service.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/services/modal-service.less">
       <publishTime>07/26/2016 00:58:25</publishTime>
     </File>
     <File Include="src/js/services/multi-selection-mode.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/services/multi-selection-mode.js.map">
       <publishTime>04/21/2016 14:24:52</publishTime>
@@ -3342,13 +3354,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 00:58:25</publishTime>
     </File>
     <File Include="src/js/typings/IHelpIndexer.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/typings/IHelpIndexer.js.map">
       <publishTime>04/21/2016 14:24:51</publishTime>
     </File>
     <File Include="src/js/typings/IHelpItem.js">
-      <publishTime>07/30/2016 19:05:17</publishTime>
+      <publishTime>07/31/2016 21:06:58</publishTime>
     </File>
     <File Include="src/js/typings/IHelpItem.js.map">
       <publishTime>04/21/2016 14:24:52</publishTime>
@@ -3441,7 +3453,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 00:58:29</publishTime>
     </File>
     <File Include="src/po/en_US.js">
-      <publishTime>07/30/2016 19:05:27</publishTime>
+      <publishTime>07/31/2016 21:07:09</publishTime>
     </File>
     <File Include="src/po/en_US.mo">
       <publishTime>07/26/2016 00:58:21</publishTime>
@@ -3450,7 +3462,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 00:58:21</publishTime>
     </File>
     <File Include="src/po/template.pot">
-      <publishTime>07/30/2016 13:20:08</publishTime>
+      <publishTime>07/31/2016 21:03:31</publishTime>
     </File>
     <File Include="suporte.html">
       <publishTime>07/10/2016 20:08:09</publishTime>
@@ -3489,7 +3501,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2016 01:05:39</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/30/2016 19:05:33</publishTime>
+      <publishTime>07/31/2016 21:07:08</publishTime>
     </File>
     <File Include="webjato.bat">
       <publishTime>07/26/2016 01:05:39</publishTime>

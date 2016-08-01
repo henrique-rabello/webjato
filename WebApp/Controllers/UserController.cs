@@ -51,9 +51,9 @@ namespace WebV2.Controllers {
         }
 
         [HttpPost]
-        public PASSWORD_RETRIEVAL_STATUS RetrievePassword(string email) {
+        public PASSWORD_RETRIEVAL_STATUS RetrievePassword(Language language, string email) {
             using (var kernel = new StandardKernel(new NinjectBindings())) {
-                return kernel.Get<AccountRepository>().RetrievePassword(email);
+                return kernel.Get<AccountRepository>().RetrievePassword(language, email);
             }
         }
 

@@ -45,7 +45,7 @@
                 }
                 $scope.data.status = '-1';
                 $scope.data.working = true;
-                $http({ method: 'POST', url: '/api/user/retrievepassword', params: { email: $scope.data.email } })
+                $http({ method: 'POST', url: '/api/user/retrievepassword', params: { language: 'ptBR', email: $scope.data.email } })
                     .success(function (data) {
                         $scope.data.working = false;
                         $scope.data.status = data;

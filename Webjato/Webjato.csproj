@@ -81,12 +81,14 @@
     <Compile Include="Entities\Content\SocialPlugins.cs" />
     <Compile Include="Entities\Content\Text.cs" />
     <Compile Include="Entities\Content\Video.cs" />
+    <Compile Include="Entities\EmailTemplate.cs" />
     <Compile Include="Entities\Enums\BackgroundType.cs" />
     <Compile Include="Entities\Enums\ContentType.cs" />
     <Compile Include="Entities\Enums\FrameBorderType.cs" />
     <Compile Include="Entities\Enums\HAlignment.cs" />
     <Compile Include="Entities\Enums\EnumExtensions.cs" />
     <Compile Include="Entities\Enums\Feature.cs" />
+    <Compile Include="Entities\Enums\Language.cs" />
     <Compile Include="Entities\Enums\LineStyle.cs" />
     <Compile Include="Entities\Enums\LinkType.cs" />
     <Compile Include="Entities\Enums\LogoType.cs" />
@@ -140,6 +142,7 @@
     <Compile Include="Repositories\ContentRepos\SocialPluginRepository.cs" />
     <Compile Include="Repositories\ContentRepos\VideoRepository.cs" />
     <Compile Include="Repositories\AwsRepos\Route53Repository.cs" />
+    <Compile Include="Repositories\EmailTemplateRepository.cs" />
     <Compile Include="Repositories\IISRepository.cs" />
     <Compile Include="Repositories\PublishRepository.cs" />
     <Compile Include="Repositories\ScalableImageRepository.cs" />

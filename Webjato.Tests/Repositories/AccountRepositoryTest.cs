@@ -22,6 +22,7 @@ namespace Webjato.Tests.Repositories {
         private FrameRepository frameRepo;
         private MailManager mailManager;
         private AccountRepository repo;
+        private EmailTemplateRepository emailTplRepo;
         
         [SetUp]
         public void BeforeEach() {
@@ -35,7 +36,8 @@ namespace Webjato.Tests.Repositories {
             logoRepo = A.Fake<LogoRepository>(x => x.WithArgumentsForConstructor(new object[] { null, null, null, null, null, null, new AuxiliaryConstants(), null }));
             frameRepo = A.Fake<FrameRepository>(x => x.WithArgumentsForConstructor(new object[] { null }));
             mailManager = A.Fake<MailManager>(x => x.WithArgumentsForConstructor(new object[] { null, null }));
-            repo = new AccountRepository(userRepo, siteRepo, pageRepo, optionalFeatureRepo, bgRepo, headerRepo, footerRepo, logoRepo, frameRepo, mailManager);
+            emailTplRepo = A.Fake<EmailTemplateRepository>(x => x.WithArgumentsForConstructor(new object[] { null, null, null, null }));
+            repo = new AccountRepository(userRepo, siteRepo, pageRepo, optionalFeatureRepo, bgRepo, headerRepo, footerRepo, logoRepo, frameRepo, mailManager, emailTplRepo);
         }
 
         [Test]
@@ -96,20 +98,20 @@ namespace Webjato.Tests.Repositories {
         public void AccountRepositoryTest_RetrievePassword() {
             //Email não existe
             A.CallTo(() => userRepo.Exists("email1@email.com")).Returns(false);
-            var status = repo.RetrievePassword("email1@email.com");
+            var status = repo.RetrievePassword(Language.ptBR, "email1@email.com");
             Assert.AreEqual(status, PASSWORD_RETRIEVAL_STATUS.EMAIL_NOT_FOUND);
             A.CallTo(() => userRepo.Exists("email1@email.com")).MustHaveHappened(Repeated.Exactly.Once);
             //Email existe, mas está associado à uma conta remota
             A.CallTo(() => userRepo.Exists("email2@email.com")).Returns(true);
             A.CallTo(() => userRepo.Get("email2@email.com")).Returns(new User { Origin = USER_ORIGIN.FACEBOOK });
-            status = repo.RetrievePassword("email2@email.com");
+            status = repo.RetrievePassword(Language.ptBR, "email2@email.com");
             Assert.AreEqual(status, PASSWORD_RETRIEVAL_STATUS.EMAIL_LINKED_TO_REMOTE_ACCOUNT);
             A.CallTo(() => userRepo.Exists("email2@email.com")).MustHaveHappened(Repeated.Exactly.Once);
             A.CallTo(() => userRepo.Get("email2@email.com")).MustHaveHappened(Repeated.Exactly.Once);
             //Email existe e está cadastrado numa conta local
             A.CallTo(() => userRepo.Exists("email3@email.com")).Returns(true);
             A.CallTo(() => userRepo.Get("email3@email.com")).Returns(new User { FullName = "fullname", Email = "email3@email.com", Password = "password", Origin = USER_ORIGIN.WEBSITE });
-            status = repo.RetrievePassword("email3@email.com");
+            status = repo.RetrievePassword(Language.ptBR, "email3@email.com");
             Assert.AreEqual(status, PASSWORD_RETRIEVAL_STATUS.PASSWORD_SENT);
             A.CallTo(() => userRepo.Exists("email3@email.com")).MustHaveHappened(Repeated.Exactly.Once);
             A.CallTo(() => userRepo.Get("email3@email.com")).MustHaveHappened(Repeated.Exactly.Once);

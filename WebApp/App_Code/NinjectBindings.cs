@@ -9,6 +9,7 @@ using Webjato.Entities;
 using Webjato.Entities.Content;
 using Webjato.Entities.Enums;
 using Webjato.Entities.Site;
+using Webjato.Repositories;
 using Webjato.Repositories.ContentRepos;
 using Webjato.Utilities;
 
@@ -67,6 +68,7 @@ namespace WebV2.App_Code {
             Bind<IPath>().To<PathWrap>();
             Bind<IFile>().To<FileWrap>();
             Bind<IDirectory>().To<DirectoryWrap>();
+            Bind<EmailTemplateRepository>().ToMethod<EmailTemplateRepository>(x => new EmailTemplateRepository(new FileWrap(), new PathWrap(), Constants.EmailTemplatePath));
             Bind<MailServerConfig>().ToMethod<MailServerConfig>(x => new MailServerConfig {
                 HostURL = Constants.MailHost,
                 HostPort = Constants.MailPort,

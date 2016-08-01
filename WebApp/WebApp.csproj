@@ -253,6 +253,8 @@
     <Content Include="css\landpage.css" />
     <Content Include="css\site-institucional.css" />
     <Content Include="css\suporte.css" />
+    <Content Include="email-templates\en-us\esqueci-minha-senha.html" />
+    <Content Include="email-templates\pt-br\esqueci-minha-senha.html" />
     <Content Include="images\icon_copiar.png" />
     <Content Include="images\loadinganim2.gif" />
     <Content Include="images\place-holder-mapa_1000x400.png" />

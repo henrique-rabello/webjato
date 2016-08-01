@@ -2,7 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
-    <META http-equiv="refresh" content="0;URL=/lang_pt-br/index.html">
+    <script>
+        if (location.host.indexOf('webjato.com.br') === -1) {
+            location.href = '/lang_en-us/';
+        }
+        else {
+            location.href = '/lang_pt-br/'
+        }
+    </script>
 </head>
 <body>
 </body>

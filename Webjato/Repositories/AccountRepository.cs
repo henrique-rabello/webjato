@@ -23,6 +23,7 @@ namespace Webjato.Repositories {
         private LogoRepository logoRepo;
         private FrameRepository frameRepo;
         private MailManager mail;
+        private EmailTemplateRepository emailTemplateRepo;
         
         public AccountRepository(   UserRepository userRepository,
                                     SiteRepository siteRepository,
@@ -33,7 +34,8 @@ namespace Webjato.Repositories {
                                     FooterRepository footerRepository,
                                     LogoRepository logoRepository,
                                     FrameRepository frameRepository,
-                                    MailManager mailManager) {
+                                    MailManager mailManager,
+                                    EmailTemplateRepository emailTemplateRepository) {
             userRepo = userRepository;
             siteRepo = siteRepository;
             pageRepo = pageRepository;
@@ -44,6 +46,7 @@ namespace Webjato.Repositories {
             logoRepo = logoRepository;
             frameRepo = frameRepository;
             mail = mailManager;
+            emailTemplateRepo = emailTemplateRepository;
         }
 
         public virtual bool NewRegularAccount(string email, string password, string fullname, Roles role) {
@@ -88,7 +91,7 @@ namespace Webjato.Repositories {
             frameRepo.CreateFrame(site.Id);
         }
 
-        public virtual PASSWORD_RETRIEVAL_STATUS RetrievePassword(string email) {
+        public virtual PASSWORD_RETRIEVAL_STATUS RetrievePassword(Language language, string email) {
             if (!userRepo.Exists(email)) {
                 return PASSWORD_RETRIEVAL_STATUS.EMAIL_NOT_FOUND;
             }
@@ -96,20 +99,8 @@ namespace Webjato.Repositories {
             if (user.Origin != USER_ORIGIN.WEBSITE) {
                 return PASSWORD_RETRIEVAL_STATUS.EMAIL_LINKED_TO_REMOTE_ACCOUNT;
             }
-            var mailBody =  "Prezado(a) Sr(a) <b>" + user.FullName + "</b>,<br /><br />" +
-                            "Conforme solicitado, segue abaixo sua senha de acesso.<br /><br />" +
-                            "<b>Identificação:</b> " + user.Email + "<br />" +
-                            "<b>Senha:</b> " + user.Password + "<br /><br />" +
-                            "Para alterar essa senha para outra à sua escolha, acesse nosso site, localize a opção \"Mudar Senha\" e troque-a.<br /><br />" +
-                            "Sua senha é pessoal e intrasferível, portanto não a divulgue a terceiros.<br /><br /><br />" +
-                            "Para qualquer apoio no que diz respeito ao seu relacionamento conosco, você pode sempre nos contactar diretamente usando os seguintes endereços:<br /><br />" +
-                            "<b>Atendimento:</b><br />" +
-                            "<a target=\"_blank\" href=\"http://www.webjato.com.br/contato.aspx\">http://www.webjato.com.br/contato.aspx</a><br /><br />" +
-                            "<b>Suporte Técnico:</b><br />" +
-                            "<a target=\"_blank\" href=\"http://www.webjato.com.br/central-de-suporte.aspx\">http://www.webjato.com.br/central-de-suporte.aspx</a><br /><br /><br />" +
-                            "<b>Atenciosamente,</b><br />" +
-                            "<b>WebJato.com.br</b>";
-            mail.SendMail(MAIL_SENDER.DEFAULT.GetDescription(), email, "Webjato - Lembrete de senha", mailBody, true);
+            var mailTemplate = emailTemplateRepo.GetForgotMyPassword(language, user.FullName, user.Email, user.Password);
+            mail.SendMail(MAIL_SENDER.DEFAULT.GetDescription(), email, mailTemplate.Subject, mailTemplate.Body, true);
             return PASSWORD_RETRIEVAL_STATUS.PASSWORD_SENT;
         }
     }

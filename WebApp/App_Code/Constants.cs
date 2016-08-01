@@ -12,7 +12,7 @@ namespace WebV2.App_Code {
                 return Int32.Parse(ConfigurationManager.AppSettings["authorizationTimeout"], CultureInfo.InvariantCulture);
             }
         }
-        
+
         public static string ConnectionString {
             get {
                 return ConfigurationManager.AppSettings["ConnectionString"];
@@ -131,6 +131,12 @@ namespace WebV2.App_Code {
                 var u2 = new DefaultUser(ConfigurationManager.AppSettings["DefaultUser1"]);
                 var u3 = new DefaultUser(ConfigurationManager.AppSettings["DefaultUser2"]);
                 return new List<DefaultUser> { u1, u2, u3 };
+            }
+        }
+
+        public static string EmailTemplatePath {
+            get {
+                return ConfigurationManager.AppSettings["EmailTemplatePath"];
             }
         }
     }
