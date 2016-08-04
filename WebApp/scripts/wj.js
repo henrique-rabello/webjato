@@ -130,6 +130,24 @@ var ScalableImage = (function (_super) {
     return ScalableImage;
 }(SimpleImage));
 
+angular.module("WebjatoConstants").constant("ServerSyncCommands", {
+    ALL: "ALL",
+    DELETE: "DELETE",
+    DUPLICATE: "DUPLICATE",
+    POSITION: "POSITION",
+    ZINDEX: "Z-INDEX"
+});
+angular.module("WebjatoConstants").constant("SocialIconSize", {
+    SMALL: 16,
+    REGULAR: 24,
+    LARGE: 32
+});
+angular.module("WebjatoConstants").constant("zIndexChange", {
+    ONE_UP: 1,
+    ONE_DOWN: 2,
+    BRING_TO_FRONT: 3,
+    SEND_TO_BACK: 4
+});
 angular.module("WebjatoConfig").config(function ($provide) {
     $provide.factory("ColorPickerConfig",
         function () {
@@ -178,24 +196,6 @@ angular.module("WebjatoConfig").factory("WebjatoConfig", function ($http, $locat
             Config.AssetsPath = data.AssetsPath;
         });
     return Config;
-});
-angular.module("WebjatoConstants").constant("ServerSyncCommands", {
-    ALL: "ALL",
-    DELETE: "DELETE",
-    DUPLICATE: "DUPLICATE",
-    POSITION: "POSITION",
-    ZINDEX: "Z-INDEX"
-});
-angular.module("WebjatoConstants").constant("SocialIconSize", {
-    SMALL: 16,
-    REGULAR: 24,
-    LARGE: 32
-});
-angular.module("WebjatoConstants").constant("zIndexChange", {
-    ONE_UP: 1,
-    ONE_DOWN: 2,
-    BRING_TO_FRONT: 3,
-    SEND_TO_BACK: 4
 });
 var Sair = null;
 var dependencies = [
