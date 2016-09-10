@@ -13,7 +13,7 @@
     <link type="text/css" rel="stylesheet" href="../css/jquery.dropdown.css" />
     <link type="text/css" rel="stylesheet" href="../css/menu.css" />
     <link type="text/css" rel="stylesheet" href="../css/spectrum.css" />
-     <link type="text/css" rel="stylesheet" href="../css/tipsy.css" />
+    <link type="text/css" rel="stylesheet" href="../css/tipsy.css" />
     <link type="text/css" rel="stylesheet" href="../css/wj.css" />
     <link type="text/css" rel="stylesheet" href="../css/wj-animate.css" />
     <link type="text/css" rel="stylesheet" href="../css/basic.css" />
@@ -67,7 +67,7 @@
     <script type="text/javascript" src="../scripts/wj-libs.js"></script>
     <script type="text/javascript" src="../scripts/tinymce/tinymce.min.js"></script>
     <script type="text/javascript" src="../scripts/wj.js"></script>
-     <script type='text/javascript'>
+    <script type='text/javascript'>
   $(function() {
     $('.north').tipsy({gravity: 'n'});
     $('.south').tipsy({gravity: 's'});
@@ -78,7 +78,7 @@
     $('.south-west').tipsy({gravity: 'sw'});
     $('.south-east').tipsy({gravity: 'se'});
   });
-</script>
+    </script>
     <script type="text/javascript">
         var Sair = null;
         angular.module("VisualApp", ["gettext", "ngCookies", "ngAnimate", "ngRoute", "ngSanitize", "pasvaz.bindonce", "ui.utils", "ui.tinymce", "ui.spinner", "angularSpectrumColorpicker", "angularFileUpload", "WebjatoConfig", "WebjatoFactories", "WebjatoServices", "AngularJCrop", "WebjatoDirectives"])
@@ -1133,76 +1133,82 @@
             </div>
         </div>
     </div>
-    <div class="ui-layout-north" ng-controller="MenuCrtl">
+    <div class="ui-layout-north">
         <div id="linha-frame-header">&nbsp;</div>
-        <div id="logo"><a href="../main.html"><img src="../images/spacer_logo.png" alt="" title="{{'Início'|translate}}" translate /></a></div>
-        <h1 translate><img src="../images/icon-peq-visual.png" alt="" title="" />Visual</h1>
-        <div id="page">
-           <div id="cont">
-  
-           <div class="bot-side float-left">
-                 <a href="../preview/index.html" target="_preview" class="north mouse-seta" title="{{'Ver construção'|translate}}" translate>
-                    <img src="../images/bot_visualizar.png" alt=""/>
-                 </a>
-            </div>
-            <div class="bot-side ajudyz">
-                 <a href ng-click="ShowHelp(CurrentPage.helpId);" class="north mouse-seta" title="{{'Ajuda'|translate}}" translate>
-                     <img src="../images/bot_ajuda.png" alt="" />
-                 </a>
-            </div>
-            <div class="bot-side ajudyz margemtop-zero">
-                 <div class="account" title="{{'Conta'|translate}}" translate>
-                     <img src="../images/bot_user.png" alt="" />
-                     <div class="dropdown dropdown-tip dropdown-anchor-right">
-                         <ul class="dropdown-menu">
-                             <li class="padding-rl12 bold top-10 bottom-15">{{User.FullName}}</li>
-                             <li class="bottom-10">
-                                 <a href="#" onclick="Sair();">Sair</a>
-                             </li>
-                         </ul>
-                     </div>
-                 </div>
-            </div>
+        <div id="logo">
+            <a href="../main.html">
+                <img src="../images/spacer_logo.png" alt="" title="{{'Início'|translate}}" />
+            </a>
+        </div>
+        <h1>
+            <img src="../images/icon-peq-visual.png" alt="" title="{{'Visual'|translate}}" />
+            <span translate>Visual</span>
+        </h1>
+        <div id="page" ng-controller="MenuCrtl">
+            <div id="cont">
+                <div class="bot-side float-left">
+                    <a href="../preview/index.html" target="_preview" class="north mouse-seta" title="{{'Ver construção'|translate}}">
+                        <img src="../images/bot_visualizar.png" alt="" />
+                    </a>
+                </div>
+                <div class="bot-side ajudyz">
+                    <a href ng-click="ShowHelp(CurrentPage.helpId);" class="north mouse-seta" title="{{'Ajuda'|translate}}">
+                        <img src="../images/bot_ajuda.png" alt="" />
+                    </a>
+                </div>
+                <div class="bot-side ajudyz margemtop-zero">
+                    <div class="account" title="{{'Conta'|translate}}">
+                        <img src="../images/bot_user.png" alt="" />
+                        <div class="dropdown dropdown-tip dropdown-anchor-right">
+                            <ul class="dropdown-menu">
+                                <li class="padding-rl12 bold top-10 bottom-15">{{User.FullName}}</li>
+                                <li class="bottom-10">
+                                    <a href="#" onclick="Sair();" translate>Sair</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
             <ul id="padrao">
-            <li>
-                <a href="#/background.html" ng-click="GoTo('#/background.html');" ng-class="{'linkAtivo': (Url == '#/background.html'), 'linkNormal': (Url != '#/background.html')}" title="{{'Plano de fundo'|translate}}">
-                    <span ng-class="{'especialAtivo': (Url == '#/background.html'), 'especial': (Url != '#/background.html')}"><p>1</p></span>
-                    <span translate>Fundo</span>
-                </a>
-            </li>
-            <li>
-                <a href="#/header.html" ng-click="GoTo('#/header.html');" ng-class="{'linkAtivo': (Url == '#/header.html'), 'linkNormal': (Url != '#/header.html')}" title="{{'Cabeçalho'|translate}}">
-                    <span ng-class="{'especialAtivo': (Url == '#/header.html'), 'especial': (Url != '#/header.html')}"><p>2</p></span>
-                    <span translate>Cabeçalho</span>
-                </a>
-            </li>
-            <li>
-                <a href="#/footer.html" ng-click="GoTo('#/footer.html');" ng-class="{'linkAtivo': (Url == '#/footer.html'), 'linkNormal': (Url != '#/footer.html')}" title="{{'Rodapé'|translate}}">
-                    <span ng-class="{'especialAtivo': (Url == '#/footer.html'), 'especial': (Url != '#/footer.html')}"><p>3</p></span>
-                    <span translate>Rodapé</span>
-                </a>
-            </li>
-            <li>
-                <a href="#/logo.html" ng-click="GoTo('#/logo.html');" ng-class="{'linkAtivo': (Url == '#/logo.html'), 'linkNormal': (Url != '#/logo.html')}" title="{{'Nome'|translate}}">
-                    <span ng-class="{'especialAtivo': (Url == '#/logo.html'), 'especial': (Url != '#/Logo.html')}"><p style="margin-right:1px;">4</p></span>
-                    <span translate>Logo</span>
-                </a>
-            </li>
-            <li>
-                <a href="#/menu.html" ng-click="GoTo('#/menu.html');" ng-class="{'linkAtivo': (Url == '#/menu.html'), 'linkNormal': (Url != '#/menu.html')}" title="{{'Menu'|translate}}">
-                    <span ng-class="{'especialAtivo': (Url == '#/menu.html'), 'especial': (Url != '#/menu.html')}"><p>5</p></span>
-                    <span translate>Menu</span>
-                </a>
-            </li>
-            <li>
-                <a href="#/page.html" ng-click="GoTo('#/page.html');" ng-class="{'linkAtivo': (Url == '#/page.html'), 'linkNormal': (Url != '#/page.html')}" title="{{'Página'|translate}}">
-                    <span ng-class="{'especialAtivo': (Url == '#/page.html'), 'especial': (Url != '#/page.html')}"><p style="margin-right:1px;">6</p></span>
-                    <span translate>Página</span>
-                </a>
-            </li>
-        </ul>
-         <div id="container-header-seta">
+                <li>
+                    <a href="#/background.html" ng-click="GoTo('#/background.html');" ng-class="{'linkAtivo': (Url == '#/background.html'), 'linkNormal': (Url != '#/background.html')}" title="{{'Plano de fundo'|translate}}">
+                        <span ng-class="{'especialAtivo': (Url == '#/background.html'), 'especial': (Url != '#/background.html')}"><p>1</p></span>
+                        <span translate>Fundo</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/header.html" ng-click="GoTo('#/header.html');" ng-class="{'linkAtivo': (Url == '#/header.html'), 'linkNormal': (Url != '#/header.html')}" title="{{'Cabeçalho'|translate}}">
+                        <span ng-class="{'especialAtivo': (Url == '#/header.html'), 'especial': (Url != '#/header.html')}"><p>2</p></span>
+                        <span translate>Cabeçalho</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/footer.html" ng-click="GoTo('#/footer.html');" ng-class="{'linkAtivo': (Url == '#/footer.html'), 'linkNormal': (Url != '#/footer.html')}" title="{{'Rodapé'|translate}}">
+                        <span ng-class="{'especialAtivo': (Url == '#/footer.html'), 'especial': (Url != '#/footer.html')}"><p>3</p></span>
+                        <span translate>Rodapé</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/logo.html" ng-click="GoTo('#/logo.html');" ng-class="{'linkAtivo': (Url == '#/logo.html'), 'linkNormal': (Url != '#/logo.html')}" title="{{'Nome'|translate}}">
+                        <span ng-class="{'especialAtivo': (Url == '#/logo.html'), 'especial': (Url != '#/Logo.html')}"><p style="margin-right:1px;">4</p></span>
+                        <span translate>Logo</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/menu.html" ng-click="GoTo('#/menu.html');" ng-class="{'linkAtivo': (Url == '#/menu.html'), 'linkNormal': (Url != '#/menu.html')}" title="{{'Menu'|translate}}">
+                        <span ng-class="{'especialAtivo': (Url == '#/menu.html'), 'especial': (Url != '#/menu.html')}"><p>5</p></span>
+                        <span translate>Menu</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/page.html" ng-click="GoTo('#/page.html');" ng-class="{'linkAtivo': (Url == '#/page.html'), 'linkNormal': (Url != '#/page.html')}" title="{{'Página'|translate}}">
+                        <span ng-class="{'especialAtivo': (Url == '#/page.html'), 'especial': (Url != '#/page.html')}"><p style="margin-right:1px;">6</p></span>
+                        <span translate>Página</span>
+                    </a>
+                </li>
+            </ul>
+            <div id="container-header-seta">
                 <ul id="bot-seta">
                     <li>
                         <a ng-href="{{PrevPageUrl}}" ng-click="GoTo(PrevPageUrl);" title="{{'Voltar'|translate}}" ng-class="{'inactive': CurrentPage.first}">
@@ -1217,7 +1223,7 @@
                 </ul>
             </div>
         </div>
-        
+
     </div>
     <div class="ui-layout-west">
         <div ng-view></div>
