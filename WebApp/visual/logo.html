@@ -129,19 +129,6 @@
                 <button type="button" ng-disabled="IsTextEditorActive" ng-click="UpdateTextAreaVisibility(true);" translate>Editar texto</button>
                 <button type="button" ng-disabled="!IsTextEditorActive" ng-click="UpdateTextAreaVisibility(false);" translate>Visualizar texto</button>
             </div>
-            <div class="container-tool" style=" margin-bottom: 10px; margin-left:0;">
-                <i class="negrito" translate>Mover</i>
-            </div>
-            <div class="container-tool" style="margin-left:0;">
-                <i class="flutuante-1">
-                    <p translate>Horizontal</p>
-                    <input type="text" class="spinner" max="{{Position.X.Max}}" min="{{Position.X.Min}}" state-value="Data.Position.X" on-update="OnChange();SchedulePositionUpdate();" ui-spinner />
-                </i>
-                <i class="flutuante-2">
-                    <p translate>Vertical</p>
-                    <input type="text" class="spinner" max="{{Position.Y.Max}}" min="{{Position.Y.Min}}" state-value="Data.Position.Y" on-update="OnChange();SchedulePositionUpdate();" ui-spinner />
-                </i>
-            </div>
         </div>
         <!-- PAINEL DE IMAGEM -->
         <div ng-if="View == Views.IMAGE" class="importar" ng-animate="{enter:fade-in-enter}">
@@ -168,10 +155,6 @@
                 <i class="negrito" translate>Mover</i>
             </div>
             <div class="container-tool" style="margin-left:0;">
-                <i class="flutuante-1">
-                    <p translate>Horizontal</p>
-                    <input type="text" class="spinner" max="{{Position.X.Max}}" min="{{Position.X.Min}}" state-value="Data.Position.X" on-update="OnChange();SchedulePositionUpdate();" ui-spinner />
-                </i>
                 <i class="flutuante-2">
                     <p translate>Vertical</p>
                     <input type="text" class="spinner" max="{{Position.Y.Max}}" min="{{Position.Y.Min}}" state-value="Data.Position.Y" on-update="OnChange();SchedulePositionUpdate();" ui-spinner />

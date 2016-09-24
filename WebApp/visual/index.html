@@ -111,12 +111,15 @@
             }])
             .controller("MenuCrtl", function ($scope, $location, $timeout, $rootScope) {
                 $scope.pages = [
+                    { url: "#/logo.html", helpId: "visual/logo", title: "Nome", menuLabel: "Logo" }
+                    
+                    /*
                     { url: "#/background.html", helpId: "visual/bg", title: "Plano de fundo", menuLabel: "Fundo" },
-                    { url: "#/header.html", helpId: "visual/header", title: "Cabeçalho", menuLabel: "Cabeçalho" },
                     { url: "#/footer.html", helpId: "visual/footer", title: "Rodapé", menuLabel: "Rodapé" },
-                    { url: "#/logo.html", helpId: "visual/logo", title: "Nome", menuLabel: "Logo" },
-                    { url: "#/menu.html", helpId: "visual/menu", title: "Menu", menuLabel: "Menu" }/*,
-                    { url: "#/page.html", helpId: "visual/page", title: "Página", menuLabel: "Página" }*/
+                    { url: "#/menu.html", helpId: "visual/menu", title: "Menu", menuLabel: "Menu" }
+                    { url: "#/header.html", helpId: "visual/header", title: "Cabeçalho", menuLabel: "Cabeçalho" },
+                    { url: "#/page.html", helpId: "visual/page", title: "Página", menuLabel: "Página" }
+                    */
                 ];
                 _.forEach($scope.pages, function (item, i, list) {
                     item.active = (i == 0);
@@ -671,7 +674,7 @@
                 $scope.ScalePosting = false;
                 $scope.Views = { NONE: "NONE", TEXT: "TEXT", IMAGE: "IMAGE" };
                 $scope.View = $scope.Views.NONE;
-                $scope.Position = { X: { Min: 0, Max: 1000 }, Y: { Min: 0, Max: 145 } };
+                $scope.Position = { X: { Min: 0, Max: 1000 }, Y: { Min: 0, Max: 50 } };
                 $scope.ScaleLimits = { Min: 5, Max: 100 };
                 $scope.IsTextEditorActive = false;
                 $scope.UpdateTextAreaVisibility = function (isVisible) {
@@ -895,7 +898,7 @@
                             plugins: "textcolor",
                             resize: false,
                             statusbar: false,
-                            toolbar: "fontselect | fontsizeselect | forecolor | bold | italic"
+                            toolbar: "fontselect | forecolor | bold | italic"
                         }
                     },
                     Footer: {

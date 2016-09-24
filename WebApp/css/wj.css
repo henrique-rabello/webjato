@@ -55,6 +55,7 @@
   width: 1043px;
 }
 .preview .header {
+  color: #333333;
   float: left;
   position: relative;
   width: 100%;
@@ -815,6 +816,7 @@
 
 .wj-text {
   background-color: transparent;
+  color: #666666;
   position: absolute;
   height: auto;
   text-align: left;
@@ -841,6 +843,9 @@
   position: absolute;
   top: -37px;
   left: 26px;
+}
+.wj-tinymce .editor {
+  color: #666666;
 }
 
 .wj-add-unit {

@@ -130,55 +130,6 @@ var ScalableImage = (function (_super) {
     return ScalableImage;
 }(SimpleImage));
 
-angular.module("WebjatoConfig").config(function ($provide) {
-    $provide.factory("ColorPickerConfig",
-        function () {
-            var config = {
-                allowEmpty: true,
-                showPaletteOnly: true,
-                showSelectionPalette: false,
-                preferredFormat: "hex",
-                palette: [
-                    ["#FFFFFF", "#C00000", "#FF0000", "#490000", "#790000", "#C00000", "#EE1D24", "#F16C4D", "#F7977A", "#FBD0C3", "#FDE8E1"],
-                    ["#000000", "#CC5200", "#FF6600", "#461C00", "#7B3000", "#A1410D", "#F16522", "#F68E54", "#FBAD82", "#FDDAC7", "#FEEDE3"],
-                    ["#333333", "#FFD800", "#FFFF00", "#4F2F00", "#7C4900", "#A36209", "#F7941D", "#FFBF05", "#FFD45C", "#FFECB5", "#FFF6DA"],
-                    ["#666666", "#92D14F", "#99FF33", "#5B5600", "#827A00", "#ABA000", "#FFF100", "#FFF467", "#FFF799", "#FFFBD1", "#FFFDE8"],
-                    ["#999999", "#00AF50", "#00FF00", "#253D0E", "#3E6617", "#588528", "#8FC63D", "#93D14F", "#ADDC7A", "#DAEFC3", "#EDF7E1"],
-                    ["#CCCCCC", "#03B1F0", "#00FFFF", "#033813", "#045F20", "#197B30", "#35b449", "#7DC473", "#A4D49D", "#D6ECD3", "#EBF6E9"],
-                    ["#DDDDDD", "#0071C1", "#0000FF", "#003E19", "#005824", "#007236", "#00A650", "#39B778", "#81CA9D", "#C6E7D3", "#E3F3E9"],
-                    ["#EEEEEE", "#7030A0", "#FF00FF", "#003531", "#005951", "#00736A", "#00A99E", "#16BCB4", "#7BCDC9", "#C3E8E7", "#E1F4F3"],
-                    ["#41484D", "#42260D", "#362F2C", "#00364B", "#005B7E", "#0076A4", "#00AEEF", "#00BFF3", "#6CCFF7", "#BDE9FB", "#DEF4FD"],
-                    ["#5C676E", "#613813", "#423A34", "#002D53", "#003562", "#004A80", "#0072BC", "#438CCB", "#7CA6D8", "#C7D9EE", "#E3ECF7"],
-                    ["#5F6D84", "#744B24", "#534841", "#001A45", "#002056", "#003370", "#0054A5", "#5573B7", "#8293CA", "#CAD0E8", "#E5E8F4"],
-                    ["#758792", "#8C623A", "#726357", "#0C004B", "#1D1363", "#2A2C70", "#393B97", "#5E5CA7", "#8881BE", "#CCC9E3", "#E6E4F1"],
-                    ["#90ABBD", "#A77C50", "#9A8575", "#30004A", "#450E61", "#5A2680", "#7030A0", "#855FA8", "#A286BD", "#D5C8E1", "#EAE4F0"],
-                    ["#A6BCCA", "#C69C6D", "#C7B198", "#390037", "#4B0048", "#62055F", "#91278F", "#A763A9", "#BC8CBF", "#E1CBE2", "#F0E5F1"],
-                    ["#C4D2DC", "#E2CDB6", "#D9CAB9", "#490029", "#7A0045", "#9D005C", "#ED008C", "#EF6EA8", "#f39bc1", "#FAD8E7", "#FDECF3"],
-                    ["#E2E9EE", "#F1E6DB", "#ECE5DC", "#58001B", "#7A0026", "#9D0039", "#EE105A", "#F16D7E", "#F5999D", "#FAD1D3", "#FDE8E9"]]
-            };
-            return config;
-        }
-    );
-});
-angular.module("WebjatoConfig").factory("WebjatoConfig", function ($http, $location) {
-    var qs = "";
-    if ($location.search().siteId) {
-        qs = "?siteId=" + $location.search().siteId;
-    }
-    var Config = {
-        AssetsPath: "",
-        AssetsLocalPath: "/tmp/"
-    };
-    $http({
-        method: "GET",
-        url: "../api/site/config" + qs
-    })
-    .success(
-        function (data) {
-            Config.AssetsPath = data.AssetsPath;
-        });
-    return Config;
-});
 var Sair = null;
 var dependencies = [
     "angularFileUpload",
@@ -750,6 +701,829 @@ var CropImageCrtl = function ($scope, $http, $cookies, gettextCatalog, WebjatoCo
     });
     gettextCatalog.currentLanguage = $cookies.language;
 };
+var Page = (function () {
+    function Page() {
+    }
+    return Page;
+}());
+
+angular.module("WebjatoFactories")
+.factory("WebjatoCssHandler",
+    function () {
+        return {
+            GetStyleSheet: function (styleSheetTitle) {
+                var styleSheetExists = _.some(document.styleSheets, function (styleSheet) { return styleSheet.title == styleSheetTitle; });
+                if (!styleSheetExists) {
+                    $("head").append("<style type=\"text/css\" media=\"screen\" title=\"" + styleSheetTitle + "\"></style>");
+                }
+                return _.findWhere(document.styleSheets, { title: styleSheetTitle });
+            },
+            ApplyCSS: function (styleSheetTitle, rules) {
+                var sheet = this.GetStyleSheet(styleSheetTitle);
+                //Deletes old rules
+                var sheetRules = sheet.cssRules ? sheet.cssRules : sheet.rules;
+                while (sheetRules.length > 0) {
+                    if (sheet.deleteRule) {
+                        sheet.deleteRule(0);
+                    }
+                    else if (sheet.removeRule) {
+                        sheet.removeRule(0);
+                    }
+                }
+                //Apply new rules
+                _.each(rules, function (rule) {
+                    if (sheet.insertRule) {
+                        sheet.insertRule(rule.Class + " { " + rule.Value + " }", sheetRules.length);
+                    }
+                    else if (sheet.addRule) {
+                        sheet.addRule(rule.Class, rule.Value, sheetRules.length);
+                    }
+                });
+            }
+        };
+    });
+angular.module("WebjatoFactories")
+.factory("WebjatoFormatter",
+    function ($sce, MenuConfig) {
+        var hashRepeat = {
+            "11": "repeat",
+            "10": "repeat-x",
+            "01": "repeat-y",
+            "00": "no-repeat"
+        };
+        var hashVAlign = {
+            "1": "top",
+            "2": "center",
+            "3": "bottom"
+        };
+        var hashHAlign = {
+            "1": "left",
+            "2": "center",
+            "3": "right"
+        };
+        return {
+            Background: {
+                Data: null,
+                Style: {},
+                Refresh: function (bg, site, assetsPath) {
+                    this.Data = bg;
+                    this.Style["background-color"] = bg.Color;
+                    this.Style["background-image"] = (bg.ImageKey != null && bg.ImageKey != "") ? "url('" + assetsPath + bg.ImageKey + "')" : "none";
+                    this.Style["background-repeat"] = hashRepeat[(bg.HRepeat ? "1" : "0") + (bg.VRepeat ? "1" : "0")];
+                    this.Style["background-position"] = hashVAlign[bg.VAlign] + " " + hashHAlign[bg.HAlign];
+                    this.Style["background-attachment"] = bg.IsFixed ? "fixed" : "scroll";
+                    this.Style["text-align"] = hashHAlign[site.Alignment];
+                }
+            },
+            Frame: {
+                Data: null,
+                StyleBase: {},
+                StyleContPage: {},
+                StyleEstrutura: {},
+                Refresh: function(data, site) {
+                    this.Data = data;
+                    this.StyleContPage["padding-top"] = data.MarginTop + "px";
+                    this.StyleContPage["margin-left"] = parseInt(site.Alignment) == 1 ? "0" : "auto";
+                    this.StyleContPage["margin-right"] = parseInt(site.Alignment) == 1 ? "0" : "auto";
+                    this.StyleEstrutura["margin"] = parseInt(site.Alignment) == 1 ? "0" : "0 auto";
+                    this.StyleEstrutura["border-top-color"] = data.BorderTop.Color;
+                    this.StyleEstrutura["border-top-width"] = data.BorderTop.Width + "px";
+                    this.StyleEstrutura["border-bottom-color"] = data.BorderBottom.Color;
+                    this.StyleEstrutura["border-bottom-width"] = data.BorderBottom.Width + "px";
+                    this.StyleEstrutura["border-left-color"] = data.BorderSides.Color;
+                    this.StyleEstrutura["border-left-width"] = data.BorderSides.Width + "px";
+                    this.StyleEstrutura["border-right-color"] = data.BorderSides.Color;
+                    this.StyleEstrutura["border-right-width"] = data.BorderSides.Width + "px";
+                    this.StyleBase["background-color"] = data.IsTransparent ? "transparent" : data.Color;
+                }
+            },
+            Footer: {
+                Data: null,
+                Style: {},
+                Refresh: function (footer, site, frame) {
+                    this.Data = footer;
+                    this.Style["background-color"] = footer.IsTransparent ? "transparent" : footer.Color;
+                    this.Style["width"] = 1000;
+                    this.Style["margin"] = parseInt(site.Alignment) == 1 ? "0" : "0 auto";
+                    this.Style["border-left-width"] = frame.BorderSides.Width + "px";
+                    this.Style["border-right-width"] = frame.BorderSides.Width + "px";
+                    this.Data.TrustedText = function () { return $sce.trustAsHtml(footer.Text); };
+                }
+            },
+            Header: {
+                Data: null,
+                Style: {},
+                Refresh: function (header, assetsPath) {
+                    this.Data = header;
+                    this.Style["background-color"] = header.IsTransparent ? "transparent" : header.Color;
+                    this.Style["background-image"] = (header.ImageKey != null && header.ImageKey != "") ? "url('" + assetsPath + header.ImageKey + "')" : "none";
+                    this.Style["background-repeat"] = hashRepeat[(header.HRepeat ? "1" : "0") + (header.VRepeat ? "1" : "0")];
+                    this.Style["background-position"] = hashVAlign[header.VAlign] + " " + hashHAlign[header.HAlign]
+                    this.Style["height"] = header.Height + "px";
+                }
+            },
+            Logo: {
+                Data: null,
+                StyleText: {},
+                StyleImageContainer: {},
+                StyleImage: {},
+                ImagePath: "",
+                Refresh: function (logo, assetsPath) {
+                    this.Data = logo;
+                    this.StyleText["top"] = logo.Position.Y + "px";
+                    this.StyleText["left"] = logo.Position.X + "px";
+                    this.StyleText["display"] = "block";
+                    this.StyleImageContainer["display"] = (parseInt(logo.LogoType) == 2) ? "block" : "none";
+                    this.StyleImageContainer["top"] = logo.Position.Y + "px";
+                    this.StyleImageContainer["left"] = logo.Position.X + "px";
+                    this.StyleImage["width"] = logo.ImageExportedSize.Width + "px";
+                    this.ImagePath = (logo.ImageExportedKey != null && logo.ImageExportedKey != "") ? assetsPath + logo.ImageExportedKey : "#";
+                    this.Data.TrustedText = function () { return $sce.trustAsHtml(logo.Text); };
+                }
+            },
+            Site: {
+                Data: null,
+                Style: {},
+                Refresh: function (data) {
+                    this.Data = angular.copy(data);
+                    this.Style["margin"] = parseInt(data.Alignment) == 1 ? "0" : "0 auto";
+                    MenuConfig.ApplyCSS(data.Menu);
+                }
+            }
+        };
+    });
+angular.module("WebjatoFactories")
+.factory("MenuConfig",
+    function (WebjatoCssHandler) {
+        var GetPart = function (partId, colorDefault) {
+            return { Id: partId, Value: colorDefault };
+        };
+        var Parts = {
+            Bg1: "Bg1",
+            Bg2: "Bg2",
+            BgActive: "BgActive",
+            Line: "Line",
+            LineActive: "LineActive",
+            Text: "Text",
+            TextActive: "TextActive"
+        };
+        var NormalizeMenu = function (menu) {
+            var m = {
+                Id: menu.Id
+            };
+            for (var i = 0; i < menu.Parts.length; i++) {
+                m[menu.Parts[i].Id] = menu.Parts[i].Value;
+            }
+            return m;
+        };
+        var Menus = [
+                {
+                    Id: "botao_template_dois",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#FFFFFF"),
+                        GetPart(Parts.LineActive, "#00A650"),
+                        GetPart(Parts.Text, "#8D8D8D"),
+                        GetPart(Parts.TextActive, "#00A650")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".botao_template_dois", Value: "background-color: " + m.Bg1 + ";" },
+                            { Class: ".botao_template_dois li a", Value: "background-color: " + m.Bg1 + "; color: " + m.Text + ";" },
+                            { Class: ".botao_template_dois li a:hover", Value: "color: " + m.TextActive + "; border-top-color: " + m.LineActive + "; border-bottom-color: " + m.LineActive + ";" },
+                            { Class: ".botao_template_dois li a.active", Value: "color: " + m.TextActive + "; border-top-color: " + m.LineActive + "; border-bottom-color: " + m.LineActive + ";" }
+                        ];
+                    }
+
+                },
+                {
+                    Id: "cdfqed",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#FFFFFF"),
+                        GetPart(Parts.Line, "#000000"),
+                        GetPart(Parts.Text, "#888888"),
+                        GetPart(Parts.TextActive, "#95c02d")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".cdfqed", Value: "background-color: " + m.Bg1 + "; border-top-color: " + m.Line + "; border-bottom-color: " + m.Line + ";" },
+                            { Class: ".cdfqed li a", Value: "background-color: " + m.Bg1 + "; color: " + m.Text + ";" },
+                            { Class: ".cdfqed li a:hover", Value: "color: " + m.TextActive + ";" },
+                            { Class: ".cdfqed li a.active", Value: "color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "coisa",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#FF0000"),
+                        GetPart(Parts.BgActive, "#FFFFFF"),
+                        GetPart(Parts.Line, "#F7977A"),
+                        GetPart(Parts.Text, "#FFFFFF"),
+                        GetPart(Parts.TextActive, "#FF0000")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".coisa", Value: "background-color: " + m.Bg1 + ";" },
+                            { Class: ".coisa li a", Value: "background-color: " + m.Bg1 + "; color: " + m.Text + "; border-left-color: " + m.Line + ";" },
+                            { Class: ".coisa li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
+                            { Class: ".coisa li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "colon",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#FFFFFF"),
+                        GetPart(Parts.Line, "#AEA404"),
+                        GetPart(Parts.Text, "#000000"),
+                        GetPart(Parts.TextActive, "#AEA404")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".colon", Value: "background-color: " + m.Bg1 + ";" },
+                            { Class: ".colon li a", Value: "background-color: " + m.Bg1 + "; color: " + m.Text + "; border-left-color: " + m.Line + ";" },
+                            { Class: ".colon li a:hover", Value: "color: " + m.TextActive + ";" },
+                            { Class: ".colon li a.active", Value: "color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "crf",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#F16C4D"),
+                        GetPart(Parts.BgActive, "#EE1D24"),
+                        GetPart(Parts.Text, "#FFFFFF"),
+                        GetPart(Parts.TextActive, "#FFFFFF")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".crf", Value: "background-color: " + m.Bg1 + ";" },
+                            { Class: ".crf li a", Value: "background-color: " + m.Bg1 + "; color: " + m.Text + ";" },
+                            { Class: ".crf li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
+                            { Class: ".crf li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "css_menu",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#333333"),
+                        GetPart(Parts.LineActive, "#00B9F8"),
+                        GetPart(Parts.Text, "#999999"),
+                        GetPart(Parts.TextActive, "#FFFFFF")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".css_menu", Value: "background-color: " + m.Bg1 + ";" },
+                            { Class: ".css_menu li a", Value: "background-color: " + m.Bg1 + "; border-bottom-color: " + m.Bg1 + "; color: " + m.Text + ";" },
+                            { Class: ".css_menu li a:hover", Value: "border-bottom-color: " + m.LineActive + "; color: " + m.TextActive + ";" },
+                            { Class: ".css_menu li a.active", Value: "border-bottom-color: " + m.LineActive + "; color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "cvdv",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#FFFFFF"),
+                        GetPart(Parts.Line, "#666666"),
+                        GetPart(Parts.Text, "#666666"),
+                        GetPart(Parts.TextActive, "#666666")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".cvdv", Value: "background-color: " + m.Bg1 + ";" },
+                            { Class: ".cvdv li a", Value: "background-color: " + m.Bg1 + "; border-left-color: " + m.Line + "; color: " + m.Text + ";" },
+                            { Class: ".cvdv li a:hover", Value: "color: " + m.TextActive + ";" },
+                            { Class: ".cvdv li a.active", Value: "color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "cvea",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#000000"),
+                        GetPart(Parts.Text, "#FFFFFF"),
+                        GetPart(Parts.TextActive, "#FF0000")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".cvea", Value: "background-color: " + m.Bg1 + ";" },
+                            { Class: ".cvea li a", Value: "background-color: " + m.Bg1 + "; color: " + m.Text + ";" },
+                            { Class: ".cvea li a:hover", Value: "color: " + m.TextActive + ";" },
+                            { Class: ".cvea li a.active", Value: "color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "edu_tnvacation",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#423A34"),
+                        GetPart(Parts.Line, "#FFFFCC"),
+                        GetPart(Parts.Text, "#FFFFCC"),
+                        GetPart(Parts.TextActive, "#FF682E")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".edu_tnvacation", Value: "background-color: " + m.Bg1 + ";" },
+                            { Class: ".edu_tnvacation li a", Value: "background-color: " + m.Bg1 + "; border-left-color: " + m.Line + "; color: " + m.Text + ";" },
+                            { Class: ".edu_tnvacation li a:hover", Value: "color: " + m.TextActive + ";" },
+                            { Class: ".edu_tnvacation li a.active", Value: "color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "estudo_do_espaco",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#000000"),
+                        GetPart(Parts.BgActive, "#FF0000"),
+                        GetPart(Parts.Line, "#FFFFFF"),
+                        GetPart(Parts.Text, "#FFFFFF"),
+                        GetPart(Parts.TextActive, "#FFFFFF")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".estudo_do_espaco", Value: "background-color: " + m.Bg1 + "; border-top-color: " + m.Line + "; border-bottom-color: " + m.Line + "; border-left-color: " + m.Line + "; border-right-color: " + m.Line + ";" },
+                            { Class: ".estudo_do_espaco li a", Value: "background-color: " + m.Bg1 + "; border-right-color: " + m.Line + "; color: " + m.Text + ";" },
+                            { Class: ".estudo_do_espaco li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
+                            { Class: ".estudo_do_espaco li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "fashion",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#000000"),
+                        GetPart(Parts.Text, "#CCCCCC"),
+                        GetPart(Parts.TextActive, "#FFFFFF")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".fashion", Value: "background-color: " + m.Bg1 + ";" },
+                            { Class: ".fashion li a", Value: "background-color: " + m.Bg1 + "; color: " + m.Text + ";" },
+                            { Class: ".fashion li a:hover", Value: "color: " + m.TextActive + ";" },
+                            { Class: ".fashion li a.active", Value: "color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "feq",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#000000"),
+                        GetPart(Parts.BgActive, "#8FC63D"),
+                        GetPart(Parts.Line, "#999999"),
+                        GetPart(Parts.Text, "#FFFFFF"),
+                        GetPart(Parts.TextActive, "#FFFFFF")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".feq", Value: "background-color: " + m.Bg1 + ";" },
+                            { Class: ".feq li a", Value: "background-color: " + m.Bg1 + "; border-right-color: " + m.Line + "; color: " + m.Text + ";" },
+                            { Class: ".feq li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
+                            { Class: ".feq li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "foc",
+                    Parts: [
+                        GetPart(Parts.BgActive, "#DDF0F8"),
+                        GetPart(Parts.Text, "#333333"),
+                        GetPart(Parts.TextActive, "#333333")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".foc li a", Value: "color: " + m.Text + ";" },
+                            { Class: ".foc li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
+                            { Class: ".foc li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "good",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#818181"),
+                        GetPart(Parts.BgActive, "#00BFF3"),
+                        GetPart(Parts.Line, "#EEEEEE"),
+                        GetPart(Parts.Text, "#FFFFFF"),
+                        GetPart(Parts.TextActive, "#FFFFFF")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".good", Value: "background-color: " + m.Bg1 + ";" },
+                            { Class: ".good li a", Value: "background-color: " + m.Bg1 + "; border-right-color: " + m.Line + "; color: " + m.Text + ";" },
+                            { Class: ".good li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
+                            { Class: ".good li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "gotmojo",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#FFFFFF"),
+                        GetPart(Parts.Line, "#CCCCCC"),
+                        GetPart(Parts.Text, "#000000"),
+                        GetPart(Parts.TextActive, "#F00000")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".gotmojo", Value: "background-color: " + m.Bg1 + ";" },
+                            { Class: ".gotmojo li a", Value: "background-color: " + m.Bg1 + "; border-left-color: " + m.Line + "; color: " + m.Text + ";" },
+                            { Class: ".gotmojo li a:hover", Value: "color: " + m.TextActive + ";" },
+                            { Class: ".gotmojo li a.active", Value: "color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "greencircles",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#333333"),
+                        GetPart(Parts.Line, "#666666"),
+                        GetPart(Parts.LineActive, "#C7D92C"),
+                        GetPart(Parts.Text, "#CCCCCC"),
+                        GetPart(Parts.TextActive, "#FFFFFF")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".greencircles", Value: "background-color: " + m.Bg1 + ";" },
+                            { Class: ".greencircles li a", Value: "background-color: " + m.Bg1 + "; border-bottom-color: " + m.Line + "; color: " + m.Text + ";" },
+                            { Class: ".greencircles li a:hover", Value: "border-bottom-color: " + m.LineActive + "; color: " + m.TextActive + ";" },
+                            { Class: ".greencircles li a.active", Value: "border-bottom-color: " + m.LineActive + "; color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "hydrastudio",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#000000"),
+                        GetPart(Parts.Text, "#666666"),
+                        GetPart(Parts.TextActive, "#1EED23")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".hydrastudio", Value: "background-color: " + m.Bg1 + ";" },
+                            { Class: ".hydrastudio li a", Value: "background-color: " + m.Bg1 + "; color: " + m.Text + ";" },
+                            { Class: ".hydrastudio li a:hover", Value: "color: " + m.TextActive + ";" },
+                            { Class: ".hydrastudio li a.active", Value: "color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "menu_",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#333333"),
+                        GetPart(Parts.BgActive, "#000000"),
+                        GetPart(Parts.Line, "#555555"),
+                        GetPart(Parts.Text, "#777777"),
+                        GetPart(Parts.TextActive, "#51CEAC")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".menu_", Value: "background-color: " + m.Bg1 + ";" },
+                            { Class: ".menu_ li a", Value: "background-color: " + m.Bg1 + "; border-right-color: " + m.Line + "; color: " + m.Text + ";" },
+                            { Class: ".menu_ li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
+                            { Class: ".menu_ li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "menu_e_cores",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#5C676E"),
+                        GetPart(Parts.Line, "#FFFFFF"),
+                        GetPart(Parts.Text, "#FFFFFF"),
+                        GetPart(Parts.TextActive, "#ED008C")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".menu_e_cores", Value: "background-color: " + m.Bg1 + ";" },
+                            { Class: ".menu_e_cores li a", Value: "background-color: " + m.Bg1 + "; border-left-color: " + m.Line + "; color: " + m.Text + ";" },
+                            { Class: ".menu_e_cores li a:hover", Value: "color: " + m.TextActive + ";" },
+                            { Class: ".menu_e_cores li a.active", Value: "color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "mercerbradley",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#000000"),
+                        GetPart(Parts.LineActive, "#BF1E2E"),
+                        GetPart(Parts.Text, "#999999"),
+                        GetPart(Parts.TextActive, "#FFFFFF")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".mercerbradley", Value: "background-color: " + m.Bg1 + ";" },
+                            { Class: ".mercerbradley li a", Value: "background-color: " + m.Bg1 + "; border-left-color: " + m.Bg1 + "; border-right-color: " + m.Bg1 + "; border-top-color: " + m.Bg1 + "; border-bottom-color: " + m.Bg1 + "; color: " + m.Text + ";" },
+                            { Class: ".mercerbradley li a:hover", Value: "border-left-color: " + m.LineActive + "; border-right-color: " + m.LineActive + "; border-top-color: " + m.LineActive + "; border-bottom-color: " + m.LineActive + "; color: " + m.TextActive + ";" },
+                            { Class: ".mercerbradley li a.active", Value: "border-left-color: " + m.LineActive + "; border-right-color: " + m.LineActive + "; border-top-color: " + m.LineActive + "; border-bottom-color: " + m.LineActive + "; color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "ref_barra",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#8B9493"),
+                        GetPart(Parts.BgActive, "#FF5500"),
+                        GetPart(Parts.Line, "#FFFFFF"),
+                        GetPart(Parts.Text, "#FFFFFF"),
+                        GetPart(Parts.TextActive, "#FFFFFF")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".ref_barra", Value: "background-color: " + m.Bg1 + "; border-left-color: " + m.Line + "; border-right-color: " + m.Line + "; border-top-color: " + m.Line + "; border-bottom-color: " + m.Line + ";" },
+                            { Class: ".ref_barra li a", Value: "background-color: " + m.Bg1 + "; border-right-color: " + m.Line + "; color: " + m.Text + ";" },
+                            { Class: ".ref_barra li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
+                            { Class: ".ref_barra li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "template",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#FFFFFF"),
+                        GetPart(Parts.Text, "#8D8D8D"),
+                        GetPart(Parts.TextActive, "#0000FF")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".template", Value: "background-color: " + m.Bg1 + ";" },
+                            { Class: ".template li a", Value: "background-color: " + m.Bg1 + "; color: " + m.Text + ";" },
+                            { Class: ".template li a:hover", Value: "color: " + m.TextActive + ";" },
+                            { Class: ".template li a.active", Value: "color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "template_back",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#FFFFFF"),
+                        GetPart(Parts.Bg2, "#EEEEEE"),
+                        GetPart(Parts.Line, "#CCCCCC"),
+                        GetPart(Parts.Text, "#333333"),
+                        GetPart(Parts.TextActive, "#999999")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".template_back", Value: "background-color: " + m.Bg1 + "; border-bottom-color: " + m.Line + ";" },
+                            { Class: ".template_back li a", Value: "background-color: " + m.Bg2 + "; color: " + m.Text + "; border-top-color: " + m.Line + "; border-right-color: " + m.Line + ";" },
+                            { Class: ".template_back li a:hover", Value: "color: " + m.TextActive + ";" },
+                            { Class: ".template_back li a.active", Value: "color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "template_menu",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#000000"),
+                        GetPart(Parts.BgActive, "#EEEEEE"),
+                        GetPart(Parts.Line, "#666666"),
+                        GetPart(Parts.Text, "#FFFFFF"),
+                        GetPart(Parts.TextActive, "#000000")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".template_menu", Value: "background-color: " + m.Bg1 + ";" },
+                            { Class: ".template_menu li a", Value: "background-color: " + m.Bg1 + "; border-right-color: " + m.Line + "; color: " + m.Text + ";" },
+                            { Class: ".template_menu li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
+                            { Class: ".template_menu li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "tuti",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#000000"),
+                        GetPart(Parts.BgActive, "#B00600"),
+                        GetPart(Parts.Text, "#FFFFFF"),
+                        GetPart(Parts.TextActive, "#FFFFFF")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".tuti", Value: "background-color: " + m.Bg1 + ";" },
+                            { Class: ".tuti li a", Value: "background-color: " + m.Bg1 + "; border-right-color: " + m.Line + "; color: " + m.Text + ";" },
+                            { Class: ".tuti li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
+                            { Class: ".tuti li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "untitled_1a",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#666666"),
+                        GetPart(Parts.BgActive, "#333333"),
+                        GetPart(Parts.Text, "#FFFFFF"),
+                        GetPart(Parts.TextActive, "#FFFFFF")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".untitled_1a", Value: "background-color: " + m.Bg1 + ";" },
+                            { Class: ".untitled_1a li a", Value: "background-color: " + m.Bg1 + "; border-right-color: " + m.Line + "; color: " + m.Text + ";" },
+                            { Class: ".untitled_1a li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
+                            { Class: ".untitled_1a li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "vfsv",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#000000"),
+                        GetPart(Parts.BgActive, "#FFFFFF"),
+                        GetPart(Parts.Text, "#FFFFFF"),
+                        GetPart(Parts.TextActive, "#000000")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".vfsv", Value: "background-color: " + m.Bg1 + ";" },
+                            { Class: ".vfsv li a", Value: "background-color: " + m.Bg1 + "; border-right-color: " + m.Line + "; color: " + m.Text + ";" },
+                            { Class: ".vfsv li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
+                            { Class: ".vfsv li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
+                        ];
+                    }
+                },
+                {
+                    Id: "wwd",
+                    Parts: [
+                        GetPart(Parts.Bg1, "#0072BC"),
+                        GetPart(Parts.BgActive, "#004A80"),
+                        GetPart(Parts.Text, "#FFFFFF"),
+                        GetPart(Parts.TextActive, "#BDE9FB")
+                    ],
+                    Css: function (customMenu) {
+                        var m = NormalizeMenu(customMenu);
+                        return [
+                            { Class: ".wwd", Value: "background-color: " + m.Bg1 + ";" },
+                            { Class: ".wwd li a", Value: "background-color: " + m.Bg1 + "; border-right-color: " + m.Line + "; color: " + m.Text + ";" },
+                            { Class: ".wwd li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
+                            { Class: ".wwd li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
+                        ];
+                    }
+                }
+        ];
+        return {
+            Menus: Menus,
+            ApplyCSS: function (menu) {
+                var rules = _.findWhere(this.Menus, { Id: menu.Id }).Css(menu);
+                _.each(rules, function (rule) {
+                    rule.Class = ".preview .menu.custom" + rule.Class;
+                });
+                WebjatoCssHandler.ApplyCSS("custom-menu", rules);
+            }
+        };
+    }
+);
+var Help = (function () {
+    function Help() {
+        this.items = [];
+        this.enabled = false;
+        this.cookieHelpItems = "HelpItems";
+        this.cookieHelpState = "HelpState";
+        this.enabled = this.RetrieveHelpState();
+        var identifiers = [
+            "main",
+            "config/size",
+            "config/align",
+            "config/title",
+            "config/pages",
+            "config/position",
+            "visual/bg",
+            "visual/header",
+            "visual/footer",
+            "visual/logo",
+            "visual/menu",
+            "visual/page",
+            "content/start",
+            "content/text",
+            "content/box",
+            "content/line",
+            "content/image-simple",
+            "content/image-expandable",
+            "content/image-linked",
+            "content/video",
+            "content/map",
+            "content/social",
+            "content/contact-form",
+            "content/move",
+            "content/duplicate",
+            "publish/address",
+            "publish/display",
+            "publish/share",
+            "publish/hide"
+        ];
+        var itemsState = this.RetrieveHelpItems();
+        for (var i = 0; i < identifiers.length; i++) {
+            var helpItem = new HelpItem(identifiers[i], (itemsState != "") ? (itemsState.charAt(i) == "1") : false);
+            this.items.push(helpItem);
+        }
+    }
+    Help.prototype.ExportHelpItems = function () {
+        var helpState = "";
+        var helpItem;
+        for (var i = 0; i < this.items.length; i++) {
+            helpItem = this.items[i];
+            helpState += (helpItem.displayed ? "1" : "0");
+        }
+        $.cookie(this.cookieHelpItems, helpState, { path: "/" });
+    };
+    Help.prototype.RetrieveHelpItems = function () {
+        var state = $.cookie(this.cookieHelpItems);
+        return ((state == undefined) ? "" : state);
+    };
+    Help.prototype.ExportHelpState = function () {
+        $.cookie(this.cookieHelpState, this.enabled ? "1" : "0", { path: "/" });
+    };
+    Help.prototype.RetrieveHelpState = function () {
+        var state = $.cookie(this.cookieHelpState);
+        return ((state == undefined) ? false : (state == "1"));
+    };
+    Help.prototype.Show = function (id) {
+        if (!this.enabled) {
+            return false;
+        }
+        var item = this.GetHelpItem(id);
+        if (!item.displayed) {
+            item.displayed = true;
+            this.ExportHelpItems();
+            return true;
+        }
+        return false;
+    };
+    Help.prototype.GetHelpItem = function (id) {
+        for (var i = 0; i < this.items.length; i++) {
+            if (this.items[i].id == id) {
+                return this.items[i];
+            }
+        }
+        return null;
+    };
+    Help.prototype.ResetAllItemsState = function () {
+        for (var i = 0; i < this.items.length; i++) {
+            this.items[i].displayed = false;
+        }
+        this.ExportHelpItems();
+    };
+    Help.prototype.SetEnabled = function (state, reset) {
+        this.enabled = state;
+        if (reset) {
+            this.ResetAllItemsState();
+        }
+        this.ExportHelpState();
+    };
+    return Help;
+}());
+
+var HelpItem = (function () {
+    function HelpItem(id, displayed) {
+        this.id = id;
+        this.displayed = displayed;
+    }
+    return HelpItem;
+}());
+
+angular.module("WebjatoConstants").constant("ServerSyncCommands", {
+    ALL: "ALL",
+    DELETE: "DELETE",
+    DUPLICATE: "DUPLICATE",
+    POSITION: "POSITION",
+    ZINDEX: "Z-INDEX"
+});
+angular.module("WebjatoConstants").constant("SocialIconSize", {
+    SMALL: 16,
+    REGULAR: 24,
+    LARGE: 32
+});
+angular.module("WebjatoConstants").constant("zIndexChange", {
+    ONE_UP: 1,
+    ONE_DOWN: 2,
+    BRING_TO_FRONT: 3,
+    SEND_TO_BACK: 4
+});
 angular.module("WebjatoDirectives").directive("wjAnimate", function ($timeout, $parse, ServerSync, ServerSyncCommands) {
     return {
         restrict: "A",
@@ -1955,7 +2729,48 @@ angular.module("WebjatoDirectives").directive("wjTinymce", function ($timeout) {
                     inline: true,
                     selector: "#" + id,
                     fixed_toolbar_container: "#" + scope.textId + " .toolbar",
-                    toolbar: "fontselect | fontsizeselect | forecolor backcolor | bold italic underline | alignleft aligncenter alignright",
+                    toolbar: "fontselect | fontsizeselect | forecolor backcolor | underline | alignleft aligncenter alignright",
+                    textcolor_map: [
+                        "333333", "Black",
+                        "993300", "Burnt orange",
+                        "333300", "Dark olive",
+                        "003300", "Dark green",
+                        "003366", "Dark azure",
+                        "000080", "Navy Blue",
+                        "333399", "Indigo",
+                        "333333", "Very dark gray",
+                        "800000", "Maroon",
+                        "FF6600", "Orange",
+                        "808000", "Olive",
+                        "008000", "Green",
+                        "008080", "Teal",
+                        "0000FF", "Blue",
+                        "666699", "Grayish blue",
+                        "808080", "Gray",
+                        "FF0000", "Red",
+                        "FF9900", "Amber",
+                        "99CC00", "Yellow green",
+                        "339966", "Sea green",
+                        "33CCCC", "Turquoise",
+                        "3366FF", "Royal blue",
+                        "800080", "Purple",
+                        "999999", "Medium gray",
+                        "FF00FF", "Magenta",
+                        "FFCC00", "Gold",
+                        "FFFF00", "Yellow",
+                        "00FF00", "Lime",
+                        "00FFFF", "Aqua",
+                        "00CCFF", "Sky blue",
+                        "993366", "Red violet",
+                        "DDDDDD", "White",
+                        "FF99CC", "Pink",
+                        "FFCC99", "Peach",
+                        "FFFF99", "Light yellow",
+                        "CCFFCC", "Pale green",
+                        "CCFFFF", "Pale cyan",
+                        "99CCFF", "Light sky blue",
+                        "CC99FF", "Plum"
+                    ],
                     setup: function (ed) {
                         editor = ed;
                         editor.on("change ExecCommand NodeChange KeyUp", function () {
@@ -2150,835 +2965,12 @@ angular.module("WebjatoDirectives").directive("wjZindex", function (zIndexChange
         }
     };
 });
-var Page = (function () {
-    function Page() {
-    }
-    return Page;
-}());
-
-angular.module("WebjatoConstants").constant("ServerSyncCommands", {
-    ALL: "ALL",
-    DELETE: "DELETE",
-    DUPLICATE: "DUPLICATE",
-    POSITION: "POSITION",
-    ZINDEX: "Z-INDEX"
-});
-angular.module("WebjatoConstants").constant("SocialIconSize", {
-    SMALL: 16,
-    REGULAR: 24,
-    LARGE: 32
-});
-angular.module("WebjatoConstants").constant("zIndexChange", {
-    ONE_UP: 1,
-    ONE_DOWN: 2,
-    BRING_TO_FRONT: 3,
-    SEND_TO_BACK: 4
-});
-angular.module("WebjatoFactories")
-.factory("WebjatoCssHandler",
-    function () {
-        return {
-            GetStyleSheet: function (styleSheetTitle) {
-                var styleSheetExists = _.some(document.styleSheets, function (styleSheet) { return styleSheet.title == styleSheetTitle; });
-                if (!styleSheetExists) {
-                    $("head").append("<style type=\"text/css\" media=\"screen\" title=\"" + styleSheetTitle + "\"></style>");
-                }
-                return _.findWhere(document.styleSheets, { title: styleSheetTitle });
-            },
-            ApplyCSS: function (styleSheetTitle, rules) {
-                var sheet = this.GetStyleSheet(styleSheetTitle);
-                //Deletes old rules
-                var sheetRules = sheet.cssRules ? sheet.cssRules : sheet.rules;
-                while (sheetRules.length > 0) {
-                    if (sheet.deleteRule) {
-                        sheet.deleteRule(0);
-                    }
-                    else if (sheet.removeRule) {
-                        sheet.removeRule(0);
-                    }
-                }
-                //Apply new rules
-                _.each(rules, function (rule) {
-                    if (sheet.insertRule) {
-                        sheet.insertRule(rule.Class + " { " + rule.Value + " }", sheetRules.length);
-                    }
-                    else if (sheet.addRule) {
-                        sheet.addRule(rule.Class, rule.Value, sheetRules.length);
-                    }
-                });
-            }
-        };
-    });
-angular.module("WebjatoFactories")
-.factory("WebjatoFormatter",
-    function ($sce, MenuConfig) {
-        var hashRepeat = {
-            "11": "repeat",
-            "10": "repeat-x",
-            "01": "repeat-y",
-            "00": "no-repeat"
-        };
-        var hashVAlign = {
-            "1": "top",
-            "2": "center",
-            "3": "bottom"
-        };
-        var hashHAlign = {
-            "1": "left",
-            "2": "center",
-            "3": "right"
-        };
-        return {
-            Background: {
-                Data: null,
-                Style: {},
-                Refresh: function (bg, site, assetsPath) {
-                    this.Data = bg;
-                    this.Style["background-color"] = bg.Color;
-                    this.Style["background-image"] = (bg.ImageKey != null && bg.ImageKey != "") ? "url('" + assetsPath + bg.ImageKey + "')" : "none";
-                    this.Style["background-repeat"] = hashRepeat[(bg.HRepeat ? "1" : "0") + (bg.VRepeat ? "1" : "0")];
-                    this.Style["background-position"] = hashVAlign[bg.VAlign] + " " + hashHAlign[bg.HAlign];
-                    this.Style["background-attachment"] = bg.IsFixed ? "fixed" : "scroll";
-                    this.Style["text-align"] = hashHAlign[site.Alignment];
-                }
-            },
-            Frame: {
-                Data: null,
-                StyleBase: {},
-                StyleContPage: {},
-                StyleEstrutura: {},
-                Refresh: function(data, site) {
-                    this.Data = data;
-                    this.StyleContPage["padding-top"] = data.MarginTop + "px";
-                    this.StyleContPage["margin-left"] = parseInt(site.Alignment) == 1 ? "0" : "auto";
-                    this.StyleContPage["margin-right"] = parseInt(site.Alignment) == 1 ? "0" : "auto";
-                    this.StyleEstrutura["margin"] = parseInt(site.Alignment) == 1 ? "0" : "0 auto";
-                    this.StyleEstrutura["border-top-color"] = data.BorderTop.Color;
-                    this.StyleEstrutura["border-top-width"] = data.BorderTop.Width + "px";
-                    this.StyleEstrutura["border-bottom-color"] = data.BorderBottom.Color;
-                    this.StyleEstrutura["border-bottom-width"] = data.BorderBottom.Width + "px";
-                    this.StyleEstrutura["border-left-color"] = data.BorderSides.Color;
-                    this.StyleEstrutura["border-left-width"] = data.BorderSides.Width + "px";
-                    this.StyleEstrutura["border-right-color"] = data.BorderSides.Color;
-                    this.StyleEstrutura["border-right-width"] = data.BorderSides.Width + "px";
-                    this.StyleBase["background-color"] = data.IsTransparent ? "transparent" : data.Color;
-                }
-            },
-            Footer: {
-                Data: null,
-                Style: {},
-                Refresh: function (footer, site, frame) {
-                    this.Data = footer;
-                    this.Style["background-color"] = footer.IsTransparent ? "transparent" : footer.Color;
-                    this.Style["width"] = 1000;
-                    this.Style["margin"] = parseInt(site.Alignment) == 1 ? "0" : "0 auto";
-                    this.Style["border-left-width"] = frame.BorderSides.Width + "px";
-                    this.Style["border-right-width"] = frame.BorderSides.Width + "px";
-                    this.Data.TrustedText = function () { return $sce.trustAsHtml(footer.Text); };
-                }
-            },
-            Header: {
-                Data: null,
-                Style: {},
-                Refresh: function (header, assetsPath) {
-                    this.Data = header;
-                    this.Style["background-color"] = header.IsTransparent ? "transparent" : header.Color;
-                    this.Style["background-image"] = (header.ImageKey != null && header.ImageKey != "") ? "url('" + assetsPath + header.ImageKey + "')" : "none";
-                    this.Style["background-repeat"] = hashRepeat[(header.HRepeat ? "1" : "0") + (header.VRepeat ? "1" : "0")];
-                    this.Style["background-position"] = hashVAlign[header.VAlign] + " " + hashHAlign[header.HAlign]
-                    this.Style["height"] = header.Height + "px";
-                }
-            },
-            Logo: {
-                Data: null,
-                StyleText: {},
-                StyleImageContainer: {},
-                StyleImage: {},
-                ImagePath: "",
-                Refresh: function (logo, assetsPath) {
-                    this.Data = logo;
-                    this.StyleText["top"] = logo.Position.Y + "px";
-                    this.StyleText["left"] = logo.Position.X + "px";
-                    this.StyleText["display"] = "block";
-                    this.StyleImageContainer["display"] = (parseInt(logo.LogoType) == 2) ? "block" : "none";
-                    this.StyleImageContainer["top"] = logo.Position.Y + "px";
-                    this.StyleImageContainer["left"] = logo.Position.X + "px";
-                    this.StyleImage["width"] = logo.ImageExportedSize.Width + "px";
-                    this.ImagePath = (logo.ImageExportedKey != null && logo.ImageExportedKey != "") ? assetsPath + logo.ImageExportedKey : "#";
-                    this.Data.TrustedText = function () { return $sce.trustAsHtml(logo.Text); };
-                }
-            },
-            Site: {
-                Data: null,
-                Style: {},
-                Refresh: function (data) {
-                    this.Data = angular.copy(data);
-                    this.Style["margin"] = parseInt(data.Alignment) == 1 ? "0" : "0 auto";
-                    MenuConfig.ApplyCSS(data.Menu);
-                }
-            }
-        };
-    });
-angular.module("WebjatoFactories")
-.factory("MenuConfig",
-    function (WebjatoCssHandler) {
-        var GetPart = function (partId, colorDefault) {
-            return { Id: partId, Value: colorDefault };
-        };
-        var Parts = {
-            Bg1: "Bg1",
-            Bg2: "Bg2",
-            BgActive: "BgActive",
-            Line: "Line",
-            LineActive: "LineActive",
-            Text: "Text",
-            TextActive: "TextActive"
-        };
-        var NormalizeMenu = function (menu) {
-            var m = {
-                Id: menu.Id
-            };
-            for (var i = 0; i < menu.Parts.length; i++) {
-                m[menu.Parts[i].Id] = menu.Parts[i].Value;
-            }
-            return m;
-        };
-        var Menus = [
-                {
-                    Id: "botao_template_dois",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#FFFFFF"),
-                        GetPart(Parts.LineActive, "#00A650"),
-                        GetPart(Parts.Text, "#8D8D8D"),
-                        GetPart(Parts.TextActive, "#00A650")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".botao_template_dois", Value: "background-color: " + m.Bg1 + ";" },
-                            { Class: ".botao_template_dois li a", Value: "background-color: " + m.Bg1 + "; color: " + m.Text + ";" },
-                            { Class: ".botao_template_dois li a:hover", Value: "color: " + m.TextActive + "; border-top-color: " + m.LineActive + "; border-bottom-color: " + m.LineActive + ";" },
-                            { Class: ".botao_template_dois li a.active", Value: "color: " + m.TextActive + "; border-top-color: " + m.LineActive + "; border-bottom-color: " + m.LineActive + ";" }
-                        ];
-                    }
-
-                },
-                {
-                    Id: "cdfqed",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#FFFFFF"),
-                        GetPart(Parts.Line, "#000000"),
-                        GetPart(Parts.Text, "#888888"),
-                        GetPart(Parts.TextActive, "#95c02d")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".cdfqed", Value: "background-color: " + m.Bg1 + "; border-top-color: " + m.Line + "; border-bottom-color: " + m.Line + ";" },
-                            { Class: ".cdfqed li a", Value: "background-color: " + m.Bg1 + "; color: " + m.Text + ";" },
-                            { Class: ".cdfqed li a:hover", Value: "color: " + m.TextActive + ";" },
-                            { Class: ".cdfqed li a.active", Value: "color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "coisa",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#FF0000"),
-                        GetPart(Parts.BgActive, "#FFFFFF"),
-                        GetPart(Parts.Line, "#F7977A"),
-                        GetPart(Parts.Text, "#FFFFFF"),
-                        GetPart(Parts.TextActive, "#FF0000")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".coisa", Value: "background-color: " + m.Bg1 + ";" },
-                            { Class: ".coisa li a", Value: "background-color: " + m.Bg1 + "; color: " + m.Text + "; border-left-color: " + m.Line + ";" },
-                            { Class: ".coisa li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
-                            { Class: ".coisa li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "colon",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#FFFFFF"),
-                        GetPart(Parts.Line, "#AEA404"),
-                        GetPart(Parts.Text, "#000000"),
-                        GetPart(Parts.TextActive, "#AEA404")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".colon", Value: "background-color: " + m.Bg1 + ";" },
-                            { Class: ".colon li a", Value: "background-color: " + m.Bg1 + "; color: " + m.Text + "; border-left-color: " + m.Line + ";" },
-                            { Class: ".colon li a:hover", Value: "color: " + m.TextActive + ";" },
-                            { Class: ".colon li a.active", Value: "color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "crf",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#F16C4D"),
-                        GetPart(Parts.BgActive, "#EE1D24"),
-                        GetPart(Parts.Text, "#FFFFFF"),
-                        GetPart(Parts.TextActive, "#FFFFFF")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".crf", Value: "background-color: " + m.Bg1 + ";" },
-                            { Class: ".crf li a", Value: "background-color: " + m.Bg1 + "; color: " + m.Text + ";" },
-                            { Class: ".crf li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
-                            { Class: ".crf li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "css_menu",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#333333"),
-                        GetPart(Parts.LineActive, "#00B9F8"),
-                        GetPart(Parts.Text, "#999999"),
-                        GetPart(Parts.TextActive, "#FFFFFF")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".css_menu", Value: "background-color: " + m.Bg1 + ";" },
-                            { Class: ".css_menu li a", Value: "background-color: " + m.Bg1 + "; border-bottom-color: " + m.Bg1 + "; color: " + m.Text + ";" },
-                            { Class: ".css_menu li a:hover", Value: "border-bottom-color: " + m.LineActive + "; color: " + m.TextActive + ";" },
-                            { Class: ".css_menu li a.active", Value: "border-bottom-color: " + m.LineActive + "; color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "cvdv",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#FFFFFF"),
-                        GetPart(Parts.Line, "#666666"),
-                        GetPart(Parts.Text, "#666666"),
-                        GetPart(Parts.TextActive, "#666666")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".cvdv", Value: "background-color: " + m.Bg1 + ";" },
-                            { Class: ".cvdv li a", Value: "background-color: " + m.Bg1 + "; border-left-color: " + m.Line + "; color: " + m.Text + ";" },
-                            { Class: ".cvdv li a:hover", Value: "color: " + m.TextActive + ";" },
-                            { Class: ".cvdv li a.active", Value: "color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "cvea",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#000000"),
-                        GetPart(Parts.Text, "#FFFFFF"),
-                        GetPart(Parts.TextActive, "#FF0000")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".cvea", Value: "background-color: " + m.Bg1 + ";" },
-                            { Class: ".cvea li a", Value: "background-color: " + m.Bg1 + "; color: " + m.Text + ";" },
-                            { Class: ".cvea li a:hover", Value: "color: " + m.TextActive + ";" },
-                            { Class: ".cvea li a.active", Value: "color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "edu_tnvacation",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#423A34"),
-                        GetPart(Parts.Line, "#FFFFCC"),
-                        GetPart(Parts.Text, "#FFFFCC"),
-                        GetPart(Parts.TextActive, "#FF682E")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".edu_tnvacation", Value: "background-color: " + m.Bg1 + ";" },
-                            { Class: ".edu_tnvacation li a", Value: "background-color: " + m.Bg1 + "; border-left-color: " + m.Line + "; color: " + m.Text + ";" },
-                            { Class: ".edu_tnvacation li a:hover", Value: "color: " + m.TextActive + ";" },
-                            { Class: ".edu_tnvacation li a.active", Value: "color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "estudo_do_espaco",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#000000"),
-                        GetPart(Parts.BgActive, "#FF0000"),
-                        GetPart(Parts.Line, "#FFFFFF"),
-                        GetPart(Parts.Text, "#FFFFFF"),
-                        GetPart(Parts.TextActive, "#FFFFFF")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".estudo_do_espaco", Value: "background-color: " + m.Bg1 + "; border-top-color: " + m.Line + "; border-bottom-color: " + m.Line + "; border-left-color: " + m.Line + "; border-right-color: " + m.Line + ";" },
-                            { Class: ".estudo_do_espaco li a", Value: "background-color: " + m.Bg1 + "; border-right-color: " + m.Line + "; color: " + m.Text + ";" },
-                            { Class: ".estudo_do_espaco li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
-                            { Class: ".estudo_do_espaco li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "fashion",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#000000"),
-                        GetPart(Parts.Text, "#CCCCCC"),
-                        GetPart(Parts.TextActive, "#FFFFFF")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".fashion", Value: "background-color: " + m.Bg1 + ";" },
-                            { Class: ".fashion li a", Value: "background-color: " + m.Bg1 + "; color: " + m.Text + ";" },
-                            { Class: ".fashion li a:hover", Value: "color: " + m.TextActive + ";" },
-                            { Class: ".fashion li a.active", Value: "color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "feq",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#000000"),
-                        GetPart(Parts.BgActive, "#8FC63D"),
-                        GetPart(Parts.Line, "#999999"),
-                        GetPart(Parts.Text, "#FFFFFF"),
-                        GetPart(Parts.TextActive, "#FFFFFF")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".feq", Value: "background-color: " + m.Bg1 + ";" },
-                            { Class: ".feq li a", Value: "background-color: " + m.Bg1 + "; border-right-color: " + m.Line + "; color: " + m.Text + ";" },
-                            { Class: ".feq li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
-                            { Class: ".feq li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "foc",
-                    Parts: [
-                        GetPart(Parts.BgActive, "#DDF0F8"),
-                        GetPart(Parts.Text, "#333333"),
-                        GetPart(Parts.TextActive, "#333333")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".foc li a", Value: "color: " + m.Text + ";" },
-                            { Class: ".foc li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
-                            { Class: ".foc li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "good",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#818181"),
-                        GetPart(Parts.BgActive, "#00BFF3"),
-                        GetPart(Parts.Line, "#EEEEEE"),
-                        GetPart(Parts.Text, "#FFFFFF"),
-                        GetPart(Parts.TextActive, "#FFFFFF")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".good", Value: "background-color: " + m.Bg1 + ";" },
-                            { Class: ".good li a", Value: "background-color: " + m.Bg1 + "; border-right-color: " + m.Line + "; color: " + m.Text + ";" },
-                            { Class: ".good li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
-                            { Class: ".good li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "gotmojo",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#FFFFFF"),
-                        GetPart(Parts.Line, "#CCCCCC"),
-                        GetPart(Parts.Text, "#000000"),
-                        GetPart(Parts.TextActive, "#F00000")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".gotmojo", Value: "background-color: " + m.Bg1 + ";" },
-                            { Class: ".gotmojo li a", Value: "background-color: " + m.Bg1 + "; border-left-color: " + m.Line + "; color: " + m.Text + ";" },
-                            { Class: ".gotmojo li a:hover", Value: "color: " + m.TextActive + ";" },
-                            { Class: ".gotmojo li a.active", Value: "color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "greencircles",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#333333"),
-                        GetPart(Parts.Line, "#666666"),
-                        GetPart(Parts.LineActive, "#C7D92C"),
-                        GetPart(Parts.Text, "#CCCCCC"),
-                        GetPart(Parts.TextActive, "#FFFFFF")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".greencircles", Value: "background-color: " + m.Bg1 + ";" },
-                            { Class: ".greencircles li a", Value: "background-color: " + m.Bg1 + "; border-bottom-color: " + m.Line + "; color: " + m.Text + ";" },
-                            { Class: ".greencircles li a:hover", Value: "border-bottom-color: " + m.LineActive + "; color: " + m.TextActive + ";" },
-                            { Class: ".greencircles li a.active", Value: "border-bottom-color: " + m.LineActive + "; color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "hydrastudio",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#000000"),
-                        GetPart(Parts.Text, "#666666"),
-                        GetPart(Parts.TextActive, "#1EED23")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".hydrastudio", Value: "background-color: " + m.Bg1 + ";" },
-                            { Class: ".hydrastudio li a", Value: "background-color: " + m.Bg1 + "; color: " + m.Text + ";" },
-                            { Class: ".hydrastudio li a:hover", Value: "color: " + m.TextActive + ";" },
-                            { Class: ".hydrastudio li a.active", Value: "color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "menu_",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#333333"),
-                        GetPart(Parts.BgActive, "#000000"),
-                        GetPart(Parts.Line, "#555555"),
-                        GetPart(Parts.Text, "#777777"),
-                        GetPart(Parts.TextActive, "#51CEAC")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".menu_", Value: "background-color: " + m.Bg1 + ";" },
-                            { Class: ".menu_ li a", Value: "background-color: " + m.Bg1 + "; border-right-color: " + m.Line + "; color: " + m.Text + ";" },
-                            { Class: ".menu_ li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
-                            { Class: ".menu_ li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "menu_e_cores",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#5C676E"),
-                        GetPart(Parts.Line, "#FFFFFF"),
-                        GetPart(Parts.Text, "#FFFFFF"),
-                        GetPart(Parts.TextActive, "#ED008C")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".menu_e_cores", Value: "background-color: " + m.Bg1 + ";" },
-                            { Class: ".menu_e_cores li a", Value: "background-color: " + m.Bg1 + "; border-left-color: " + m.Line + "; color: " + m.Text + ";" },
-                            { Class: ".menu_e_cores li a:hover", Value: "color: " + m.TextActive + ";" },
-                            { Class: ".menu_e_cores li a.active", Value: "color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "mercerbradley",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#000000"),
-                        GetPart(Parts.LineActive, "#BF1E2E"),
-                        GetPart(Parts.Text, "#999999"),
-                        GetPart(Parts.TextActive, "#FFFFFF")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".mercerbradley", Value: "background-color: " + m.Bg1 + ";" },
-                            { Class: ".mercerbradley li a", Value: "background-color: " + m.Bg1 + "; border-left-color: " + m.Bg1 + "; border-right-color: " + m.Bg1 + "; border-top-color: " + m.Bg1 + "; border-bottom-color: " + m.Bg1 + "; color: " + m.Text + ";" },
-                            { Class: ".mercerbradley li a:hover", Value: "border-left-color: " + m.LineActive + "; border-right-color: " + m.LineActive + "; border-top-color: " + m.LineActive + "; border-bottom-color: " + m.LineActive + "; color: " + m.TextActive + ";" },
-                            { Class: ".mercerbradley li a.active", Value: "border-left-color: " + m.LineActive + "; border-right-color: " + m.LineActive + "; border-top-color: " + m.LineActive + "; border-bottom-color: " + m.LineActive + "; color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "ref_barra",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#8B9493"),
-                        GetPart(Parts.BgActive, "#FF5500"),
-                        GetPart(Parts.Line, "#FFFFFF"),
-                        GetPart(Parts.Text, "#FFFFFF"),
-                        GetPart(Parts.TextActive, "#FFFFFF")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".ref_barra", Value: "background-color: " + m.Bg1 + "; border-left-color: " + m.Line + "; border-right-color: " + m.Line + "; border-top-color: " + m.Line + "; border-bottom-color: " + m.Line + ";" },
-                            { Class: ".ref_barra li a", Value: "background-color: " + m.Bg1 + "; border-right-color: " + m.Line + "; color: " + m.Text + ";" },
-                            { Class: ".ref_barra li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
-                            { Class: ".ref_barra li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "template",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#FFFFFF"),
-                        GetPart(Parts.Text, "#8D8D8D"),
-                        GetPart(Parts.TextActive, "#0000FF")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".template", Value: "background-color: " + m.Bg1 + ";" },
-                            { Class: ".template li a", Value: "background-color: " + m.Bg1 + "; color: " + m.Text + ";" },
-                            { Class: ".template li a:hover", Value: "color: " + m.TextActive + ";" },
-                            { Class: ".template li a.active", Value: "color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "template_back",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#FFFFFF"),
-                        GetPart(Parts.Bg2, "#EEEEEE"),
-                        GetPart(Parts.Line, "#CCCCCC"),
-                        GetPart(Parts.Text, "#333333"),
-                        GetPart(Parts.TextActive, "#999999")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".template_back", Value: "background-color: " + m.Bg1 + "; border-bottom-color: " + m.Line + ";" },
-                            { Class: ".template_back li a", Value: "background-color: " + m.Bg2 + "; color: " + m.Text + "; border-top-color: " + m.Line + "; border-right-color: " + m.Line + ";" },
-                            { Class: ".template_back li a:hover", Value: "color: " + m.TextActive + ";" },
-                            { Class: ".template_back li a.active", Value: "color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "template_menu",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#000000"),
-                        GetPart(Parts.BgActive, "#EEEEEE"),
-                        GetPart(Parts.Line, "#666666"),
-                        GetPart(Parts.Text, "#FFFFFF"),
-                        GetPart(Parts.TextActive, "#000000")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".template_menu", Value: "background-color: " + m.Bg1 + ";" },
-                            { Class: ".template_menu li a", Value: "background-color: " + m.Bg1 + "; border-right-color: " + m.Line + "; color: " + m.Text + ";" },
-                            { Class: ".template_menu li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
-                            { Class: ".template_menu li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "tuti",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#000000"),
-                        GetPart(Parts.BgActive, "#B00600"),
-                        GetPart(Parts.Text, "#FFFFFF"),
-                        GetPart(Parts.TextActive, "#FFFFFF")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".tuti", Value: "background-color: " + m.Bg1 + ";" },
-                            { Class: ".tuti li a", Value: "background-color: " + m.Bg1 + "; border-right-color: " + m.Line + "; color: " + m.Text + ";" },
-                            { Class: ".tuti li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
-                            { Class: ".tuti li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "untitled_1a",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#666666"),
-                        GetPart(Parts.BgActive, "#333333"),
-                        GetPart(Parts.Text, "#FFFFFF"),
-                        GetPart(Parts.TextActive, "#FFFFFF")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".untitled_1a", Value: "background-color: " + m.Bg1 + ";" },
-                            { Class: ".untitled_1a li a", Value: "background-color: " + m.Bg1 + "; border-right-color: " + m.Line + "; color: " + m.Text + ";" },
-                            { Class: ".untitled_1a li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
-                            { Class: ".untitled_1a li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "vfsv",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#000000"),
-                        GetPart(Parts.BgActive, "#FFFFFF"),
-                        GetPart(Parts.Text, "#FFFFFF"),
-                        GetPart(Parts.TextActive, "#000000")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".vfsv", Value: "background-color: " + m.Bg1 + ";" },
-                            { Class: ".vfsv li a", Value: "background-color: " + m.Bg1 + "; border-right-color: " + m.Line + "; color: " + m.Text + ";" },
-                            { Class: ".vfsv li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
-                            { Class: ".vfsv li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
-                        ];
-                    }
-                },
-                {
-                    Id: "wwd",
-                    Parts: [
-                        GetPart(Parts.Bg1, "#0072BC"),
-                        GetPart(Parts.BgActive, "#004A80"),
-                        GetPart(Parts.Text, "#FFFFFF"),
-                        GetPart(Parts.TextActive, "#BDE9FB")
-                    ],
-                    Css: function (customMenu) {
-                        var m = NormalizeMenu(customMenu);
-                        return [
-                            { Class: ".wwd", Value: "background-color: " + m.Bg1 + ";" },
-                            { Class: ".wwd li a", Value: "background-color: " + m.Bg1 + "; border-right-color: " + m.Line + "; color: " + m.Text + ";" },
-                            { Class: ".wwd li a:hover", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" },
-                            { Class: ".wwd li a.active", Value: "background-color: " + m.BgActive + "; color: " + m.TextActive + ";" }
-                        ];
-                    }
-                }
-        ];
-        return {
-            Menus: Menus,
-            ApplyCSS: function (menu) {
-                var rules = _.findWhere(this.Menus, { Id: menu.Id }).Css(menu);
-                _.each(rules, function (rule) {
-                    rule.Class = ".preview .menu.custom" + rule.Class;
-                });
-                WebjatoCssHandler.ApplyCSS("custom-menu", rules);
-            }
-        };
-    }
-);
 angular.module("WebjatoModels").factory("UnitContentModel", function () {
 	return {
 		ContentTypeToPreview: null,
 		ShowUnity: true
     };
 });
-var Help = (function () {
-    function Help() {
-        this.items = [];
-        this.enabled = false;
-        this.cookieHelpItems = "HelpItems";
-        this.cookieHelpState = "HelpState";
-        this.enabled = this.RetrieveHelpState();
-        var identifiers = [
-            "main",
-            "config/size",
-            "config/align",
-            "config/title",
-            "config/pages",
-            "config/position",
-            "visual/bg",
-            "visual/header",
-            "visual/footer",
-            "visual/logo",
-            "visual/menu",
-            "visual/page",
-            "content/start",
-            "content/text",
-            "content/box",
-            "content/line",
-            "content/image-simple",
-            "content/image-expandable",
-            "content/image-linked",
-            "content/video",
-            "content/map",
-            "content/social",
-            "content/contact-form",
-            "content/move",
-            "content/duplicate",
-            "publish/address",
-            "publish/display",
-            "publish/share",
-            "publish/hide"
-        ];
-        var itemsState = this.RetrieveHelpItems();
-        for (var i = 0; i < identifiers.length; i++) {
-            var helpItem = new HelpItem(identifiers[i], (itemsState != "") ? (itemsState.charAt(i) == "1") : false);
-            this.items.push(helpItem);
-        }
-    }
-    Help.prototype.ExportHelpItems = function () {
-        var helpState = "";
-        var helpItem;
-        for (var i = 0; i < this.items.length; i++) {
-            helpItem = this.items[i];
-            helpState += (helpItem.displayed ? "1" : "0");
-        }
-        $.cookie(this.cookieHelpItems, helpState, { path: "/" });
-    };
-    Help.prototype.RetrieveHelpItems = function () {
-        var state = $.cookie(this.cookieHelpItems);
-        return ((state == undefined) ? "" : state);
-    };
-    Help.prototype.ExportHelpState = function () {
-        $.cookie(this.cookieHelpState, this.enabled ? "1" : "0", { path: "/" });
-    };
-    Help.prototype.RetrieveHelpState = function () {
-        var state = $.cookie(this.cookieHelpState);
-        return ((state == undefined) ? false : (state == "1"));
-    };
-    Help.prototype.Show = function (id) {
-        if (!this.enabled) {
-            return false;
-        }
-        var item = this.GetHelpItem(id);
-        if (!item.displayed) {
-            item.displayed = true;
-            this.ExportHelpItems();
-            return true;
-        }
-        return false;
-    };
-    Help.prototype.GetHelpItem = function (id) {
-        for (var i = 0; i < this.items.length; i++) {
-            if (this.items[i].id == id) {
-                return this.items[i];
-            }
-        }
-        return null;
-    };
-    Help.prototype.ResetAllItemsState = function () {
-        for (var i = 0; i < this.items.length; i++) {
-            this.items[i].displayed = false;
-        }
-        this.ExportHelpItems();
-    };
-    Help.prototype.SetEnabled = function (state, reset) {
-        this.enabled = state;
-        if (reset) {
-            this.ResetAllItemsState();
-        }
-        this.ExportHelpState();
-    };
-    return Help;
-}());
-
-var HelpItem = (function () {
-    function HelpItem(id, displayed) {
-        this.id = id;
-        this.displayed = displayed;
-    }
-    return HelpItem;
-}());
-
 angular.module("WebjatoServices").service("ContentTypeList", function () {
     return [{ Crtl: "Box", Enum: 1 },
             { Crtl: "ContactForm", Enum: 2 },
@@ -3485,6 +3477,64 @@ angular.module("WebjatoServices").service("URLParser", function () {
 });
 
 
+angular.module("WebjatoConfig").config(function ($provide) {
+    $provide.factory("ColorPickerConfig",
+        function () {
+            var config = {
+                allowEmpty: true,
+                showPaletteOnly: true,
+                showSelectionPalette: false,
+                preferredFormat: "hex",
+                palette: [
+                    ["#FFFFFF", "#C00000", "#FF0000", "#490000", "#790000", "#C00000", "#EE1D24", "#F16C4D", "#F7977A", "#FBD0C3", "#FDE8E1"],
+                    ["#000000", "#CC5200", "#FF6600", "#461C00", "#7B3000", "#A1410D", "#F16522", "#F68E54", "#FBAD82", "#FDDAC7", "#FEEDE3"],
+                    ["#333333", "#FFD800", "#FFFF00", "#4F2F00", "#7C4900", "#A36209", "#F7941D", "#FFBF05", "#FFD45C", "#FFECB5", "#FFF6DA"],
+                    ["#666666", "#92D14F", "#99FF33", "#5B5600", "#827A00", "#ABA000", "#FFF100", "#FFF467", "#FFF799", "#FFFBD1", "#FFFDE8"],
+                    ["#999999", "#00AF50", "#00FF00", "#253D0E", "#3E6617", "#588528", "#8FC63D", "#93D14F", "#ADDC7A", "#DAEFC3", "#EDF7E1"],
+                    ["#CCCCCC", "#03B1F0", "#00FFFF", "#033813", "#045F20", "#197B30", "#35b449", "#7DC473", "#A4D49D", "#D6ECD3", "#EBF6E9"],
+                    ["#DDDDDD", "#0071C1", "#0000FF", "#003E19", "#005824", "#007236", "#00A650", "#39B778", "#81CA9D", "#C6E7D3", "#E3F3E9"],
+                    ["#EEEEEE", "#7030A0", "#FF00FF", "#003531", "#005951", "#00736A", "#00A99E", "#16BCB4", "#7BCDC9", "#C3E8E7", "#E1F4F3"],
+                    ["#41484D", "#42260D", "#362F2C", "#00364B", "#005B7E", "#0076A4", "#00AEEF", "#00BFF3", "#6CCFF7", "#BDE9FB", "#DEF4FD"],
+                    ["#5C676E", "#613813", "#423A34", "#002D53", "#003562", "#004A80", "#0072BC", "#438CCB", "#7CA6D8", "#C7D9EE", "#E3ECF7"],
+                    ["#5F6D84", "#744B24", "#534841", "#001A45", "#002056", "#003370", "#0054A5", "#5573B7", "#8293CA", "#CAD0E8", "#E5E8F4"],
+                    ["#758792", "#8C623A", "#726357", "#0C004B", "#1D1363", "#2A2C70", "#393B97", "#5E5CA7", "#8881BE", "#CCC9E3", "#E6E4F1"],
+                    ["#90ABBD", "#A77C50", "#9A8575", "#30004A", "#450E61", "#5A2680", "#7030A0", "#855FA8", "#A286BD", "#D5C8E1", "#EAE4F0"],
+                    ["#A6BCCA", "#C69C6D", "#C7B198", "#390037", "#4B0048", "#62055F", "#91278F", "#A763A9", "#BC8CBF", "#E1CBE2", "#F0E5F1"],
+                    ["#C4D2DC", "#E2CDB6", "#D9CAB9", "#490029", "#7A0045", "#9D005C", "#ED008C", "#EF6EA8", "#f39bc1", "#FAD8E7", "#FDECF3"],
+                    ["#E2E9EE", "#F1E6DB", "#ECE5DC", "#58001B", "#7A0026", "#9D0039", "#EE105A", "#F16D7E", "#F5999D", "#FAD1D3", "#FDE8E9"]]
+            };
+            return config;
+        }
+    );
+});
+angular.module("WebjatoConfig").factory("WebjatoConfig", function ($http, $location) {
+    var qs = "";
+    if ($location.search().siteId) {
+        qs = "?siteId=" + $location.search().siteId;
+    }
+    var Config = {
+        AssetsPath: "",
+        AssetsLocalPath: "/tmp/"
+    };
+    $http({
+        method: "GET",
+        url: "../api/site/config" + qs
+    })
+    .success(
+        function (data) {
+            Config.AssetsPath = data.AssetsPath;
+        });
+    return Config;
+});
+var HelpBit = (function () {
+    function HelpBit(Id, Url, Enabled) {
+        this.Id = Id;
+        this.Url = Url;
+        this.Enabled = Enabled;
+    }
+    return HelpBit;
+}());
+
 angular.module("WebjatoDirectives").directive("wjHelp", function () {
     return {
         restrict: "E",
@@ -3514,6 +3564,100 @@ angular.module("WebjatoDirectives").directive("wjHelp", function () {
                 new Help().SetEnabled(newState, reset);
             });
         }
+    };
+});
+
+var CropBoxCtrl = (function () {
+    function CropBoxCtrl($scope) {
+        this.$scope = $scope;
+        this.thumbBoxCSS = {
+            width: $scope.options.Width + "px",
+            height: $scope.options.Height + "px",
+            marginTop: (-$scope.options.Height / 2) + "px",
+            marginLeft: (-$scope.options.Width / 2) + "px"
+        };
+        var borderEffectWidth = $scope.options.Width - 4;
+        $("<style>.thumbBox:after, .thumbBox:before { width: " + borderEffectWidth + "px }</style>").appendTo("head");
+        var borderEffectHeight = $scope.options.Height - 4;
+        $("<style>.thumbBox .inner:after, .thumbBox .inner:before { height: " + borderEffectHeight + "px }</style>").appendTo("head");
+    }
+    CropBoxCtrl.prototype.Cancel = function () {
+        this.$scope.onCancel();
+    };
+    CropBoxCtrl.prototype.Confirm = function () {
+        this.$scope.onCrop({ data64: this.$scope.cropper.getDataURL() });
+    };
+    CropBoxCtrl.prototype.ZoomIn = function () {
+        this.$scope.cropper.zoomIn();
+    };
+    CropBoxCtrl.prototype.ZoomOut = function () {
+        this.$scope.cropper.zoomOut();
+    };
+    CropBoxCtrl.$inject = ["$scope"];
+    return CropBoxCtrl;
+}());
+function CropBoxLink($scope, $elem) {
+    $scope.cropper = ($elem.find(".imageBox")).cropbox({
+        imageBox: ".imageBox",
+        thumbBox: ".thumbBox",
+        spinner: ".spinner",
+        imgSrc: $scope.options.Url
+    });
+}
+var CropService = (function () {
+    function CropService($rootScope, $q, $compile) {
+        this.$inject = ["$rootScope", "$q", "$compile"];
+        this.$rootScope = $rootScope;
+        this.$q = $q;
+        this.$compile = $compile;
+    }
+    CropService.prototype.Crop = function (options) {
+        var _this = this;
+        this.defer = this.$q.defer();
+        this.$scopeCropBox = this.$rootScope.$new(true);
+        this.$scopeCropBox.options = options;
+        this.$scopeCropBox.onCrop = (function (data64) { _this.OnCropConfirm(data64); });
+        this.$scopeCropBox.onCancel = function () { _this.OnCropCancel(); };
+        this.modalId = "modal" + new Date().getTime().toString();
+        $("body").append("<div id='" + this.modalId + "'><cropbox options='options' on-crop='onCrop(data64);' on-cancel='onCancel();'></cropbox></div>");
+        this.$compile($("#" + this.modalId))(this.$scopeCropBox);
+        $("#" + this.modalId).lightbox_me({
+            destroyOnClose: true,
+            centered: true,
+            closeEsc: false,
+            closeClick: false
+        });
+        return this.defer.promise;
+    };
+    CropService.prototype.OnCropConfirm = function (data64) {
+        this.defer.resolve(data64);
+        this.$Destroy();
+    };
+    CropService.prototype.OnCropCancel = function () {
+        this.defer.reject();
+        this.$Destroy();
+    };
+    CropService.prototype.$Destroy = function () {
+        this.$scopeCropBox.$destroy();
+        $("#" + this.modalId).trigger("close");
+    };
+    return CropService;
+}());
+angular.module("WebjatoServices")
+    .service("CropSVC", CropService)
+    .directive("cropbox", function () {
+    return {
+        replace: true,
+        restrict: "E",
+        templateUrl: "/cropbox.html",
+        scope: {
+            options: "=",
+            onCrop: "&",
+            onCancel: "&"
+        },
+        controller: CropBoxCtrl,
+        controllerAs: 'cbCtrl',
+        link: CropBoxLink
     };
 });
 
@@ -3646,109 +3790,6 @@ var Video = (function (_super) {
     }
     return Video;
 }(ContentBase));
-
-var HelpBit = (function () {
-    function HelpBit(Id, Url, Enabled) {
-        this.Id = Id;
-        this.Url = Url;
-        this.Enabled = Enabled;
-    }
-    return HelpBit;
-}());
-
-var CropBoxCtrl = (function () {
-    function CropBoxCtrl($scope) {
-        this.$scope = $scope;
-        this.thumbBoxCSS = {
-            width: $scope.options.Width + "px",
-            height: $scope.options.Height + "px",
-            marginTop: (-$scope.options.Height / 2) + "px",
-            marginLeft: (-$scope.options.Width / 2) + "px"
-        };
-        var borderEffectWidth = $scope.options.Width - 4;
-        $("<style>.thumbBox:after, .thumbBox:before { width: " + borderEffectWidth + "px }</style>").appendTo("head");
-        var borderEffectHeight = $scope.options.Height - 4;
-        $("<style>.thumbBox .inner:after, .thumbBox .inner:before { height: " + borderEffectHeight + "px }</style>").appendTo("head");
-    }
-    CropBoxCtrl.prototype.Cancel = function () {
-        this.$scope.onCancel();
-    };
-    CropBoxCtrl.prototype.Confirm = function () {
-        this.$scope.onCrop({ data64: this.$scope.cropper.getDataURL() });
-    };
-    CropBoxCtrl.prototype.ZoomIn = function () {
-        this.$scope.cropper.zoomIn();
-    };
-    CropBoxCtrl.prototype.ZoomOut = function () {
-        this.$scope.cropper.zoomOut();
-    };
-    CropBoxCtrl.$inject = ["$scope"];
-    return CropBoxCtrl;
-}());
-function CropBoxLink($scope, $elem) {
-    $scope.cropper = ($elem.find(".imageBox")).cropbox({
-        imageBox: ".imageBox",
-        thumbBox: ".thumbBox",
-        spinner: ".spinner",
-        imgSrc: $scope.options.Url
-    });
-}
-var CropService = (function () {
-    function CropService($rootScope, $q, $compile) {
-        this.$inject = ["$rootScope", "$q", "$compile"];
-        this.$rootScope = $rootScope;
-        this.$q = $q;
-        this.$compile = $compile;
-    }
-    CropService.prototype.Crop = function (options) {
-        var _this = this;
-        this.defer = this.$q.defer();
-        this.$scopeCropBox = this.$rootScope.$new(true);
-        this.$scopeCropBox.options = options;
-        this.$scopeCropBox.onCrop = (function (data64) { _this.OnCropConfirm(data64); });
-        this.$scopeCropBox.onCancel = function () { _this.OnCropCancel(); };
-        this.modalId = "modal" + new Date().getTime().toString();
-        $("body").append("<div id='" + this.modalId + "'><cropbox options='options' on-crop='onCrop(data64);' on-cancel='onCancel();'></cropbox></div>");
-        this.$compile($("#" + this.modalId))(this.$scopeCropBox);
-        $("#" + this.modalId).lightbox_me({
-            destroyOnClose: true,
-            centered: true,
-            closeEsc: false,
-            closeClick: false
-        });
-        return this.defer.promise;
-    };
-    CropService.prototype.OnCropConfirm = function (data64) {
-        this.defer.resolve(data64);
-        this.$Destroy();
-    };
-    CropService.prototype.OnCropCancel = function () {
-        this.defer.reject();
-        this.$Destroy();
-    };
-    CropService.prototype.$Destroy = function () {
-        this.$scopeCropBox.$destroy();
-        $("#" + this.modalId).trigger("close");
-    };
-    return CropService;
-}());
-angular.module("WebjatoServices")
-    .service("CropSVC", CropService)
-    .directive("cropbox", function () {
-    return {
-        replace: true,
-        restrict: "E",
-        templateUrl: "/cropbox.html",
-        scope: {
-            options: "=",
-            onCrop: "&",
-            onCancel: "&"
-        },
-        controller: CropBoxCtrl,
-        controllerAs: 'cbCtrl',
-        link: CropBoxLink
-    };
-});
 
 (function (i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
