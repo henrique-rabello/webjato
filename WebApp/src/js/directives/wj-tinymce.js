@@ -23,7 +23,7 @@
                     inline: true,
                     selector: "#" + id,
                     fixed_toolbar_container: "#" + scope.textId + " .toolbar",
-                    toolbar: "fontselect | fontsizeselect | forecolor backcolor | bold italic underline | alignleft aligncenter alignright",
+                    toolbar: "fontselect | fontsizeselect | forecolor backcolor | underline | alignleft aligncenter alignright",
                     setup: function (ed) {
                         editor = ed;
                         editor.on("change ExecCommand NodeChange KeyUp", function () {
