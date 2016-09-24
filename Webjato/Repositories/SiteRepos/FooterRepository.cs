@@ -18,7 +18,7 @@ namespace Webjato.Repositories.SiteRepos {
             if (db.AsQueryable().Any(x => x.Id == siteId)) {
                 throw new ArgumentException("WJ => Cannot create this footer. A Footer Id '" + siteId.ToString() + "' already exists.");
             }
-            var footer = new Footer { Id = siteId, Color = "#FFFFFF", IsTransparent = false, Text = "<span style=\"font-size: 13px; color: #666666;\">© 2014 Meu Site - Todos os direitos reservados.</span>" };
+            var footer = new Footer { Id = siteId, Color = "#FFFFFF", IsTransparent = true, Text = "<span style=\"font-size: 13px; color: #666666;\">© 2014 Meu Site - Todos os direitos reservados.</span>" };
             db.Save(footer);
         }
 

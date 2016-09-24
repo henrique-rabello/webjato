@@ -112,10 +112,10 @@
             .controller("MenuCrtl", function ($scope, $location, $timeout, $rootScope) {
                 $scope.pages = [
                     { url: "#/logo.html", helpId: "visual/logo", title: "Nome", menuLabel: "Logo" },
-                    { url: "#/background.html", helpId: "visual/bg", title: "Plano de fundo", menuLabel: "Fundo" }
+                    { url: "#/background.html", helpId: "visual/bg", title: "Plano de fundo", menuLabel: "Fundo" },
+                    { url: "#/footer.html", helpId: "visual/footer", title: "Rodapé", menuLabel: "Rodapé" }
                     
                     /*
-                    { url: "#/footer.html", helpId: "visual/footer", title: "Rodapé", menuLabel: "Rodapé" },
                     { url: "#/menu.html", helpId: "visual/menu", title: "Menu", menuLabel: "Menu" }
                     { url: "#/header.html", helpId: "visual/header", title: "Cabeçalho", menuLabel: "Cabeçalho" },
                     { url: "#/page.html", helpId: "visual/page", title: "Página", menuLabel: "Página" }
@@ -792,7 +792,7 @@
                             plugins: "textcolor",
                             resize: false,
                             statusbar: false,
-                            toolbar: "fontselect | fontsizeselect | forecolor | bold italic | alignleft aligncenter alignright"
+                            toolbar: "fontselect | fontsizeselect | forecolor | bold italic"
                         }
                     }
                 };
