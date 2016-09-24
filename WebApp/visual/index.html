@@ -111,10 +111,10 @@
             }])
             .controller("MenuCrtl", function ($scope, $location, $timeout, $rootScope) {
                 $scope.pages = [
-                    { url: "#/logo.html", helpId: "visual/logo", title: "Nome", menuLabel: "Logo" }
+                    { url: "#/logo.html", helpId: "visual/logo", title: "Nome", menuLabel: "Logo" },
+                    { url: "#/background.html", helpId: "visual/bg", title: "Plano de fundo", menuLabel: "Fundo" }
                     
                     /*
-                    { url: "#/background.html", helpId: "visual/bg", title: "Plano de fundo", menuLabel: "Fundo" },
                     { url: "#/footer.html", helpId: "visual/footer", title: "Rodapé", menuLabel: "Rodapé" },
                     { url: "#/menu.html", helpId: "visual/menu", title: "Menu", menuLabel: "Menu" }
                     { url: "#/header.html", helpId: "visual/header", title: "Cabeçalho", menuLabel: "Cabeçalho" },
@@ -151,146 +151,26 @@
                     $scope.$emit("HelpDisplay", "visual/finish");
                 };
             })
-            .controller("BackgroundCrtl", function ($scope, $http, FileUploader, $timeout, ColorPickerConfig, HandleServerException) {
-                var GetBgInfo = function (emitEvent) {
-                    $http({ method: "GET", url: "../api/background/get" })
-                        .success(function (data, status, headers, config) {
-                            $scope.Data = data;
-                            switch (parseInt($scope.Data.BgType)) {
-                                case 1:
-                                    $scope.View = $scope.Views.EFFECT;  //Efeito selecionado
-                                    $scope.DisplayColor = "";
-                                    break;
-                                case 2:
-                                    $scope.View = $scope.Views.IMAGE;   //Imagem selecionada
-                                    $scope.DisplayColor = $scope.Data.Color;
-                                    break;
-                                default:
-                                    $scope.View = $scope.Views.NONE;
-                                    $scope.DisplayColor = $scope.Data.Color;
-                                    break;
-                            }
-                            if (emitEvent) {
-                                $scope.$emit("OnSiteChange", "OnBackgroundChange", data);
-                            }
-                        }).error(HandleServerException);
-                };
-                var OnColorChanged = function () {
-                    $scope.UpdatingColor = true;
-                    $http({ method: "POST", url: "../api/background/color", params: { color: $scope.DisplayColor } })
-                        .success(function (data) {
-                            $scope.Data = data;
-                            $scope.$emit("OnSiteChange", "OnBackgroundChange", data);
-                            $scope.UpdatingColor = false;
-                        })
-                        .error(HandleServerException);
-                };
-                $scope.UpdatingColor = false;
-                $scope.DisplayColor = "";
-                $scope.IsFileValid = true;
-                $scope.Uploading = false;
-                $scope.UploadProgress = 0;
-                $scope.Views = { NONE: "NONE", EFFECT: "EFFECT", IMAGE: "IMAGE" };
-                $scope.View = $scope.Views.NONE;
-                $scope.Data = null;
-                $scope.ColorPickerConfig = angular.extend({ change: OnColorChanged }, ColorPickerConfig);
-                $scope.Effects = [
-                    { ImageKeyNormal: "degrade_pink.jpg", ImageKeyPreview: "prev_efeito_degrade_pink.jpg", ImageName: "Degradê rosa", ColorNormal: "#ED008C", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
-                    { ImageKeyNormal: "icne.gif", ImageKeyPreview: "icne.gif", ImageName: "Retícula", ColorNormal: "#AAAFB5", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
-                    { ImageKeyNormal: "dvzb.gif", ImageKeyPreview: "dvzb.gif", ImageName: "Diagonal", ColorNormal: "#FFFFFF", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
-                    { ImageKeyNormal: "degrade_purple.jpg", ImageKeyPreview: "prev_efeito_degrade_purple.jpg", ImageName: "Degradê vinho", ColorNormal: "#91278F", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
-                    { ImageKeyNormal: "estudy.gif", ImageKeyPreview: "estudy.gif", ImageName: "Musgo", ColorNormal: "#414F52", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
-                    { ImageKeyNormal: "luni.jpg", ImageKeyPreview: "prev_efeito_luni.gif", ImageName: "Céu", ColorNormal: "#FFFFFF", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
-                    { ImageKeyNormal: "degrade_marine.jpg", ImageKeyPreview: "prev_efeito_degrade_marine.jpg", ImageName: "Degradê marinho", ColorNormal: "#0072BC", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
-                    { ImageKeyNormal: "lupa.jpg", ImageKeyPreview: "lupa.jpg", ImageName: "Vertical", ColorNormal: "#131313", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
-                    { ImageKeyNormal: "angel_red.jpg", ImageKeyPreview: "angel_red.jpg", ImageName: "Vermelho 45º", ColorNormal: "#6D0C0C", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
-                    { ImageKeyNormal: "degrade_blue.jpg", ImageKeyPreview: "prev_efeito_degrade_blue.jpg", ImageName: "Degradê azul", ColorNormal: "#00AEEF", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
-                    { ImageKeyNormal: "tgeffe.jpg", ImageKeyPreview: "prev_efeito_tgeffe.jpg", ImageName: "Ornamental", ColorNormal: "#F0F0F0", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
-                    { ImageKeyNormal: "state.png", ImageKeyPreview: "prev_efeito_state.gif", ImageName: "Reflexo", ColorNormal: "#000000", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
-                    { ImageKeyNormal: "degrade_jade.jpg", ImageKeyPreview: "prev_efeito_degrade_jade.jpg", ImageName: "Degradê jade", ColorNormal: "#00A99E", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
-                    { ImageKeyNormal: "luxtron.gif", ImageKeyPreview: "luxtron.gif", ImageName: "Diagonal amarelo", ColorNormal: "#FFD800", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
-                    { ImageKeyNormal: "sewg.gif", ImageKeyPreview: "prev_efeito_sewg.gif", ImageName: "Geométrico", ColorNormal: "#050817", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
-                    { ImageKeyNormal: "degrade_green.jpg", ImageKeyPreview: "prev_efeito_degrade_green.jpg", ImageName: "Degradê verde", ColorNormal: "#37B44A", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
-                    { ImageKeyNormal: "dvz.gif", ImageKeyPreview: "dvz.gif", ImageName: "Diagonal beje", ColorNormal: "#E6E7E1", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
-                    { ImageKeyNormal: "bierib.gif", ImageKeyPreview: "prev_efeito_bierib.gif", ImageName: "Noite", ColorNormal: "#030303", ColorPreview: "#000000", HRepeat: true, VRepeat: false },
-                    { ImageKeyNormal: "degrade_greeny.jpg", ImageKeyPreview: "prev_efeito_degrade_greeny.jpg", ImageName: "Degradê oliva", ColorNormal: "#8FC63D", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
-                    { ImageKeyNormal: "seck.gif", ImageKeyPreview: "seck.gif", ImageName: "Malha", ColorNormal: "#F1F1F1", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
-                    { ImageKeyNormal: "default.gif", ImageKeyPreview: "prev_efeito_default.jpg", ImageName: "Flores", ColorNormal: "#1A1A1A", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
-                    { ImageKeyNormal: "degrade_yelow.jpg", ImageKeyPreview: "prev_efeito_degrade_yelow.jpg", ImageName: "Degradê amarelo", ColorNormal: "#FFF100", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
-                    { ImageKeyNormal: "sof.gif", ImageKeyPreview: "prev_efeito_sof.gif", ImageName: "Moderno", ColorNormal: "#1B1B1B", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
-                    { ImageKeyNormal: "angel_blue.jpg", ImageKeyPreview: "angel_blue.jpg", ImageName: "Azul 45º", ColorNormal: "#004066", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
-                    { ImageKeyNormal: "degrade_orange.jpg", ImageKeyPreview: "prev_efeito_degrade_orange.jpg", ImageName: "Degradê laranja", ColorNormal: "#F7941D", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
-                    { ImageKeyNormal: "annias.jpg", ImageKeyPreview: "prev_efeito_annias.jpg", ImageName: "Carvão", ColorNormal: "#030303", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
-                    { ImageKeyNormal: "body.jpg", ImageKeyPreview: "prev_efeito_body.jpg", ImageName: "Neutro", ColorNormal: "#EEEEEE", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
-                    { ImageKeyNormal: "degrade_red.jpg", ImageKeyPreview: "prev_efeito_degrade_red.jpg", ImageName: "Degradê vermelho", ColorNormal: "#EE1D24", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
-                    { ImageKeyNormal: "bg1.gif", ImageKeyPreview: "bg1.gif", ImageName: "Pastilha", ColorNormal: "#EEEEEE", ColorPreview: "#EEEEEE", HRepeat: true, VRepeat: true },
-                    { ImageKeyNormal: "bg2.gif", ImageKeyPreview: "bg2.gif", ImageName: "Pontos", ColorNormal: "#FFFFFF", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
-                    { ImageKeyNormal: "degrade_black.jpg", ImageKeyPreview: "prev_efeito_degrade_black.jpg", ImageName: "Degradê preto", ColorNormal: "#444444", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
-                    { ImageKeyNormal: "bieri.gif", ImageKeyPreview: "prev_efeito_bieri.gif", ImageName: "Gradiente", ColorNormal: "#FAFAFA", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
-                    { ImageKeyNormal: "angel_green.jpg", ImageKeyPreview: "angel_green.jpg", ImageName: "Verde 45º", ColorNormal: "#03594C", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
-                    { ImageKeyNormal: "degrade_grey.jpg", ImageKeyPreview: "prev_efeito_degrade_grey.jpg", ImageName: "Degradê cinza", ColorNormal: "#90ABBD", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: false },
-                    { ImageKeyNormal: "grsg.gif", ImageKeyPreview: "grsg.gif", ImageName: "Listras", ColorNormal: "#FFFFFF", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true },
-                    { ImageKeyNormal: "icneb.gif", ImageKeyPreview: "icneb.gif", ImageName: "Pixelado", ColorNormal: "#AAAFB5", ColorPreview: "#FFFFFF", HRepeat: true, VRepeat: true }
-                ];
-                $scope.OnEffectSelected = function (effect) {
-                    var params = {
-                        imageKey: effect.ImageKeyNormal,
-                        imageName: effect.ImageName,
-                        color: effect.ColorNormal,
-                        isFixed: false,
-                        halign: "1",
-                        valign: "1",
-                        hrepeat: effect.HRepeat,
-                        vrepeat: effect.VRepeat
-                    };
-                    effect.Loading = true;
-                    $http({ method: "POST", url: "../api/background/effect", params: params })
-                        .success(function (data) {
-                            $scope.Data = data;
-                            $scope.DisplayColor = "";
-                            $scope.$emit("OnSiteChange", "OnBackgroundChange", data);
-                            effect.Loading = false;
-                        })
-                        .error(HandleServerException);
-                };
-                $scope.OnPropertyChanged = function () {
-                    $http({ method: "POST", url: "../api/background/update", params: { color: $scope.Data.Color, isFixed: ($scope.Data.IsFixed == 1), hRepeat: $scope.Data.HRepeat, vRepeat: $scope.Data.VRepeat, align: $scope.Data.HAlign, valign: $scope.Data.VAlign } })
-                        .success(function (data) {
-                            $scope.Data = data;
-                            $scope.$emit("OnSiteChange", "OnBackgroundChange", data);
-                        })
-                        .error(HandleServerException);
-                };
-                $scope.DeleteImage = function () {
-                    $http({ method: "POST", url: "../api/background/deleteimage" })
-                        .success(function (data) {
-                            $scope.Data = data;
-                            $scope.$emit("OnSiteChange", "OnBackgroundChange", data);
-                        })
-                        .error(HandleServerException);
-                };
-                $scope.uploader = new FileUploader({ scope: $scope, url: "../api/background/postimage", formData: [{ key: "value" }] });
-                $scope.uploader.onAfterAddingFile = function (item) {
-                    var type = "|" + item.file.type.slice(item.file.type.lastIndexOf("/") + 1) + "|";
-                    $scope.IsFileValid = ("|jpg|png|jpeg|gif|".indexOf(type) !== -1);
-                    if (!$scope.IsFileValid) {
-                        item.remove();
-                        $timeout(function () { $scope.IsFileValid = true; }, 5000);
+            .controller("BackgroundCrtl", function ($scope, $http, HandleServerException) {
+                $scope.OnColorChanged = function (color, isWhite) {
+                    if ($scope.Data.Color == color) {
+                        return;
                     }
-                    else {
-                        $scope.Uploading = true;
-                        item.upload();
-                    }
+                    $scope.UpdatingWhite = isWhite;
+                    $scope.UpdatingBlack = !isWhite;
+                    $http({ method: "POST", url: "../api/background/color", params: { color: color } })
+                        .success(function (data) {
+                            $scope.Data = data;
+                            $scope.$emit("OnSiteChange", "OnBackgroundChange", data);
+                            $scope.UpdatingWhite = false;
+                            $scope.UpdatingBlack = false;
+                        })
+                        .error(HandleServerException);
                 };
-                $scope.uploader.onProgressItem = function (item, progress) {
-                    $scope.UploadProgress = progress;
-                };
-                $scope.uploader.onSuccessItem = function (item, response) {
-                    $scope.Uploading = false;
-                    item.remove();
-                    GetBgInfo(true);
-                };
-                GetBgInfo(false);
+                $http({ method: "GET", url: "../api/background/get" })
+                    .success(function (data, status, headers, config) {
+                        $scope.Data = data;
+                    }).error(HandleServerException);
             })
             .controller("HeaderCrtl", function ($scope, $q, $http, FileUploader, $timeout, $location, ColorPickerConfig, HandleServerException) {
                 var GetHeaderInfo = function (emitEvent) {
