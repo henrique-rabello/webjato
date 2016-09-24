@@ -123,6 +123,20 @@ angular.module("ContentEditApp", dependencies)
             _.each(ContentTypeList, function (contentType) {
                 $scope.PageContents.ByType[contentType.Crtl] = _.where($scope.PageContents.Raw, { Type: contentType.Enum });
             });
+            //CALCULA A ALTURA DA PÁGINA SELECIONADA AUTOMATICAMENTE
+            //$timeout(function () {
+            //    var content =   _.chain($scope.SiteContents)
+            //                        .where({ PageId: $scope.SelectedPage.Id })
+            //                            .map(function (content) {
+            //                                    content.MaxY = content.Position.Y + ContentUtils.GetSizeForHighlightedContent(content).Height;
+            //                                    return content;
+            //                            })
+            //                                .max(function (content) {
+            //                                    return content.MaxY;
+            //                                })
+            //                                    .value();
+            //    $scope.SelectedPage.Height = content === Infinity ? 600 : content.MaxY - $scope.SiteStyle.Header.Height;
+            //});
         };
         $scope.ClearEditPanel = function () {
             $scope.CurrentPanel = "ADD-UNIT";

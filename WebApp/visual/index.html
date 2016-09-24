@@ -68,16 +68,16 @@
     <script type="text/javascript" src="../scripts/tinymce/tinymce.min.js"></script>
     <script type="text/javascript" src="../scripts/wj.js"></script>
     <script type='text/javascript'>
-  $(function() {
-    $('.north').tipsy({gravity: 'n'});
-    $('.south').tipsy({gravity: 's'});
-    $('.east').tipsy({gravity: 'e'});
-    $('.west').tipsy({gravity: 'w'});
-    $('.north-west').tipsy({gravity: 'nw'});
-    $('.north-east').tipsy({gravity: 'ne'});
-    $('.south-west').tipsy({gravity: 'sw'});
-    $('.south-east').tipsy({gravity: 'se'});
-  });
+        $(function () {
+            $('.north').tipsy({ gravity: 'n' });
+            $('.south').tipsy({ gravity: 's' });
+            $('.east').tipsy({ gravity: 'e' });
+            $('.west').tipsy({ gravity: 'w' });
+            $('.north-west').tipsy({ gravity: 'nw' });
+            $('.north-east').tipsy({ gravity: 'ne' });
+            $('.south-west').tipsy({ gravity: 'sw' });
+            $('.south-east').tipsy({ gravity: 'se' });
+        });
     </script>
     <script type="text/javascript">
         var Sair = null;
@@ -110,42 +110,43 @@
                     })
             }])
             .controller("MenuCrtl", function ($scope, $location, $timeout, $rootScope) {
-                var pages = [{ first: true, last: false, index: 0, url: "#/background.html", helpId: "visual/bg" },
-                                { first: false, last: false, index: 1, url: "#/header.html", helpId: "visual/header" },
-                                { first: false, last: false, index: 2, url: "#/footer.html", helpId: "visual/footer" },
-                                { first: false, last: false, index: 3, url: "#/logo.html", helpId: "visual/logo" },
-                                { first: false, last: false, index: 4, url: "#/menu.html", helpId: "visual/menu" },
-                                { first: false, last: true, index: 5, url: "#/page.html", helpId: "visual/page" }];
-                $scope.CurrentPage = null;
-                $scope.PrevPageUrl = "";
-                $scope.NextPageUrl = "";
-                $scope.Url = "";
-                $scope.GoTo = function (url, viaBtnNext) {
-                    if (url == "") return;
-                    if (url == "#/footer.html") {
+                $scope.pages = [
+                    { url: "#/background.html", helpId: "visual/bg", title: "Plano de fundo", menuLabel: "Fundo" },
+                    { url: "#/header.html", helpId: "visual/header", title: "Cabeçalho", menuLabel: "Cabeçalho" },
+                    { url: "#/footer.html", helpId: "visual/footer", title: "Rodapé", menuLabel: "Rodapé" },
+                    { url: "#/logo.html", helpId: "visual/logo", title: "Nome", menuLabel: "Logo" },
+                    { url: "#/menu.html", helpId: "visual/menu", title: "Menu", menuLabel: "Menu" }/*,
+                    { url: "#/page.html", helpId: "visual/page", title: "Página", menuLabel: "Página" }*/
+                ];
+                _.forEach($scope.pages, function (item, i, list) {
+                    item.active = (i == 0);
+                    item.first = (i == 0);
+                    item.last = (i == (list.length - 1));
+                    item.next = (i < (list.length - 1)) ? list[i + 1] : null;
+                    item.prev = (i > 0) ? list[i - 1] : null;
+                });
+                $scope.selectedPage = $scope.pages[0];
+                $scope.select = function (page) {
+                    if (!page) return;
+                    _.forEach($scope.pages, function (item) { item.active = false; });
+                    page.active = true;
+                    if (page.url == "#/footer.html") {
                         $(".ui-layout-center").animate({ scrollTop: $(".ui-layout-center").height() }, 500);
                     }
                     else {
                         $(".ui-layout-center").animate({ scrollTop: 0 }, 500);
                     }
-                    if ($scope.CurrentPage && $scope.CurrentPage.last && viaBtnNext) {
-                        $scope.$emit("HelpDisplay", "visual/finish");
-                    }
-                    $timeout(
-                        function () {
-                            $scope.CurrentPage = _.find(pages, function (key) { return key.url == url; });
-                            $scope.PrevPageUrl = $scope.CurrentPage.first ? "" : pages[$scope.CurrentPage.index - 1].url;
-                            $scope.NextPageUrl = $scope.CurrentPage.last ? $scope.CurrentPage.url : pages[$scope.CurrentPage.index + 1].url;
-                            $scope.Url = url;
-                            $scope.$emit("HelpAutoDisplay", $scope.CurrentPage.helpId);
-                            $scope.$emit("OnSiteChange", "OnSectionChange");
-                        }, 100
-                    );
+                    $scope.$emit("HelpAutoDisplay", page.helpId);
+                    $scope.$emit("OnSiteChange", "OnSectionChange");
+                    $scope.selectedPage = page;
                 };
-                $scope.ShowHelp = function (id) {
+                $scope.showHelp = function (id) {
                     $scope.$emit("HelpDisplay", id);
                 };
-                $scope.GoTo("#" + $location.url());
+                $scope.displayFinish = function (isLastPage) {
+                    if (!isLastPage) return;
+                    $scope.$emit("HelpDisplay", "visual/finish");
+                };
             })
             .controller("BackgroundCrtl", function ($scope, $http, FileUploader, $timeout, ColorPickerConfig, HandleServerException) {
                 var GetBgInfo = function (emitEvent) {
@@ -1152,7 +1153,7 @@
                     </a>
                 </div>
                 <div class="bot-side ajudyz">
-                    <a href ng-click="ShowHelp(CurrentPage.helpId);" class="north mouse-seta" title="{{'Ajuda'|translate}}">
+                    <a ng-click="showHelp(selectedPage.helpId);" class="north mouse-seta" title="{{'Ajuda'|translate}}">
                         <img src="../images/bot_ajuda.png" alt="" />
                     </a>
                 </div>
@@ -1171,59 +1172,30 @@
                 </div>
             </div>
             <ul id="padrao">
-                <li>
-                    <a href="#/background.html" ng-click="GoTo('#/background.html');" ng-class="{'linkAtivo': (Url == '#/background.html'), 'linkNormal': (Url != '#/background.html')}" title="{{'Plano de fundo'|translate}}">
-                        <span ng-class="{'especialAtivo': (Url == '#/background.html'), 'especial': (Url != '#/background.html')}"><p>1</p></span>
-                        <span translate>Fundo</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#/header.html" ng-click="GoTo('#/header.html');" ng-class="{'linkAtivo': (Url == '#/header.html'), 'linkNormal': (Url != '#/header.html')}" title="{{'Cabeçalho'|translate}}">
-                        <span ng-class="{'especialAtivo': (Url == '#/header.html'), 'especial': (Url != '#/header.html')}"><p>2</p></span>
-                        <span translate>Cabeçalho</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#/footer.html" ng-click="GoTo('#/footer.html');" ng-class="{'linkAtivo': (Url == '#/footer.html'), 'linkNormal': (Url != '#/footer.html')}" title="{{'Rodapé'|translate}}">
-                        <span ng-class="{'especialAtivo': (Url == '#/footer.html'), 'especial': (Url != '#/footer.html')}"><p>3</p></span>
-                        <span translate>Rodapé</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#/logo.html" ng-click="GoTo('#/logo.html');" ng-class="{'linkAtivo': (Url == '#/logo.html'), 'linkNormal': (Url != '#/logo.html')}" title="{{'Nome'|translate}}">
-                        <span ng-class="{'especialAtivo': (Url == '#/logo.html'), 'especial': (Url != '#/Logo.html')}"><p style="margin-right:1px;">4</p></span>
-                        <span translate>Logo</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#/menu.html" ng-click="GoTo('#/menu.html');" ng-class="{'linkAtivo': (Url == '#/menu.html'), 'linkNormal': (Url != '#/menu.html')}" title="{{'Menu'|translate}}">
-                        <span ng-class="{'especialAtivo': (Url == '#/menu.html'), 'especial': (Url != '#/menu.html')}"><p>5</p></span>
-                        <span translate>Menu</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#/page.html" ng-click="GoTo('#/page.html');" ng-class="{'linkAtivo': (Url == '#/page.html'), 'linkNormal': (Url != '#/page.html')}" title="{{'Página'|translate}}">
-                        <span ng-class="{'especialAtivo': (Url == '#/page.html'), 'especial': (Url != '#/page.html')}"><p style="margin-right:1px;">6</p></span>
-                        <span translate>Página</span>
+                <li ng-repeat="page in pages">
+                    <a ng-href="{{page.url}}" ng-click="select(page)" ng-class="{'linkAtivo': page.active, 'linkNormal': !page.active}" title="{{page.title}}">
+                        <span ng-class="{'especialAtivo': page.active, 'especial': !page.active}">
+                            <p>{{$index + 1}}</p>
+                        </span>
+                        <span>{{page.menuLabel}}</span>
                     </a>
                 </li>
             </ul>
             <div id="container-header-seta">
                 <ul id="bot-seta">
                     <li>
-                        <a ng-href="{{PrevPageUrl}}" ng-click="GoTo(PrevPageUrl);" title="{{'Voltar'|translate}}" ng-class="{'inactive': CurrentPage.first}">
+                        <a ng-href="{{selectedPage.prev.url}}" ng-click="select(selectedPage.prev)" title="{{'Voltar'|translate}}" ng-class="{'inactive': selectedPage.first}">
                             <img src="../images/seta_left.png" alt="" title="{{'Voltar'|translate}}" />
                         </a>
                     </li>
                     <li>
-                        <a ng-href="{{NextPageUrl}}" ng-click="GoTo(NextPageUrl, true);" title="{{'Avançar'|translate}}" ng-class="{'inactive': CurrentPage.last}">
+                        <a ng-href="{{selectedPage.next.url}}" ng-click="displayFinish(selectedPage.last);select(selectedPage.next);" title="{{'Avançar'|translate}}" ng-class="{'inactive': selectedPage.last}">
                             <img src="../images/seta_right.png" alt="" title="{{'Avançar'|translate}}" />
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
-
     </div>
     <div class="ui-layout-west">
         <div ng-view></div>
