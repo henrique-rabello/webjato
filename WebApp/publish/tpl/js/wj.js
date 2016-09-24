@@ -179,24 +179,6 @@ angular.module("WebjatoConfig").factory("WebjatoConfig", function ($http, $locat
         });
     return Config;
 });
-angular.module("WebjatoConstants").constant("ServerSyncCommands", {
-    ALL: "ALL",
-    DELETE: "DELETE",
-    DUPLICATE: "DUPLICATE",
-    POSITION: "POSITION",
-    ZINDEX: "Z-INDEX"
-});
-angular.module("WebjatoConstants").constant("SocialIconSize", {
-    SMALL: 16,
-    REGULAR: 24,
-    LARGE: 32
-});
-angular.module("WebjatoConstants").constant("zIndexChange", {
-    ONE_UP: 1,
-    ONE_DOWN: 2,
-    BRING_TO_FRONT: 3,
-    SEND_TO_BACK: 4
-});
 var Sair = null;
 var dependencies = [
     "angularFileUpload",
@@ -323,19 +305,19 @@ angular.module("ContentEditApp", dependencies)
                 $scope.PageContents.ByType[contentType.Crtl] = _.where($scope.PageContents.Raw, { Type: contentType.Enum });
             });
             //CALCULA A ALTURA DA PÁGINA SELECIONADA AUTOMATICAMENTE
-            $timeout(function () {
-                var content =   _.chain($scope.SiteContents)
-                                    .where({ PageId: $scope.SelectedPage.Id })
-                                        .map(function (content) {
-                                                content.MaxY = content.Position.Y + ContentUtils.GetSizeForHighlightedContent(content).Height;
-                                                return content;
-                                        })
-                                            .max(function (content) {
-                                                return content.MaxY;
-                                            })
-                                                .value();
-                $scope.SelectedPage.Height = content === Infinity ? 600 : content.MaxY - $scope.SiteStyle.Header.Height;
-            });
+            //$timeout(function () {
+            //    var content =   _.chain($scope.SiteContents)
+            //                        .where({ PageId: $scope.SelectedPage.Id })
+            //                            .map(function (content) {
+            //                                    content.MaxY = content.Position.Y + ContentUtils.GetSizeForHighlightedContent(content).Height;
+            //                                    return content;
+            //                            })
+            //                                .max(function (content) {
+            //                                    return content.MaxY;
+            //                                })
+            //                                    .value();
+            //    $scope.SelectedPage.Height = content === Infinity ? 600 : content.MaxY - $scope.SiteStyle.Header.Height;
+            //});
         };
         $scope.ClearEditPanel = function () {
             $scope.CurrentPanel = "ADD-UNIT";
@@ -2174,6 +2156,24 @@ var Page = (function () {
     return Page;
 }());
 
+angular.module("WebjatoConstants").constant("ServerSyncCommands", {
+    ALL: "ALL",
+    DELETE: "DELETE",
+    DUPLICATE: "DUPLICATE",
+    POSITION: "POSITION",
+    ZINDEX: "Z-INDEX"
+});
+angular.module("WebjatoConstants").constant("SocialIconSize", {
+    SMALL: 16,
+    REGULAR: 24,
+    LARGE: 32
+});
+angular.module("WebjatoConstants").constant("zIndexChange", {
+    ONE_UP: 1,
+    ONE_DOWN: 2,
+    BRING_TO_FRONT: 3,
+    SEND_TO_BACK: 4
+});
 angular.module("WebjatoFactories")
 .factory("WebjatoCssHandler",
     function () {
@@ -2865,6 +2865,12 @@ angular.module("WebjatoFactories")
         };
     }
 );
+angular.module("WebjatoModels").factory("UnitContentModel", function () {
+	return {
+		ContentTypeToPreview: null,
+		ShowUnity: true
+    };
+});
 var Help = (function () {
     function Help() {
         this.items = [];
@@ -2973,12 +2979,6 @@ var HelpItem = (function () {
     return HelpItem;
 }());
 
-angular.module("WebjatoModels").factory("UnitContentModel", function () {
-	return {
-		ContentTypeToPreview: null,
-		ShowUnity: true
-    };
-});
 angular.module("WebjatoServices").service("ContentTypeList", function () {
     return [{ Crtl: "Box", Enum: 1 },
             { Crtl: "ContactForm", Enum: 2 },
