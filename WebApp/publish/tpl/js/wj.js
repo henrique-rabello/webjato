@@ -130,6 +130,73 @@ var ScalableImage = (function (_super) {
     return ScalableImage;
 }(SimpleImage));
 
+angular.module("WebjatoConfig").config(function ($provide) {
+    $provide.factory("ColorPickerConfig",
+        function () {
+            var config = {
+                allowEmpty: true,
+                showPaletteOnly: true,
+                showSelectionPalette: false,
+                preferredFormat: "hex",
+                palette: [
+                    ["#FFFFFF", "#C00000", "#FF0000", "#490000", "#790000", "#C00000", "#EE1D24", "#F16C4D", "#F7977A", "#FBD0C3", "#FDE8E1"],
+                    ["#000000", "#CC5200", "#FF6600", "#461C00", "#7B3000", "#A1410D", "#F16522", "#F68E54", "#FBAD82", "#FDDAC7", "#FEEDE3"],
+                    ["#333333", "#FFD800", "#FFFF00", "#4F2F00", "#7C4900", "#A36209", "#F7941D", "#FFBF05", "#FFD45C", "#FFECB5", "#FFF6DA"],
+                    ["#666666", "#92D14F", "#99FF33", "#5B5600", "#827A00", "#ABA000", "#FFF100", "#FFF467", "#FFF799", "#FFFBD1", "#FFFDE8"],
+                    ["#999999", "#00AF50", "#00FF00", "#253D0E", "#3E6617", "#588528", "#8FC63D", "#93D14F", "#ADDC7A", "#DAEFC3", "#EDF7E1"],
+                    ["#CCCCCC", "#03B1F0", "#00FFFF", "#033813", "#045F20", "#197B30", "#35b449", "#7DC473", "#A4D49D", "#D6ECD3", "#EBF6E9"],
+                    ["#DDDDDD", "#0071C1", "#0000FF", "#003E19", "#005824", "#007236", "#00A650", "#39B778", "#81CA9D", "#C6E7D3", "#E3F3E9"],
+                    ["#EEEEEE", "#7030A0", "#FF00FF", "#003531", "#005951", "#00736A", "#00A99E", "#16BCB4", "#7BCDC9", "#C3E8E7", "#E1F4F3"],
+                    ["#41484D", "#42260D", "#362F2C", "#00364B", "#005B7E", "#0076A4", "#00AEEF", "#00BFF3", "#6CCFF7", "#BDE9FB", "#DEF4FD"],
+                    ["#5C676E", "#613813", "#423A34", "#002D53", "#003562", "#004A80", "#0072BC", "#438CCB", "#7CA6D8", "#C7D9EE", "#E3ECF7"],
+                    ["#5F6D84", "#744B24", "#534841", "#001A45", "#002056", "#003370", "#0054A5", "#5573B7", "#8293CA", "#CAD0E8", "#E5E8F4"],
+                    ["#758792", "#8C623A", "#726357", "#0C004B", "#1D1363", "#2A2C70", "#393B97", "#5E5CA7", "#8881BE", "#CCC9E3", "#E6E4F1"],
+                    ["#90ABBD", "#A77C50", "#9A8575", "#30004A", "#450E61", "#5A2680", "#7030A0", "#855FA8", "#A286BD", "#D5C8E1", "#EAE4F0"],
+                    ["#A6BCCA", "#C69C6D", "#C7B198", "#390037", "#4B0048", "#62055F", "#91278F", "#A763A9", "#BC8CBF", "#E1CBE2", "#F0E5F1"],
+                    ["#C4D2DC", "#E2CDB6", "#D9CAB9", "#490029", "#7A0045", "#9D005C", "#ED008C", "#EF6EA8", "#f39bc1", "#FAD8E7", "#FDECF3"],
+                    ["#E2E9EE", "#F1E6DB", "#ECE5DC", "#58001B", "#7A0026", "#9D0039", "#EE105A", "#F16D7E", "#F5999D", "#FAD1D3", "#FDE8E9"]]
+            };
+            return config;
+        }
+    );
+});
+angular.module("WebjatoConfig").factory("WebjatoConfig", function ($http, $location) {
+    var qs = "";
+    if ($location.search().siteId) {
+        qs = "?siteId=" + $location.search().siteId;
+    }
+    var Config = {
+        AssetsPath: "",
+        AssetsLocalPath: "/tmp/"
+    };
+    $http({
+        method: "GET",
+        url: "../api/site/config" + qs
+    })
+    .success(
+        function (data) {
+            Config.AssetsPath = data.AssetsPath;
+        });
+    return Config;
+});
+angular.module("WebjatoConstants").constant("ServerSyncCommands", {
+    ALL: "ALL",
+    DELETE: "DELETE",
+    DUPLICATE: "DUPLICATE",
+    POSITION: "POSITION",
+    ZINDEX: "Z-INDEX"
+});
+angular.module("WebjatoConstants").constant("SocialIconSize", {
+    SMALL: 16,
+    REGULAR: 24,
+    LARGE: 32
+});
+angular.module("WebjatoConstants").constant("zIndexChange", {
+    ONE_UP: 1,
+    ONE_DOWN: 2,
+    BRING_TO_FRONT: 3,
+    SEND_TO_BACK: 4
+});
 var Sair = null;
 var dependencies = [
     "angularFileUpload",
@@ -701,12 +768,6 @@ var CropImageCrtl = function ($scope, $http, $cookies, gettextCatalog, WebjatoCo
     });
     gettextCatalog.currentLanguage = $cookies.language;
 };
-var Page = (function () {
-    function Page() {
-    }
-    return Page;
-}());
-
 angular.module("WebjatoFactories")
 .factory("WebjatoCssHandler",
     function () {
@@ -1398,6 +1459,18 @@ angular.module("WebjatoFactories")
         };
     }
 );
+var Page = (function () {
+    function Page() {
+    }
+    return Page;
+}());
+
+angular.module("WebjatoModels").factory("UnitContentModel", function () {
+	return {
+		ContentTypeToPreview: null,
+		ShowUnity: true
+    };
+});
 var Help = (function () {
     function Help() {
         this.items = [];
@@ -1506,24 +1579,512 @@ var HelpItem = (function () {
     return HelpItem;
 }());
 
-angular.module("WebjatoConstants").constant("ServerSyncCommands", {
-    ALL: "ALL",
-    DELETE: "DELETE",
-    DUPLICATE: "DUPLICATE",
-    POSITION: "POSITION",
-    ZINDEX: "Z-INDEX"
+angular.module("WebjatoServices").service("ContentTypeList", function () {
+    return [{ Crtl: "Box", Enum: 1 },
+            { Crtl: "ContactForm", Enum: 2 },
+            { Crtl: "Maps", Enum: 3 },
+            { Crtl: "RegularImage", Enum: 4 },
+            { Crtl: "LinkedImage", Enum: 5 },
+            { Crtl: "Line", Enum: 6 },
+            { Crtl: "Social", Enum: 7 },
+            { Crtl: "Text", Enum: 8 },
+            { Crtl: "Video", Enum: 9 },
+            { Crtl: "ExpandableImage", Enum: 10 }];
 });
-angular.module("WebjatoConstants").constant("SocialIconSize", {
-    SMALL: 16,
-    REGULAR: 24,
-    LARGE: 32
+angular.module("WebjatoServices").service("ContentType", function () {
+    return ContentType;
 });
-angular.module("WebjatoConstants").constant("zIndexChange", {
-    ONE_UP: 1,
-    ONE_DOWN: 2,
-    BRING_TO_FRONT: 3,
-    SEND_TO_BACK: 4
+angular.module("WebjatoServices").service("ContentUtils", function (ContentType, SocialIconSize, SocialUtil) {
+    var GetResizeOptionsForNewLine = function (data, newContentDelta) {
+        if (data.IsHorizontal) {
+            return {
+                handles: "w, e",
+                minHeight: newContentDelta,
+                maxHeight: newContentDelta
+            };
+        }
+        else {
+            return {
+                handles: "n, s",
+                minWidth: newContentDelta,
+                maxWidth: newContentDelta
+            };
+        }
+    };
+    var GetResizeOptionsForHighlightedLine = function (data) {
+        if (data.IsHorizontal) {
+            return {
+                handles: "w, e",
+                maxHeight: 1
+            };
+        }
+        else {
+            return {
+                handles: "n, s",
+                maxWidth: 1
+            };
+        }
+    };
+    var defaultImages = [];
+        defaultImages[ContentType.IMAGE] = "/images/place-holder-img-normal.png";
+        defaultImages[ContentType.LINKED_IMAGE] = "/images/place-holder-img-link.png";
+        defaultImages[ContentType.EXPANDABLE_IMAGE] = "/images/place-holder-img-expandable.png";
+    return {
+        GetSizeForHighlightedContent: function (data) {
+            var defaultPlaceHolderSize = new ContentSize(300, 200);
+            switch (data.Type) {
+                case ContentType.BOX:
+                    var delta = data.Border.Exists ? data.Border.Width * 2 : 0;
+                    return new ContentSize(data.Size.Width + delta, data.Size.Height + delta);
+                case ContentType.LINE:
+                    if (data.IsHorizontal) {
+                        return new ContentSize(data.Size, 6);
+                    }
+                    else {
+                        return new ContentSize(6, data.Size);
+                    }
+                case ContentType.TEXT:
+                    return data.Size;
+                case ContentType.IMAGE:
+                case ContentType.LINKED_IMAGE:
+                case ContentType.EXPANDABLE_IMAGE:
+                    if (data.ImageExportedKey == null) {
+                        return defaultPlaceHolderSize;
+                    }
+                    else {
+                        return data.ImageExportedSize;
+                    }
+                case ContentType.VIDEO:
+                    return data.Size;
+                case ContentType.MAPS:
+                    return data.Size;
+                case ContentType.CONTACT_FORM:
+                    var elem = angular.element("#" + data.Id);
+                    return new ContentSize(elem.width() + 2, elem.height());
+                case ContentType.SOCIAL:
+                    var elem = angular.element("#" + data.Id);
+                    if (SocialUtil.AnyPluginEnabled(data)) {
+                        var height = (parseInt(data.Size) == 0) ?
+                                        SocialIconSize.SMALL :
+                                        (parseInt(data.Size) == 1) ?
+                                            SocialIconSize.REGULAR :
+                                            SocialIconSize.LARGE;
+
+                        return new ContentSize(elem.width() - 12, height);
+                    }
+                    else {
+                        return new ContentSize(elem.width(), elem.height());
+                    }
+            }
+        },
+        GetSizeForNewContent: function (data) {
+            var defaultPlaceHolderSize = new ContentSize(300, 200);
+            switch (data.Type) {
+                case ContentType.BOX:
+                    return data.Size;
+                case ContentType.LINE:
+                    if (data.IsHorizontal) {
+                        return new ContentSize(data.Size, -data.Width);
+                    }
+                    else {
+                        return new ContentSize(-data.Width, data.Size);
+                    }
+                case ContentType.TEXT:
+                    return data.Size;
+                case ContentType.IMAGE:
+                case ContentType.LINKED_IMAGE:
+                case ContentType.EXPANDABLE_IMAGE:
+                    if (data.ImageExportedKey == null) {
+                        return defaultPlaceHolderSize;
+                    }
+                    else {
+                        return data.ImageExportedSize;
+                    }
+                case ContentType.VIDEO:
+                    return data.Size;
+                case ContentType.MAPS:
+                    return data.Size;
+                case ContentType.CONTACT_FORM:
+                    var elem = angular.element("#" + data.Id);
+                    return new ContentSize(elem.width() + 2, elem.height());
+                case ContentType.SOCIAL:
+                    var elem = angular.element("#" + data.Id);
+                    if (SocialUtil.AnyPluginEnabled(data)) {
+                        var height = (parseInt(data.Size) == 0) ?
+                                        SocialIconSize.SMALL :
+                                        (parseInt(data.Size) == 1) ?
+                                            SocialIconSize.REGULAR :
+                                            SocialIconSize.LARGE;
+
+                        return new ContentSize(elem.width() - 12, height);
+                    }
+                    else {
+                        return new ContentSize(elem.width(), elem.height());
+                    }
+            }
+        },
+        SetContentSize: function (data, w, h) {
+            switch (data.Type) {
+                case ContentType.BOX:
+                    if (data.Border.Exists) {
+                        w -= (data.Border.Width * 2)
+                        h -= (data.Border.Width * 2)
+                    }
+                    break;
+            }
+            switch (data.Type) {
+                case ContentType.LINE:
+                    data.Size = data.IsHorizontal ? parseInt(w, 10) : parseInt(h, 10);
+                    break;
+                case ContentType.IMAGE:
+                case ContentType.LINKED_IMAGE:
+                case ContentType.EXPANDABLE_IMAGE:
+                    var scale = Math.floor((w / data.ImageSize.Width) * 100);
+                    data.ImageScale = scale;
+                    data.ImageExportedSize.Width = w;
+                    data.ImageExportedSize.Height = h;
+                    break;
+                default:
+                    data.Size.Width = w;
+                    data.Size.Height = h;
+                    break;
+            }
+        },
+        GetImageURL: function(data, folder) {
+            if (data.ImageKey == null) {
+                return defaultImages[data.Type];
+            }
+            else {
+                return folder + (data.Editing ? data.ImageKey : data.ImageExportedKey);
+            }
+        },
+        GetExpandedImageUrl: function(data, folder) {
+            if (data.ImageKey == null) {
+                return defaultImages[data.Type];
+            }
+            else {
+                return folder + data.ExpandedImage.ImageKey;
+            }
+        },
+        GetResizeOptions: function (data, newContentDelta) {
+            switch (data.Type) {
+                case ContentType.BOX:
+                    return {
+                        id: data.Id,
+                        isNew: data.IsNewContent,
+                        handles: "all",
+                        minWidth: 50,
+                        minHeight: 50
+                    };
+                case ContentType.TEXT:
+                    return {
+                        handles: "all",
+                        minWidth: 100,
+                        minHeight: 100
+                    };
+                case ContentType.LINE:
+                    return data.IsNewContent ?
+                                GetResizeOptionsForNewLine(data, newContentDelta) :
+                                GetResizeOptionsForHighlightedLine(data);
+                case ContentType.IMAGE:
+                case ContentType.LINKED_IMAGE:
+                case ContentType.EXPANDABLE_IMAGE:
+                    return {
+                        aspectRatio: true,
+                        handles: "all",
+                        minWidth: data.IsNewContent? newContentDelta + 20 : 20,
+                        minHeight: data.IsNewContent? newContentDelta + 20: 20,
+                        maxHeight: (data.ImageKey != null) ? data.ImageSize.Height + (data.IsNewContent? newContentDelta : 0) : undefined,
+                        maxWidth: (data.ImageKey != null) ? data.ImageSize.Width + (data.IsNewContent ? newContentDelta : 0) : undefined
+                    }
+                default:
+                    return {};
+            }
+        },
+        IsContentResizable: function (data) {
+            return ((data.Type == ContentType.BOX) ||
+                    (data.Type == ContentType.EXPANDABLE_IMAGE && data.ImageKey != null) ||
+                    (data.Type == ContentType.IMAGE && data.ImageKey != null) ||
+                    (data.Type == ContentType.LINKED_IMAGE && data.ImageKey != null) ||
+                    (data.Type == ContentType.LINE) ||
+                    (data.Type == ContentType.TEXT));
+        },
+        IsContentResizableFromHighlightBox: function (data) {
+            return ((data.Type == ContentType.BOX) ||
+                    (data.Type == ContentType.EXPANDABLE_IMAGE && data.ImageKey != null) ||
+                    (data.Type == ContentType.IMAGE && data.ImageKey != null) ||
+                    (data.Type == ContentType.LINKED_IMAGE && data.ImageKey != null) ||
+                    (data.Type == ContentType.LINE));
+        }
+    };
 });
+var CssService = (function () {
+    function CssService($document) {
+        this.rulesCount = 0;
+        var style = document.createElement('style');
+        style.appendChild(document.createTextNode(''));
+        document.head.appendChild(style);
+        this.sheet = style.sheet;
+    }
+    CssService.prototype.ApplyCSS = function (rules) {
+        var _this = this;
+        _.each(rules, function (rule) {
+            if (_this.sheet.insertRule) {
+                _this.sheet.insertRule(rule.selector + ' { ' + rule.selectorText + ' }', _this.rulesCount);
+            }
+            else if (_this.sheet.addRule) {
+                _this.sheet.addRule(rule.selector, rule.selectorText, _this.rulesCount);
+            }
+            _this.rulesCount++;
+        });
+    };
+    CssService.$inject = ['$document'];
+    return CssService;
+}());
+angular.module("WebjatoServices").service("CssService", CssService);
+
+angular.module("WebjatoServices").service("HandleServerException", function () {
+    return function (data, status, headers, config) {
+        switch (status) {
+            case 401:
+                top.location.href = "../session.html";
+                break;
+            default:
+                alert("Status '" + status + "' não tratado.");
+                break;
+        }
+    };
+});
+angular.module("WebjatoServices").service("HelpIndexer", function (ContentType) {
+    var folder = "/help/";
+    var items = [
+        new HelpBit("main", "main.html", false),
+        new HelpBit("config/size", "config-size.html", false),
+        new HelpBit("config/align", "config-align.html", false),
+        new HelpBit("config/title", "config-title.html", false),
+        new HelpBit("config/pages", "config-pages.html", false),
+        new HelpBit("config/position", "config-position.html", false),
+        new HelpBit("config/finish", "config-finish.html", false),
+        new HelpBit("visual/bg", "visual-bg.html", false),
+        new HelpBit("visual/header", "visual-header.html", false),
+        new HelpBit("visual/footer", "visual-footer.html", false),
+        new HelpBit("visual/logo", "visual-logo.html", false),
+        new HelpBit("visual/menu", "visual-menu.html", false),
+        new HelpBit("visual/page", "visual-page.html", false),
+        new HelpBit("visual/finish", "visual-finish.html", false),
+        new HelpBit("content/start", "content-start.html", false),
+        new HelpBit("content/text", "content-text.html", false),
+        new HelpBit("content/box", "content-box.html", false),
+        new HelpBit("content/line", "content-line.html", false),
+        new HelpBit("content/image-simple", "content-image-simple.html", false),
+        new HelpBit("content/image-expandable", "content-image-expandable.html", false),
+        new HelpBit("content/image-linked", "content-image-linked.html", false),
+        new HelpBit("content/video", "content-video.html", false),
+        new HelpBit("content/map", "content-map.html", false),
+        new HelpBit("content/social", "content-social.html", false),
+        new HelpBit("content/contact-form", "content-contact-form.html", false),
+        new HelpBit("content/move", "content-move.html", false),
+        new HelpBit("content/duplicate", "content-duplicate.html", false),
+        new HelpBit("publish/address", "publish-address.html", false),
+        new HelpBit("publish/display", "publish-display.html", false),
+        new HelpBit("publish/share", "publish-share.html", false),
+        new HelpBit("publish/hide", "publish-hide.html", false)
+    ];
+    return {
+        GetUrl: function (id) {
+            return folder + _.find(items, function (item) { return item.Id === id; }).Url;
+        },
+        GetIdByContentType: function (type) {
+            switch (type) {
+                case ContentType.BOX: return "content/box";
+                case ContentType.CONTACT_FORM: return "content/contact-form";
+                case ContentType.MAPS: return "content/map";
+                case ContentType.IMAGE: return "content/image-simple";
+                case ContentType.LINKED_IMAGE: return "content/image-linked";
+                case ContentType.LINE: return "content/line";
+                case ContentType.SOCIAL: return "content/social";
+                case ContentType.TEXT: return "content/text";
+                case ContentType.VIDEO: return "content/video";
+                case ContentType.EXPANDABLE_IMAGE: return "content/image-expandable";
+            }
+        }
+    };
+});
+
+var ModalService = (function () {
+    function ModalService($rootScope, $q, $compile) {
+        this.$inject = ["$rootScope", "$q", "$compile"];
+        this.$rootScope = $rootScope;
+        this.$q = $q;
+        this.$compile = $compile;
+    }
+    ModalService.prototype.Show = function (message) {
+        var _this = this;
+        this.defer = this.$q.defer();
+        this.$modalScope = this.$rootScope.$new(true);
+        this.$modalScope.onClickOk = function () { _this.OnClickOk(); };
+        this.$modalScope.message = message;
+        this.modalId = "modal" + new Date().getTime().toString();
+        $("body").append("<div id='" + this.modalId + "'><modal on-click-ok='onClickOk();' message='{{message}}'></modal></div>");
+        this.$compile($("#" + this.modalId))(this.$modalScope);
+        $("#" + this.modalId).lightbox_me({
+            destroyOnClose: true,
+            centered: true,
+            closeEsc: false,
+            closeClick: false
+        });
+        return this.defer.promise;
+    };
+    ModalService.prototype.OnClickOk = function () {
+        this.defer.resolve();
+        this.$Destroy();
+    };
+    ModalService.prototype.$Destroy = function () {
+        this.$modalScope.$destroy();
+        $("#" + this.modalId).trigger("close");
+    };
+    return ModalService;
+}());
+angular.module("WebjatoServices")
+    .service("ModalService", ModalService)
+    .directive("modal", function () {
+    return {
+        replace: true,
+        restrict: "E",
+        templateUrl: "/modal-alert.html",
+        scope: {
+            message: "@",
+            onClickOk: "&"
+        },
+        controller: function ($scope, $sce) {
+            $scope.GetTrustedMessage = function () {
+                return $sce.trustAsHtml($scope.message);
+            };
+        }
+    };
+});
+
+angular.module("WebjatoServices").service("MultiSelectionMode", function () {
+    return MultiSelectionModeList;
+});
+
+angular.module("WebjatoServices").service("ServerSync", function ($rootScope, $http, $q, ContentTypeList, ServerSyncCommands) {
+    return {
+        isBusy: false,
+        itemsToSync: [],
+        deletedItems: [],
+        Sync: function () {
+            var _this = this;
+            this.itemsToSync = _.reject(this.itemsToSync, function (item) {
+                return _.contains(_this.deletedItems, item.data.Id);
+            });
+            if ((this.itemsToSync.length == 0) || this.isBusy) return;
+            this.isBusy = true;
+            var currentItem = this.itemsToSync.shift();
+            var promisse_OnComplete = function (success, data, error) {
+                if (success) {
+                    currentItem.deferred.resolve(data);
+                }
+                else {
+                    currentItem.deferred.reject(error);
+                }
+                if (currentItem.cmd == "DELETE") {
+                    _this.deletedItems.push(currentItem.data.Id);
+                }
+                _this.isBusy = false;
+                _this.Sync();
+            };
+            var promise = null;
+            switch (currentItem.cmd) {
+                case ServerSyncCommands.ALL:
+                    promise = $http({ method: "POST", url: "../api/" + _.findWhere(ContentTypeList, { Enum: currentItem.data.Type }).Crtl + "/update", data: currentItem.data });
+                    break;
+                case ServerSyncCommands.POSITION:
+                    promise = $http({ method: "POST", url: "../api/content/position", data: currentItem.data });
+                    break;
+                case ServerSyncCommands.DELETE:
+                    promise = $http({ method: "POST", url: "../api/content/delete", data: currentItem.data });
+                    break;
+                case ServerSyncCommands.ZINDEX:
+                    promise = $http({ method: "POST", url: "../api/content/UpdateZIndex", data: currentItem.data });
+                    break;
+                case ServerSyncCommands.DUPLICATE:
+                    promise = $http({
+                        method: "POST",
+                        url: "../api/" + _.findWhere(ContentTypeList, { Enum: currentItem.data.Type }).Crtl + "/duplicate",
+                        params: {
+                            zindex: currentItem.args.zIndex,
+                            targetPageId: currentItem.args.targetPageId
+                        },
+                        data: currentItem.data
+                    });
+                    break;
+            }
+            promise.success(function (data) {
+                promisse_OnComplete(true, data, null);
+            });
+            promise.error(function (error) {
+                promisse_OnComplete(false, null, error);
+            });
+        },
+        SyncItem: function (item, operation, args) {
+            var deferred = $q.defer();
+            this.itemsToSync.push({
+                data: item,
+                cmd: operation,
+                deferred: deferred,
+                args: args
+            });
+            this.Sync();
+            return deferred.promise;
+        }
+    }
+});
+angular.module("WebjatoServices").service("SiteStyle", function ($http, $location, WebjatoConfig, WebjatoFormatter, HandleServerException) {
+    var qs = "";
+    if ($location.search().siteId) {
+        qs = "?siteId=" + $location.search().siteId;
+    }
+    $http({ method: "GET", url: "../api/site/get" + qs })
+        .success(function (siteData) {
+            WebjatoFormatter.Site.Refresh(siteData);
+            $http({ method: "GET", url: "../api/frame/get" + qs })
+                .success(function (frameData) {
+                    WebjatoFormatter.Frame.Refresh(frameData, siteData);
+                    $http({ method: "GET", url: "../api/background/get" + qs })
+                        .success(function (data) {
+                            WebjatoFormatter.Background.Refresh(data, siteData, WebjatoConfig.AssetsPath);
+                        }).error(HandleServerException);
+                    $http({ method: "GET", url: "../api/header/get" + qs })
+                        .success(function (data) {
+                            WebjatoFormatter.Header.Refresh(data, WebjatoConfig.AssetsPath);
+                        }).error(HandleServerException);
+                    $http({ method: "GET", url: "../api/footer/get" + qs })
+                        .success(function (data) {
+                            WebjatoFormatter.Footer.Refresh(data, siteData, frameData);
+                        }).error(HandleServerException);
+                    $http({ method: "GET", url: "../api/logo/get" + qs })
+                        .success(function (data) {
+                            WebjatoFormatter.Logo.Refresh(data, WebjatoConfig.AssetsPath);
+                        }).error(HandleServerException);
+                }).error(HandleServerException);
+        }).error(HandleServerException);
+    return WebjatoFormatter;
+});
+angular.module("WebjatoServices").service("SocialUtil", function () {
+    return {
+        AnyPluginEnabled: function (data) {
+            return data.Facebook.Enabled || data.Twitter.Enabled || data.LinkedIn.Enabled || data.YouTube.Enabled || data.GooglePlus.Enabled || data.Pinterest.Enabled || data.Instagram.Enabled;
+        }
+    };
+});
+angular.module("WebjatoServices").service("URLParser", function () {
+    return function (url) {
+        return new URI(url);
+    };
+});
+
+
 angular.module("WebjatoDirectives").directive("wjAnimate", function ($timeout, $parse, ServerSync, ServerSyncCommands) {
     return {
         restrict: "A",
@@ -2965,567 +3526,6 @@ angular.module("WebjatoDirectives").directive("wjZindex", function (zIndexChange
         }
     };
 });
-angular.module("WebjatoModels").factory("UnitContentModel", function () {
-	return {
-		ContentTypeToPreview: null,
-		ShowUnity: true
-    };
-});
-angular.module("WebjatoServices").service("ContentTypeList", function () {
-    return [{ Crtl: "Box", Enum: 1 },
-            { Crtl: "ContactForm", Enum: 2 },
-            { Crtl: "Maps", Enum: 3 },
-            { Crtl: "RegularImage", Enum: 4 },
-            { Crtl: "LinkedImage", Enum: 5 },
-            { Crtl: "Line", Enum: 6 },
-            { Crtl: "Social", Enum: 7 },
-            { Crtl: "Text", Enum: 8 },
-            { Crtl: "Video", Enum: 9 },
-            { Crtl: "ExpandableImage", Enum: 10 }];
-});
-angular.module("WebjatoServices").service("ContentType", function () {
-    return ContentType;
-});
-angular.module("WebjatoServices").service("ContentUtils", function (ContentType, SocialIconSize, SocialUtil) {
-    var GetResizeOptionsForNewLine = function (data, newContentDelta) {
-        if (data.IsHorizontal) {
-            return {
-                handles: "w, e",
-                minHeight: newContentDelta,
-                maxHeight: newContentDelta
-            };
-        }
-        else {
-            return {
-                handles: "n, s",
-                minWidth: newContentDelta,
-                maxWidth: newContentDelta
-            };
-        }
-    };
-    var GetResizeOptionsForHighlightedLine = function (data) {
-        if (data.IsHorizontal) {
-            return {
-                handles: "w, e",
-                maxHeight: 1
-            };
-        }
-        else {
-            return {
-                handles: "n, s",
-                maxWidth: 1
-            };
-        }
-    };
-    var defaultImages = [];
-        defaultImages[ContentType.IMAGE] = "/images/place-holder-img-normal.png";
-        defaultImages[ContentType.LINKED_IMAGE] = "/images/place-holder-img-link.png";
-        defaultImages[ContentType.EXPANDABLE_IMAGE] = "/images/place-holder-img-expandable.png";
-    return {
-        GetSizeForHighlightedContent: function (data) {
-            var defaultPlaceHolderSize = new ContentSize(300, 200);
-            switch (data.Type) {
-                case ContentType.BOX:
-                    var delta = data.Border.Exists ? data.Border.Width * 2 : 0;
-                    return new ContentSize(data.Size.Width + delta, data.Size.Height + delta);
-                case ContentType.LINE:
-                    if (data.IsHorizontal) {
-                        return new ContentSize(data.Size, 6);
-                    }
-                    else {
-                        return new ContentSize(6, data.Size);
-                    }
-                case ContentType.TEXT:
-                    return data.Size;
-                case ContentType.IMAGE:
-                case ContentType.LINKED_IMAGE:
-                case ContentType.EXPANDABLE_IMAGE:
-                    if (data.ImageExportedKey == null) {
-                        return defaultPlaceHolderSize;
-                    }
-                    else {
-                        return data.ImageExportedSize;
-                    }
-                case ContentType.VIDEO:
-                    return data.Size;
-                case ContentType.MAPS:
-                    return data.Size;
-                case ContentType.CONTACT_FORM:
-                    var elem = angular.element("#" + data.Id);
-                    return new ContentSize(elem.width() + 2, elem.height());
-                case ContentType.SOCIAL:
-                    var elem = angular.element("#" + data.Id);
-                    if (SocialUtil.AnyPluginEnabled(data)) {
-                        var height = (parseInt(data.Size) == 0) ?
-                                        SocialIconSize.SMALL :
-                                        (parseInt(data.Size) == 1) ?
-                                            SocialIconSize.REGULAR :
-                                            SocialIconSize.LARGE;
-
-                        return new ContentSize(elem.width() - 12, height);
-                    }
-                    else {
-                        return new ContentSize(elem.width(), elem.height());
-                    }
-            }
-        },
-        GetSizeForNewContent: function (data) {
-            var defaultPlaceHolderSize = new ContentSize(300, 200);
-            switch (data.Type) {
-                case ContentType.BOX:
-                    return data.Size;
-                case ContentType.LINE:
-                    if (data.IsHorizontal) {
-                        return new ContentSize(data.Size, -data.Width);
-                    }
-                    else {
-                        return new ContentSize(-data.Width, data.Size);
-                    }
-                case ContentType.TEXT:
-                    return data.Size;
-                case ContentType.IMAGE:
-                case ContentType.LINKED_IMAGE:
-                case ContentType.EXPANDABLE_IMAGE:
-                    if (data.ImageExportedKey == null) {
-                        return defaultPlaceHolderSize;
-                    }
-                    else {
-                        return data.ImageExportedSize;
-                    }
-                case ContentType.VIDEO:
-                    return data.Size;
-                case ContentType.MAPS:
-                    return data.Size;
-                case ContentType.CONTACT_FORM:
-                    var elem = angular.element("#" + data.Id);
-                    return new ContentSize(elem.width() + 2, elem.height());
-                case ContentType.SOCIAL:
-                    var elem = angular.element("#" + data.Id);
-                    if (SocialUtil.AnyPluginEnabled(data)) {
-                        var height = (parseInt(data.Size) == 0) ?
-                                        SocialIconSize.SMALL :
-                                        (parseInt(data.Size) == 1) ?
-                                            SocialIconSize.REGULAR :
-                                            SocialIconSize.LARGE;
-
-                        return new ContentSize(elem.width() - 12, height);
-                    }
-                    else {
-                        return new ContentSize(elem.width(), elem.height());
-                    }
-            }
-        },
-        SetContentSize: function (data, w, h) {
-            switch (data.Type) {
-                case ContentType.BOX:
-                    if (data.Border.Exists) {
-                        w -= (data.Border.Width * 2)
-                        h -= (data.Border.Width * 2)
-                    }
-                    break;
-            }
-            switch (data.Type) {
-                case ContentType.LINE:
-                    data.Size = data.IsHorizontal ? parseInt(w, 10) : parseInt(h, 10);
-                    break;
-                case ContentType.IMAGE:
-                case ContentType.LINKED_IMAGE:
-                case ContentType.EXPANDABLE_IMAGE:
-                    var scale = Math.floor((w / data.ImageSize.Width) * 100);
-                    data.ImageScale = scale;
-                    data.ImageExportedSize.Width = w;
-                    data.ImageExportedSize.Height = h;
-                    break;
-                default:
-                    data.Size.Width = w;
-                    data.Size.Height = h;
-                    break;
-            }
-        },
-        GetImageURL: function(data, folder) {
-            if (data.ImageKey == null) {
-                return defaultImages[data.Type];
-            }
-            else {
-                return folder + (data.Editing ? data.ImageKey : data.ImageExportedKey);
-            }
-        },
-        GetExpandedImageUrl: function(data, folder) {
-            if (data.ImageKey == null) {
-                return defaultImages[data.Type];
-            }
-            else {
-                return folder + data.ExpandedImage.ImageKey;
-            }
-        },
-        GetResizeOptions: function (data, newContentDelta) {
-            switch (data.Type) {
-                case ContentType.BOX:
-                    return {
-                        id: data.Id,
-                        isNew: data.IsNewContent,
-                        handles: "all",
-                        minWidth: 50,
-                        minHeight: 50
-                    };
-                case ContentType.TEXT:
-                    return {
-                        handles: "all",
-                        minWidth: 100,
-                        minHeight: 100
-                    };
-                case ContentType.LINE:
-                    return data.IsNewContent ?
-                                GetResizeOptionsForNewLine(data, newContentDelta) :
-                                GetResizeOptionsForHighlightedLine(data);
-                case ContentType.IMAGE:
-                case ContentType.LINKED_IMAGE:
-                case ContentType.EXPANDABLE_IMAGE:
-                    return {
-                        aspectRatio: true,
-                        handles: "all",
-                        minWidth: data.IsNewContent? newContentDelta + 20 : 20,
-                        minHeight: data.IsNewContent? newContentDelta + 20: 20,
-                        maxHeight: (data.ImageKey != null) ? data.ImageSize.Height + (data.IsNewContent? newContentDelta : 0) : undefined,
-                        maxWidth: (data.ImageKey != null) ? data.ImageSize.Width + (data.IsNewContent ? newContentDelta : 0) : undefined
-                    }
-                default:
-                    return {};
-            }
-        },
-        IsContentResizable: function (data) {
-            return ((data.Type == ContentType.BOX) ||
-                    (data.Type == ContentType.EXPANDABLE_IMAGE && data.ImageKey != null) ||
-                    (data.Type == ContentType.IMAGE && data.ImageKey != null) ||
-                    (data.Type == ContentType.LINKED_IMAGE && data.ImageKey != null) ||
-                    (data.Type == ContentType.LINE) ||
-                    (data.Type == ContentType.TEXT));
-        },
-        IsContentResizableFromHighlightBox: function (data) {
-            return ((data.Type == ContentType.BOX) ||
-                    (data.Type == ContentType.EXPANDABLE_IMAGE && data.ImageKey != null) ||
-                    (data.Type == ContentType.IMAGE && data.ImageKey != null) ||
-                    (data.Type == ContentType.LINKED_IMAGE && data.ImageKey != null) ||
-                    (data.Type == ContentType.LINE));
-        }
-    };
-});
-var CssService = (function () {
-    function CssService($document) {
-        this.rulesCount = 0;
-        var style = document.createElement('style');
-        style.appendChild(document.createTextNode(''));
-        document.head.appendChild(style);
-        this.sheet = style.sheet;
-    }
-    CssService.prototype.ApplyCSS = function (rules) {
-        var _this = this;
-        _.each(rules, function (rule) {
-            if (_this.sheet.insertRule) {
-                _this.sheet.insertRule(rule.selector + ' { ' + rule.selectorText + ' }', _this.rulesCount);
-            }
-            else if (_this.sheet.addRule) {
-                _this.sheet.addRule(rule.selector, rule.selectorText, _this.rulesCount);
-            }
-            _this.rulesCount++;
-        });
-    };
-    CssService.$inject = ['$document'];
-    return CssService;
-}());
-angular.module("WebjatoServices").service("CssService", CssService);
-
-angular.module("WebjatoServices").service("HandleServerException", function () {
-    return function (data, status, headers, config) {
-        switch (status) {
-            case 401:
-                top.location.href = "../session.html";
-                break;
-            default:
-                alert("Status '" + status + "' não tratado.");
-                break;
-        }
-    };
-});
-angular.module("WebjatoServices").service("HelpIndexer", function (ContentType) {
-    var folder = "/help/";
-    var items = [
-        new HelpBit("main", "main.html", false),
-        new HelpBit("config/size", "config-size.html", false),
-        new HelpBit("config/align", "config-align.html", false),
-        new HelpBit("config/title", "config-title.html", false),
-        new HelpBit("config/pages", "config-pages.html", false),
-        new HelpBit("config/position", "config-position.html", false),
-        new HelpBit("config/finish", "config-finish.html", false),
-        new HelpBit("visual/bg", "visual-bg.html", false),
-        new HelpBit("visual/header", "visual-header.html", false),
-        new HelpBit("visual/footer", "visual-footer.html", false),
-        new HelpBit("visual/logo", "visual-logo.html", false),
-        new HelpBit("visual/menu", "visual-menu.html", false),
-        new HelpBit("visual/page", "visual-page.html", false),
-        new HelpBit("visual/finish", "visual-finish.html", false),
-        new HelpBit("content/start", "content-start.html", false),
-        new HelpBit("content/text", "content-text.html", false),
-        new HelpBit("content/box", "content-box.html", false),
-        new HelpBit("content/line", "content-line.html", false),
-        new HelpBit("content/image-simple", "content-image-simple.html", false),
-        new HelpBit("content/image-expandable", "content-image-expandable.html", false),
-        new HelpBit("content/image-linked", "content-image-linked.html", false),
-        new HelpBit("content/video", "content-video.html", false),
-        new HelpBit("content/map", "content-map.html", false),
-        new HelpBit("content/social", "content-social.html", false),
-        new HelpBit("content/contact-form", "content-contact-form.html", false),
-        new HelpBit("content/move", "content-move.html", false),
-        new HelpBit("content/duplicate", "content-duplicate.html", false),
-        new HelpBit("publish/address", "publish-address.html", false),
-        new HelpBit("publish/display", "publish-display.html", false),
-        new HelpBit("publish/share", "publish-share.html", false),
-        new HelpBit("publish/hide", "publish-hide.html", false)
-    ];
-    return {
-        GetUrl: function (id) {
-            return folder + _.find(items, function (item) { return item.Id === id; }).Url;
-        },
-        GetIdByContentType: function (type) {
-            switch (type) {
-                case ContentType.BOX: return "content/box";
-                case ContentType.CONTACT_FORM: return "content/contact-form";
-                case ContentType.MAPS: return "content/map";
-                case ContentType.IMAGE: return "content/image-simple";
-                case ContentType.LINKED_IMAGE: return "content/image-linked";
-                case ContentType.LINE: return "content/line";
-                case ContentType.SOCIAL: return "content/social";
-                case ContentType.TEXT: return "content/text";
-                case ContentType.VIDEO: return "content/video";
-                case ContentType.EXPANDABLE_IMAGE: return "content/image-expandable";
-            }
-        }
-    };
-});
-
-var ModalService = (function () {
-    function ModalService($rootScope, $q, $compile) {
-        this.$inject = ["$rootScope", "$q", "$compile"];
-        this.$rootScope = $rootScope;
-        this.$q = $q;
-        this.$compile = $compile;
-    }
-    ModalService.prototype.Show = function (message) {
-        var _this = this;
-        this.defer = this.$q.defer();
-        this.$modalScope = this.$rootScope.$new(true);
-        this.$modalScope.onClickOk = function () { _this.OnClickOk(); };
-        this.$modalScope.message = message;
-        this.modalId = "modal" + new Date().getTime().toString();
-        $("body").append("<div id='" + this.modalId + "'><modal on-click-ok='onClickOk();' message='{{message}}'></modal></div>");
-        this.$compile($("#" + this.modalId))(this.$modalScope);
-        $("#" + this.modalId).lightbox_me({
-            destroyOnClose: true,
-            centered: true,
-            closeEsc: false,
-            closeClick: false
-        });
-        return this.defer.promise;
-    };
-    ModalService.prototype.OnClickOk = function () {
-        this.defer.resolve();
-        this.$Destroy();
-    };
-    ModalService.prototype.$Destroy = function () {
-        this.$modalScope.$destroy();
-        $("#" + this.modalId).trigger("close");
-    };
-    return ModalService;
-}());
-angular.module("WebjatoServices")
-    .service("ModalService", ModalService)
-    .directive("modal", function () {
-    return {
-        replace: true,
-        restrict: "E",
-        templateUrl: "/modal-alert.html",
-        scope: {
-            message: "@",
-            onClickOk: "&"
-        },
-        controller: function ($scope, $sce) {
-            $scope.GetTrustedMessage = function () {
-                return $sce.trustAsHtml($scope.message);
-            };
-        }
-    };
-});
-
-angular.module("WebjatoServices").service("MultiSelectionMode", function () {
-    return MultiSelectionModeList;
-});
-
-angular.module("WebjatoServices").service("ServerSync", function ($rootScope, $http, $q, ContentTypeList, ServerSyncCommands) {
-    return {
-        isBusy: false,
-        itemsToSync: [],
-        deletedItems: [],
-        Sync: function () {
-            var _this = this;
-            this.itemsToSync = _.reject(this.itemsToSync, function (item) {
-                return _.contains(_this.deletedItems, item.data.Id);
-            });
-            if ((this.itemsToSync.length == 0) || this.isBusy) return;
-            this.isBusy = true;
-            var currentItem = this.itemsToSync.shift();
-            var promisse_OnComplete = function (success, data, error) {
-                if (success) {
-                    currentItem.deferred.resolve(data);
-                }
-                else {
-                    currentItem.deferred.reject(error);
-                }
-                if (currentItem.cmd == "DELETE") {
-                    _this.deletedItems.push(currentItem.data.Id);
-                }
-                _this.isBusy = false;
-                _this.Sync();
-            };
-            var promise = null;
-            switch (currentItem.cmd) {
-                case ServerSyncCommands.ALL:
-                    promise = $http({ method: "POST", url: "../api/" + _.findWhere(ContentTypeList, { Enum: currentItem.data.Type }).Crtl + "/update", data: currentItem.data });
-                    break;
-                case ServerSyncCommands.POSITION:
-                    promise = $http({ method: "POST", url: "../api/content/position", data: currentItem.data });
-                    break;
-                case ServerSyncCommands.DELETE:
-                    promise = $http({ method: "POST", url: "../api/content/delete", data: currentItem.data });
-                    break;
-                case ServerSyncCommands.ZINDEX:
-                    promise = $http({ method: "POST", url: "../api/content/UpdateZIndex", data: currentItem.data });
-                    break;
-                case ServerSyncCommands.DUPLICATE:
-                    promise = $http({
-                        method: "POST",
-                        url: "../api/" + _.findWhere(ContentTypeList, { Enum: currentItem.data.Type }).Crtl + "/duplicate",
-                        params: {
-                            zindex: currentItem.args.zIndex,
-                            targetPageId: currentItem.args.targetPageId
-                        },
-                        data: currentItem.data
-                    });
-                    break;
-            }
-            promise.success(function (data) {
-                promisse_OnComplete(true, data, null);
-            });
-            promise.error(function (error) {
-                promisse_OnComplete(false, null, error);
-            });
-        },
-        SyncItem: function (item, operation, args) {
-            var deferred = $q.defer();
-            this.itemsToSync.push({
-                data: item,
-                cmd: operation,
-                deferred: deferred,
-                args: args
-            });
-            this.Sync();
-            return deferred.promise;
-        }
-    }
-});
-angular.module("WebjatoServices").service("SiteStyle", function ($http, $location, WebjatoConfig, WebjatoFormatter, HandleServerException) {
-    var qs = "";
-    if ($location.search().siteId) {
-        qs = "?siteId=" + $location.search().siteId;
-    }
-    $http({ method: "GET", url: "../api/site/get" + qs })
-        .success(function (siteData) {
-            WebjatoFormatter.Site.Refresh(siteData);
-            $http({ method: "GET", url: "../api/frame/get" + qs })
-                .success(function (frameData) {
-                    WebjatoFormatter.Frame.Refresh(frameData, siteData);
-                    $http({ method: "GET", url: "../api/background/get" + qs })
-                        .success(function (data) {
-                            WebjatoFormatter.Background.Refresh(data, siteData, WebjatoConfig.AssetsPath);
-                        }).error(HandleServerException);
-                    $http({ method: "GET", url: "../api/header/get" + qs })
-                        .success(function (data) {
-                            WebjatoFormatter.Header.Refresh(data, WebjatoConfig.AssetsPath);
-                        }).error(HandleServerException);
-                    $http({ method: "GET", url: "../api/footer/get" + qs })
-                        .success(function (data) {
-                            WebjatoFormatter.Footer.Refresh(data, siteData, frameData);
-                        }).error(HandleServerException);
-                    $http({ method: "GET", url: "../api/logo/get" + qs })
-                        .success(function (data) {
-                            WebjatoFormatter.Logo.Refresh(data, WebjatoConfig.AssetsPath);
-                        }).error(HandleServerException);
-                }).error(HandleServerException);
-        }).error(HandleServerException);
-    return WebjatoFormatter;
-});
-angular.module("WebjatoServices").service("SocialUtil", function () {
-    return {
-        AnyPluginEnabled: function (data) {
-            return data.Facebook.Enabled || data.Twitter.Enabled || data.LinkedIn.Enabled || data.YouTube.Enabled || data.GooglePlus.Enabled || data.Pinterest.Enabled || data.Instagram.Enabled;
-        }
-    };
-});
-angular.module("WebjatoServices").service("URLParser", function () {
-    return function (url) {
-        return new URI(url);
-    };
-});
-
-
-angular.module("WebjatoConfig").config(function ($provide) {
-    $provide.factory("ColorPickerConfig",
-        function () {
-            var config = {
-                allowEmpty: true,
-                showPaletteOnly: true,
-                showSelectionPalette: false,
-                preferredFormat: "hex",
-                palette: [
-                    ["#FFFFFF", "#C00000", "#FF0000", "#490000", "#790000", "#C00000", "#EE1D24", "#F16C4D", "#F7977A", "#FBD0C3", "#FDE8E1"],
-                    ["#000000", "#CC5200", "#FF6600", "#461C00", "#7B3000", "#A1410D", "#F16522", "#F68E54", "#FBAD82", "#FDDAC7", "#FEEDE3"],
-                    ["#333333", "#FFD800", "#FFFF00", "#4F2F00", "#7C4900", "#A36209", "#F7941D", "#FFBF05", "#FFD45C", "#FFECB5", "#FFF6DA"],
-                    ["#666666", "#92D14F", "#99FF33", "#5B5600", "#827A00", "#ABA000", "#FFF100", "#FFF467", "#FFF799", "#FFFBD1", "#FFFDE8"],
-                    ["#999999", "#00AF50", "#00FF00", "#253D0E", "#3E6617", "#588528", "#8FC63D", "#93D14F", "#ADDC7A", "#DAEFC3", "#EDF7E1"],
-                    ["#CCCCCC", "#03B1F0", "#00FFFF", "#033813", "#045F20", "#197B30", "#35b449", "#7DC473", "#A4D49D", "#D6ECD3", "#EBF6E9"],
-                    ["#DDDDDD", "#0071C1", "#0000FF", "#003E19", "#005824", "#007236", "#00A650", "#39B778", "#81CA9D", "#C6E7D3", "#E3F3E9"],
-                    ["#EEEEEE", "#7030A0", "#FF00FF", "#003531", "#005951", "#00736A", "#00A99E", "#16BCB4", "#7BCDC9", "#C3E8E7", "#E1F4F3"],
-                    ["#41484D", "#42260D", "#362F2C", "#00364B", "#005B7E", "#0076A4", "#00AEEF", "#00BFF3", "#6CCFF7", "#BDE9FB", "#DEF4FD"],
-                    ["#5C676E", "#613813", "#423A34", "#002D53", "#003562", "#004A80", "#0072BC", "#438CCB", "#7CA6D8", "#C7D9EE", "#E3ECF7"],
-                    ["#5F6D84", "#744B24", "#534841", "#001A45", "#002056", "#003370", "#0054A5", "#5573B7", "#8293CA", "#CAD0E8", "#E5E8F4"],
-                    ["#758792", "#8C623A", "#726357", "#0C004B", "#1D1363", "#2A2C70", "#393B97", "#5E5CA7", "#8881BE", "#CCC9E3", "#E6E4F1"],
-                    ["#90ABBD", "#A77C50", "#9A8575", "#30004A", "#450E61", "#5A2680", "#7030A0", "#855FA8", "#A286BD", "#D5C8E1", "#EAE4F0"],
-                    ["#A6BCCA", "#C69C6D", "#C7B198", "#390037", "#4B0048", "#62055F", "#91278F", "#A763A9", "#BC8CBF", "#E1CBE2", "#F0E5F1"],
-                    ["#C4D2DC", "#E2CDB6", "#D9CAB9", "#490029", "#7A0045", "#9D005C", "#ED008C", "#EF6EA8", "#f39bc1", "#FAD8E7", "#FDECF3"],
-                    ["#E2E9EE", "#F1E6DB", "#ECE5DC", "#58001B", "#7A0026", "#9D0039", "#EE105A", "#F16D7E", "#F5999D", "#FAD1D3", "#FDE8E9"]]
-            };
-            return config;
-        }
-    );
-});
-angular.module("WebjatoConfig").factory("WebjatoConfig", function ($http, $location) {
-    var qs = "";
-    if ($location.search().siteId) {
-        qs = "?siteId=" + $location.search().siteId;
-    }
-    var Config = {
-        AssetsPath: "",
-        AssetsLocalPath: "/tmp/"
-    };
-    $http({
-        method: "GET",
-        url: "../api/site/config" + qs
-    })
-    .success(
-        function (data) {
-            Config.AssetsPath = data.AssetsPath;
-        });
-    return Config;
-});
 var HelpBit = (function () {
     function HelpBit(Id, Url, Enabled) {
         this.Id = Id;
@@ -3534,132 +3534,6 @@ var HelpBit = (function () {
     }
     return HelpBit;
 }());
-
-angular.module("WebjatoDirectives").directive("wjHelp", function () {
-    return {
-        restrict: "E",
-        replace: true,
-        scope: true,
-        template: "<div class='wj-help' ng-include='Url' onload='OnLoad();'></div>",
-        controller: function ($rootScope, $scope, HelpIndexer) {
-            $scope.Url = null;
-            $scope.OnLoad = function () {
-                $(".wj-help").lightbox_me({
-                    destroyOnClose: true,
-                    onClose: function () {
-                        $scope.Url = null;
-                        $scope.$apply();
-                    }
-                });
-            };
-            $rootScope.$on("HelpDisplay", function (e, id) {
-                $scope.Url = HelpIndexer.GetUrl(id);
-            });
-            $rootScope.$on("HelpAutoDisplay", function (e, id) {
-                if (new Help().Show(id)) {
-                    $scope.Url = HelpIndexer.GetUrl(id);
-                }
-            });
-            $rootScope.$on("HelpSetState", function (e, newState, reset) {
-                new Help().SetEnabled(newState, reset);
-            });
-        }
-    };
-});
-
-var CropBoxCtrl = (function () {
-    function CropBoxCtrl($scope) {
-        this.$scope = $scope;
-        this.thumbBoxCSS = {
-            width: $scope.options.Width + "px",
-            height: $scope.options.Height + "px",
-            marginTop: (-$scope.options.Height / 2) + "px",
-            marginLeft: (-$scope.options.Width / 2) + "px"
-        };
-        var borderEffectWidth = $scope.options.Width - 4;
-        $("<style>.thumbBox:after, .thumbBox:before { width: " + borderEffectWidth + "px }</style>").appendTo("head");
-        var borderEffectHeight = $scope.options.Height - 4;
-        $("<style>.thumbBox .inner:after, .thumbBox .inner:before { height: " + borderEffectHeight + "px }</style>").appendTo("head");
-    }
-    CropBoxCtrl.prototype.Cancel = function () {
-        this.$scope.onCancel();
-    };
-    CropBoxCtrl.prototype.Confirm = function () {
-        this.$scope.onCrop({ data64: this.$scope.cropper.getDataURL() });
-    };
-    CropBoxCtrl.prototype.ZoomIn = function () {
-        this.$scope.cropper.zoomIn();
-    };
-    CropBoxCtrl.prototype.ZoomOut = function () {
-        this.$scope.cropper.zoomOut();
-    };
-    CropBoxCtrl.$inject = ["$scope"];
-    return CropBoxCtrl;
-}());
-function CropBoxLink($scope, $elem) {
-    $scope.cropper = ($elem.find(".imageBox")).cropbox({
-        imageBox: ".imageBox",
-        thumbBox: ".thumbBox",
-        spinner: ".spinner",
-        imgSrc: $scope.options.Url
-    });
-}
-var CropService = (function () {
-    function CropService($rootScope, $q, $compile) {
-        this.$inject = ["$rootScope", "$q", "$compile"];
-        this.$rootScope = $rootScope;
-        this.$q = $q;
-        this.$compile = $compile;
-    }
-    CropService.prototype.Crop = function (options) {
-        var _this = this;
-        this.defer = this.$q.defer();
-        this.$scopeCropBox = this.$rootScope.$new(true);
-        this.$scopeCropBox.options = options;
-        this.$scopeCropBox.onCrop = (function (data64) { _this.OnCropConfirm(data64); });
-        this.$scopeCropBox.onCancel = function () { _this.OnCropCancel(); };
-        this.modalId = "modal" + new Date().getTime().toString();
-        $("body").append("<div id='" + this.modalId + "'><cropbox options='options' on-crop='onCrop(data64);' on-cancel='onCancel();'></cropbox></div>");
-        this.$compile($("#" + this.modalId))(this.$scopeCropBox);
-        $("#" + this.modalId).lightbox_me({
-            destroyOnClose: true,
-            centered: true,
-            closeEsc: false,
-            closeClick: false
-        });
-        return this.defer.promise;
-    };
-    CropService.prototype.OnCropConfirm = function (data64) {
-        this.defer.resolve(data64);
-        this.$Destroy();
-    };
-    CropService.prototype.OnCropCancel = function () {
-        this.defer.reject();
-        this.$Destroy();
-    };
-    CropService.prototype.$Destroy = function () {
-        this.$scopeCropBox.$destroy();
-        $("#" + this.modalId).trigger("close");
-    };
-    return CropService;
-}());
-angular.module("WebjatoServices")
-    .service("CropSVC", CropService)
-    .directive("cropbox", function () {
-    return {
-        replace: true,
-        restrict: "E",
-        templateUrl: "/cropbox.html",
-        scope: {
-            options: "=",
-            onCrop: "&",
-            onCancel: "&"
-        },
-        controller: CropBoxCtrl,
-        controllerAs: 'cbCtrl',
-        link: CropBoxLink
-    };
-});
 
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -3790,6 +3664,132 @@ var Video = (function (_super) {
     }
     return Video;
 }(ContentBase));
+
+var CropBoxCtrl = (function () {
+    function CropBoxCtrl($scope) {
+        this.$scope = $scope;
+        this.thumbBoxCSS = {
+            width: $scope.options.Width + "px",
+            height: $scope.options.Height + "px",
+            marginTop: (-$scope.options.Height / 2) + "px",
+            marginLeft: (-$scope.options.Width / 2) + "px"
+        };
+        var borderEffectWidth = $scope.options.Width - 4;
+        $("<style>.thumbBox:after, .thumbBox:before { width: " + borderEffectWidth + "px }</style>").appendTo("head");
+        var borderEffectHeight = $scope.options.Height - 4;
+        $("<style>.thumbBox .inner:after, .thumbBox .inner:before { height: " + borderEffectHeight + "px }</style>").appendTo("head");
+    }
+    CropBoxCtrl.prototype.Cancel = function () {
+        this.$scope.onCancel();
+    };
+    CropBoxCtrl.prototype.Confirm = function () {
+        this.$scope.onCrop({ data64: this.$scope.cropper.getDataURL() });
+    };
+    CropBoxCtrl.prototype.ZoomIn = function () {
+        this.$scope.cropper.zoomIn();
+    };
+    CropBoxCtrl.prototype.ZoomOut = function () {
+        this.$scope.cropper.zoomOut();
+    };
+    CropBoxCtrl.$inject = ["$scope"];
+    return CropBoxCtrl;
+}());
+function CropBoxLink($scope, $elem) {
+    $scope.cropper = ($elem.find(".imageBox")).cropbox({
+        imageBox: ".imageBox",
+        thumbBox: ".thumbBox",
+        spinner: ".spinner",
+        imgSrc: $scope.options.Url
+    });
+}
+var CropService = (function () {
+    function CropService($rootScope, $q, $compile) {
+        this.$inject = ["$rootScope", "$q", "$compile"];
+        this.$rootScope = $rootScope;
+        this.$q = $q;
+        this.$compile = $compile;
+    }
+    CropService.prototype.Crop = function (options) {
+        var _this = this;
+        this.defer = this.$q.defer();
+        this.$scopeCropBox = this.$rootScope.$new(true);
+        this.$scopeCropBox.options = options;
+        this.$scopeCropBox.onCrop = (function (data64) { _this.OnCropConfirm(data64); });
+        this.$scopeCropBox.onCancel = function () { _this.OnCropCancel(); };
+        this.modalId = "modal" + new Date().getTime().toString();
+        $("body").append("<div id='" + this.modalId + "'><cropbox options='options' on-crop='onCrop(data64);' on-cancel='onCancel();'></cropbox></div>");
+        this.$compile($("#" + this.modalId))(this.$scopeCropBox);
+        $("#" + this.modalId).lightbox_me({
+            destroyOnClose: true,
+            centered: true,
+            closeEsc: false,
+            closeClick: false
+        });
+        return this.defer.promise;
+    };
+    CropService.prototype.OnCropConfirm = function (data64) {
+        this.defer.resolve(data64);
+        this.$Destroy();
+    };
+    CropService.prototype.OnCropCancel = function () {
+        this.defer.reject();
+        this.$Destroy();
+    };
+    CropService.prototype.$Destroy = function () {
+        this.$scopeCropBox.$destroy();
+        $("#" + this.modalId).trigger("close");
+    };
+    return CropService;
+}());
+angular.module("WebjatoServices")
+    .service("CropSVC", CropService)
+    .directive("cropbox", function () {
+    return {
+        replace: true,
+        restrict: "E",
+        templateUrl: "/cropbox.html",
+        scope: {
+            options: "=",
+            onCrop: "&",
+            onCancel: "&"
+        },
+        controller: CropBoxCtrl,
+        controllerAs: 'cbCtrl',
+        link: CropBoxLink
+    };
+});
+
+angular.module("WebjatoDirectives").directive("wjHelp", function () {
+    return {
+        restrict: "E",
+        replace: true,
+        scope: true,
+        template: "<div class='wj-help' ng-include='Url' onload='OnLoad();'></div>",
+        controller: function ($rootScope, $scope, HelpIndexer) {
+            $scope.Url = null;
+            $scope.OnLoad = function () {
+                $(".wj-help").lightbox_me({
+                    destroyOnClose: true,
+                    onClose: function () {
+                        $scope.Url = null;
+                        $scope.$apply();
+                    }
+                });
+            };
+            $rootScope.$on("HelpDisplay", function (e, id) {
+                $scope.Url = HelpIndexer.GetUrl(id);
+            });
+            $rootScope.$on("HelpAutoDisplay", function (e, id) {
+                if (new Help().Show(id)) {
+                    $scope.Url = HelpIndexer.GetUrl(id);
+                }
+            });
+            $rootScope.$on("HelpSetState", function (e, newState, reset) {
+                new Help().SetEnabled(newState, reset);
+            });
+        }
+    };
+});
 
 (function (i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {

@@ -130,6 +130,24 @@ var ScalableImage = (function (_super) {
     return ScalableImage;
 }(SimpleImage));
 
+angular.module("WebjatoConstants").constant("ServerSyncCommands", {
+    ALL: "ALL",
+    DELETE: "DELETE",
+    DUPLICATE: "DUPLICATE",
+    POSITION: "POSITION",
+    ZINDEX: "Z-INDEX"
+});
+angular.module("WebjatoConstants").constant("SocialIconSize", {
+    SMALL: 16,
+    REGULAR: 24,
+    LARGE: 32
+});
+angular.module("WebjatoConstants").constant("zIndexChange", {
+    ONE_UP: 1,
+    ONE_DOWN: 2,
+    BRING_TO_FRONT: 3,
+    SEND_TO_BACK: 4
+});
 angular.module("WebjatoConfig").config(function ($provide) {
     $provide.factory("ColorPickerConfig",
         function () {
@@ -178,24 +196,6 @@ angular.module("WebjatoConfig").factory("WebjatoConfig", function ($http, $locat
             Config.AssetsPath = data.AssetsPath;
         });
     return Config;
-});
-angular.module("WebjatoConstants").constant("ServerSyncCommands", {
-    ALL: "ALL",
-    DELETE: "DELETE",
-    DUPLICATE: "DUPLICATE",
-    POSITION: "POSITION",
-    ZINDEX: "Z-INDEX"
-});
-angular.module("WebjatoConstants").constant("SocialIconSize", {
-    SMALL: 16,
-    REGULAR: 24,
-    LARGE: 32
-});
-angular.module("WebjatoConstants").constant("zIndexChange", {
-    ONE_UP: 1,
-    ONE_DOWN: 2,
-    BRING_TO_FRONT: 3,
-    SEND_TO_BACK: 4
 });
 var Sair = null;
 var dependencies = [
@@ -768,6 +768,12 @@ var CropImageCrtl = function ($scope, $http, $cookies, gettextCatalog, WebjatoCo
     });
     gettextCatalog.currentLanguage = $cookies.language;
 };
+var Page = (function () {
+    function Page() {
+    }
+    return Page;
+}());
+
 angular.module("WebjatoFactories")
 .factory("WebjatoCssHandler",
     function () {
@@ -1459,18 +1465,6 @@ angular.module("WebjatoFactories")
         };
     }
 );
-var Page = (function () {
-    function Page() {
-    }
-    return Page;
-}());
-
-angular.module("WebjatoModels").factory("UnitContentModel", function () {
-	return {
-		ContentTypeToPreview: null,
-		ShowUnity: true
-    };
-});
 var Help = (function () {
     function Help() {
         this.items = [];
@@ -1578,6 +1572,14 @@ var HelpItem = (function () {
     }
     return HelpItem;
 }());
+
+angular.module("WebjatoModels").factory("UnitContentModel", function () {
+	return {
+		ContentTypeToPreview: null,
+		ShowUnity: true
+    };
+});
+
 
 angular.module("WebjatoServices").service("ContentTypeList", function () {
     return [{ Crtl: "Box", Enum: 1 },
@@ -2083,8 +2085,6 @@ angular.module("WebjatoServices").service("URLParser", function () {
         return new URI(url);
     };
 });
-
-
 angular.module("WebjatoDirectives").directive("wjAnimate", function ($timeout, $parse, ServerSync, ServerSyncCommands) {
     return {
         restrict: "A",
@@ -3526,15 +3526,6 @@ angular.module("WebjatoDirectives").directive("wjZindex", function (zIndexChange
         }
     };
 });
-var HelpBit = (function () {
-    function HelpBit(Id, Url, Enabled) {
-        this.Id = Id;
-        this.Url = Url;
-        this.Enabled = Enabled;
-    }
-    return HelpBit;
-}());
-
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -3664,6 +3655,15 @@ var Video = (function (_super) {
     }
     return Video;
 }(ContentBase));
+
+var HelpBit = (function () {
+    function HelpBit(Id, Url, Enabled) {
+        this.Id = Id;
+        this.Url = Url;
+        this.Enabled = Enabled;
+    }
+    return HelpBit;
+}());
 
 var CropBoxCtrl = (function () {
     function CropBoxCtrl($scope) {

@@ -440,7 +440,6 @@ msgstr ""
 #: obj\Release\AspnetCompileMerge\Source\visual\footer.html:61
 #: obj\Release\AspnetCompileMerge\TempBuildDir\visual\footer.html:61
 #: obj\Release\Package\PackageTmp\visual\footer.html:84
-#: visual\footer.html:84
 msgid "<b>Clique</b> no texto de rodapé e digite para alterá-lo."
 msgstr ""
 
@@ -645,7 +644,6 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\visual\background.html:154
 #: obj\Release\Package\PackageTmp\visual\header.html:175
 #: obj\Release\Package\PackageTmp\visual\logo.html:150
-#: visual\background.html:154
 #: visual\header.html:175
 #: visual\logo.html:137
 msgid "<p>&nbsp;Jpeg, Gif ou Png</p>"
@@ -1057,7 +1055,7 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\publish\index.html:214
 #: obj\Release\Package\PackageTmp\visual\index.html:1142
 #: publish\index.html:219
-#: visual\index.html:1159
+#: visual\index.html:1039
 msgid "Ajuda"
 msgstr ""
 
@@ -1185,7 +1183,7 @@ msgstr ""
 #: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:1061
 #: obj\Release\Package\PackageTmp\content\map-editor-tpl.html:9
 #: obj\Release\Package\PackageTmp\visual\index.html:1224
-#: visual\index.html:1212
+#: visual\index.html:1092
 msgid "Aplicar"
 msgstr ""
 
@@ -1224,7 +1222,6 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\visual\background.html:153
 #: obj\Release\Package\PackageTmp\visual\header.html:174
 #: obj\Release\Package\PackageTmp\visual\logo.html:149
-#: visual\background.html:153
 #: visual\header.html:174
 #: visual\logo.html:136
 msgid "Arquivo"
@@ -1255,7 +1252,6 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\visual\background.html:162
 #: obj\Release\Package\PackageTmp\visual\header.html:184
 #: obj\Release\Package\PackageTmp\visual\logo.html:156
-#: visual\background.html:162
 #: visual\header.html:184
 #: visual\logo.html:143
 msgid "Arquivo selecionado:"
@@ -1318,8 +1314,8 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\visual\index.html:1207
 #: publish\index.html:279
 #: publish\index.html:280
-#: visual\index.html:1195
-#: visual\index.html:1196
+#: visual\index.html:1075
+#: visual\index.html:1076
 msgid "Avançar"
 msgstr ""
 
@@ -1573,8 +1569,6 @@ msgstr ""
 #: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:177
 #: obj\Release\Package\PackageTmp\visual\background.html:191
 #: obj\Release\Package\PackageTmp\visual\background.html:207
-#: visual\background.html:191
-#: visual\background.html:207
 msgid "Centro"
 msgstr ""
 
@@ -1810,7 +1804,7 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\publish\index.html:219
 #: obj\Release\Package\PackageTmp\visual\index.html:1147
 #: publish\index.html:224
-#: visual\index.html:1164
+#: visual\index.html:1044
 msgid "Conta"
 msgstr ""
 
@@ -1945,8 +1939,6 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\visual\footer.html:73
 #: obj\Release\Package\PackageTmp\visual\header.html:128
 #: obj\Release\Package\PackageTmp\visual\page.html:117
-#: visual\background.html:124
-#: visual\footer.html:73
 #: visual\header.html:128
 #: visual\page.html:117
 msgid "Cor"
@@ -2256,7 +2248,6 @@ msgstr ""
 #: obj\Release\AspnetCompileMerge\Source\visual\background.html:182
 #: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:182
 #: obj\Release\Package\PackageTmp\visual\background.html:212
-#: visual\background.html:212
 msgid "Direita"
 msgstr ""
 
@@ -2361,7 +2352,6 @@ msgstr ""
 #: obj\Release\AspnetCompileMerge\TempBuildDir\visual\header.html:102
 #: obj\Release\Package\PackageTmp\visual\background.html:130
 #: obj\Release\Package\PackageTmp\visual\header.html:151
-#: visual\background.html:130
 #: visual\header.html:151
 msgid "Efeitos"
 msgstr ""
@@ -2625,7 +2615,6 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\visual\background.html:157
 #: obj\Release\Package\PackageTmp\visual\header.html:178
 #: obj\Release\Package\PackageTmp\visual\logo.html:153
-#: visual\background.html:157
 #: visual\header.html:178
 #: visual\logo.html:140
 msgid "Escolher imagem"
@@ -2760,7 +2749,6 @@ msgstr ""
 #: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:172
 #: obj\Release\Package\PackageTmp\config\align.html:103
 #: obj\Release\Package\PackageTmp\visual\background.html:202
-#: visual\background.html:202
 msgid "Esquerda"
 msgstr ""
 
@@ -2871,7 +2859,6 @@ msgstr ""
 #: obj\Release\AspnetCompileMerge\TempBuildDir\visual\header.html:137
 #: obj\Release\Package\PackageTmp\visual\background.html:167
 #: obj\Release\Package\PackageTmp\visual\header.html:189
-#: visual\background.html:167
 #: visual\header.html:189
 msgid "Excluir imagem de fundo"
 msgstr ""
@@ -3189,7 +3176,6 @@ msgstr ""
 #: obj\Release\AspnetCompileMerge\Source\visual\background.html:140
 #: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:140
 #: obj\Release\Package\PackageTmp\visual\background.html:170
-#: visual\background.html:170
 msgid "Fixa"
 msgstr ""
 
@@ -3426,8 +3412,6 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\visual\background.html:221
 #: obj\Release\Package\PackageTmp\visual\logo.html:137
 #: obj\Release\Package\PackageTmp\visual\logo.html:172
-#: visual\background.html:221
-#: visual\logo.html:159
 msgid "Horizontal"
 msgstr ""
 
@@ -3539,7 +3523,6 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\visual\background.html:133
 #: obj\Release\Package\PackageTmp\visual\header.html:154
 #: obj\Release\Package\PackageTmp\visual\logo.html:122
-#: visual\background.html:133
 #: visual\header.html:154
 #: visual\logo.html:122
 msgid "Importar"
@@ -3595,7 +3578,6 @@ msgstr ""
 #: obj\Release\AspnetCompileMerge\TempBuildDir\visual\page.html:117
 #: obj\Release\Package\PackageTmp\visual\background.html:196
 #: obj\Release\Package\PackageTmp\visual\page.html:151
-#: visual\background.html:196
 #: visual\page.html:151
 msgid "Inferior"
 msgstr ""
@@ -3661,7 +3643,7 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\publish\index.html:204
 #: obj\Release\Package\PackageTmp\visual\index.html:1131
 #: publish\index.html:209
-#: visual\index.html:1144
+#: visual\index.html:1024
 msgid "Início"
 msgstr ""
 
@@ -4188,7 +4170,6 @@ msgstr ""
 #: obj\Release\AspnetCompileMerge\Source\visual\background.html:148
 #: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:148
 #: obj\Release\Package\PackageTmp\visual\background.html:178
-#: visual\background.html:178
 msgid "Não"
 msgstr ""
 
@@ -4540,7 +4521,6 @@ msgstr ""
 #: obj\Release\AspnetCompileMerge\TempBuildDir\visual\menu.html:114
 #: obj\Release\Package\PackageTmp\visual\background.html:181
 #: obj\Release\Package\PackageTmp\visual\menu.html:123
-#: visual\background.html:181
 #: visual\menu.html:123
 msgid "Posição"
 msgstr ""
@@ -4706,7 +4686,6 @@ msgstr ""
 #: obj\Release\AspnetCompileMerge\Source\visual\background.html:187
 #: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:187
 #: obj\Release\Package\PackageTmp\visual\background.html:217
-#: visual\background.html:217
 msgid "Repetição"
 msgstr ""
 
@@ -4744,7 +4723,7 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\config\index.html:376
 #: obj\Release\Package\PackageTmp\publish\index.html:301
 #: publish\index.html:306
-#: visual\index.html:1170
+#: visual\index.html:1050
 msgid "Sair"
 msgstr ""
 
@@ -4855,7 +4834,6 @@ msgstr ""
 #: obj\Release\AspnetCompileMerge\Source\visual\background.html:144
 #: obj\Release\AspnetCompileMerge\TempBuildDir\visual\background.html:144
 #: obj\Release\Package\PackageTmp\visual\background.html:174
-#: visual\background.html:174
 msgid "Sim"
 msgstr ""
 
@@ -4926,7 +4904,6 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\visual\background.html:160
 #: obj\Release\Package\PackageTmp\visual\header.html:180
 #: obj\Release\Package\PackageTmp\visual\logo.html:155
-#: visual\background.html:160
 #: visual\header.html:180
 #: visual\logo.html:142
 msgid "Somente são aceitos arquivos de imagens nos formatos JPG, PNG e GIF."
@@ -5130,7 +5107,6 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\visual\background.html:186
 #: obj\Release\Package\PackageTmp\visual\menu.html:134
 #: obj\Release\Package\PackageTmp\visual\page.html:147
-#: visual\background.html:186
 #: visual\menu.html:134
 #: visual\page.html:147
 msgid "Topo"
@@ -5164,7 +5140,6 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\visual\footer.html:80
 #: obj\Release\Package\PackageTmp\visual\header.html:135
 #: obj\Release\Package\PackageTmp\visual\page.html:124
-#: visual\footer.html:80
 #: visual\header.html:135
 #: visual\page.html:124
 msgid "Transparente"
@@ -5253,7 +5228,7 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\publish\index.html:209
 #: obj\Release\Package\PackageTmp\visual\index.html:1137
 #: publish\index.html:214
-#: visual\index.html:1154
+#: visual\index.html:1034
 msgid "Ver construção"
 msgstr ""
 
@@ -5275,8 +5250,7 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\visual\background.html:226
 #: obj\Release\Package\PackageTmp\visual\logo.html:141
 #: obj\Release\Package\PackageTmp\visual\logo.html:176
-#: visual\background.html:226
-#: visual\logo.html:163
+#: visual\logo.html:159
 msgid "Vertical"
 msgstr ""
 
@@ -5286,8 +5260,8 @@ msgstr ""
 #: obj\Release\AspnetCompileMerge\Source\main.html:430
 #: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:430
 #: obj\Release\Package\PackageTmp\main.html:359
-#: visual\index.html:1148
-#: visual\index.html:1149
+#: visual\index.html:1028
+#: visual\index.html:1029
 msgid "Visual"
 msgstr ""
 
@@ -5397,8 +5371,8 @@ msgstr ""
 #: publish\index.html:274
 #: publish\index.html:275
 #: reports\sites.html:55
-#: visual\index.html:1190
-#: visual\index.html:1191
+#: visual\index.html:1070
+#: visual\index.html:1071
 msgid "Voltar"
 msgstr ""
 

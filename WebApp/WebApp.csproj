@@ -251,6 +251,7 @@
     <Content Include="css\jquery.dropdown.css" />
     <Content Include="css\jquery.selectboxit-grey.css" />
     <Content Include="css\landpage.css" />
+    <Content Include="css\menu.main.min.css" />
     <Content Include="css\site-institucional.css" />
     <Content Include="css\suporte.css" />
     <Content Include="email-templates\en-us\esqueci-minha-senha.html" />
@@ -1008,7 +1009,9 @@
     <Content Include="scripts\jquery.blueberry.js" />
     <Content Include="scripts\jquery.dropdown.js" />
     <Content Include="scripts\jquery.tipsy.js" />
+    <Content Include="scripts\jquery.easing.min.js" />
     <Content Include="scripts\login.js" />
+    <Content Include="scripts\menu.main.min.js" />
     <Content Include="scripts\suporte.js" />
     <Content Include="scripts\tinymce\plugins\advlist\plugin.min.js" />
     <Content Include="scripts\tinymce\plugins\anchor\plugin.min.js" />
