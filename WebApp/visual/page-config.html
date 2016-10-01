@@ -1,0 +1,32 @@
+﻿<div class="menu-cfg">
+    <style type="text/css" media="screen">
+        .menu-cfg {
+            padding: 0 5px;
+        }
+            .menu-cfg .item {
+                border-bottom: thin solid #CCC;
+                margin: 10px 0;
+                padding-bottom: 5px;
+            }
+    </style>
+    <div class="item" ng-repeat="Page in Pages">
+        <select ng-model="Page.Title" ng-change="OnChangeDelayed(Page)">
+            <option value="" disabled>exemplos:</option>
+            <option value="Clientes">Clientes</option>
+            <option value="Contato">Contato</option>
+            <option value="Empresa">Empresa</option>
+            <option value="Equipe">Equipe</option>
+            <option value="Fale conosco">Fale conosco</option>
+            <option value="Fotos">Fotos</option>
+            <option value="Galeria">Galeria</option>
+            <option value="História">História</option>
+            <option value="Links">Links</option>
+            <option value="Notícias">Notícias</option>
+            <option value="Novidades">Novidades</option>
+            <option value="Produtos">Produtos</option>
+            <option value="Serviços">Serviços</option>
+            <option value="Soluções">Soluções</option>
+        </select>
+        <input type="text" placeholder="Escreva aqui..." ng-model="Page.Title" ng-change="OnChangeDelayed(Page)" />
+    </div>
+</div>

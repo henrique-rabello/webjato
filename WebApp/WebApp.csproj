@@ -1220,6 +1220,7 @@
     <Content Include="visual\index.html" />
     <Content Include="visual\logo.html" />
     <Content Include="visual\menu.html" />
+    <Content Include="visual\page-config.html" />
     <Content Include="visual\page.html" />
     <Content Include="scripts\_references.js" />
     <Content Include="scripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />

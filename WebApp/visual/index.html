@@ -3,6 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
     <title translate>Webjato - VISUAL</title>
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
     <link type="text/css" rel="stylesheet" href="../css/animate.css" />
     <link type="text/css" rel="stylesheet" href="../css/crop.css" />
     <link type="text/css" rel="stylesheet" href="../css/header.css" />
@@ -11,7 +12,7 @@
     <link type="text/css" rel="stylesheet" href="../css/jquery-ui.min.css" />
     <link type="text/css" rel="stylesheet" href="../css/layout-default.css" />
     <link type="text/css" rel="stylesheet" href="../css/jquery.dropdown.css" />
-    <link type="text/css" rel="stylesheet" href="../css/menu.css" />
+    <link type="text/css" rel="stylesheet" href="../css/menu.main.min.css" />
     <link type="text/css" rel="stylesheet" href="../css/spectrum.css" />
     <link type="text/css" rel="stylesheet" href="../css/tipsy.css" />
     <link type="text/css" rel="stylesheet" href="../css/wj.css" />
@@ -82,7 +83,7 @@
     <script type="text/javascript">
         var Sair = null;
         angular.module("VisualApp", ["gettext", "ngCookies", "ngAnimate", "ngRoute", "ngSanitize", "pasvaz.bindonce", "ui.utils", "ui.tinymce", "ui.spinner", "angularSpectrumColorpicker", "angularFileUpload", "WebjatoConfig", "WebjatoFactories", "WebjatoServices", "AngularJCrop", "WebjatoDirectives"])
-            .config(["$routeProvider", function ($routeProvider) {
+            .config(function ($routeProvider) {
                 $routeProvider
                     .when("/background.html", {
                         templateUrl: "background.html",
@@ -108,12 +109,22 @@
                         templateUrl: "page.html",
                         controller: "PageCrtl"
                     })
-            }])
+                    .when("/menu.html", {
+                        templateUrl: "page-config.html",
+                        controller: "PageConfigCtrl",
+                        resolve: {
+                            pages: function ($http) {
+                                return $http({ method: "GET", url: "../api/page" });
+                            }
+                        }
+                    })
+            })
             .controller("MenuCrtl", function ($scope, $location, $timeout, $rootScope) {
                 $scope.pages = [
                     { url: "#/logo.html", helpId: "visual/logo", title: "Nome", menuLabel: "Logo" },
                     { url: "#/background.html", helpId: "visual/bg", title: "Plano de fundo", menuLabel: "Fundo" },
-                    { url: "#/footer.html", helpId: "visual/footer", title: "Rodapé", menuLabel: "Rodapé" }
+                    { url: "#/footer.html", helpId: "visual/footer", title: "Rodapé", menuLabel: "Rodapé" },
+                    { url: "#/menu.html", helpId: "visual/menu", title: "Menu", menuLabel: "Menu" }
                     
                     /*
                     { url: "#/menu.html", helpId: "visual/menu", title: "Menu", menuLabel: "Menu" }
@@ -150,6 +161,12 @@
                     if (!isLastPage) return;
                     $scope.$emit("HelpDisplay", "visual/finish");
                 };
+            })
+            .controller("PageConfigCtrl", function ($scope, $http, pages) {
+                $scope.Pages = pages.data;
+                $scope.OnChangeDelayed = _.debounce(function (page) {
+                    console.log(page);
+                }, 500);
             })
             .controller("BackgroundCrtl", function ($scope, $http, HandleServerException) {
                 $scope.OnColorChanged = function (color, isWhite) {
@@ -966,10 +983,46 @@
         });
     </script>
 </head>
-<body ng-controller="PreviewCrtl">
+<body ng-controller="PreviewCrtl" ng-cloak>
     <wj-help></wj-help>
     <div class="ui-layout-center">
         <div class="preview" ng-style="Background.Style">
+            <div class="cont-pagina">
+                <div class="estrutura">
+                    <div class="base">&nbsp;</div>
+                    <div class="name" ng-show="Logo.Data.LogoType == 1 && !TextEditor.Header.Active" ng-bind-html="TextEditor.Header.TrustedModel()"></div>
+                    <div class="name" ng-show="TextEditor.Header.Active">
+                        <div id="tinymce1" ui-tinymce config="TextEditor.Header.Options" ng-model="TextEditor.Header.Model"></div>
+                    </div>
+                    <div class="logo" ng-style="Logo.StyleImageContainer" ng-show="Logo.Data.LogoType == 2 && !TextEditor.Header.Active">
+                        <img ng-src="{{Logo.ImagePath}}" />
+                    </div>
+                    <div class="wrap show">
+                        <div class="menu-toggle"><span></span></div>
+                        <div class="profile-card ps-container" style="height: 1111px;">
+                            <nav class="nav">
+                                <ul>
+                                    <li ng-repeat="Page in Pages">
+                                        <a href="">{{Page.Title}}</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;">
+                                <div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div>
+                            </div>
+                            <div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px;">
+                                <div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cont-rodape">
+                <div class="rodape">
+                    <div id="tinymce3" ui-tinymce config="TextEditor.Footer.Options" ng-model="TextEditor.Footer.Model"></div>
+                </div>
+            </div>
+            <!--
             <div class="temporario" ng-class="{'centralizado': Site.Data.Alignment == 2, 'esquerda': Site.Data.Alignment == 1}">
                 <div class="cont-page" ng-style="Frame.StyleContPage">
                     <div class="cont" ng-style="Site.Style">
@@ -1001,13 +1054,9 @@
                             </div>
                             <div class="base" ng-style="Frame.StyleBase">&nbsp;</div>
                         </div>
-                        <div>
-                            <!-- CONTEÚDO TODAS AS PÁGINAS -->
-                        </div>
+                        <div>CONTEÚDO TODAS AS PÁGINAS</div>
                     </div>
-                    <div>
-                        <!-- CONTEÚDO DESTA PÁGINA -->
-                    </div>
+                    <div>CONTEÚDO DESTA PÁGINA</div>
                 </div>
             </div>
             <div class="footer" ng-style="Site.Style">
@@ -1015,6 +1064,7 @@
                     <div id="tinymce3" ui-tinymce config="TextEditor.Footer.Options" ng-model="TextEditor.Footer.Model"></div>
                 </div>
             </div>
+            -->
         </div>
     </div>
     <div class="ui-layout-north">
@@ -1100,5 +1150,7 @@
         </div>
     </div>
     <div ng-include="CropUrl" class="crop-tool"></div>
+    <script src="../scripts/jquery.easing.min.js"></script>
+    <script src="../scripts/menu.main.min.js"></script>
 </body>
 </html>
