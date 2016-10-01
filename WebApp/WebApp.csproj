@@ -1210,6 +1210,7 @@
     <Content Include="src\libs\js\jquery.tipsy.js" />
     <Content Include="src\libs\js\spectrum.js" />
     <Content Include="src\libs\js\underscore.min.js" />
+    <Content Include="src\libs\js\underscore.string.min.js" />
     <Content Include="src\libs\js\uri.js" />
     <Content Include="src\po\en_US.js" />
     <Content Include="tmp\readme.txt" />

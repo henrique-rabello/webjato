@@ -77,7 +77,9 @@ namespace Webjato.Repositories {
         public virtual void NewWebSite(ObjectId userId) {
             var site = siteRepo.CreateSite(userId);
             var firstPage = pageRepo.CreatePage(site.Id);
-            pageRepo.UpdateTitle(firstPage.Id, "Home");
+            pageRepo.UpdateTitle(firstPage.Id, "Home", "home");
+            pageRepo.CreatePage(site.Id);
+            pageRepo.CreatePage(site.Id);
             pageRepo.CreatePage(site.Id);
             pageRepo.CreatePage(site.Id);
             pageRepo.CreatePage(site.Id);

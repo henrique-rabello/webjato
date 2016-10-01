@@ -92,15 +92,17 @@ namespace Webjato.Tests.Repositories {
 
         [Test]
         public void PageRepository_UpdateTitle() {
-            var page1 = new Page { Title = "Old title" };
+            var page1 = new Page { Title = "Old title", FileName = "Old file name" };
             collection.Insert(page1);
-            repo.UpdateTitle(page1.Id, "New title");
+            repo.UpdateTitle(page1.Id, "New title", "New file name");
             var page2 = collection.AsQueryable().Single();
             Assert.AreEqual("New title", page2.Title);
+            Assert.AreEqual("New file name", page2.FileName);
             Assert.IsNotNull(page2.Updated);
-            repo.UpdateTitle(page1.Id, null);
+            repo.UpdateTitle(page1.Id, null, null);
             var page3 = collection.AsQueryable().Single();
             Assert.IsEmpty(page3.Title);
+            Assert.IsEmpty(page3.FileName);
         }
 
         [Test]

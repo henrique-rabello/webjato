@@ -1579,8 +1579,6 @@ angular.module("WebjatoModels").factory("UnitContentModel", function () {
 		ShowUnity: true
     };
 });
-
-
 angular.module("WebjatoServices").service("ContentTypeList", function () {
     return [{ Crtl: "Box", Enum: 1 },
             { Crtl: "ContactForm", Enum: 2 },
@@ -2085,6 +2083,8 @@ angular.module("WebjatoServices").service("URLParser", function () {
         return new URI(url);
     };
 });
+
+
 angular.module("WebjatoDirectives").directive("wjAnimate", function ($timeout, $parse, ServerSync, ServerSyncCommands) {
     return {
         restrict: "A",

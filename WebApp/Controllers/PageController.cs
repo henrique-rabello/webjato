@@ -45,7 +45,7 @@ namespace WebV2.Controllers {
         [Authorize]
         public void Title(Page page) {
             using (var kernel = new StandardKernel(new NinjectBindings())) {
-                kernel.Get<PageRepository>().UpdateTitle(page.Id, page.Title);
+                kernel.Get<PageRepository>().UpdateTitle(page.Id, page.Title, page.FileName);
             }
         }
 
@@ -53,7 +53,7 @@ namespace WebV2.Controllers {
         [Authorize]
         public void Title(string id, string title) {
             using (var kernel = new StandardKernel(new NinjectBindings())) {
-                kernel.Get<PageRepository>().UpdateTitle(new ObjectId(id), title);
+                kernel.Get<PageRepository>().UpdateTitle(new ObjectId(id), title, "");
             }
         }
 

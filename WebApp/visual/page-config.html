@@ -8,8 +8,13 @@
                 margin: 10px 0;
                 padding-bottom: 5px;
             }
+
+            .menu-cfg .item.disabled select,
+            .menu-cfg .item.disabled input {
+                background-color: #DDD;
+            }
     </style>
-    <div class="item" ng-repeat="Page in Pages">
+    <div class="item" ng-repeat="Page in Pages" ng-class="{'disabled': !Page.Title}">
         <select ng-model="Page.Title" ng-change="OnChangeDelayed(Page)">
             <option value="" disabled>exemplos:</option>
             <option value="Clientes">Clientes</option>

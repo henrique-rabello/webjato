@@ -1055,7 +1055,7 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\publish\index.html:214
 #: obj\Release\Package\PackageTmp\visual\index.html:1142
 #: publish\index.html:219
-#: visual\index.html:1079
+#: visual\index.html:1117
 msgid "Ajuda"
 msgstr ""
 
@@ -1183,7 +1183,7 @@ msgstr ""
 #: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:1061
 #: obj\Release\Package\PackageTmp\content\map-editor-tpl.html:9
 #: obj\Release\Package\PackageTmp\visual\index.html:1224
-#: visual\index.html:1132
+#: visual\index.html:1170
 msgid "Aplicar"
 msgstr ""
 
@@ -1314,8 +1314,8 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\visual\index.html:1207
 #: publish\index.html:279
 #: publish\index.html:280
-#: visual\index.html:1115
-#: visual\index.html:1116
+#: visual\index.html:1153
+#: visual\index.html:1154
 msgid "Avançar"
 msgstr ""
 
@@ -1804,7 +1804,7 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\publish\index.html:219
 #: obj\Release\Package\PackageTmp\visual\index.html:1147
 #: publish\index.html:224
-#: visual\index.html:1084
+#: visual\index.html:1122
 msgid "Conta"
 msgstr ""
 
@@ -3643,7 +3643,7 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\publish\index.html:204
 #: obj\Release\Package\PackageTmp\visual\index.html:1131
 #: publish\index.html:209
-#: visual\index.html:1064
+#: visual\index.html:1102
 msgid "Início"
 msgstr ""
 
@@ -4723,7 +4723,7 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\config\index.html:376
 #: obj\Release\Package\PackageTmp\publish\index.html:301
 #: publish\index.html:306
-#: visual\index.html:1090
+#: visual\index.html:1128
 msgid "Sair"
 msgstr ""
 
@@ -5228,7 +5228,7 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\publish\index.html:209
 #: obj\Release\Package\PackageTmp\visual\index.html:1137
 #: publish\index.html:214
-#: visual\index.html:1074
+#: visual\index.html:1112
 msgid "Ver construção"
 msgstr ""
 
@@ -5260,8 +5260,8 @@ msgstr ""
 #: obj\Release\AspnetCompileMerge\Source\main.html:430
 #: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:430
 #: obj\Release\Package\PackageTmp\main.html:359
-#: visual\index.html:1068
-#: visual\index.html:1069
+#: visual\index.html:1106
+#: visual\index.html:1107
 msgid "Visual"
 msgstr ""
 
@@ -5371,8 +5371,8 @@ msgstr ""
 #: publish\index.html:274
 #: publish\index.html:275
 #: reports\sites.html:55
-#: visual\index.html:1110
-#: visual\index.html:1111
+#: visual\index.html:1148
+#: visual\index.html:1149
 msgid "Voltar"
 msgstr ""
 

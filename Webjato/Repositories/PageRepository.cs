@@ -51,10 +51,12 @@ namespace Webjato.Repositories {
             return db.AsQueryable().Where(x => x.IsTemplate && !String.IsNullOrEmpty(x.Title) && !String.IsNullOrEmpty(x.Thumb)).ToList();
         }
 
-        public virtual void UpdateTitle(ObjectId id, string newTitle) {
+        public virtual void UpdateTitle(ObjectId id, string newTitle, string newFileName) {
             if (String.IsNullOrEmpty(newTitle)) newTitle = "";
+            if (String.IsNullOrEmpty(newFileName)) newFileName = "";
             var page = Get(id);
             page.Title = newTitle;
+            page.FileName = newFileName;
             page.Updated = DateTime.UtcNow;
             db.Save(page);
         }

@@ -162,11 +162,31 @@
                     $scope.$emit("HelpDisplay", "visual/finish");
                 };
             })
-            .controller("PageConfigCtrl", function ($scope, $http, pages) {
-                $scope.Pages = pages.data;
+            .controller("PageConfigCtrl", function ($scope, $http, pages, HandleServerException) {
+                $scope.Pages = _.map(pages.data, function(page) {
+                    page.OldTitle = page.Title;
+                    return page;
+                });
                 $scope.OnChangeDelayed = _.debounce(function (page) {
-                    console.log(page);
+                    if (page.Position == 1 && s.trim(page.Title) == "") {
+                        alert("A primeira página não pode ficar sem titulo.");
+                        page.Title = page.OldTitle;
+                        $scope.$digest();
+                        return;
+                    }
+                    page.Title = s.trim(page.Title);
+                    page.FileName = s.slugify(page.Title);
+                    page.OldTitle = page.Title;
+                    page.Working = true;
+                    $http({ method: "POST", url: "../api/page/title", data: page })
+                        .success(function () {
+                            $scope.$emit("MenuUpdated", page.Id);
+                        }).error(HandleServerException);
                 }, 500);
+                angular.element("body").addClass("profile-card-open");
+                $scope.$on("$destroy", function () {
+                    angular.element("body").removeClass("profile-card-open");
+                });
             })
             .controller("BackgroundCrtl", function ($scope, $http, HandleServerException) {
                 $scope.OnColorChanged = function (color, isWhite) {
@@ -778,6 +798,9 @@
                     }).error(HandleServerException);
             })
             .controller("PreviewCrtl", function ($scope, $q, $http, $cookies, $sce, $timeout, gettextCatalog, MenuConfig, HandleServerException, SiteStyle, WebjatoConfig) {
+                $scope.$on("MenuUpdated", function (sender, updatedPageId) {
+                    RefreshPageList(updatedPageId);
+                });
                 $scope.ShakeIt = false;
                 $scope.TextEditor = {
                     Header: {
@@ -830,12 +853,6 @@
                     $scope.Site.Data = angular.copy(data);
                     $scope.Site.Style["margin"] = parseInt($scope.Site.Data.Alignment) == 1 ? "0" : "0 auto";
                     MenuConfig.ApplyCSS($scope.Site.Data.Menu);
-                }
-                var UpdatePages = function (data) {
-                    data = _.filter(data, function (key) { return key.Title != null; });
-                    $scope.Pages = _.chain(data)
-                                        .filter(function (key) { return key.Title != "" && key.Title != null; })
-                                        .sortBy(function (key) { return key.Position; }).value();
                 };
                 $scope.CropDefer = null;
                 $scope.OnCropFinish = function (data) {
@@ -905,10 +922,28 @@
                     unwatch2();
                 });
 
-                $http({ method: "GET", url: "../api/page/get" })
-                    .success(function (data) {
-                        UpdatePages(data);
-                    }).error(HandleServerException);
+                var RefreshPageList = function (updatedPageId) {
+                    $http({ method: "GET", url: "../api/page/get" })
+                        .success(function (data) {
+                            $scope.Pages = _.chain(data)
+                                                .map(function (key) {
+                                                    key.Updated = key.Id == updatedPageId;
+                                                    return key;
+                                                })
+                                                .filter(function (key) {
+                                                    return key.Title;
+                                                })
+                                                .sortBy(function (key) {
+                                                    return key.Position;
+                                                }).value();
+                            $timeout(function () {
+                                $scope.UpdatingMenu = true;
+                                $timeout(function () {
+                                    $scope.UpdatingMenu = false;
+                                }, 500);
+                            });
+                        }).error(HandleServerException);
+                };
 
                 $scope.$on("OnSiteChange", function (sender, changeType, data) {
                     switch (changeType) {
@@ -966,6 +1001,7 @@
                         $scope.User = data;
                     }).error(HandleServerException);
                 Sair = $scope.Logout;
+                RefreshPageList();
             })
             .controller("MenuSelectionCrtl", function ($scope, $cookies, $rootScope, MenuConfig) {
                 $scope.MenuSelectionItems = MenuConfig.Menus;
@@ -1000,10 +1036,10 @@
                     <div class="wrap show">
                         <div class="menu-toggle"><span></span></div>
                         <div class="profile-card ps-container" style="height: 1111px;">
-                            <nav class="nav">
+                            <nav class="nav" style="margin-top: 160px;">
                                 <ul>
                                     <li ng-repeat="Page in Pages">
-                                        <a href="">{{Page.Title}}</a>
+                                        <a href="" ng-class="{'animated fadeInLeft': Page.Updated}">{{Page.Title}}</a>
                                     </li>
                                 </ul>
                             </nav>

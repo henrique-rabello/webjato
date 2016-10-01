@@ -85,7 +85,7 @@ namespace Webjato.Tests.Repositories {
             repo.NewWebSite(userId);
             A.CallTo(() => siteRepo.CreateSite(userId)).MustHaveHappened(Repeated.Exactly.Once);
             A.CallTo(() => pageRepo.CreatePage(siteId)).MustHaveHappened(Repeated.Exactly.Times(6));
-            A.CallTo(() => pageRepo.UpdateTitle(pageId, "Home")).MustHaveHappened(Repeated.Exactly.Once);
+            A.CallTo(() => pageRepo.UpdateTitle(pageId, "Home", "")).MustHaveHappened(Repeated.Exactly.Once);
             A.CallTo(() => optionalFeatureRepo.AssociateFeature(FEATURE.HELP, userId)).MustHaveHappened(Repeated.Exactly.Once);
             A.CallTo(() => bgRepo.CreateBackground(siteId)).MustHaveHappened(Repeated.Exactly.Once);
             A.CallTo(() => headerRepo.CreateBackground(siteId)).MustHaveHappened(Repeated.Exactly.Once);
