@@ -3,6 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
     <title translate>Webjato - CONTEÚDO</title>
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
     <link type="text/css" rel="stylesheet" href="../css/adicionar.css" />
     <link type="text/css" rel="stylesheet" href="../css/animate.css" />
     <link type="text/css" rel="stylesheet" href="../css/crop.css" />
@@ -13,7 +14,7 @@
     <link type="text/css" rel="stylesheet" href="../css/jquery.selectboxit-grey.css" />
     <link type="text/css" rel="stylesheet" href="../css/jquery-ui.min.css" />
     <link type="text/css" rel="stylesheet" href="../css/layout-default.css" />
-    <link type="text/css" rel="stylesheet" href="../css/menu.css" />
+    <link type="text/css" rel="stylesheet" href="../css/menu.main.min.css" />
     <link type="text/css" rel="stylesheet" href="../css/spectrum.css" />
     <link type="text/css" rel="stylesheet" href="../css/tipsy.css" />
     <link type="text/css" rel="stylesheet" href="../css/tools.css" />
@@ -254,6 +255,60 @@
                 <img src="../images/loadinganim.gif" />
                 <span translate>Gravando</span>
             </div>
+            <div class="cont-pagina cont-page">
+                <div class="js-content-boundary" ng-style="{borderWidth: SiteStyle.Frame.Data.BorderSides.Width + 'px'}"></div>
+                <div class="js-new-content-boundary" ng-style="{borderWidth: SiteStyle.Frame.Data.BorderSides.Width + 'px'}"></div>
+                <div class="estrutura">
+                    <wj-box ng-repeat="Item in PageContents.ByType.Box" data="Item" edit-mode-on="ActiveContent != null"></wj-box>
+                    <wj-contact-form ng-repeat="Item in PageContents.ByType.ContactForm" data="Item" edit-mode-on="ActiveContent != null"></wj-contact-form>
+                    <wj-img ng-repeat="Item in PageContents.ByType.RegularImage" data="Item" folder="{{Config.AssetsPath}}" edit-mode-on="ActiveContent != null"></wj-img>
+                    <wj-img-lnk ng-repeat="Item in PageContents.ByType.LinkedImage" data="Item" folder="{{Config.AssetsPath}}" edit-mode-on="ActiveContent != null"></wj-img-lnk>
+                    <wj-img-exp ng-repeat="Item in PageContents.ByType.ExpandableImage" data="Item" folder="{{Config.AssetsPath}}" edit-mode-on="ActiveContent != null" is-preview="0"></wj-img-exp>
+                    <wj-map ng-repeat="Item in PageContents.ByType.Maps" data="Item" edit-mode-on="ActiveContent != null"></wj-map>
+                    <wj-line ng-repeat="Item in PageContents.ByType.Line" data="Item" edit-mode-on="ActiveContent != null"></wj-line>
+                    <wj-social ng-repeat="Item in PageContents.ByType.Social" data="Item" edit-mode-on="ActiveContent != null"></wj-social>
+                    <wj-text ng-repeat="Item in PageContents.ByType.Text" data="Item" lang="{{language}}" edit-mode-on="ActiveContent != null"></wj-text>
+                    <wj-video ng-repeat="Item in PageContents.ByType.Video" data="Item" edit-mode-on="ActiveContent != null"></wj-video>
+                    <wj-highlight data="HighlightedContent"></wj-highlight>
+                    <div class="duplicate-background" ng-if="DuplicateBg.show" ng-style="{'margin-top': SiteStyle.Frame.Data.MarginTop + 'px', 'z-index': DuplicateBg.zindex}"></div>
+                    <div class="base" ng-style="{'height': SelectedPage.Height + 'px' }">&nbsp;</div>
+                    <div class="name" ng-show="!SiteStyle.Logo.ImagePath" ng-bind-html="SiteStyle.Logo.Data.TrustedText()"></div>
+                    <div class="logo" ng-style="SiteStyle.Logo.StyleImageContainer" ng-show="SiteStyle.Logo.ImagePath">
+                        <img ng-src="{{SiteStyle.Logo.ImagePath}}" />
+                    </div>
+                    <div class="wrap show">
+                        <div class="menu-toggle"><span></span></div>
+                        <div class="profile-card ps-container" style="height: 1111px;">
+                            <nav class="nav" style="margin-top: 160px;">
+                                <ul>
+                                    <li ng-repeat="Page in Pages">
+                                        <a href="" ng-click="$parent.OnPageChange(Page.Title, 'menu');" ng-class="{'active': Page == $parent.SelectedPage}" ng-disabled="ActiveContent">{{Page.Title}}</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;">
+                                <div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div>
+                            </div>
+                            <div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px;">
+                                <div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cont-rodape">
+                <div class="rodape" ng-bind-html="SiteStyle.Footer.Data.TrustedText()"></div>
+            </div>
+            <wj-unit-preview></wj-unit-preview>
+            <wj-group-preview></wj-group-preview>
+        </div>
+
+        <!--
+        <div class="preview" ng-style="SiteStyle.Background.Style">
+            <div class="saving" ng-show="ServerSync.isBusy">
+                <img src="../images/loadinganim.gif" />
+                <span translate>Gravando</span>
+            </div>
             <div class="cont-page" ng-style="SiteStyle.Frame.StyleContPage">
                 <div class="js-content-boundary" ng-style="{borderWidth: SiteStyle.Frame.Data.BorderSides.Width + 'px'}"></div>
                 <div class="js-new-content-boundary" ng-style="{borderWidth: SiteStyle.Frame.Data.BorderSides.Width + 'px'}"></div>
@@ -283,24 +338,9 @@
                         </div>
                         <div class="base" ng-style="{'height': SelectedPage.Height + 'px', 'background-color': SiteStyle.Frame.Data.IsTransparent? 'transparent' : SiteStyle.Frame.Data.Color }">&nbsp;</div>
                     </div>
-                    <div>
-                        <!-- ALL PAGES -->
-                    </div>
                 </div>
                 <div>
-                    <!-- SINGLE PAGE -->
-                    <wj-box ng-repeat="Item in PageContents.ByType.Box" data="Item" edit-mode-on="ActiveContent != null"></wj-box>
-                    <wj-contact-form ng-repeat="Item in PageContents.ByType.ContactForm" data="Item" edit-mode-on="ActiveContent != null"></wj-contact-form>
-                    <wj-img ng-repeat="Item in PageContents.ByType.RegularImage" data="Item" folder="{{Config.AssetsPath}}" edit-mode-on="ActiveContent != null"></wj-img>
-                    <wj-img-lnk ng-repeat="Item in PageContents.ByType.LinkedImage" data="Item" folder="{{Config.AssetsPath}}" edit-mode-on="ActiveContent != null"></wj-img-lnk>
-                    <wj-img-exp ng-repeat="Item in PageContents.ByType.ExpandableImage" data="Item" folder="{{Config.AssetsPath}}" edit-mode-on="ActiveContent != null" is-preview="0"></wj-img-exp>
-                    <wj-map ng-repeat="Item in PageContents.ByType.Maps" data="Item" edit-mode-on="ActiveContent != null"></wj-map>
-                    <wj-line ng-repeat="Item in PageContents.ByType.Line" data="Item" edit-mode-on="ActiveContent != null"></wj-line>
-                    <wj-social ng-repeat="Item in PageContents.ByType.Social" data="Item" edit-mode-on="ActiveContent != null"></wj-social>
-                    <wj-text ng-repeat="Item in PageContents.ByType.Text" data="Item" lang="{{language}}" edit-mode-on="ActiveContent != null"></wj-text>
-                    <wj-video ng-repeat="Item in PageContents.ByType.Video" data="Item" edit-mode-on="ActiveContent != null"></wj-video>
-                    <wj-highlight data="HighlightedContent"></wj-highlight>
-                    <div class="duplicate-background" ng-if="DuplicateBg.show" ng-style="{'margin-top': SiteStyle.Frame.Data.MarginTop + 'px', 'z-index': DuplicateBg.zindex}"></div>
+
                 </div>
             </div>
             <div class="footer" ng-style="SiteStyle.Site.Style">
@@ -309,6 +349,7 @@
             <wj-unit-preview></wj-unit-preview>
             <wj-group-preview></wj-group-preview>
         </div>
+        -->
     </div>
     <!-- Splitter Topo -->
     <div class="ui-layout-north bg-transition">
@@ -401,9 +442,9 @@
                 Acesse um vídeo.<br />
                 Em seguida, copie o endereço. Será algo como:
             </span><p>https://www.youtube.com/watch?v=YR5ApYxkU-U</p>
-                   <div class="txt-center top-2 linha">
-                   <div class="ou"><span translate>ou</span></div>
-                   </div>
+            <div class="txt-center top-2 linha">
+                <div class="ou"><span translate>ou</span></div>
+            </div>
             <span translate>Vá para</span> <a href="http://www.vimeo.com" target="_blank">http://vimeo.com</a>. <span translate>
                 Acesse um vídeo.<br />
                 Em seguida, copie o endereço. Será algo como:
@@ -416,9 +457,9 @@
                 Acesse um vídeo.<br />
                 Em seguida, copie o endereço. Será algo como:
             </span><p>https://vimeo.com/33977095</p>
-                   <div class="txt-center top-2 linha">
-                   <div class="ou"><span translate>ou</span></div>
-                   </div>
+            <div class="txt-center top-2 linha">
+                <div class="ou"><span translate>ou</span></div>
+            </div>
             <span translate>Vá para</span> <a href="http://www.youtube.com" target="_blank">http://youtube.com</a>. <span translate>
                 Acesse um vídeo.<br />
                 Em seguida, copie o endereço. Será algo como:
@@ -491,5 +532,7 @@
             </span><p>https://www.instagram.com/seunome/</p>
         </div>
     </div>
+    <script src="../scripts/jquery.easing.min.js"></script>
+    <script src="../scripts/menu.main.min.js"></script>
 </body>
 </html>

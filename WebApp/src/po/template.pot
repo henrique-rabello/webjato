@@ -450,7 +450,7 @@ msgstr ""
 msgid "<img src=\"../images/bot_ajuda.png\" alt=\"\">"
 msgstr ""
 
-#: content\index.html:332
+#: content\index.html:373
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:332
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\content\index.html:332
 #: obj\Debug\Package\PackageTmp\content\index.html:332
@@ -495,7 +495,7 @@ msgid ""
 msgstr ""
 
 #: config\index.html:290
-#: content\index.html:322
+#: content\index.html:363
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:290
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:322
 #: obj\Debug\AspnetCompileMerge\Source\publish\index.html:214
@@ -524,7 +524,7 @@ msgstr ""
 msgid "<img src=\"../images/icon-peq-config.png\" alt=\"\" title=\"\">Configuração"
 msgstr ""
 
-#: content\index.html:317
+#: content\index.html:358
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:317
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\content\index.html:317
 #: obj\Debug\Package\PackageTmp\content\index.html:317
@@ -604,14 +604,14 @@ msgid ""
 "            Volte para o <strong>Passo 1</strong>."
 msgstr ""
 
-#: content\index.html:393
+#: content\index.html:434
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:393
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\content\index.html:393
 #: obj\Debug\Package\PackageTmp\content\index.html:393
 msgid "<img src=\"../images/icon_copiar.png\" alt=\"\">Copiar"
 msgstr ""
 
-#: content\index.html:390
+#: content\index.html:431
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:390
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\content\index.html:390
 #: obj\Debug\Package\PackageTmp\content\index.html:390
@@ -794,7 +794,7 @@ msgstr ""
 msgid "Abrir – ação para quando a imagem for clicada."
 msgstr ""
 
-#: content\index.html:472
+#: content\index.html:513
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:472
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\content\index.html:472
 #: obj\Debug\Package\PackageTmp\content\index.html:472
@@ -809,7 +809,7 @@ msgid ""
 "Em seguida, copie o endereço. Será algo como:"
 msgstr ""
 
-#: content\index.html:440
+#: content\index.html:481
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:440
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\content\index.html:440
 #: obj\Debug\Package\PackageTmp\content\index.html:440
@@ -824,7 +824,7 @@ msgid ""
 "Em seguida, copie o endereço. Será algo como:"
 msgstr ""
 
-#: content\index.html:464
+#: content\index.html:505
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:464
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\content\index.html:464
 #: obj\Debug\Package\PackageTmp\content\index.html:464
@@ -833,9 +833,9 @@ msgid ""
 "                Em seguida, copie o endereço abaixo da sua foto. Será algo como:"
 msgstr ""
 
-#: content\index.html:448
-#: content\index.html:456
-#: content\index.html:480
+#: content\index.html:489
+#: content\index.html:497
+#: content\index.html:521
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:448
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:456
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:480
@@ -864,7 +864,7 @@ msgid ""
 "Em seguida, copie o endereço. Será algo como:"
 msgstr ""
 
-#: content\index.html:488
+#: content\index.html:529
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:488
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\content\index.html:488
 #: obj\Debug\Package\PackageTmp\content\index.html:488
@@ -879,10 +879,10 @@ msgid ""
 "Em seguida, copie o endereço. Será algo como:"
 msgstr ""
 
-#: content\index.html:400
-#: content\index.html:407
-#: content\index.html:415
-#: content\index.html:422
+#: content\index.html:441
+#: content\index.html:448
+#: content\index.html:456
+#: content\index.html:463
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:400
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:407
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:415
@@ -1024,7 +1024,7 @@ msgid "Administração"
 msgstr ""
 
 #: config\index.html:295
-#: content\index.html:327
+#: content\index.html:368
 #: main.html:340
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:295
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:327
@@ -1055,7 +1055,7 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\publish\index.html:214
 #: obj\Release\Package\PackageTmp\visual\index.html:1142
 #: publish\index.html:219
-#: visual\index.html:1117
+#: visual\index.html:1076
 msgid "Ajuda"
 msgstr ""
 
@@ -1183,7 +1183,7 @@ msgstr ""
 #: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:1061
 #: obj\Release\Package\PackageTmp\content\map-editor-tpl.html:9
 #: obj\Release\Package\PackageTmp\visual\index.html:1224
-#: visual\index.html:1170
+#: visual\index.html:1129
 msgid "Aplicar"
 msgstr ""
 
@@ -1265,7 +1265,7 @@ msgstr ""
 msgid "Assunto"
 msgstr ""
 
-#: content\index.html:384
+#: content\index.html:425
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:384
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\content\index.html:384
 #: obj\Debug\Package\PackageTmp\content\index.html:384
@@ -1314,8 +1314,8 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\visual\index.html:1207
 #: publish\index.html:279
 #: publish\index.html:280
-#: visual\index.html:1153
-#: visual\index.html:1154
+#: visual\index.html:1112
+#: visual\index.html:1113
 msgid "Avançar"
 msgstr ""
 
@@ -1732,8 +1732,8 @@ msgstr ""
 msgid "Comece hoje"
 msgstr ""
 
-#: content\index.html:353
-#: content\index.html:354
+#: content\index.html:394
+#: content\index.html:395
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:353
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:354
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\content\index.html:353
@@ -1781,7 +1781,7 @@ msgid "Confirmar"
 msgstr ""
 
 #: config\index.html:300
-#: content\index.html:332
+#: content\index.html:373
 #: main.html:345
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:300
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:332
@@ -1804,7 +1804,7 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\publish\index.html:219
 #: obj\Release\Package\PackageTmp\visual\index.html:1147
 #: publish\index.html:224
-#: visual\index.html:1122
+#: visual\index.html:1081
 msgid "Conta"
 msgstr ""
 
@@ -2299,7 +2299,7 @@ msgstr ""
 msgid "E-mail inválido!"
 msgstr ""
 
-#: content\index.html:435
+#: content\index.html:476
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:435
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\content\index.html:435
 #: obj\Debug\Package\PackageTmp\content\index.html:435
@@ -2649,7 +2649,7 @@ msgstr ""
 msgid "Escreva aqui..."
 msgstr ""
 
-#: content\index.html:430
+#: content\index.html:471
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:430
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\content\index.html:430
 #: obj\Debug\Package\PackageTmp\content\index.html:430
@@ -2752,7 +2752,7 @@ msgstr ""
 msgid "Esquerda"
 msgstr ""
 
-#: content\index.html:385
+#: content\index.html:426
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:385
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\content\index.html:385
 #: obj\Debug\Package\PackageTmp\content\index.html:385
@@ -3326,7 +3326,7 @@ msgstr ""
 msgid "Grande"
 msgstr ""
 
-#: content\index.html:255
+#: content\index.html:256
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:255
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\content\index.html:255
 #: obj\Debug\Package\PackageTmp\content\index.html:255
@@ -3611,7 +3611,7 @@ msgstr ""
 
 #: config\index.html:283
 #: config\labels.html:418
-#: content\index.html:316
+#: content\index.html:357
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:283
 #: obj\Debug\AspnetCompileMerge\Source\config\labels.html:418
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:316
@@ -3643,7 +3643,7 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\publish\index.html:204
 #: obj\Release\Package\PackageTmp\visual\index.html:1131
 #: publish\index.html:209
-#: visual\index.html:1102
+#: visual\index.html:1061
 msgid "Início"
 msgstr ""
 
@@ -3800,8 +3800,8 @@ msgstr ""
 msgid "Logo"
 msgstr ""
 
-#: content\index.html:357
-#: content\index.html:358
+#: content\index.html:398
+#: content\index.html:399
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:357
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:358
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\content\index.html:357
@@ -4723,7 +4723,7 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\config\index.html:376
 #: obj\Release\Package\PackageTmp\publish\index.html:301
 #: publish\index.html:306
-#: visual\index.html:1128
+#: visual\index.html:1087
 msgid "Sair"
 msgstr ""
 
@@ -5205,7 +5205,7 @@ msgid "VISUAL"
 msgstr ""
 
 #: config\index.html:290
-#: content\index.html:322
+#: content\index.html:363
 #: main.html:335
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:290
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:322
@@ -5228,7 +5228,7 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\publish\index.html:209
 #: obj\Release\Package\PackageTmp\visual\index.html:1137
 #: publish\index.html:214
-#: visual\index.html:1112
+#: visual\index.html:1071
 msgid "Ver construção"
 msgstr ""
 
@@ -5260,8 +5260,8 @@ msgstr ""
 #: obj\Release\AspnetCompileMerge\Source\main.html:430
 #: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:430
 #: obj\Release\Package\PackageTmp\main.html:359
-#: visual\index.html:1106
-#: visual\index.html:1107
+#: visual\index.html:1065
+#: visual\index.html:1066
 msgid "Visual"
 msgstr ""
 
@@ -5371,22 +5371,22 @@ msgstr ""
 #: publish\index.html:274
 #: publish\index.html:275
 #: reports\sites.html:55
-#: visual\index.html:1148
-#: visual\index.html:1149
+#: visual\index.html:1107
+#: visual\index.html:1108
 msgid "Voltar"
 msgstr ""
 
-#: content\index.html:400
-#: content\index.html:407
-#: content\index.html:415
-#: content\index.html:422
-#: content\index.html:440
+#: content\index.html:441
 #: content\index.html:448
 #: content\index.html:456
-#: content\index.html:464
-#: content\index.html:472
-#: content\index.html:480
-#: content\index.html:488
+#: content\index.html:463
+#: content\index.html:481
+#: content\index.html:489
+#: content\index.html:497
+#: content\index.html:505
+#: content\index.html:513
+#: content\index.html:521
+#: content\index.html:529
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:400
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:407
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:415
@@ -5631,8 +5631,8 @@ msgid "mostrar mais"
 msgstr ""
 
 #: content\duplicate-editor.html:10
-#: content\index.html:405
-#: content\index.html:420
+#: content\index.html:446
+#: content\index.html:461
 #: content\move-together-editor.html:10
 #: help\config-align.html:9
 #: help\config-pages.html:9

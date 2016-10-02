@@ -26,6 +26,17 @@
 .preview .cont-pagina {
   z-index: 1;
 }
+.preview .cont-pagina .js-content-boundary,
+.preview .cont-pagina .js-new-content-boundary {
+  position: absolute;
+  border-style: solid;
+  border-color: transparent;
+  height: 100%;
+  transition: none;
+}
+.preview .cont-pagina .js-new-content-boundary {
+  width: 1043px;
+}
 .preview .cont-pagina,
 .preview .cont-rodape {
   margin: 0 auto;
