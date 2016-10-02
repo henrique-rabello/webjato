@@ -3,8 +3,9 @@
 <head>
     <title></title>
     <meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
     <link type="text/css" rel="stylesheet" href="../css/animate.css" />
-    <link type="text/css" rel="stylesheet" href="../css/menu.css" />
+    <link type="text/css" rel="stylesheet" href="../css/menu.main.min.css" />
     <link type="text/css" rel="stylesheet" href="../css/wj.css" />
     <style type="text/css">
         body {
@@ -103,54 +104,48 @@
 </head>
 <body ng-controller="PreviewCrtl">
     <div class="preview" ng-style="SiteStyle.Background.Style" style="height: 100%;">
-        <div class="cont-page" ng-style="SiteStyle.Frame.StyleContPage">
-            <div class="cont" ng-style="SiteStyle.Site.Style">
-                <div class="estrutura" ng-style="SiteStyle.Frame.StyleEstrutura">
-                    <div ng-show="SiteStyle.Site.Data.Menu.VAlign == 1">
-                        <ul class="menu custom" ng-class="SiteStyle.Site.Data.Menu.Id">
-                            <li ng-repeat="Page in Pages">
-                                <a href="" ng-click="$parent.SelectedPage = Page; $parent.FetchPageContent();" ng-class="{'active': Page == $parent.SelectedPage}">{{Page.Title}}</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="header" ng-style="SiteStyle.Header.Style">
-                        <div class="header-text" ng-style="SiteStyle.Logo.StyleText">
-                            <div ng-show="SiteStyle.Logo.Data.LogoType == 1" ng-bind-html="SiteStyle.Logo.Data.TrustedText()"></div>
-                        </div>
-                        <div class="header-image" ng-style="SiteStyle.Logo.StyleImageContainer">
-                            <img ng-src="{{SiteStyle.Logo.ImagePath}}" ng-style="SiteStyle.Logo.StyleImage" />
-                        </div>
-                    </div>
-                    <div ng-show="SiteStyle.Site.Data.Menu.VAlign == 3">
-                        <ul class="menu custom" ng-class="SiteStyle.Site.Data.Menu.Id">
-                            <li ng-repeat="Page in Pages">
-                                <a href="" ng-click="$parent.SelectedPage = Page; $parent.FetchPageContent();" ng-class="{'active': Page == $parent.SelectedPage}">{{Page.Title}}</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="base" ng-style="{'height': SelectedPage.Height + 'px', 'background-color': SiteStyle.Frame.Data.IsTransparent? 'transparent' : SiteStyle.Frame.Data.Color }">&nbsp;</div>
-                </div>
-                <div>
-                    <!-- ALL PAGES -->
-                </div>
-            </div>
-            <div>
-                <!-- SINGLE PAGE -->
+        <div class="cont-pagina">
+            <div class="estrutura">
                 <wj-box ng-repeat="Item in PageContents.ByType.Box" data="Item"></wj-box>
                 <wj-contact-form ng-repeat="Item in PageContents.ByType.ContactForm" data="Item"></wj-contact-form>
                 <wj-img ng-repeat="Item in PageContents.ByType.RegularImage" data="Item" folder="{{Config.AssetsPath}}"></wj-img>
                 <wj-img-lnk ng-repeat="Item in PageContents.ByType.LinkedImage" data="Item" folder="{{Config.AssetsPath}}"></wj-img-lnk>
-                <wj-img-exp ng-repeat="Item in PageContents.ByType.ExpandableImage" data="Item" folder="{{Config.AssetsPath}}" is-preview="1"></wj-img-exp>
+                <wj-img-exp ng-repeat="Item in PageContents.ByType.ExpandableImage" data="Item" folder="{{Config.AssetsPath}}" is-preview="0"></wj-img-exp>
                 <wj-map ng-repeat="Item in PageContents.ByType.Maps" data="Item"></wj-map>
                 <wj-line ng-repeat="Item in PageContents.ByType.Line" data="Item"></wj-line>
                 <wj-social ng-repeat="Item in PageContents.ByType.Social" data="Item"></wj-social>
-                <wj-text ng-repeat="Item in PageContents.ByType.Text" data="Item"></wj-text>
+                <wj-text ng-repeat="Item in PageContents.ByType.Text" data="Item" lang="{{language}}"></wj-text>
                 <wj-video ng-repeat="Item in PageContents.ByType.Video" data="Item"></wj-video>
+                <div class="base" ng-style="{'height': SelectedPage.Height + 'px' }">&nbsp;</div>
+                <div class="name" ng-show="!SiteStyle.Logo.ImagePath" ng-bind-html="SiteStyle.Logo.Data.TrustedText()"></div>
+                <div class="logo" ng-style="SiteStyle.Logo.StyleImageContainer" ng-show="SiteStyle.Logo.ImagePath">
+                    <img ng-src="{{SiteStyle.Logo.ImagePath}}" />
+                </div>
+                <div class="wrap show">
+                    <div class="menu-toggle"><span></span></div>
+                    <div class="profile-card ps-container" style="height: 1111px;">
+                        <nav class="nav" style="margin-top: 160px;">
+                            <ul>
+                                <li ng-repeat="Page in Pages">
+                                    <a href="" ng-click="$parent.SelectedPage = Page; $parent.FetchPageContent();" ng-class="{'active': Page == $parent.SelectedPage}">{{Page.Title}}</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;">
+                            <div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div>
+                        </div>
+                        <div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px;">
+                            <div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="footer" ng-style="SiteStyle.Site.Style">
-            <div class="content" ng-style="SiteStyle.Footer.Style" ng-bind-html="SiteStyle.Footer.Data.TrustedText()"></div>
+        <div class="cont-rodape">
+            <div class="rodape" ng-bind-html="SiteStyle.Footer.Data.TrustedText()"></div>
         </div>
     </div>
+    <script src="../scripts/jquery.easing.min.js"></script>
+    <script src="../scripts/menu.main.min.js"></script>
 </body>
 </html>
