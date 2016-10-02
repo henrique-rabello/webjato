@@ -3526,15 +3526,6 @@ angular.module("WebjatoDirectives").directive("wjZindex", function (zIndexChange
         }
     };
 });
-var HelpBit = (function () {
-    function HelpBit(Id, Url, Enabled) {
-        this.Id = Id;
-        this.Url = Url;
-        this.Enabled = Enabled;
-    }
-    return HelpBit;
-}());
-
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -3664,6 +3655,15 @@ var Video = (function (_super) {
     }
     return Video;
 }(ContentBase));
+
+var HelpBit = (function () {
+    function HelpBit(Id, Url, Enabled) {
+        this.Id = Id;
+        this.Url = Url;
+        this.Enabled = Enabled;
+    }
+    return HelpBit;
+}());
 
 var CropBoxCtrl = (function () {
     function CropBoxCtrl($scope) {

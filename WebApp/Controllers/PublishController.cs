@@ -9,6 +9,7 @@ using System.Web.Http;
 using Webjato.Entities;
 using Webjato.Repositories;
 using Webjato.Repositories.AwsRepos;
+using Webjato.Repositories.SiteRepos;
 using Webjato.Utilities;
 using WebV2.App_Code;
 
@@ -37,6 +38,7 @@ namespace WebV2.Controllers {
         public Publish Publish(string subdomain) {
             using (var kernel = new StandardKernel(new NinjectBindings())) {
                 var udata = new Utilities().GetUserData(User.Identity.Name);
+                kernel.Get<SiteRepository>().UpdateTitle(udata.SiteId, subdomain);
                 return kernel.Get<Publisher>().PublishSiteOnIIS(udata.SiteId, subdomain);
             }
         }

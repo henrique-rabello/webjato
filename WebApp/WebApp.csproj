@@ -961,7 +961,7 @@
     <Content Include="publish\share.html" />
     <Content Include="publish\tpl\box-tpl.html" />
     <Content Include="publish\tpl\contact-form-tpl.html" />
-    <Content Include="publish\tpl\css\menu.css" />
+    <Content Include="publish\tpl\css\menu.main.min.css" />
     <Content Include="publish\tpl\image-expandable-tpl.html" />
     <Content Include="publish\tpl\image-link-tpl.html" />
     <Content Include="publish\tpl\image-tpl.html" />
@@ -994,6 +994,8 @@
     <Content Include="preview\video-tpl.html" />
     <Content Include="publish\tpl\css\animate.css" />
     <Content Include="publish\tpl\css\wj.css" />
+    <Content Include="publish\tpl\js\jquery.easing.min.js" />
+    <Content Include="publish\tpl\js\menu.main.min.js" />
     <Content Include="publish\tpl\js\wj-libs.js" />
     <Content Include="publish\tpl\js\wj.js" />
     <Content Include="publish\tpl\line-tpl.html" />
