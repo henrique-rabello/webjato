@@ -17,7 +17,7 @@ tinymce.addI18n('pt_BR',{
 "Heading 1": "Cabe\u00e7alho 1",
 "Headings": "Cabe\u00e7alhos",
 "Increase indent": "Aumentar recuo",
-"Formats": "Formatos",
+"Formats": "Fonte",
 "Headers": "Cabe\u00e7alhos",
 "Select all": "Selecionar tudo",
 "Header 3": "Cabe\u00e7alho 3",

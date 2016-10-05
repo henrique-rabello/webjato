@@ -157,7 +157,7 @@
                 };
             })
             .controller("PageConfigCtrl", function ($scope, $http, pages, HandleServerException) {
-                $scope.Pages = _.map(pages.data, function(page) {
+                $scope.Pages = _.map(pages.data, function (page) {
                     page.OldTitle = page.Title;
                     return page;
                 });
@@ -812,7 +812,33 @@
                             plugins: "textcolor",
                             resize: false,
                             statusbar: false,
-                            toolbar: "fontselect | forecolor | bold | italic"
+                            toolbar: "styleselect | forecolor | bold | italic",
+                            style_formats: [
+                                {
+                                    title: "Light", inline: "span", styles: {
+                                        fontFamily: "Open Sans",
+                                        fontWeight: "300"
+                                    }
+                                },
+                                {
+                                    title: "Regular", inline: "span", styles: {
+                                        "font-family": "Open Sans",
+                                        "font-weight": "400"
+                                    }
+                                },
+                                {
+                                    title: "Semi-bold", inline: "span", styles: {
+                                        "font-family": "Open Sans",
+                                        "font-weight": "600"
+                                    }
+                                },
+                                {
+                                    title: "Bold", inline: "span", styles: {
+                                        "font-family": "Open Sans",
+                                        "font-weight": "700"
+                                    }
+                                }
+                            ],
                         }
                     },
                     Footer: {
@@ -826,7 +852,33 @@
                             plugins: "textcolor",
                             resize: false,
                             statusbar: false,
-                            toolbar: "fontselect | fontsizeselect | forecolor | bold italic"
+                            toolbar: "styleselect | fontsizeselect | forecolor | bold italic",
+                            style_formats: [
+                                {
+                                    title: "Light", inline: "span", styles: {
+                                        fontFamily: "Open Sans",
+                                        fontWeight: "300"
+                                    }
+                                },
+                                {
+                                    title: "Regular", inline: "span", styles: {
+                                        "font-family": "Open Sans",
+                                        "font-weight": "400"
+                                    }
+                                },
+                                {
+                                    title: "Semi-bold", inline: "span", styles: {
+                                        "font-family": "Open Sans",
+                                        "font-weight": "600"
+                                    }
+                                },
+                                {
+                                    title: "Bold", inline: "span", styles: {
+                                        "font-family": "Open Sans",
+                                        "font-weight": "700"
+                                    }
+                                }
+                            ],
                         }
                     }
                 };

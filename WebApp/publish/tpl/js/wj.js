@@ -179,24 +179,6 @@ angular.module("WebjatoConfig").factory("WebjatoConfig", function ($http, $locat
         });
     return Config;
 });
-angular.module("WebjatoConstants").constant("ServerSyncCommands", {
-    ALL: "ALL",
-    DELETE: "DELETE",
-    DUPLICATE: "DUPLICATE",
-    POSITION: "POSITION",
-    ZINDEX: "Z-INDEX"
-});
-angular.module("WebjatoConstants").constant("SocialIconSize", {
-    SMALL: 16,
-    REGULAR: 24,
-    LARGE: 32
-});
-angular.module("WebjatoConstants").constant("zIndexChange", {
-    ONE_UP: 1,
-    ONE_DOWN: 2,
-    BRING_TO_FRONT: 3,
-    SEND_TO_BACK: 4
-});
 var Sair = null;
 var dependencies = [
     "angularFileUpload",
@@ -768,6 +750,24 @@ var CropImageCrtl = function ($scope, $http, $cookies, gettextCatalog, WebjatoCo
     });
     gettextCatalog.currentLanguage = $cookies.language;
 };
+angular.module("WebjatoConstants").constant("ServerSyncCommands", {
+    ALL: "ALL",
+    DELETE: "DELETE",
+    DUPLICATE: "DUPLICATE",
+    POSITION: "POSITION",
+    ZINDEX: "Z-INDEX"
+});
+angular.module("WebjatoConstants").constant("SocialIconSize", {
+    SMALL: 16,
+    REGULAR: 24,
+    LARGE: 32
+});
+angular.module("WebjatoConstants").constant("zIndexChange", {
+    ONE_UP: 1,
+    ONE_DOWN: 2,
+    BRING_TO_FRONT: 3,
+    SEND_TO_BACK: 4
+});
 var Page = (function () {
     function Page() {
     }
@@ -3285,12 +3285,38 @@ angular.module("WebjatoDirectives").directive("wjTinymce", function ($timeout) {
                     browser_spellcheck: true,
                     font_formats: "Arial=arial;Courier New=courier new;Times New Roman=times new roman;Verdana=verdana",
                     fontsize_formats: "16px 23px 32px 40px 48px",
+                    style_formats: [
+                        {
+                            title: "Light", inline: "span", styles: {
+                                fontFamily: "Open Sans",
+                                fontWeight: "300"
+                            }
+                        },
+                        {
+                            title: "Regular", inline: "span", styles: {
+                                "font-family": "Open Sans",
+                                "font-weight": "400"
+                            }
+                        },
+                        {
+                            title: "Semi-bold", inline: "span", styles: {
+                                "font-family": "Open Sans",
+                                "font-weight": "600"
+                            }
+                        },
+                        {
+                            title: "Bold", inline: "span", styles: {
+                                "font-family": "Open Sans",
+                                "font-weight": "700"
+                            }
+                        }
+                    ],
                     menubar: false,
                     plugins: "textcolor",
                     inline: true,
                     selector: "#" + id,
                     fixed_toolbar_container: "#" + scope.textId + " .toolbar",
-                    toolbar: "fontselect | fontsizeselect | forecolor backcolor | underline | alignleft aligncenter alignright",
+                    toolbar: "styleselect | fontselect | fontsizeselect | forecolor backcolor | underline | alignleft aligncenter alignright",
                     textcolor_map: [
                         "333333", "Black",
                         "993300", "Burnt orange",

@@ -2025,7 +2025,7 @@ msgstr ""
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\publish\tpl\index.html:172
 #: obj\Debug\Package\PackageTmp\publish\tpl\index.html:172
 #: obj\Release\Package\PackageTmp\publish\tpl\index.html:172
-#: publish\tpl\index.html:172
+#: publish\tpl\index.html:165
 msgid "Criar site"
 msgstr ""
 
