@@ -116,7 +116,6 @@ angular.module("ContentEditApp", dependencies)
             $scope.UpdateZIndexOptions();
             $scope.CurrentPanel = _.findWhere(ContentTypeList, { Enum: content.Type }).Crtl.toUpperCase();
             commitZindex = false;
-            $scope.$emit("HelpAutoDisplay", HelpIndexer.GetIdByContentType(content.Type));
         };
         $scope.FetchPageContent = function () {
             $scope.PageContents.Raw = _.chain($scope.SiteContents).where({ PageId: $scope.SelectedPage.Id }).sortBy(function (content) { return content.Position.ZIndex; }).value();
@@ -195,12 +194,7 @@ angular.module("ContentEditApp", dependencies)
             $scope.$broadcast("DismissAddContentPreview");
         };
         $scope.ShowHelp = function () {
-            if ($scope.ActiveContent) {
-                $scope.$emit("HelpDisplay", HelpIndexer.GetIdByContentType($scope.ActiveContent.Type));
-            }
-            else {
-                $scope.$emit("HelpDisplay", currentHelpId);
-            }
+            $scope.$emit("HelpDisplay");
         };
         $scope.EnterMultiSelectionMode = function (multiSelectionMode) {
             if ($scope.PageContents.Raw.length == 0) {
@@ -210,8 +204,6 @@ angular.module("ContentEditApp", dependencies)
                 $scope.MultiSelection = multiSelectionMode;
                 $scope.CurrentPanel = multiSelectionPanel[multiSelectionMode];
                 $scope.$broadcast("OnEnterMultiSelectionMode", multiSelectionMode);
-                currentHelpId = multiSelectionMode == MultiSelectionMode.MOVE? "content/move" : "content/duplicate";
-                $scope.$emit("HelpAutoDisplay", currentHelpId);
             }
             UnitContentModel.ContentTypeToPreview = null;
         };
@@ -487,7 +479,6 @@ angular.module("ContentEditApp", dependencies)
                     });
                     $scope.SelectedPage = $scope.Pages[0];
                     $scope.FetchPageContent();
-                    $scope.$emit("HelpAutoDisplay", "content/start");
                 }).error(HandleServerException);
         };
         //CODE STARTS HERE

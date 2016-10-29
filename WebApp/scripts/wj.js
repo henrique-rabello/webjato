@@ -315,7 +315,6 @@ angular.module("ContentEditApp", dependencies)
             $scope.UpdateZIndexOptions();
             $scope.CurrentPanel = _.findWhere(ContentTypeList, { Enum: content.Type }).Crtl.toUpperCase();
             commitZindex = false;
-            $scope.$emit("HelpAutoDisplay", HelpIndexer.GetIdByContentType(content.Type));
         };
         $scope.FetchPageContent = function () {
             $scope.PageContents.Raw = _.chain($scope.SiteContents).where({ PageId: $scope.SelectedPage.Id }).sortBy(function (content) { return content.Position.ZIndex; }).value();
@@ -394,12 +393,7 @@ angular.module("ContentEditApp", dependencies)
             $scope.$broadcast("DismissAddContentPreview");
         };
         $scope.ShowHelp = function () {
-            if ($scope.ActiveContent) {
-                $scope.$emit("HelpDisplay", HelpIndexer.GetIdByContentType($scope.ActiveContent.Type));
-            }
-            else {
-                $scope.$emit("HelpDisplay", currentHelpId);
-            }
+            $scope.$emit("HelpDisplay");
         };
         $scope.EnterMultiSelectionMode = function (multiSelectionMode) {
             if ($scope.PageContents.Raw.length == 0) {
@@ -409,8 +403,6 @@ angular.module("ContentEditApp", dependencies)
                 $scope.MultiSelection = multiSelectionMode;
                 $scope.CurrentPanel = multiSelectionPanel[multiSelectionMode];
                 $scope.$broadcast("OnEnterMultiSelectionMode", multiSelectionMode);
-                currentHelpId = multiSelectionMode == MultiSelectionMode.MOVE? "content/move" : "content/duplicate";
-                $scope.$emit("HelpAutoDisplay", currentHelpId);
             }
             UnitContentModel.ContentTypeToPreview = null;
         };
@@ -686,7 +678,6 @@ angular.module("ContentEditApp", dependencies)
                     });
                     $scope.SelectedPage = $scope.Pages[0];
                     $scope.FetchPageContent();
-                    $scope.$emit("HelpAutoDisplay", "content/start");
                 }).error(HandleServerException);
         };
         //CODE STARTS HERE
@@ -772,114 +763,6 @@ var Page = (function () {
     function Page() {
     }
     return Page;
-}());
-
-var Help = (function () {
-    function Help() {
-        this.items = [];
-        this.enabled = false;
-        this.cookieHelpItems = "HelpItems";
-        this.cookieHelpState = "HelpState";
-        this.enabled = this.RetrieveHelpState();
-        var identifiers = [
-            "main",
-            "config/size",
-            "config/align",
-            "config/title",
-            "config/pages",
-            "config/position",
-            "visual/bg",
-            "visual/header",
-            "visual/footer",
-            "visual/logo",
-            "visual/menu",
-            "visual/page",
-            "content/start",
-            "content/text",
-            "content/box",
-            "content/line",
-            "content/image-simple",
-            "content/image-expandable",
-            "content/image-linked",
-            "content/video",
-            "content/map",
-            "content/social",
-            "content/contact-form",
-            "content/move",
-            "content/duplicate",
-            "publish/address",
-            "publish/display",
-            "publish/share",
-            "publish/hide"
-        ];
-        var itemsState = this.RetrieveHelpItems();
-        for (var i = 0; i < identifiers.length; i++) {
-            var helpItem = new HelpItem(identifiers[i], (itemsState != "") ? (itemsState.charAt(i) == "1") : false);
-            this.items.push(helpItem);
-        }
-    }
-    Help.prototype.ExportHelpItems = function () {
-        var helpState = "";
-        var helpItem;
-        for (var i = 0; i < this.items.length; i++) {
-            helpItem = this.items[i];
-            helpState += (helpItem.displayed ? "1" : "0");
-        }
-        $.cookie(this.cookieHelpItems, helpState, { path: "/" });
-    };
-    Help.prototype.RetrieveHelpItems = function () {
-        var state = $.cookie(this.cookieHelpItems);
-        return ((state == undefined) ? "" : state);
-    };
-    Help.prototype.ExportHelpState = function () {
-        $.cookie(this.cookieHelpState, this.enabled ? "1" : "0", { path: "/" });
-    };
-    Help.prototype.RetrieveHelpState = function () {
-        var state = $.cookie(this.cookieHelpState);
-        return ((state == undefined) ? false : (state == "1"));
-    };
-    Help.prototype.Show = function (id) {
-        if (!this.enabled) {
-            return false;
-        }
-        var item = this.GetHelpItem(id);
-        if (!item.displayed) {
-            item.displayed = true;
-            this.ExportHelpItems();
-            return true;
-        }
-        return false;
-    };
-    Help.prototype.GetHelpItem = function (id) {
-        for (var i = 0; i < this.items.length; i++) {
-            if (this.items[i].id == id) {
-                return this.items[i];
-            }
-        }
-        return null;
-    };
-    Help.prototype.ResetAllItemsState = function () {
-        for (var i = 0; i < this.items.length; i++) {
-            this.items[i].displayed = false;
-        }
-        this.ExportHelpItems();
-    };
-    Help.prototype.SetEnabled = function (state, reset) {
-        this.enabled = state;
-        if (reset) {
-            this.ResetAllItemsState();
-        }
-        this.ExportHelpState();
-    };
-    return Help;
-}());
-
-var HelpItem = (function () {
-    function HelpItem(id, displayed) {
-        this.id = id;
-        this.displayed = displayed;
-    }
-    return HelpItem;
 }());
 
 angular.module("WebjatoFactories")
@@ -1573,6 +1456,114 @@ angular.module("WebjatoFactories")
         };
     }
 );
+var Help = (function () {
+    function Help() {
+        this.items = [];
+        this.enabled = false;
+        this.cookieHelpItems = "HelpItems";
+        this.cookieHelpState = "HelpState";
+        this.enabled = this.RetrieveHelpState();
+        var identifiers = [
+            "main",
+            "config/size",
+            "config/align",
+            "config/title",
+            "config/pages",
+            "config/position",
+            "visual/bg",
+            "visual/header",
+            "visual/footer",
+            "visual/logo",
+            "visual/menu",
+            "visual/page",
+            "content/start",
+            "content/text",
+            "content/box",
+            "content/line",
+            "content/image-simple",
+            "content/image-expandable",
+            "content/image-linked",
+            "content/video",
+            "content/map",
+            "content/social",
+            "content/contact-form",
+            "content/move",
+            "content/duplicate",
+            "publish/address",
+            "publish/display",
+            "publish/share",
+            "publish/hide"
+        ];
+        var itemsState = this.RetrieveHelpItems();
+        for (var i = 0; i < identifiers.length; i++) {
+            var helpItem = new HelpItem(identifiers[i], (itemsState != "") ? (itemsState.charAt(i) == "1") : false);
+            this.items.push(helpItem);
+        }
+    }
+    Help.prototype.ExportHelpItems = function () {
+        var helpState = "";
+        var helpItem;
+        for (var i = 0; i < this.items.length; i++) {
+            helpItem = this.items[i];
+            helpState += (helpItem.displayed ? "1" : "0");
+        }
+        $.cookie(this.cookieHelpItems, helpState, { path: "/" });
+    };
+    Help.prototype.RetrieveHelpItems = function () {
+        var state = $.cookie(this.cookieHelpItems);
+        return ((state == undefined) ? "" : state);
+    };
+    Help.prototype.ExportHelpState = function () {
+        $.cookie(this.cookieHelpState, this.enabled ? "1" : "0", { path: "/" });
+    };
+    Help.prototype.RetrieveHelpState = function () {
+        var state = $.cookie(this.cookieHelpState);
+        return ((state == undefined) ? false : (state == "1"));
+    };
+    Help.prototype.Show = function (id) {
+        if (!this.enabled) {
+            return false;
+        }
+        var item = this.GetHelpItem(id);
+        if (!item.displayed) {
+            item.displayed = true;
+            this.ExportHelpItems();
+            return true;
+        }
+        return false;
+    };
+    Help.prototype.GetHelpItem = function (id) {
+        for (var i = 0; i < this.items.length; i++) {
+            if (this.items[i].id == id) {
+                return this.items[i];
+            }
+        }
+        return null;
+    };
+    Help.prototype.ResetAllItemsState = function () {
+        for (var i = 0; i < this.items.length; i++) {
+            this.items[i].displayed = false;
+        }
+        this.ExportHelpItems();
+    };
+    Help.prototype.SetEnabled = function (state, reset) {
+        this.enabled = state;
+        if (reset) {
+            this.ResetAllItemsState();
+        }
+        this.ExportHelpState();
+    };
+    return Help;
+}());
+
+var HelpItem = (function () {
+    function HelpItem(id, displayed) {
+        this.id = id;
+        this.displayed = displayed;
+    }
+    return HelpItem;
+}());
+
 angular.module("WebjatoModels").factory("UnitContentModel", function () {
 	return {
 		ContentTypeToPreview: null,
@@ -3552,15 +3543,6 @@ angular.module("WebjatoDirectives").directive("wjZindex", function (zIndexChange
         }
     };
 });
-var HelpBit = (function () {
-    function HelpBit(Id, Url, Enabled) {
-        this.Id = Id;
-        this.Url = Url;
-        this.Enabled = Enabled;
-    }
-    return HelpBit;
-}());
-
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -3691,6 +3673,15 @@ var Video = (function (_super) {
     return Video;
 }(ContentBase));
 
+var HelpBit = (function () {
+    function HelpBit(Id, Url, Enabled) {
+        this.Id = Id;
+        this.Url = Url;
+        this.Enabled = Enabled;
+    }
+    return HelpBit;
+}());
+
 var CropBoxCtrl = (function () {
     function CropBoxCtrl($scope) {
         this.$scope = $scope;
@@ -3785,34 +3776,48 @@ angular.module("WebjatoServices")
     };
 });
 
-angular.module("WebjatoDirectives").directive("wjHelp", function () {
+angular.module('WebjatoDirectives').directive('wjHelp', function () {
     return {
-        restrict: "E",
+        restrict: 'E',
         replace: true,
-        scope: true,
-        template: "<div class='wj-help' ng-include='Url' onload='OnLoad();'></div>",
-        controller: function ($rootScope, $scope, HelpIndexer) {
-            $scope.Url = null;
-            $scope.OnLoad = function () {
-                $(".wj-help").lightbox_me({
-                    destroyOnClose: true,
-                    onClose: function () {
-                        $scope.Url = null;
-                        $scope.$apply();
+        scope: {
+            name: '@',
+            email: '@'
+        },
+        templateUrl: '/help/wj-help.html',
+        controller: function ($rootScope, $scope, $http, $timeout) {
+            var selector = '.wj-help';
+            var reset = function () {
+                $scope.subject = 'Dúvida';
+                $scope.message = '';
+                $scope.sending = false;
+                $scope.sent = false;
+            };
+            $scope.send = function () {
+                $scope.sending = true;
+                $http({
+                    method: 'POST',
+                    url: '/api/support',
+                    data: {
+                        name: $scope.name,
+                        email: $scope.email,
+                        subject: $scope.subject,
+                        message: $scope.message
                     }
+                }).success(function () {
+                    $scope.sent = true;
+                    $timeout(function () {
+                        reset();
+                        $(selector).trigger('close');
+                    }, 2000);
                 });
             };
-            $rootScope.$on("HelpDisplay", function (e, id) {
-                $scope.Url = HelpIndexer.GetUrl(id);
+            $rootScope.$on('HelpDisplay', function (e, id) {
+                $(selector).lightbox_me({
+                    destroyOnClose: false
+                });
             });
-            $rootScope.$on("HelpAutoDisplay", function (e, id) {
-                if (new Help().Show(id)) {
-                    $scope.Url = HelpIndexer.GetUrl(id);
-                }
-            });
-            $rootScope.$on("HelpSetState", function (e, newState, reset) {
-                new Help().SetEnabled(newState, reset);
-            });
+            reset();
         }
     };
 });

@@ -144,16 +144,11 @@
                     else {
                         $(".ui-layout-center").animate({ scrollTop: 0 }, 500);
                     }
-                    $scope.$emit("HelpAutoDisplay", page.helpId);
                     $scope.$emit("OnSiteChange", "OnSectionChange");
                     $scope.selectedPage = page;
                 };
-                $scope.showHelp = function (id) {
-                    $scope.$emit("HelpDisplay", id);
-                };
-                $scope.displayFinish = function (isLastPage) {
-                    if (!isLastPage) return;
-                    $scope.$emit("HelpDisplay", "visual/finish");
+                $scope.showHelp = function () {
+                    $scope.$emit("HelpDisplay");
                 };
             })
             .controller("PageConfigCtrl", function ($scope, $http, pages, HandleServerException) {
@@ -1066,7 +1061,7 @@
     </script>
 </head>
 <body ng-controller="PreviewCrtl" ng-cloak>
-    <wj-help></wj-help>
+    <wj-help name="{{User.FullName}}" email="{{User.Email}}"></wj-help>
     <div class="ui-layout-center">
         <div class="preview" ng-style="Background.Style">
             <div class="cont-pagina">
@@ -1125,7 +1120,7 @@
                     </a>
                 </div>
                 <div class="bot-side ajudyz">
-                    <a ng-click="showHelp(selectedPage.helpId);" class="north mouse-seta" title="{{'Ajuda'|translate}}">
+                    <a ng-click="showHelp();" class="north mouse-seta" title="{{'Ajuda'|translate}}">
                         <img src="../images/bot_ajuda.png" alt="" />
                     </a>
                 </div>
@@ -1161,7 +1156,7 @@
                         </a>
                     </li>
                     <li>
-                        <a ng-href="{{selectedPage.next.url}}" ng-click="displayFinish(selectedPage.last);select(selectedPage.next);" title="{{'Avançar'|translate}}" ng-class="{'inactive': selectedPage.last}">
+                        <a ng-href="{{selectedPage.next.url}}" ng-click="select(selectedPage.next);" title="{{'Avançar'|translate}}" ng-class="{'inactive': selectedPage.last}">
                             <img src="../images/seta_right.png" alt="" title="{{'Avançar'|translate}}" />
                         </a>
                     </li>

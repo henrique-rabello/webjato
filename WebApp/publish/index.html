@@ -3,10 +3,11 @@
 <head>
     <meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
     <title translate>Webjato - PUBLICAÇÃO</title>
+    <link type="text/css" rel="stylesheet" href="../css/wj.css"  />
     <link type="text/css" rel="stylesheet" href="../css/animate.css" />
     <link type="text/css" rel="stylesheet" href="../css/header.css" />
     <link type="text/css" rel="stylesheet" href="../css/help.css" />
-    <link rel="stylesheet" type="text/css" href="../css/basic.css" />
+    <link type="text/css" rel="stylesheet" href="../css/basic.css" />
     <link type="text/css" rel="stylesheet" href="../css/tipsy.css" />
     <link type="text/css" rel="stylesheet" href="../css/jquery.dropdown.css" />
     <link type="text/css" rel="stylesheet" href="../css/layout-default.css" />
@@ -99,21 +100,17 @@
                     if (url == "") {
                         return;
                     }
-                    if ($scope.CurrentPage && $scope.CurrentPage.last && viaBtnNext) {
-                        $scope.$emit("HelpDisplay", "config/finish");
-                    }
                     $timeout(
                         function () {
                             $scope.CurrentPage = _.find(pages, function (key) { return key.url == url; });
                             $scope.PrevPageUrl = $scope.CurrentPage.first ? "" : pages[$scope.CurrentPage.index - 1].url;
                             $scope.NextPageUrl = $scope.CurrentPage.last ? $scope.CurrentPage.url : pages[$scope.CurrentPage.index + 1].url;
                             $scope.Url = url;
-                            $scope.$emit("HelpAutoDisplay", $scope.CurrentPage.helpId);
                         }, 100
                     );
                 };
-                $scope.ShowHelp = function (id) {
-                    $scope.$emit("HelpDisplay", id);
+                $scope.ShowHelp = function () {
+                    $scope.$emit("HelpDisplay");
                 };
                 gettextCatalog.currentLanguage = $cookies.language;
                 $scope.GoTo("#" + $location.url());
@@ -201,7 +198,7 @@
     </script>
 </head>
 <body ng-controller="MenuCrtl">
-    <wj-help></wj-help>
+    <wj-help name="{{User.FullName}}" email="{{User.Email}}"></wj-help>
     <div class="ui-layout-center">
         <div ng-view></div>
     </div>
@@ -216,7 +213,7 @@
                     </a>
                 </div>
                 <div class="bot-side ajudyz">
-                    <a href="" ng-click="ShowHelp(CurrentPage.helpId);" class="north mouse-seta" title="{{'Ajuda'|translate}}">
+                    <a href="" ng-click="ShowHelp();" class="north mouse-seta" title="{{'Ajuda'|translate}}">
                         <img src="../images/bot_ajuda.png" alt="" />
                     </a>
                 </div>

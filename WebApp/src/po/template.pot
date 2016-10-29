@@ -165,7 +165,7 @@ msgstr ""
 msgid "1. Ícones – habilite-o e escreva o endereço na web."
 msgstr ""
 
-#: main.html:371
+#: main.html:357
 #: obj\Debug\AspnetCompileMerge\Source\main.html:371
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\main.html:371
 #: obj\Debug\Package\PackageTmp\main.html:371
@@ -281,7 +281,7 @@ msgstr ""
 msgid "2. Unidade – adiciona um conteúdo."
 msgstr ""
 
-#: main.html:379
+#: main.html:365
 #: obj\Debug\AspnetCompileMerge\Source\main.html:380
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\main.html:380
 #: obj\Debug\Package\PackageTmp\main.html:380
@@ -353,7 +353,7 @@ msgstr ""
 msgid "3. Ordem – posiciona acima ou abaixo de outros conteúdos."
 msgstr ""
 
-#: main.html:387
+#: main.html:373
 #: obj\Debug\AspnetCompileMerge\Source\main.html:389
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\main.html:389
 #: obj\Debug\Package\PackageTmp\main.html:389
@@ -466,7 +466,7 @@ msgid ""
 "                        </div>"
 msgstr ""
 
-#: config\index.html:300
+#: config\index.html:298
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:300
 #: obj\Debug\AspnetCompileMerge\Source\publish\index.html:224
 #: obj\Debug\AspnetCompileMerge\Source\visual\index.html:1154
@@ -481,7 +481,7 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\main.html:325
 #: obj\Release\Package\PackageTmp\publish\index.html:219
 #: obj\Release\Package\PackageTmp\visual\index.html:1147
-#: publish\index.html:224
+#: publish\index.html:221
 msgid ""
 "<img src=\"../images/bot_user.png\" alt=\"\">\r\n"
 "                     <div class=\"dropdown dropdown-tip dropdown-anchor-right\">\r\n"
@@ -494,7 +494,7 @@ msgid ""
 "                     </div>"
 msgstr ""
 
-#: config\index.html:290
+#: config\index.html:288
 #: content\index.html:363
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:290
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:322
@@ -512,11 +512,11 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\content\index.html:296
 #: obj\Release\Package\PackageTmp\publish\index.html:209
 #: obj\Release\Package\PackageTmp\visual\index.html:1137
-#: publish\index.html:214
+#: publish\index.html:211
 msgid "<img src=\"../images/bot_visualizar.png\" alt=\"\">"
 msgstr ""
 
-#: config\index.html:284
+#: config\index.html:282
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:284
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\config\index.html:284
 #: obj\Debug\Package\PackageTmp\config\index.html:284
@@ -540,7 +540,7 @@ msgstr ""
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\publish\index.html:210
 #: obj\Debug\Package\PackageTmp\publish\index.html:210
 #: obj\Release\Package\PackageTmp\publish\index.html:205
-#: publish\index.html:210
+#: publish\index.html:207
 msgid "<img src=\"../images/icon-peq-publicar.png\" alt=\"\" title=\"\">Publicar"
 msgstr ""
 
@@ -680,7 +680,6 @@ msgstr ""
 msgid "<strong>⇒</strong> Depois selecione outra página do site e repita o processo <strong>⇐</strong>"
 msgstr ""
 
-#: index_2015.html:314
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:314
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\index_2015.html:314
 #: obj\Debug\Package\PackageTmp\index_2015.html:314
@@ -690,7 +689,6 @@ msgstr ""
 msgid "A senha deve ter pelo menos 5 caracteres"
 msgstr ""
 
-#: index_2015.html:342
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:342
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\index_2015.html:342
 #: obj\Debug\Package\PackageTmp\index_2015.html:342
@@ -1023,9 +1021,9 @@ msgstr ""
 msgid "Administração"
 msgstr ""
 
-#: config\index.html:295
+#: config\index.html:293
 #: content\index.html:368
-#: main.html:340
+#: main.html:330
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:295
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:327
 #: obj\Debug\AspnetCompileMerge\Source\main.html:340
@@ -1054,8 +1052,8 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\main.html:320
 #: obj\Release\Package\PackageTmp\publish\index.html:214
 #: obj\Release\Package\PackageTmp\visual\index.html:1142
-#: publish\index.html:219
-#: visual\index.html:1076
+#: publish\index.html:216
+#: visual\index.html:1123
 msgid "Ajuda"
 msgstr ""
 
@@ -1064,7 +1062,7 @@ msgstr ""
 msgid "Ajuda automática"
 msgstr ""
 
-#: config\index.html:323
+#: config\index.html:321
 #: help\config-align.html:7
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:323
 #: obj\Debug\AspnetCompileMerge\Source\help\config-align.html:7
@@ -1081,7 +1079,7 @@ msgstr ""
 msgid "Alinhamento"
 msgstr ""
 
-#: config\index.html:321
+#: config\index.html:319
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:321
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\config\index.html:321
 #: obj\Debug\Package\PackageTmp\config\index.html:321
@@ -1183,11 +1181,11 @@ msgstr ""
 #: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:1061
 #: obj\Release\Package\PackageTmp\content\map-editor-tpl.html:9
 #: obj\Release\Package\PackageTmp\visual\index.html:1224
-#: visual\index.html:1129
+#: visual\index.html:1176
 msgid "Aplicar"
 msgstr ""
 
-#: main.html:331
+#: main.html:321
 #: obj\Debug\AspnetCompileMerge\Source\main.html:331
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\main.html:331
 #: obj\Debug\Package\PackageTmp\main.html:331
@@ -1278,8 +1276,8 @@ msgstr ""
 msgid "Avançado"
 msgstr ""
 
-#: config\index.html:353
-#: config\index.html:354
+#: config\index.html:351
+#: config\index.html:352
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:353
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:354
 #: obj\Debug\AspnetCompileMerge\Source\publish\index.html:279
@@ -1312,10 +1310,10 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\publish\index.html:275
 #: obj\Release\Package\PackageTmp\visual\index.html:1206
 #: obj\Release\Package\PackageTmp\visual\index.html:1207
-#: publish\index.html:279
-#: publish\index.html:280
-#: visual\index.html:1112
-#: visual\index.html:1113
+#: publish\index.html:276
+#: publish\index.html:277
+#: visual\index.html:1159
+#: visual\index.html:1160
 msgid "Avançar"
 msgstr ""
 
@@ -1666,7 +1664,6 @@ msgstr ""
 msgid "Clique em exemplos ou escreva direto no campo para criar os botões do menu do seu site."
 msgstr ""
 
-#: index_2015.html:276
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:276
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\index_2015.html:276
 #: obj\Debug\Package\PackageTmp\index_2015.html:276
@@ -1712,7 +1709,6 @@ msgstr ""
 msgid "Com exceção do 1º botão, você pode trocar a ordem de navegação."
 msgstr ""
 
-#: index_2015.html:259
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:259
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\index_2015.html:259
 #: obj\Debug\Package\PackageTmp\index_2015.html:259
@@ -1722,7 +1718,6 @@ msgstr ""
 msgid "Combinação email/senha não reconhecida. Tente de novo."
 msgstr ""
 
-#: index_2015.html:272
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:272
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\index_2015.html:272
 #: obj\Debug\Package\PackageTmp\index_2015.html:272
@@ -1759,8 +1754,6 @@ msgid "Configuração"
 msgstr ""
 
 #: cropbox.html:13
-#: index_2015.html:255
-#: index_2015.html:318
 #: obj\Debug\AspnetCompileMerge\Source\cropbox.html:13
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:255
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:318
@@ -1780,9 +1773,9 @@ msgstr ""
 msgid "Confirmar"
 msgstr ""
 
-#: config\index.html:300
+#: config\index.html:298
 #: content\index.html:373
-#: main.html:345
+#: main.html:335
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:300
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:332
 #: obj\Debug\AspnetCompileMerge\Source\main.html:345
@@ -1803,8 +1796,8 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\main.html:325
 #: obj\Release\Package\PackageTmp\publish\index.html:219
 #: obj\Release\Package\PackageTmp\visual\index.html:1147
-#: publish\index.html:224
-#: visual\index.html:1081
+#: publish\index.html:221
+#: visual\index.html:1128
 msgid "Conta"
 msgstr ""
 
@@ -1847,7 +1840,7 @@ msgid "Contato"
 msgstr ""
 
 #: help\content-start.html:6
-#: main.html:381
+#: main.html:367
 #: obj\Debug\AspnetCompileMerge\Source\help\content-start.html:6
 #: obj\Debug\AspnetCompileMerge\Source\main.html:391
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\help\content-start.html:6
@@ -2039,7 +2032,6 @@ msgstr ""
 msgid "Crie seu site em 4 etapas"
 msgstr ""
 
-#: index_2015.html:347
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:347
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\index_2015.html:347
 #: obj\Debug\Package\PackageTmp\index_2015.html:347
@@ -2264,8 +2256,8 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\help\publish-share.html:8
 #: obj\Release\Package\PackageTmp\publish\index.html:250
 #: obj\Release\Package\PackageTmp\publish\index.html:254
-#: publish\index.html:255
-#: publish\index.html:259
+#: publish\index.html:252
+#: publish\index.html:256
 msgid "Divulgar"
 msgstr ""
 
@@ -2389,9 +2381,6 @@ msgstr ""
 msgid "Em breve você poderá conectar seu site com um endereço próprio (www.seusite.com.br)"
 msgstr ""
 
-#: index_2015.html:246
-#: index_2015.html:307
-#: index_2015.html:334
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:246
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:307
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:334
@@ -2476,8 +2465,8 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\help\publish-address.html:8
 #: obj\Release\Package\PackageTmp\publish\index.html:234
 #: obj\Release\Package\PackageTmp\publish\index.html:238
-#: publish\index.html:239
-#: publish\index.html:243
+#: publish\index.html:236
+#: publish\index.html:240
 msgid "Endereço"
 msgstr ""
 
@@ -2486,7 +2475,6 @@ msgstr ""
 msgid "Endereço – endereço completo do local."
 msgstr ""
 
-#: index_2015.html:235
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:235
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\index_2015.html:235
 #: obj\Debug\Package\PackageTmp\index_2015.html:235
@@ -2496,8 +2484,6 @@ msgstr ""
 msgid "Entre"
 msgstr ""
 
-#: index_2015.html:309
-#: index_2015.html:336
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:309
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:336
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\index_2015.html:309
@@ -2533,7 +2519,6 @@ msgstr ""
 msgid "Enviar para trás"
 msgstr ""
 
-#: index_2015.html:340
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:340
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\index_2015.html:340
 #: obj\Debug\Package\PackageTmp\index_2015.html:340
@@ -2716,7 +2701,6 @@ msgstr ""
 msgid "Espessura – altera a densidade."
 msgstr ""
 
-#: index_2015.html:332
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:332
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\index_2015.html:332
 #: obj\Debug\Package\PackageTmp\index_2015.html:332
@@ -2726,7 +2710,6 @@ msgstr ""
 msgid "Esqueci a Senha"
 msgstr ""
 
-#: index_2015.html:262
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:262
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\index_2015.html:262
 #: obj\Debug\Package\PackageTmp\index_2015.html:262
@@ -2760,7 +2743,6 @@ msgstr ""
 msgid "Esta página ainda não possui conteúdo."
 msgstr ""
 
-#: index_2015.html:343
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:343
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\index_2015.html:343
 #: obj\Debug\Package\PackageTmp\index_2015.html:343
@@ -2770,7 +2752,6 @@ msgstr ""
 msgid "Este e-mail está associado a uma conta de Facebook. Utilize o facebook para entrar no site."
 msgstr ""
 
-#: index_2015.html:322
 #: lang_pt-br\inscrever-se.html:86
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:322
 #: obj\Debug\AspnetCompileMerge\Source\lang_pt-br\inscrever-se.html:86
@@ -2784,7 +2765,6 @@ msgstr ""
 msgid "Este e-mail já está em uso, por favor tente de novo."
 msgstr ""
 
-#: index_2015.html:341
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:341
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\index_2015.html:341
 #: obj\Debug\Package\PackageTmp\index_2015.html:341
@@ -2872,7 +2852,7 @@ msgstr ""
 #: obj\Debug\Package\PackageTmp\publish\index.html:251
 #: obj\Release\Package\PackageTmp\help\publish-display.html:8
 #: obj\Release\Package\PackageTmp\publish\index.html:246
-#: publish\index.html:251
+#: publish\index.html:248
 msgid "Exibir"
 msgstr ""
 
@@ -2884,7 +2864,6 @@ msgstr ""
 msgid "Exibir / Atualizar"
 msgstr ""
 
-#: main.html:363
 #: obj\Debug\AspnetCompileMerge\Source\main.html:363
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\main.html:363
 #: obj\Debug\Package\PackageTmp\main.html:363
@@ -2908,7 +2887,7 @@ msgstr ""
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\publish\index.html:247
 #: obj\Debug\Package\PackageTmp\publish\index.html:247
 #: obj\Release\Package\PackageTmp\publish\index.html:242
-#: publish\index.html:247
+#: publish\index.html:244
 msgid "Exibição"
 msgstr ""
 
@@ -3420,7 +3399,7 @@ msgstr ""
 msgid "INÍCIO"
 msgstr ""
 
-#: main.html:396
+#: main.html:382
 #: obj\Debug\AspnetCompileMerge\Source\main.html:408
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\main.html:408
 #: obj\Debug\Package\PackageTmp\main.html:408
@@ -3589,7 +3568,6 @@ msgstr ""
 msgid "Inscrever-se"
 msgstr ""
 
-#: index_2015.html:290
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:290
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\index_2015.html:290
 #: obj\Debug\Package\PackageTmp\index_2015.html:290
@@ -3599,7 +3577,6 @@ msgstr ""
 msgid "Inscrever-se com Email"
 msgstr ""
 
-#: index_2015.html:300
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:300
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\index_2015.html:300
 #: obj\Debug\Package\PackageTmp\index_2015.html:300
@@ -3609,7 +3586,7 @@ msgstr ""
 msgid "Inscrever-se com email"
 msgstr ""
 
-#: config\index.html:283
+#: config\index.html:281
 #: config\labels.html:418
 #: content\index.html:357
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:283
@@ -3642,13 +3619,11 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\content\index.html:290
 #: obj\Release\Package\PackageTmp\publish\index.html:204
 #: obj\Release\Package\PackageTmp\visual\index.html:1131
-#: publish\index.html:209
-#: visual\index.html:1061
+#: publish\index.html:206
+#: visual\index.html:1108
 msgid "Início"
 msgstr ""
 
-#: index_2015.html:294
-#: index_2015.html:326
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:294
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:326
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\index_2015.html:294
@@ -3674,7 +3649,7 @@ msgstr ""
 msgid "Largura"
 msgstr ""
 
-#: config\index.html:315
+#: config\index.html:313
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:315
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\config\index.html:315
 #: obj\Debug\Package\PackageTmp\config\index.html:315
@@ -3891,8 +3866,8 @@ msgstr ""
 msgid "Mensagem"
 msgstr ""
 
+#: config\index.html:331
 #: config\index.html:333
-#: config\index.html:335
 #: help\config-pages.html:7
 #: help\visual-menu.html:8
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:333
@@ -4018,8 +3993,8 @@ msgstr ""
 msgid "Médio"
 msgstr ""
 
+#: config\index.html:337
 #: config\index.html:339
-#: config\index.html:341
 #: help\config-position.html:7
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:339
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:341
@@ -4061,7 +4036,6 @@ msgstr ""
 msgid "Nome"
 msgstr ""
 
-#: index_2015.html:302
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:302
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\index_2015.html:302
 #: obj\Debug\Package\PackageTmp\index_2015.html:302
@@ -4173,8 +4147,6 @@ msgstr ""
 msgid "Não"
 msgstr ""
 
-#: index_2015.html:265
-#: index_2015.html:349
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:265
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:349
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\index_2015.html:265
@@ -4198,7 +4170,6 @@ msgstr ""
 msgid "Não utilize espaços em branco, caracteres acentuados ou de pontuação."
 msgstr ""
 
-#: index_2015.html:275
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:275
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\index_2015.html:275
 #: obj\Debug\Package\PackageTmp\index_2015.html:275
@@ -4216,7 +4187,6 @@ msgstr ""
 msgid "O endereço deve conter pelo menos 3 caracteres."
 msgstr ""
 
-#: index_2015.html:304
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:304
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\index_2015.html:304
 #: obj\Debug\Package\PackageTmp\index_2015.html:304
@@ -4254,8 +4224,8 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\publish\index.html:258
 #: obj\Release\Package\PackageTmp\publish\index.html:262
 #: publish\hide.html:33
-#: publish\index.html:263
-#: publish\index.html:267
+#: publish\index.html:260
+#: publish\index.html:264
 msgid "Ocultar"
 msgstr ""
 
@@ -4591,7 +4561,7 @@ msgstr ""
 msgid "Promova seu site no mundo. Utilize a ajuda de grandes marcas."
 msgstr ""
 
-#: main.html:389
+#: main.html:375
 #: obj\Debug\AspnetCompileMerge\Source\main.html:400
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\main.html:400
 #: obj\Debug\Package\PackageTmp\main.html:400
@@ -4711,7 +4681,7 @@ msgstr ""
 msgid "Rodapé"
 msgstr ""
 
-#: config\index.html:381
+#: config\index.html:379
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:381
 #: obj\Debug\AspnetCompileMerge\Source\publish\index.html:306
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\config\index.html:381
@@ -4722,8 +4692,8 @@ msgstr ""
 #: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:386
 #: obj\Release\Package\PackageTmp\config\index.html:376
 #: obj\Release\Package\PackageTmp\publish\index.html:301
-#: publish\index.html:306
-#: visual\index.html:1087
+#: publish\index.html:303
+#: visual\index.html:1134
 msgid "Sair"
 msgstr ""
 
@@ -4758,8 +4728,6 @@ msgstr ""
 msgid "Selecione a Página"
 msgstr ""
 
-#: index_2015.html:250
-#: index_2015.html:312
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:250
 #: obj\Debug\AspnetCompileMerge\Source\index_2015.html:312
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\index_2015.html:250
@@ -4837,7 +4805,7 @@ msgstr ""
 msgid "Sim"
 msgstr ""
 
-#: main.html:373
+#: main.html:359
 msgid "Site"
 msgstr ""
 
@@ -4919,7 +4887,7 @@ msgstr ""
 msgid "Sua sessão expirou :("
 msgstr ""
 
-#: config\index.html:317
+#: config\index.html:315
 #: content\map-editor-tpl.html:12
 #: content\social-editor-tpl.html:138
 #: content\video-editor-tpl.html:15
@@ -5074,7 +5042,7 @@ msgstr ""
 msgid "Todas as páginas iniciam vazias. Aqui, você define como elas serão."
 msgstr ""
 
-#: main.html:351
+#: main.html:341
 #: obj\Debug\AspnetCompileMerge\Source\main.html:351
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\main.html:351
 #: obj\Debug\Package\PackageTmp\main.html:351
@@ -5165,8 +5133,8 @@ msgstr ""
 msgid "Trocar"
 msgstr ""
 
+#: config\index.html:325
 #: config\index.html:327
-#: config\index.html:329
 #: help\config-title.html:7
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:327
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:329
@@ -5204,9 +5172,9 @@ msgstr ""
 msgid "VISUAL"
 msgstr ""
 
-#: config\index.html:290
+#: config\index.html:288
 #: content\index.html:363
-#: main.html:335
+#: main.html:325
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:290
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:322
 #: obj\Debug\AspnetCompileMerge\Source\main.html:335
@@ -5227,8 +5195,8 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\main.html:315
 #: obj\Release\Package\PackageTmp\publish\index.html:209
 #: obj\Release\Package\PackageTmp\visual\index.html:1137
-#: publish\index.html:214
-#: visual\index.html:1071
+#: publish\index.html:211
+#: visual\index.html:1118
 msgid "Ver construção"
 msgstr ""
 
@@ -5260,8 +5228,8 @@ msgstr ""
 #: obj\Release\AspnetCompileMerge\Source\main.html:430
 #: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:430
 #: obj\Release\Package\PackageTmp\main.html:359
-#: visual\index.html:1065
-#: visual\index.html:1066
+#: visual\index.html:1112
+#: visual\index.html:1113
 msgid "Visual"
 msgstr ""
 
@@ -5330,8 +5298,8 @@ msgstr ""
 msgid "Você pode retornar em qualquer etapa sempre que desejar."
 msgstr ""
 
-#: config\index.html:348
-#: config\index.html:349
+#: config\index.html:346
+#: config\index.html:347
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:348
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:349
 #: obj\Debug\AspnetCompileMerge\Source\publish\index.html:274
@@ -5368,11 +5336,11 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\reports\sites.html:55
 #: obj\Release\Package\PackageTmp\visual\index.html:1201
 #: obj\Release\Package\PackageTmp\visual\index.html:1202
-#: publish\index.html:274
-#: publish\index.html:275
+#: publish\index.html:271
+#: publish\index.html:272
 #: reports\sites.html:55
-#: visual\index.html:1107
-#: visual\index.html:1108
+#: visual\index.html:1154
+#: visual\index.html:1155
 msgid "Voltar"
 msgstr ""
 
@@ -5545,7 +5513,7 @@ msgstr ""
 msgid "Webjato&nbsp;&nbsp;-&nbsp;&nbsp;INÍCIO&nbsp;&nbsp;"
 msgstr ""
 
-#: config\index.html:370
+#: config\index.html:368
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:370
 #: obj\Debug\AspnetCompileMerge\Source\publish\index.html:296
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\config\index.html:370
@@ -5554,7 +5522,7 @@ msgstr ""
 #: obj\Debug\Package\PackageTmp\publish\index.html:296
 #: obj\Release\Package\PackageTmp\config\index.html:365
 #: obj\Release\Package\PackageTmp\publish\index.html:291
-#: publish\index.html:296
+#: publish\index.html:293
 msgid "[ADMIN] Todos os sites"
 msgstr ""
 
@@ -5980,7 +5948,7 @@ msgstr ""
 msgid "© 2012-2015 WebJato - Todos os direitos reservados."
 msgstr ""
 
-#: main.html:402
+#: main.html:388
 msgid "© 2012-2016 WebJato - Todos os direitos reservados."
 msgstr ""
 

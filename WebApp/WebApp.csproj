@@ -256,6 +256,7 @@
     <Content Include="css\suporte.css" />
     <Content Include="email-templates\en-us\esqueci-minha-senha.html" />
     <Content Include="email-templates\pt-br\esqueci-minha-senha.html" />
+    <Content Include="help\wj-help.html" />
     <Content Include="images\icon_copiar.png" />
     <Content Include="images\loadinganim2.gif" />
     <Content Include="images\place-holder-mapa_1000x400.png" />
@@ -278,7 +279,6 @@
     <Content Include="images\social\icone_insta_med.png" />
     <Content Include="images\social\icone_pinte_gran.png" />
     <Content Include="images\social\icone_pinte_med.png" />
-    <Content Include="index_2015.html" />
     <Content Include="lang_en-us\about.html" />
     <Content Include="lang_en-us\contents.html" />
     <Content Include="lang_en-us\retrieve-password.html" />

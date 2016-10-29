@@ -141,7 +141,6 @@
                 $scope.GoTo = function (url, viaBtnNext) {
                     if (url == "") return;
                     if ($scope.CurrentPage && $scope.CurrentPage.last && viaBtnNext) {
-                        $scope.$emit("HelpDisplay", "config/finish");
                     }
                     $timeout(
                         function () {
@@ -149,12 +148,11 @@
                             $scope.PrevPageUrl = $scope.CurrentPage.first ? "" : pages[$scope.CurrentPage.index - 1].url;
                             $scope.NextPageUrl = $scope.CurrentPage.last ? $scope.CurrentPage.url : pages[$scope.CurrentPage.index + 1].url;
                             $scope.Url = url;
-                            $scope.$emit("HelpAutoDisplay", $scope.CurrentPage.helpId);
                         }, 100
                     );
                 };
                 $scope.ShowHelp = function (id) {
-                    $scope.$emit("HelpDisplay", id);
+                    //HELPHERE
                 };
                 gettextCatalog.currentLanguage = $cookies.language;
                 $scope.GoTo("#" + $location.url());

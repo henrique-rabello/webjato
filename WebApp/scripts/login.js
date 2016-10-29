@@ -38,7 +38,7 @@ angular.module("LoginApp", ["gettext", "ngCookies", "WebjatoDirectives", "Webjat
             $scope.Working = true;
             $http({ method: "POST", url: "/api/user/login", params: { email: $scope.Email, password: $scope.Password } })
                 .success(function (data, status, headers, config) {
-                    $scope.ProceedToMain();
+                    top.location.href = "/main.html";
                 })
                 .error(function (data, status, headers, config) {
                     $scope.ShowInvalidLogin = true;
@@ -51,7 +51,7 @@ angular.module("LoginApp", ["gettext", "ngCookies", "WebjatoDirectives", "Webjat
             $http({ method: "POST", url: "/api/user/loginfacebook", params: { fbid: fbId, email: email } })
                 .success(function (data, status, headers, config) {
                     $scope.WorkingFB = false;
-                    $scope.ProceedToMain();
+                    top.location.href = "/main.html";
                 })
                 .error(function (data, status, headers, config) {
                     $scope.ShowInvalidLogin = true;
@@ -105,16 +105,6 @@ angular.module("LoginApp", ["gettext", "ngCookies", "WebjatoDirectives", "Webjat
         $scope.ResetErrors = function () {
             $scope.ShowInvalidLogin = $scope.ShowEmailInUse = $scope.ShowFBEmailInUse = false;
             $scope.RetrievePasswordStatus = -1;
-        }
-        $scope.ProceedToMain = function () {
-            $http({ method: "GET", url: "/api/feature/get/0" })
-                .success(function (data) {
-                    var isHelpEnabled = (String(data) == "true");
-                    $scope.$emit("HelpSetState", isHelpEnabled, isHelpEnabled);
-                    setTimeout(function () {
-                        top.location.href = "/main.html";
-                    }, 250);
-                });
         };
         gScope = $scope;
     });

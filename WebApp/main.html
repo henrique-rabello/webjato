@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" id="ng-app" ng-app="MainApp">
 <head>
     <title translate>Webjato&nbsp;&nbsp;-&nbsp;&nbsp;INÍCIO&nbsp;&nbsp;</title>
+    <link rel="stylesheet" href="css/wj.css" />
     <link rel="stylesheet" type="text/css" href="css/animate.css" />
     <link rel="stylesheet" type="text/css" href="css/header.css" />
     <link rel="stylesheet" type="text/css" href="css/help.css" />
@@ -249,16 +250,10 @@
                 function ($scope, $http, $cookies, gettextCatalog, HandleServerException) {
                     $scope.User = null;
                     $scope.HelpUrl = null;
-                    $scope.IsHelpEnabled = false;
                     $scope.Roles = Roles;
                     $scope.ChangeLanguage = function () {
                         gettextCatalog.currentLanguage = $scope.CurrentLanguage;
                         $cookies.language = $scope.CurrentLanguage;
-                    };
-                    $scope.OnHelpStateChange = function () {
-                        var action = $scope.IsHelpEnabled ? "put" : "delete";
-                        $http({ method: "GET", url: "api/feature/" + action + "/0" }).error(HandleServerException);
-                        $scope.$emit("HelpSetState", $scope.IsHelpEnabled, $scope.IsHelpEnabled);
                     };
                     $scope.Logout = function () {
                         $http({ method: "POST", url: "api/user/logout" })
@@ -272,13 +267,8 @@
                             }).error(HandleServerException);
                     };
                     $scope.ShowHelp = function () {
-                        $scope.$emit("HelpDisplay", "main");
+                        $scope.$emit("HelpDisplay");
                     };
-                    $http({ method: "GET", url: "api/feature/get/0" })
-                        .success(function (data, status, headers, config) {
-                            $scope.IsHelpEnabled = (String(data) == "true");
-                            $scope.$emit("HelpAutoDisplay", "main");
-                        }).error(HandleServerException);
                     $http({ method: "GET", url: "api/user/get" })
                         .success(function (data) {
                             $scope.User = data;
@@ -318,7 +308,7 @@
     </script>
 </head>
 <body ng-controller="MainCrtl" ng-cloak>
-    <wj-help></wj-help>
+    <wj-help name="{{User.FullName}}" email="{{User.Email}}"></wj-help>
     <div class="logo-home">
         <img src="images/logowj.png" alt="" title="" />
     </div>
@@ -357,10 +347,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="ligado">
-            <input type="checkbox" id="ckAjuda" class="ipt_checkbox cursorpointer" ng-model="IsHelpEnabled" ng-change="OnHelpStateChange();" />
-            <label for="ckAjuda" class="cursorpointer" translate>Exibir ajuda</label>
         </div>
     </div>
     <div id="container">

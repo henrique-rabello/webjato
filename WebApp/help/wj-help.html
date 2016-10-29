@@ -1,0 +1,19 @@
+﻿<div class="wj-help">
+    <p>
+        Preencha o formulário abaixo que em breve retornaremos.
+    </p>
+    <select ng-model="subject">
+        <option>Dúvida</option>
+        <option>Sugestão</option>
+        <option>Relatar erro</option>
+        <option>Outro</option>
+    </select>
+    <textarea ng-model="message" placeholder="Digite sua mensagem aqui"></textarea>
+    <p class="animated" ng-class="{'fadeInRight': sent}" style="opacity: 0;">
+        Mensagem enviada!
+    </p>
+    <button type="button" ng-click="send()" ng-disabled="sending" class="animated" ng-class="{'fadeOutLeft': sent}">
+        <span ng-show="!sending">Enviar</span>
+        <span ng-show="sending">Enviando</span>
+    </button>
+</div>
