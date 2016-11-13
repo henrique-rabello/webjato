@@ -64,6 +64,12 @@
                     .menu-choice .items .item .clear {
                         clear: both;
                     }
+
+        .inline-help {
+            position: absolute;
+            top: 100px;
+            width: 100%;
+        }
     </style>
     <script type="text/javascript" src="../scripts/wj-libs.js"></script>
     <script type="text/javascript" src="../scripts/tinymce/tinymce.min.js"></script>
@@ -121,10 +127,10 @@
             })
             .controller("MenuCrtl", function ($scope, $location, $timeout, $rootScope) {
                 $scope.pages = [
-                    { url: "#/logo.html", helpId: "visual/logo", title: "Nome", menuLabel: "Logo" },
-                    { url: "#/background.html", helpId: "visual/bg", title: "Plano de fundo", menuLabel: "Fundo" },
-                    { url: "#/footer.html", helpId: "visual/footer", title: "Rodapé", menuLabel: "Rodapé" },
-                    { url: "#/menu.html", helpId: "visual/menu", title: "Menu", menuLabel: "Menu" }
+                    { url: "#/logo.html", helpId: "site/logo", title: "Nome", menuLabel: "Logo" },
+                    { url: "#/background.html", helpId: "site/bg", title: "Plano de fundo", menuLabel: "Fundo" },
+                    { url: "#/footer.html", helpId: "site/footer", title: "Rodapé", menuLabel: "Rodapé" },
+                    { url: "#/menu.html", helpId: "site/menu", title: "Menu", menuLabel: "Menu" }
                 ];
                 _.forEach($scope.pages, function (item, i, list) {
                     item.active = (i == 0);
@@ -146,6 +152,7 @@
                     }
                     $scope.$emit("OnSiteChange", "OnSectionChange");
                     $scope.selectedPage = page;
+                    $rootScope.helpId = page.helpId;
                 };
                 $scope.showHelp = function () {
                     $scope.$emit("HelpDisplay");
@@ -1100,6 +1107,7 @@
                 </div>
             </div>
         </div>
+        <wj-inline-help help-id="{{helpId}}" class="inline-help"></wj-inline-help>
     </div>
     <div class="ui-layout-north">
         <div id="linha-frame-header">&nbsp;</div>

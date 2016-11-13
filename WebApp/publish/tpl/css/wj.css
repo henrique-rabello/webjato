@@ -1247,3 +1247,15 @@
   right: 40px;
   bottom: 25px;
 }
+
+.wj-inline-help {
+  margin: 0 auto;
+}
+.wj-inline-help > div {
+  background-color: #3393df;
+  border-radius: 5px;
+  box-shadow: 0 0 3px #000;
+  color: #fff;
+  display: inline-block;
+  padding: 5px 10px;
+}

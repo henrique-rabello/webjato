@@ -12,7 +12,7 @@ interface IWJHelpScope extends ng.IScope {
     email: string;
 }
 
-angular.module('WebjatoDirectives').directive('wjHelp', function () {
+angular.module('WebjatoDirectives').directive('wjHelp', function (): ng.IDirective {
     return {
         restrict: 'E',
         replace: true,

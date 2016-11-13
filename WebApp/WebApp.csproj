@@ -298,6 +298,7 @@
     <Content Include="lang_pt-br\suporte.html" />
     <Content Include="lang_pt-br\termos.html" />
     <Content Include="modal-alert.html" />
+    <Content Include="src\js\directives\general\wj-inline-help.less" />
     <None Include="src\js\services\cropbox\cropbox.less" />
     <Content Include="css\tipsy.css" />
     <Content Include="css\tools.css" />
@@ -1259,6 +1260,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\js\directives\general\wj-help.ts" />
+    <TypeScriptCompile Include="src\js\directives\general\wj-inline-help.ts" />
     <TypeScriptCompile Include="src\js\directives\wj-animated-highlight.ts" />
     <TypeScriptCompile Include="src\js\directives\wj-duplicate-editor.ts" />
     <TypeScriptCompile Include="src\js\directives\wj-move-after-duplicate-editor.ts" />
@@ -1286,13 +1288,9 @@
     <TypeScriptCompile Include="src\js\entities\enums\Roles.ts" />
     <TypeScriptCompile Include="src\js\entities\enums\SocialPluginSize.ts" />
     <TypeScriptCompile Include="src\js\entities\enums\VideoType.ts" />
-    <TypeScriptCompile Include="src\js\entities\help\HelpBit.ts" />
     <TypeScriptCompile Include="src\js\entities\enums\ContentType.ts" />
     <TypeScriptCompile Include="src\js\entities\Page.ts" />
-    <TypeScriptCompile Include="src\js\general\Help.ts" />
-    <TypeScriptCompile Include="src\js\general\HelpItem.ts" />
     <TypeScriptCompile Include="src\js\services\css-service.ts" />
-    <TypeScriptCompile Include="src\js\services\help-indexer.ts" />
     <TypeScriptCompile Include="src\js\services\cropbox\CropSVC.ts" />
     <TypeScriptCompile Include="src\js\services\modal-service.ts" />
     <TypeScriptCompile Include="src\js\services\multi-selection-mode.ts" />

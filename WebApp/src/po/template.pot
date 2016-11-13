@@ -165,7 +165,7 @@ msgstr ""
 msgid "1. Ícones – habilite-o e escreva o endereço na web."
 msgstr ""
 
-#: main.html:357
+#: main.html:363
 #: obj\Debug\AspnetCompileMerge\Source\main.html:371
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\main.html:371
 #: obj\Debug\Package\PackageTmp\main.html:371
@@ -281,7 +281,7 @@ msgstr ""
 msgid "2. Unidade – adiciona um conteúdo."
 msgstr ""
 
-#: main.html:365
+#: main.html:371
 #: obj\Debug\AspnetCompileMerge\Source\main.html:380
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\main.html:380
 #: obj\Debug\Package\PackageTmp\main.html:380
@@ -353,7 +353,7 @@ msgstr ""
 msgid "3. Ordem – posiciona acima ou abaixo de outros conteúdos."
 msgstr ""
 
-#: main.html:373
+#: main.html:379
 #: obj\Debug\AspnetCompileMerge\Source\main.html:389
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\main.html:389
 #: obj\Debug\Package\PackageTmp\main.html:389
@@ -1023,7 +1023,7 @@ msgstr ""
 
 #: config\index.html:293
 #: content\index.html:368
-#: main.html:330
+#: main.html:336
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:295
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:327
 #: obj\Debug\AspnetCompileMerge\Source\main.html:340
@@ -1053,7 +1053,7 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\publish\index.html:214
 #: obj\Release\Package\PackageTmp\visual\index.html:1142
 #: publish\index.html:216
-#: visual\index.html:1123
+#: visual\index.html:1130
 msgid "Ajuda"
 msgstr ""
 
@@ -1181,11 +1181,11 @@ msgstr ""
 #: obj\Release\AspnetCompileMerge\TempBuildDir\visual\index.html:1061
 #: obj\Release\Package\PackageTmp\content\map-editor-tpl.html:9
 #: obj\Release\Package\PackageTmp\visual\index.html:1224
-#: visual\index.html:1176
+#: visual\index.html:1183
 msgid "Aplicar"
 msgstr ""
 
-#: main.html:321
+#: main.html:327
 #: obj\Debug\AspnetCompileMerge\Source\main.html:331
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\main.html:331
 #: obj\Debug\Package\PackageTmp\main.html:331
@@ -1312,8 +1312,8 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\visual\index.html:1207
 #: publish\index.html:276
 #: publish\index.html:277
-#: visual\index.html:1159
-#: visual\index.html:1160
+#: visual\index.html:1166
+#: visual\index.html:1167
 msgid "Avançar"
 msgstr ""
 
@@ -1775,7 +1775,7 @@ msgstr ""
 
 #: config\index.html:298
 #: content\index.html:373
-#: main.html:335
+#: main.html:341
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:300
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:332
 #: obj\Debug\AspnetCompileMerge\Source\main.html:345
@@ -1797,7 +1797,7 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\publish\index.html:219
 #: obj\Release\Package\PackageTmp\visual\index.html:1147
 #: publish\index.html:221
-#: visual\index.html:1128
+#: visual\index.html:1135
 msgid "Conta"
 msgstr ""
 
@@ -1840,7 +1840,7 @@ msgid "Contato"
 msgstr ""
 
 #: help\content-start.html:6
-#: main.html:367
+#: main.html:373
 #: obj\Debug\AspnetCompileMerge\Source\help\content-start.html:6
 #: obj\Debug\AspnetCompileMerge\Source\main.html:391
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\help\content-start.html:6
@@ -3399,7 +3399,7 @@ msgstr ""
 msgid "INÍCIO"
 msgstr ""
 
-#: main.html:382
+#: main.html:388
 #: obj\Debug\AspnetCompileMerge\Source\main.html:408
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\main.html:408
 #: obj\Debug\Package\PackageTmp\main.html:408
@@ -3620,7 +3620,7 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\publish\index.html:204
 #: obj\Release\Package\PackageTmp\visual\index.html:1131
 #: publish\index.html:206
-#: visual\index.html:1108
+#: visual\index.html:1115
 msgid "Início"
 msgstr ""
 
@@ -4561,7 +4561,7 @@ msgstr ""
 msgid "Promova seu site no mundo. Utilize a ajuda de grandes marcas."
 msgstr ""
 
-#: main.html:375
+#: main.html:381
 #: obj\Debug\AspnetCompileMerge\Source\main.html:400
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\main.html:400
 #: obj\Debug\Package\PackageTmp\main.html:400
@@ -4693,7 +4693,7 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\config\index.html:376
 #: obj\Release\Package\PackageTmp\publish\index.html:301
 #: publish\index.html:303
-#: visual\index.html:1134
+#: visual\index.html:1141
 msgid "Sair"
 msgstr ""
 
@@ -4805,7 +4805,7 @@ msgstr ""
 msgid "Sim"
 msgstr ""
 
-#: main.html:359
+#: main.html:365
 msgid "Site"
 msgstr ""
 
@@ -5042,7 +5042,7 @@ msgstr ""
 msgid "Todas as páginas iniciam vazias. Aqui, você define como elas serão."
 msgstr ""
 
-#: main.html:341
+#: main.html:347
 #: obj\Debug\AspnetCompileMerge\Source\main.html:351
 #: obj\Debug\AspnetCompileMerge\TempBuildDir\main.html:351
 #: obj\Debug\Package\PackageTmp\main.html:351
@@ -5174,7 +5174,7 @@ msgstr ""
 
 #: config\index.html:288
 #: content\index.html:363
-#: main.html:325
+#: main.html:331
 #: obj\Debug\AspnetCompileMerge\Source\config\index.html:290
 #: obj\Debug\AspnetCompileMerge\Source\content\index.html:322
 #: obj\Debug\AspnetCompileMerge\Source\main.html:335
@@ -5196,7 +5196,7 @@ msgstr ""
 #: obj\Release\Package\PackageTmp\publish\index.html:209
 #: obj\Release\Package\PackageTmp\visual\index.html:1137
 #: publish\index.html:211
-#: visual\index.html:1118
+#: visual\index.html:1125
 msgid "Ver construção"
 msgstr ""
 
@@ -5228,8 +5228,8 @@ msgstr ""
 #: obj\Release\AspnetCompileMerge\Source\main.html:430
 #: obj\Release\AspnetCompileMerge\TempBuildDir\main.html:430
 #: obj\Release\Package\PackageTmp\main.html:359
-#: visual\index.html:1112
-#: visual\index.html:1113
+#: visual\index.html:1119
+#: visual\index.html:1120
 msgid "Visual"
 msgstr ""
 
@@ -5339,8 +5339,8 @@ msgstr ""
 #: publish\index.html:271
 #: publish\index.html:272
 #: reports\sites.html:55
-#: visual\index.html:1154
-#: visual\index.html:1155
+#: visual\index.html:1161
+#: visual\index.html:1162
 msgid "Voltar"
 msgstr ""
 
@@ -5948,7 +5948,7 @@ msgstr ""
 msgid "© 2012-2015 WebJato - Todos os direitos reservados."
 msgstr ""
 
-#: main.html:388
+#: main.html:394
 msgid "© 2012-2016 WebJato - Todos os direitos reservados."
 msgstr ""
 

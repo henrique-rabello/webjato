@@ -1456,114 +1456,6 @@ angular.module("WebjatoFactories")
         };
     }
 );
-var Help = (function () {
-    function Help() {
-        this.items = [];
-        this.enabled = false;
-        this.cookieHelpItems = "HelpItems";
-        this.cookieHelpState = "HelpState";
-        this.enabled = this.RetrieveHelpState();
-        var identifiers = [
-            "main",
-            "config/size",
-            "config/align",
-            "config/title",
-            "config/pages",
-            "config/position",
-            "visual/bg",
-            "visual/header",
-            "visual/footer",
-            "visual/logo",
-            "visual/menu",
-            "visual/page",
-            "content/start",
-            "content/text",
-            "content/box",
-            "content/line",
-            "content/image-simple",
-            "content/image-expandable",
-            "content/image-linked",
-            "content/video",
-            "content/map",
-            "content/social",
-            "content/contact-form",
-            "content/move",
-            "content/duplicate",
-            "publish/address",
-            "publish/display",
-            "publish/share",
-            "publish/hide"
-        ];
-        var itemsState = this.RetrieveHelpItems();
-        for (var i = 0; i < identifiers.length; i++) {
-            var helpItem = new HelpItem(identifiers[i], (itemsState != "") ? (itemsState.charAt(i) == "1") : false);
-            this.items.push(helpItem);
-        }
-    }
-    Help.prototype.ExportHelpItems = function () {
-        var helpState = "";
-        var helpItem;
-        for (var i = 0; i < this.items.length; i++) {
-            helpItem = this.items[i];
-            helpState += (helpItem.displayed ? "1" : "0");
-        }
-        $.cookie(this.cookieHelpItems, helpState, { path: "/" });
-    };
-    Help.prototype.RetrieveHelpItems = function () {
-        var state = $.cookie(this.cookieHelpItems);
-        return ((state == undefined) ? "" : state);
-    };
-    Help.prototype.ExportHelpState = function () {
-        $.cookie(this.cookieHelpState, this.enabled ? "1" : "0", { path: "/" });
-    };
-    Help.prototype.RetrieveHelpState = function () {
-        var state = $.cookie(this.cookieHelpState);
-        return ((state == undefined) ? false : (state == "1"));
-    };
-    Help.prototype.Show = function (id) {
-        if (!this.enabled) {
-            return false;
-        }
-        var item = this.GetHelpItem(id);
-        if (!item.displayed) {
-            item.displayed = true;
-            this.ExportHelpItems();
-            return true;
-        }
-        return false;
-    };
-    Help.prototype.GetHelpItem = function (id) {
-        for (var i = 0; i < this.items.length; i++) {
-            if (this.items[i].id == id) {
-                return this.items[i];
-            }
-        }
-        return null;
-    };
-    Help.prototype.ResetAllItemsState = function () {
-        for (var i = 0; i < this.items.length; i++) {
-            this.items[i].displayed = false;
-        }
-        this.ExportHelpItems();
-    };
-    Help.prototype.SetEnabled = function (state, reset) {
-        this.enabled = state;
-        if (reset) {
-            this.ResetAllItemsState();
-        }
-        this.ExportHelpState();
-    };
-    return Help;
-}());
-
-var HelpItem = (function () {
-    function HelpItem(id, displayed) {
-        this.id = id;
-        this.displayed = displayed;
-    }
-    return HelpItem;
-}());
-
 angular.module("WebjatoModels").factory("UnitContentModel", function () {
 	return {
 		ContentTypeToPreview: null,
@@ -3673,15 +3565,6 @@ var Video = (function (_super) {
     return Video;
 }(ContentBase));
 
-var HelpBit = (function () {
-    function HelpBit(Id, Url, Enabled) {
-        this.Id = Id;
-        this.Url = Url;
-        this.Enabled = Enabled;
-    }
-    return HelpBit;
-}());
-
 var CropBoxCtrl = (function () {
     function CropBoxCtrl($scope) {
         this.$scope = $scope;
@@ -3818,6 +3701,57 @@ angular.module('WebjatoDirectives').directive('wjHelp', function () {
                 });
             });
             reset();
+        }
+    };
+});
+
+angular.module('WebjatoDirectives').directive('wjInlineHelp', function () {
+    return {
+        restrict: 'E',
+        replace: true,
+        scope: {
+            helpId: '@'
+        },
+        template: '<div class="wj-inline-help animated" ng-class="{\'fadeInDown\':active, \'fadeOutUp\':!active}">' +
+            '<div ng-bind="helpContent"></div>' +
+            '</div>',
+        controller: function ($scope, $timeout) {
+            var index = {
+                'home': 'conteúdo home',
+                'site/logo': 'conteúdo site/logo',
+                'site/bg': 'conteúdo site/background',
+                'site/footer': 'conteúdo site/footer',
+                'site/menu': 'conteúdo site/menu',
+                'content/start': 'conteúdo content/start',
+                'content/text': 'conteúdo content/text',
+                'content/box': 'conteúdo content/box',
+                'content/line': 'conteúdo content/line',
+                'content/image-simple': 'conteúdo content/image-simple',
+                'content/image-expandable': 'conteúdo content/image-expandable',
+                'content/image-linked': 'conteúdo content/image-linked',
+                'content/video': 'conteúdo content/video',
+                'content/map': 'conteúdo content/map',
+                'content/social': 'conteúdo content/social',
+                'content/contact-form': 'conteúdo content/contact-form',
+                'content/move': 'conteúdo content/move',
+                'content/duplicate': 'conteúdo content/duplicate',
+                'publish/address': 'conteúdo publish/address',
+                'publish/display': 'conteúdo publish/display',
+                'publish/share': 'conteúdo publish/share',
+                'publish/hide': 'conteúdo publish/hide'
+            };
+            $scope.$watch('helpId', function (nv) {
+                if (!nv)
+                    return;
+                $timeout(function () {
+                    $scope.helpContent = index[nv];
+                    $scope.active = true;
+                    $timeout(function () {
+                        $scope.active = false;
+                    }, 3000);
+                }, 1000);
+                $scope.helpContent = index[nv];
+            });
         }
     };
 });
