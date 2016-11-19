@@ -139,7 +139,6 @@
                     item.next = (i < (list.length - 1)) ? list[i + 1] : null;
                     item.prev = (i > 0) ? list[i - 1] : null;
                 });
-                $scope.selectedPage = $scope.pages[0];
                 $scope.select = function (page) {
                     if (!page) return;
                     _.forEach($scope.pages, function (item) { item.active = false; });
@@ -157,6 +156,7 @@
                 $scope.showHelp = function () {
                     $scope.$emit("HelpDisplay");
                 };
+                $scope.select($scope.pages[0]);
             })
             .controller("PageConfigCtrl", function ($scope, $http, pages, HandleServerException) {
                 $scope.Pages = _.map(pages.data, function (page) {

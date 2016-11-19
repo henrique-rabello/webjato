@@ -25,6 +25,12 @@
         .ui-layout-north {
             background: url(../images/bg_header1.png) repeat-x top left;
         }
+
+        .inline-help {
+            position: absolute;
+            top: 30px;
+            width: 100%;
+        }
     </style>
     <script type="text/javascript" src="../scripts/wj-libs.js"></script>
     <script type="text/javascript" src="../scripts/wj.js"></script>
@@ -86,7 +92,7 @@
                     .error(HandleServerException);
                 return defer.promise;
             })
-            .controller("MenuCrtl", function ($scope, $cookies, $http, $location, $timeout, gettextCatalog, HandleServerException) {
+            .controller("MenuCrtl", function ($scope, $cookies, $http, $location, $timeout, $rootScope, gettextCatalog, HandleServerException) {
                 var pages = [{ first: true, last: false, index: 0, url: "#/address.html", helpId: "publish/address" },
                                 { first: false, last: false, index: 1, url: "#/display.html", helpId: "publish/display" },
                                 { first: false, last: false, index: 2, url: "#/share.html", helpId: "publish/share" },
@@ -106,6 +112,7 @@
                             $scope.PrevPageUrl = $scope.CurrentPage.first ? "" : pages[$scope.CurrentPage.index - 1].url;
                             $scope.NextPageUrl = $scope.CurrentPage.last ? $scope.CurrentPage.url : pages[$scope.CurrentPage.index + 1].url;
                             $scope.Url = url;
+                            $rootScope.helpId = $scope.CurrentPage.helpId;
                         }, 100
                     );
                 };
@@ -201,6 +208,7 @@
     <wj-help name="{{User.FullName}}" email="{{User.Email}}"></wj-help>
     <div class="ui-layout-center">
         <div ng-view></div>
+        <wj-inline-help help-id="{{helpId}}" class="inline-help"></wj-inline-help>
     </div>
     <div class="ui-layout-north">
         <div id="logo"><a href="../main.html"><img src="../images/spacer_logo.png" alt="" title="{{'Início'|translate}}" translate /></a></div>

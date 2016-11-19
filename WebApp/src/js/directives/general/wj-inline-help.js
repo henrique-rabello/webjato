@@ -5,7 +5,7 @@ angular.module('WebjatoDirectives').directive('wjInlineHelp', function () {
         scope: {
             helpId: '@'
         },
-        template: '<div class="wj-inline-help animated" ng-class="{\'fadeInDown\':active, \'fadeOutUp\':!active}">' +
+        template: '<div class="wj-inline-help animated" ng-class="{\'fadeInDown\':active, \'fadeOutUp\':!active}" ng-hide="firstLoad">' +
             '<div ng-bind="helpContent"></div>' +
             '</div>',
         controller: function ($scope, $timeout) {
@@ -33,17 +33,21 @@ angular.module('WebjatoDirectives').directive('wjInlineHelp', function () {
                 'publish/share': 'conteúdo publish/share',
                 'publish/hide': 'conteúdo publish/hide'
             };
+            $scope.firstLoad = true;
             $scope.$watch('helpId', function (nv) {
                 if (!nv)
                     return;
-                $timeout(function () {
+                $timeout.cancel($scope.timeout1);
+                $timeout.cancel($scope.timeout2);
+                $scope.active = false;
+                $scope.timeout1 = $timeout(function () {
                     $scope.helpContent = index[nv];
                     $scope.active = true;
-                    $timeout(function () {
+                    $scope.firstLoad = false;
+                    $scope.timeout2 = $timeout(function () {
                         $scope.active = false;
                     }, 3000);
-                }, 1000);
-                $scope.helpContent = index[nv];
+                }, 500);
             });
         }
     };

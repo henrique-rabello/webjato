@@ -215,7 +215,7 @@ var dependencies = [
     "WebjatoServices"
 ];
 angular.module("ContentEditApp", dependencies)
-    .controller("ContentEditCrtl", function ($scope, $cookies, $http, $q, $timeout, $document, gettextCatalog, ContentType, ContentTypeList, MultiSelectionMode, SiteStyle, WebjatoConfig, ServerSync, ServerSyncCommands, HandleServerException, zIndexChange, HelpIndexer, UnitContentModel, ModalService, ContentUtils) {
+    .controller("ContentEditCrtl", function ($scope, $cookies, $http, $q, $timeout, $document, $rootScope, gettextCatalog, ContentType, ContentTypeList, MultiSelectionMode, SiteStyle, WebjatoConfig, ServerSync, ServerSyncCommands, HandleServerException, zIndexChange, UnitContentModel, ModalService, ContentUtils) {
         var commitZindex = false;
         var multiSelectionPanel = [];
 		var currentHelpId = "content/start";
@@ -304,6 +304,20 @@ angular.module("ContentEditApp", dependencies)
             });
             CalculateRightMostPoint();
         };
+        var GetHelpIdByContentType = function (type) {
+            switch (type) {
+                case ContentType.BOX: return "content/box";
+                case ContentType.CONTACT_FORM: return "content/contact-form";
+                case ContentType.MAPS: return "content/map";
+                case ContentType.IMAGE: return "content/image-simple";
+                case ContentType.LINKED_IMAGE: return "content/image-linked";
+                case ContentType.LINE: return "content/line";
+                case ContentType.SOCIAL: return "content/social";
+                case ContentType.TEXT: return "content/text";
+                case ContentType.VIDEO: return "content/video";
+                case ContentType.EXPANDABLE_IMAGE: return "content/image-expandable";
+            }
+        };
         //SCOPE METHODS
         $scope.EditContent = function (content) {
             _.each($scope.SiteContents, function (item) {
@@ -315,6 +329,7 @@ angular.module("ContentEditApp", dependencies)
             $scope.UpdateZIndexOptions();
             $scope.CurrentPanel = _.findWhere(ContentTypeList, { Enum: content.Type }).Crtl.toUpperCase();
             commitZindex = false;
+            $rootScope.helpId = GetHelpIdByContentType(content.Type);
         };
         $scope.FetchPageContent = function () {
             $scope.PageContents.Raw = _.chain($scope.SiteContents).where({ PageId: $scope.SelectedPage.Id }).sortBy(function (content) { return content.Position.ZIndex; }).value();
@@ -403,6 +418,8 @@ angular.module("ContentEditApp", dependencies)
                 $scope.MultiSelection = multiSelectionMode;
                 $scope.CurrentPanel = multiSelectionPanel[multiSelectionMode];
                 $scope.$broadcast("OnEnterMultiSelectionMode", multiSelectionMode);
+                $rootScope.helpId = (multiSelectionMode == MultiSelectionMode.MOVE) ? "content/move" : "content/duplicate";
+                console.log('$rootScope.helpId', $rootScope.helpId);
             }
             UnitContentModel.ContentTypeToPreview = null;
         };
@@ -678,6 +695,7 @@ angular.module("ContentEditApp", dependencies)
                     });
                     $scope.SelectedPage = $scope.Pages[0];
                     $scope.FetchPageContent();
+                    $rootScope.helpId = "content/start";
                 }).error(HandleServerException);
         };
         //CODE STARTS HERE
@@ -1738,62 +1756,6 @@ angular.module("WebjatoServices").service("HandleServerException", function () {
         }
     };
 });
-angular.module("WebjatoServices").service("HelpIndexer", function (ContentType) {
-    var folder = "/help/";
-    var items = [
-        new HelpBit("main", "main.html", false),
-        new HelpBit("config/size", "config-size.html", false),
-        new HelpBit("config/align", "config-align.html", false),
-        new HelpBit("config/title", "config-title.html", false),
-        new HelpBit("config/pages", "config-pages.html", false),
-        new HelpBit("config/position", "config-position.html", false),
-        new HelpBit("config/finish", "config-finish.html", false),
-        new HelpBit("visual/bg", "visual-bg.html", false),
-        new HelpBit("visual/header", "visual-header.html", false),
-        new HelpBit("visual/footer", "visual-footer.html", false),
-        new HelpBit("visual/logo", "visual-logo.html", false),
-        new HelpBit("visual/menu", "visual-menu.html", false),
-        new HelpBit("visual/page", "visual-page.html", false),
-        new HelpBit("visual/finish", "visual-finish.html", false),
-        new HelpBit("content/start", "content-start.html", false),
-        new HelpBit("content/text", "content-text.html", false),
-        new HelpBit("content/box", "content-box.html", false),
-        new HelpBit("content/line", "content-line.html", false),
-        new HelpBit("content/image-simple", "content-image-simple.html", false),
-        new HelpBit("content/image-expandable", "content-image-expandable.html", false),
-        new HelpBit("content/image-linked", "content-image-linked.html", false),
-        new HelpBit("content/video", "content-video.html", false),
-        new HelpBit("content/map", "content-map.html", false),
-        new HelpBit("content/social", "content-social.html", false),
-        new HelpBit("content/contact-form", "content-contact-form.html", false),
-        new HelpBit("content/move", "content-move.html", false),
-        new HelpBit("content/duplicate", "content-duplicate.html", false),
-        new HelpBit("publish/address", "publish-address.html", false),
-        new HelpBit("publish/display", "publish-display.html", false),
-        new HelpBit("publish/share", "publish-share.html", false),
-        new HelpBit("publish/hide", "publish-hide.html", false)
-    ];
-    return {
-        GetUrl: function (id) {
-            return folder + _.find(items, function (item) { return item.Id === id; }).Url;
-        },
-        GetIdByContentType: function (type) {
-            switch (type) {
-                case ContentType.BOX: return "content/box";
-                case ContentType.CONTACT_FORM: return "content/contact-form";
-                case ContentType.MAPS: return "content/map";
-                case ContentType.IMAGE: return "content/image-simple";
-                case ContentType.LINKED_IMAGE: return "content/image-linked";
-                case ContentType.LINE: return "content/line";
-                case ContentType.SOCIAL: return "content/social";
-                case ContentType.TEXT: return "content/text";
-                case ContentType.VIDEO: return "content/video";
-                case ContentType.EXPANDABLE_IMAGE: return "content/image-expandable";
-            }
-        }
-    };
-});
-
 var ModalService = (function () {
     function ModalService($rootScope, $q, $compile) {
         this.$inject = ["$rootScope", "$q", "$compile"];
@@ -3712,14 +3674,14 @@ angular.module('WebjatoDirectives').directive('wjInlineHelp', function () {
         scope: {
             helpId: '@'
         },
-        template: '<div class="wj-inline-help animated" ng-class="{\'fadeInDown\':active, \'fadeOutUp\':!active}">' +
+        template: '<div class="wj-inline-help animated" ng-class="{\'fadeInDown\':active, \'fadeOutUp\':!active}" ng-hide="firstLoad">' +
             '<div ng-bind="helpContent"></div>' +
             '</div>',
         controller: function ($scope, $timeout) {
             var index = {
                 'home': 'conteúdo home',
                 'site/logo': 'conteúdo site/logo',
-                'site/background': 'conteúdo site/background',
+                'site/bg': 'conteúdo site/background',
                 'site/footer': 'conteúdo site/footer',
                 'site/menu': 'conteúdo site/menu',
                 'content/start': 'conteúdo content/start',
@@ -3740,17 +3702,22 @@ angular.module('WebjatoDirectives').directive('wjInlineHelp', function () {
                 'publish/share': 'conteúdo publish/share',
                 'publish/hide': 'conteúdo publish/hide'
             };
+            $scope.firstLoad = true;
             $scope.$watch('helpId', function (nv) {
                 if (!nv)
                     return;
-                $timeout(function () {
+                $timeout.cancel($scope.timeout1);
+                $timeout.cancel($scope.timeout2);
+                $scope.active = false;
+                $scope.timeout1 = $timeout(function () {
                     $scope.helpContent = index[nv];
                     $scope.active = true;
-                    $timeout(function () {
+                    $scope.firstLoad = false;
+                    $scope.timeout2 = $timeout(function () {
                         $scope.active = false;
+                        $scope.helpContent = null;
                     }, 3000);
-                }, 1000);
-                $scope.helpContent = index[nv];
+                }, 500);
             });
         }
     };

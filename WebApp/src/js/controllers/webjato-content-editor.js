@@ -16,7 +16,7 @@ var dependencies = [
     "WebjatoServices"
 ];
 angular.module("ContentEditApp", dependencies)
-    .controller("ContentEditCrtl", function ($scope, $cookies, $http, $q, $timeout, $document, gettextCatalog, ContentType, ContentTypeList, MultiSelectionMode, SiteStyle, WebjatoConfig, ServerSync, ServerSyncCommands, HandleServerException, zIndexChange, HelpIndexer, UnitContentModel, ModalService, ContentUtils) {
+    .controller("ContentEditCrtl", function ($scope, $cookies, $http, $q, $timeout, $document, $rootScope, gettextCatalog, ContentType, ContentTypeList, MultiSelectionMode, SiteStyle, WebjatoConfig, ServerSync, ServerSyncCommands, HandleServerException, zIndexChange, UnitContentModel, ModalService, ContentUtils) {
         var commitZindex = false;
         var multiSelectionPanel = [];
 		var currentHelpId = "content/start";
@@ -105,6 +105,20 @@ angular.module("ContentEditApp", dependencies)
             });
             CalculateRightMostPoint();
         };
+        var GetHelpIdByContentType = function (type) {
+            switch (type) {
+                case ContentType.BOX: return "content/box";
+                case ContentType.CONTACT_FORM: return "content/contact-form";
+                case ContentType.MAPS: return "content/map";
+                case ContentType.IMAGE: return "content/image-simple";
+                case ContentType.LINKED_IMAGE: return "content/image-linked";
+                case ContentType.LINE: return "content/line";
+                case ContentType.SOCIAL: return "content/social";
+                case ContentType.TEXT: return "content/text";
+                case ContentType.VIDEO: return "content/video";
+                case ContentType.EXPANDABLE_IMAGE: return "content/image-expandable";
+            }
+        };
         //SCOPE METHODS
         $scope.EditContent = function (content) {
             _.each($scope.SiteContents, function (item) {
@@ -116,6 +130,7 @@ angular.module("ContentEditApp", dependencies)
             $scope.UpdateZIndexOptions();
             $scope.CurrentPanel = _.findWhere(ContentTypeList, { Enum: content.Type }).Crtl.toUpperCase();
             commitZindex = false;
+            $rootScope.helpId = GetHelpIdByContentType(content.Type);
         };
         $scope.FetchPageContent = function () {
             $scope.PageContents.Raw = _.chain($scope.SiteContents).where({ PageId: $scope.SelectedPage.Id }).sortBy(function (content) { return content.Position.ZIndex; }).value();
@@ -204,6 +219,8 @@ angular.module("ContentEditApp", dependencies)
                 $scope.MultiSelection = multiSelectionMode;
                 $scope.CurrentPanel = multiSelectionPanel[multiSelectionMode];
                 $scope.$broadcast("OnEnterMultiSelectionMode", multiSelectionMode);
+                $rootScope.helpId = (multiSelectionMode == MultiSelectionMode.MOVE) ? "content/move" : "content/duplicate";
+                console.log('$rootScope.helpId', $rootScope.helpId);
             }
             UnitContentModel.ContentTypeToPreview = null;
         };
@@ -479,6 +496,7 @@ angular.module("ContentEditApp", dependencies)
                     });
                     $scope.SelectedPage = $scope.Pages[0];
                     $scope.FetchPageContent();
+                    $rootScope.helpId = "content/start";
                 }).error(HandleServerException);
         };
         //CODE STARTS HERE

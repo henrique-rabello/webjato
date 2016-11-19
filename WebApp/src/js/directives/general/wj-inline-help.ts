@@ -2,6 +2,9 @@
 
 interface IInlineHelpScope extends ng.IScope {
     active: boolean;
+    timeout1: ng.IPromise<void>;
+    timeout2: ng.IPromise<void>
+    firstLoad: boolean;
     helpId: string;
     helpContent: string;
 }
@@ -13,9 +16,9 @@ angular.module('WebjatoDirectives').directive('wjInlineHelp', function (): ng.ID
         scope: {
             helpId: '@'
         },
-        template: '<div class="wj-inline-help animated" ng-class="{\'fadeInDown\':active, \'fadeOutUp\':!active}">' +
-                    '<div ng-bind="helpContent"></div>' +
-                  '</div>',
+        template: '<div class="wj-inline-help animated" ng-class="{\'fadeInDown\':active, \'fadeOutUp\':!active}" ng-hide="firstLoad">' +
+        '<div ng-bind="helpContent"></div>' +
+        '</div>',
         controller: function ($scope: IInlineHelpScope, $timeout: ng.ITimeoutService): void {
             var index: Object = {
                 'home': 'conteúdo home',
@@ -41,16 +44,20 @@ angular.module('WebjatoDirectives').directive('wjInlineHelp', function (): ng.ID
                 'publish/share': 'conteúdo publish/share',
                 'publish/hide': 'conteúdo publish/hide'
             };
+            $scope.firstLoad = true;
             $scope.$watch('helpId', (nv: string): void => {
                 if (!nv) return;
-                $timeout((): void => {
+                $timeout.cancel($scope.timeout1);
+                $timeout.cancel($scope.timeout2);
+                $scope.active = false;
+                $scope.timeout1 = $timeout((): void => {
                     $scope.helpContent = index[nv];
                     $scope.active = true;
-                    $timeout((): void => {
+                    $scope.firstLoad = false;
+                    $scope.timeout2 = $timeout((): void => {
                         $scope.active = false;
                     }, 3000);
-                }, 1000);
-                $scope.helpContent = index[nv];
+                }, 500);
             });
         }
     };
