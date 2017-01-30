@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" id="ng-app" ng-app="LoginApp">
-
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Criar site com o Webjato, a maneira mais rápida e fácil de criar sites</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Criar site, a maneira mais rápida e fácil de criar sites - Webjato</title>
     <meta name="keywords" content="criar site, criar um site, fazer site" />
     <meta name="robots" content="all" />
     <meta name="googlebot" content="index, follow" />
@@ -18,170 +18,110 @@
     <meta name="title" content="a forma mais rápida e fácil de criar de verdade o próprio site" />
     <meta name="description" content="A maneira mais rápida e fácil de criar sites de verdade. Crie seu site 100% grátis com vários recursos que ajudam a criar sites modernos sem dificuldades." />
     <!-- FIM DO CÓDIGO DO GOOGLE -->
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css' />
-    <link rel="stylesheet" type="text/css" href="/css/animate.css" />
-    <link rel="stylesheet" type="text/css" href="/css/site-institucional.css" />
-    <link type="text/css" rel="stylesheet" href="/css/tipsy.css" />
-    <script src="https://apis.google.com/js/platform.js" async=async defer=defer>{ lang: 'pt-BR' }</script>
-    <script type="text/javascript" src="/scripts/wj-libs.js"></script>
-    <script type="text/javascript" src="/scripts/wj.js"></script>
-    <script type="text/javascript" src="/scripts/login.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../css/site-institucional.css" />
+    <link rel="stylesheet" type="text/css" href="../css/blueberry.css" />
+    <script src="https://apis.google.com/js/platform.js" async defer>{lang: 'pt-BR'}</script>
+    <script type="text/javascript" src="../scripts/wj-libs.js"></script>
+    <script type="text/javascript" src="../scripts/wj.js"></script>
+    <script src="../scripts/jquery.blueberry.js"></script>
     <style type="text/css" media="screen">
         body {
-            background: url(/images/site_wj/bg_planet.jpg) no-repeat right 66px;
+            background: url(../images/site_wj/loading.gif) no-repeat center 90px;
         }
-
-        .working {
-            border: 0;
-            position: absolute;
-            right: 150px;
-            top: 128px;
-            z-index: 1;
+        
+        #page {
+            margin-top: 23px;
+        }
+        
+        .margin-top-botcurtir {
+            margin-top: 7px;
         }
     </style>
-    <script type='text/javascript'>
-        $(function () {
-            $('.container-conta [title]').tipsy({ trigger: 'focus', gravity: 'e' });
+    <script>
+        $(window).load(function () {
+            $('.blueberry').blueberry();
         });
     </script>
-    <!-- Google Analytics -->
     <script>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date(); a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
         ga('create', 'UA-33853723-1', 'auto');
         ga('send', 'pageview');
-    </script>
-
+</script>
 </head>
-
-<body ng-controller="LoginCrtl">
-    <wj-help></wj-help>
+<body>
     <div id="fb-root"></div>
-    <script>
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.6";
-            fjs.parentNode.insertBefore(js, fjs);
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.6";
+        fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <!-- INICIO DO SITE  -->
+</script>
+    <!-- Header  -->
     <div id="header">
-
         <div id="cont_menu">
             <ul id="bot">
-                <!-- <li><a href="inscrever-se.html" class="" title="">Inscreva-se agora</a></li>
-                <li class="lup3">ou</li> -->
-                <li class="lup3">Já tem uma conta?</li>
+                <li><a href="inscrever-se.html" class="" title="">Inscreva-se agora</a></li>
+                <li class="lup3">ou</li>
+                <!-- <li class="lup3">Já tem uma conta?</li> -->
                 <li><a href="entrar.html" class="lup lup2" title="">Entrar</a></li>
             </ul>
+            <a href="http://www.webjato.com/lang_en-us/index.html" class="language" title="English"><img src="../images/site_wj/icon_usa.jpg" alt="English" title="English" /></a>
         </div>
         <div id="logo">
-            <a href="index.html" class="" title=""><img src="/images/site_wj/logo_webjato.png" alt="Logo criar site com o webjato" title="" /></a>
+            <a href="index.html" class="" title=""><img src="../images/site_wj/logo_webjato.png" alt="Logo criar site com o webjato" title="" /></a>
         </div>
+    </div>
+    <div class="blueberry">
+        <ul class="slides">
+            <li><img src="../images/site_wj/banner1.jpg" alt="" title="" /></li>
+            <li><img src="../images/site_wj/banner2.jpg" alt="" title="" /></li>
+            <li><img src="../images/site_wj/banner3.jpg" alt="" title="" /></li>
+        </ul>
     </div>
     <div id="page">
         <!-- Título 1 -->
-        <div class="container-box float-left margin-side width-txt margin-top-t1">
-            <h1 class="bottom-1">Crie um site exclusivo</h1>
-            <div class="font-medio">
-                No Webjato qualquer um pode <strong>criar sites</strong> de verdade para apresentar <strong>empresas</strong>                ou <strong>serviços</strong> como profissionais da web. <strong>Mais rápido, simples e amigável.</strong>                Webjato é indicado para o grande público e é <strong>100% grátis.</strong>
-            </div>
+        <div class="container-box width-txt-corrido margin-side margin-top-t2 align-center">
+            <h1 class="light color-black bottom-2">Para criar SITES modernos,<br /> rápido e grátis.</h1>
+            <h1 class="bottom-1 font-xmedio color-font-blue">PERFEITO PARA APRESENTAR SERVIÇOS, EMPRESAS E TRABALHOS.<br />PARA VOCÊ SE PROFISSIONALIZAR E APARECER NO GOOGLE.</h1>
         </div>
-        <!-- Form inscrever-se -->
-        <div class="container-box float-right margin-side shadow margin-top-form">
-            <form class="container-conta">
-                <h2>Novo no Webjato?</h2>
-                <div class="font-medio">Grátis hoje e sempre.</div>
-                <div class="btn-face"><img src="/images/site_wj/face_login.png" alt="" title="" />Entrar com o Facebook</div>
-                <fb:login-button id="btn-fb" show-faces="false" size="xlarge" max-rows="1" scope="public_profile,email" onlogin="LoginWithFacebook();">Entrar com Facebook</fb:login-button>
-                <img class="working" src="/images/loadinganim2.gif" ng-show="WorkingFB" />
-                <div class="cont-line">
-                    <div class="ou">ou</div>
+        <div class="container-box width-txt-corrido margin-side margin-top-t2 display-table">
+            <h1 class="light color-black bottom-2">Recursos</h1>
+        <div class="responsive"><img src="../images/site_wj/img_03b.jpg" alt="" title="" /></div>            
+        </div>
+         <div class="container-box width-txt-corrido margin-side margin-top-t2 display-table margin-bottom-t">
+            <h1 class="light color-black bottom-2">Vantagens</h1>
+        <div class="responsive"><img src="../images/site_wj/img_04.jpg" alt="" title="" /></div>            
+        </div>
+    </div>
+        <!-- Rodapé -->
+        <div id="rodape">
+            <div class="container">
+                <div class="margin-side">
+                    <ul class="menu1">
+                        <li><a href="sobre.html" title="">Sobre</a></li>
+                        <li><a href="termos.html" title="">Termos</a></li>
+                        <li><a href="politica_de_privacidade.html" title="">Privacidade</a></li>
+                        <li><a href="conteudo.html" title="">Conteúdo</a></li>
+                        <li><a href="suporte.html" title="">Suporte</a></li>
+                    </ul>
                 </div>
-                <input id="f3" type="text" title="O nome deve ter pelo menos 6 caracteres" maxlength="132" placeholder="Nome e sobrenome"
-                       ng-model="FullName" />
-                <!-- E-mail -->
-                <input id="f4" type="text" title="Entre com um e-mail válido" maxlength="132" placeholder="E-mail" ng-model="Email" />
-                <!-- Assunto -->
-                <input id="f5" type="password" title="A senha deve ter pelo menos 5 caracteres" maxlength="16" placeholder="Senha" ng-model="Password" />
-                <!-- Mensagem -->
-                <button type="submit" id="f3Confirm" ng-disabled="!IsEmailValid() || !IsPasswordValid() || !IsFullNameValid()" ng-class="{'disabled': !IsEmailValid() || !IsPasswordValid() || !IsFullNameValid(), 'enabled': IsEmailValid() && IsPasswordValid() && IsFullNameValid() }" ng-click="NewAccount();">
-                    Inscrever-se
-                </button>
-                <img class="working" src="/images/loadinganim2.gif" ng-show="Working" />
-                <span class="error animated shake" ng-show="ShowEmailInUse">Este e-mail já está em uso, por favor tente de novo.</span>
-                <p>
-                    Ao inscrever-se, você concorda com nossos <a href="termos.html" class="" title="">Termos</a>, <a href="politica_de_privacidade.html" class="" title="">Política de Privacidade</a> e <a href="conteudo.html" class="" title="">Conteúdo</a>.
-                </p>
-            </form>
-        </div>
-        <!-- Botão curtir -->
-        <div class="container-box float-left margin-side width-txt margin-top-botcurtir">
-            <div class="fb-like" data-href="https://www.facebook.com/webjato" data-layout="button_count" data-action="like" data-show-faces="false"
-                 data-share="false"></div>
-            <div class="g-follow" data-annotation="bubble" data-height="20" data-href="https://plus.google.com/110858575825087737383"
-                 data-rel="publisher"></div>
-            <div class="gmais">
-                <div class="g-plusone" data-size="medium" data-annotation="none" data-href="https://plus.google.com/+Webjato"></div>
-            </div>
-        </div>
-        <!-- Recursos -->
-        <div class="space opacity margin-top-space1">
-            <a href="#recursos" class="" title="" du-smooth-scroll=du-smooth-scroll><img src="/images/site_wj/seta_scrool.png" alt="" title="" /></a>
-        </div>
-        <div id="recursos" class="margin-bottom-recursos"></div>
-        <div class="container-box float-left margin-side">
-            <img src="/images/site_wj/planet.gif" alt="" title="" />
-        </div>
-        <div class="container-box float-right margin-side width-txt">
-            <h1 class="bottom-1">O mundo esta online</h1>
-            <div class="font-medio">
-                Profissionalize-se, tenha seu próprio <strong>site</strong> e seja encontrado no Google. <strong>Crie</strong>                hoje mesmo seu <strong>site</strong> e explore recursos únicos para <strong>criar sites</strong> modernos
-                sem dificuldade.
-            </div>
-        </div>
-        <div class="space margin-top-space1">&nbsp;</div>
-        <div class="container-box float-right margin-side">
-            <img src="/images/site_wj/taca.gif" alt="" title="" />
-        </div>
-        <div class="container-box float-left margin-side width-txt">
-            <h1 class="bottom-1">Liberdade para crescer</h1>
-            <div class="font-medio">
-                <strong>Sem limite de espaço e publicidade.</strong> E você pode <strong>criar</strong> conteúdos no <strong>site</strong>                livremente. Atendendo as necessidades individuais de cada <strong>negócio, serviço ou ideia.</strong>
-            </div>
-        </div>
-    </div>
-    <!-- Rodapé -->
-    <div id="rodape">
-        <div class="container">
-            <div class="margin-side">
-                <ul class="menu1">
-                    <li><a href="sobre.html" title="">Sobre</a></li>
-                    <li><a href="termos.html" title="">Termos</a></li>
-                    <li><a href="politica_de_privacidade.html" title="">Privacidade</a></li>
-                    <li><a href="conteudo.html" title="">Conteúdo</a></li>
-                    <li><a href="suporte.html" title="">Suporte</a></li>
-                </ul>
-            </div>
-            <div class="container-box margin-side float-right font-xsmall margin-top opacity">
-                Siga e curta:&nbsp;&nbsp;&nbsp;
+                <div class="container-box margin-side float-right font-xsmall margin-top opacity">
+                    Siga e curta:&nbsp;&nbsp;&nbsp;
 
-                <a href="https://www.facebook.com/webjato" target="_blank"><img src="/images/site_wj/icone_face_gran.png" class="vert-align " alt="" title="" /></a>
-                <a href="https://plus.google.com/+Webjato" target="_blank"><img src="/images/site_wj/icone_gmais_gran.png" class="vert-align img-margin" alt="" title="" /></a>
+                    <a href="https://www.facebook.com/webjato" target="_blank"><img src="../images/site_wj/icone_face_gran.png" class="vert-align " alt="" title="" /></a>
+                    <a href="https://plus.google.com/+Webjato" target="_blank"><img src="../images/site_wj/icone_gmais_gran.png" class="vert-align img-margin" alt="" title="" /></a>
+                </div>
+            </div>
+            <div class="font-xsmall font-cinza-claro space margin-top2 align-center">
+                Webjato é um site para <strong>criar sites</strong>. E você é a nossa inspiração. <br /> 2016 © Webjato
             </div>
         </div>
-        <div class="font-xsmall font-cinza-claro space margin-top2">
-            Webjato é um site para <strong>criar sites</strong>. E você é a nossa inspiração. <br /> 2016 © Webjato
-        </div>
-    </div>
 </body>
-
 </html>

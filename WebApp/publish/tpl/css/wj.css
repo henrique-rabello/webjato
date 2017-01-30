@@ -223,29 +223,6 @@
     border: 2px dashed lightgray;
 }*/
 
-.modal-alert {
-  background-color: #FFF;
-  border-radius: 5px;
-  border: 2px solid #DEDEDE;
-  font-family: Verdana, Geneva, sans-serif;
-  width: 320px;
-}
-.modal-alert p {
-  font-size: 0.75em;
-  color: #333;
-}
-.modal-alert button {
-  background-color: #3d7adf;
-  border: none;
-  border-radius: 0.2em;
-  color: #fff;
-  font-size: 0.8em;
-  font-weight: bold;
-  margin-bottom: 16px;
-  padding: 10px;
-  width: 132px;
-}
-
 
 @-webkit-keyframes anim-zindex-up {
   0% {
@@ -1147,6 +1124,70 @@
   background-color: lightslategray;
 }
 
+.modal-alert {
+  background-color: #FFF;
+  border-radius: 5px;
+  border: 2px solid #DEDEDE;
+  font-family: Verdana, Geneva, sans-serif;
+  width: 320px;
+}
+.modal-alert p {
+  font-size: 0.75em;
+  color: #333;
+}
+.modal-alert button {
+  background-color: #3d7adf;
+  border: none;
+  border-radius: 0.2em;
+  color: #fff;
+  font-size: 0.8em;
+  font-weight: bold;
+  margin-bottom: 16px;
+  padding: 10px;
+  width: 132px;
+}
+
+.wj-help {
+  background-color: white;
+  border: 1px solid #CCC;
+  border-radius: 10px;
+  box-shadow: 0 0 1px black;
+  display: none;
+  height: 250px;
+  margin: 0;
+  padding: 10px;
+  width: 500px;
+}
+.wj-help select,
+.wj-help textarea {
+  display: block;
+  width: 450px;
+  margin: 15px 0 0 15px;
+}
+.wj-help select {
+  font-size: 20px;
+}
+.wj-help textarea {
+  height: 100px;
+}
+.wj-help button {
+  position: absolute;
+  right: 40px;
+  bottom: 25px;
+}
+
+.wj-inline-help {
+  margin: 0 auto;
+}
+.wj-inline-help > div {
+  background-color: #3393df;
+  border-radius: 5px;
+  box-shadow: 0 0 3px #000;
+  color: #fff;
+  display: inline-block;
+  padding: 5px 10px;
+}
+
 .cropbox {
   background-color: #CCC;
   width: 1020px;
@@ -1217,45 +1258,4 @@
   text-align: center;
   line-height: 400px;
   background: rgba(0, 0, 0, 0.7);
-}
-
-.wj-help {
-  background-color: white;
-  border: 1px solid #CCC;
-  border-radius: 10px;
-  box-shadow: 0 0 1px black;
-  display: none;
-  height: 250px;
-  margin: 0;
-  padding: 10px;
-  width: 500px;
-}
-.wj-help select,
-.wj-help textarea {
-  display: block;
-  width: 450px;
-  margin: 15px 0 0 15px;
-}
-.wj-help select {
-  font-size: 20px;
-}
-.wj-help textarea {
-  height: 100px;
-}
-.wj-help button {
-  position: absolute;
-  right: 40px;
-  bottom: 25px;
-}
-
-.wj-inline-help {
-  margin: 0 auto;
-}
-.wj-inline-help > div {
-  background-color: #3393df;
-  border-radius: 5px;
-  box-shadow: 0 0 3px #000;
-  color: #fff;
-  display: inline-block;
-  padding: 5px 10px;
 }

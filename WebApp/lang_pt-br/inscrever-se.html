@@ -6,12 +6,12 @@
     <meta name="description" content="Para criar seu site cadastre-se com seu e-mail ou utilize a conta do facebook. " />
     <title>Increva-se para poder criar seu site</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="/css/animate.css" />
-    <link rel="stylesheet" type="text/css" href="/css/site-institucional.css" />
-    <link type="text/css" rel="stylesheet" href="/css/tipsy.css" />
-    <script type="text/javascript" src="/scripts/wj-libs.js"></script>
-    <script type="text/javascript" src="/scripts/wj.js"></script>
-    <script type="text/javascript" src="/scripts/login.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/animate.css" />
+    <link rel="stylesheet" type="text/css" href="../css/site-institucional.css" />
+    <link type="text/css" rel="stylesheet" href="../css/tipsy.css" />
+    <script type="text/javascript" src="../scripts/wj-libs.js"></script>
+    <script type="text/javascript" src="../scripts/wj.js"></script>
+    <script type="text/javascript" src="../scripts/login.js"></script>
     <style type="text/css" media="screen">
     #btn-fb {
             position: absolute !important;
@@ -59,8 +59,9 @@
                 <li class="lup3">Já tem uma conta?</li>
                 <li><a href="entrar.html" class="lup lup2" title="">Entrar</a></li>
             </ul>
+            <a href="http://www.webjato.com/lang_en-us/index.html" class="language" title="English"><img src="../images/site_wj/icon_usa.jpg" alt="English" title="English" /></a>
         </div>
-         <div id="logo"><a href="index.html" class="" title=""><img src="/images/site_wj/logo_webjato.png" alt="Logo criar site com o webjato" title="" /></a></div>
+         <div id="logo"><a href="index.html" class="" title=""><img src="../images/site_wj/logo_webjato.png" alt="Logo criar site com o webjato" title="" /></a></div>
     </div>
    <div id="page">
    <!-- Título 1 -->
@@ -68,9 +69,9 @@
    <!-- Form inscrever-se -->
     <div class="container-box margin-side">
     <div class="container-conta">
-    <div class="btn-face"><img src="/images/site_wj/face_login.png" alt="" title="" />Entrar com o Facebook</div>
+    <div class="btn-face"><img src="../images/site_wj/face_login.png" alt="" title="" />Entrar com o Facebook</div>
      <fb:login-button id="btn-fb" show-faces="false" size="xlarge" max-rows="1" scope="public_profile,email" onlogin="LoginWithFacebook();">Entrar com Facebook</fb:login-button>
-        <img class="working" src="/images/loadinganim2.gif" ng-show="WorkingFB" />
+        <img class="working" src="../images/loadinganim2.gif" ng-show="WorkingFB" />
     <div class="cont-line">
     <div class="ou"><span translate>ou</span></div>
     </div>
@@ -82,7 +83,7 @@
     <!-- Mensagem -->
      <button type="submit" id="f3Confirm" ng-disabled="!IsEmailValid() || !IsPasswordValid() || !IsFullNameValid()" ng-class="{'disabled': !IsEmailValid() || !IsPasswordValid() || !IsFullNameValid(), 'enabled': IsEmailValid() && IsPasswordValid() && IsFullNameValid() }" ng-click="NewAccount();" translate>Inscrever-se
     </button>
-    <img class="working" src="/images/loadinganim2.gif" ng-show="Working" />
+    <img class="working" src="../images/loadinganim2.gif" ng-show="Working" />
     <span class="error animated shake" ng-show="ShowEmailInUse" translate>Este e-mail já está em uso, por favor tente de novo.</span>
     <p>Ao inscrever-se, você concorda com nossos <a href="termos.html" class="" title="">Termos</a>, <a href="politica_de_privacidade.html" class="" title="">Política de Privacidade</a> e <a href="conteudo.html" class="" title="">Conteúdo</a>.</p>
  </div>
@@ -103,8 +104,8 @@
     <div class="container-box margin-side float-right font-xsmall margin-top opacity">
     Siga e curta:&nbsp;&nbsp;&nbsp;
 
-         <a href="https://www.facebook.com/webjato" target="_blank"><img src="/images/site_wj/icone_face_gran.png" class="vert-align " alt="" title="" /></a>
-         <a href="https://plus.google.com/+Webjato" target="_blank"><img src="/images/site_wj/icone_gmais_gran.png" class="vert-align img-margin" alt="" title="" /></a>
+         <a href="https://www.facebook.com/webjato" target="_blank"><img src="../images/site_wj/icone_face_gran.png" class="vert-align " alt="" title="" /></a>
+         <a href="https://plus.google.com/+Webjato" target="_blank"><img src="../images/site_wj/icone_gmais_gran.png" class="vert-align img-margin" alt="" title="" /></a>
     </div>
     </div>
     <div class="font-xsmall font-cinza-claro space margin-top2">
