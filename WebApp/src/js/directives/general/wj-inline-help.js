@@ -46,7 +46,7 @@ angular.module('WebjatoDirectives').directive('wjInlineHelp', function () {
                     $scope.firstLoad = false;
                     $scope.timeout2 = $timeout(function () {
                         $scope.active = false;
-                    }, 3000);
+                    }, 6000);
                 }, 500);
             });
         }

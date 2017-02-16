@@ -223,6 +223,29 @@
     border: 2px dashed lightgray;
 }*/
 
+.modal-alert {
+  background-color: #FFF;
+  border-radius: 5px;
+  border: 2px solid #DEDEDE;
+  font-family: Verdana, Geneva, sans-serif;
+  width: 320px;
+}
+.modal-alert p {
+  font-size: 0.75em;
+  color: #333;
+}
+.modal-alert button {
+  background-color: #3d7adf;
+  border: none;
+  border-radius: 0.2em;
+  color: #fff;
+  font-size: 0.8em;
+  font-weight: bold;
+  margin-bottom: 16px;
+  padding: 10px;
+  width: 132px;
+}
+
 
 @-webkit-keyframes anim-zindex-up {
   0% {
@@ -1122,29 +1145,6 @@
 }
 .wj-z-index button:active {
   background-color: lightslategray;
-}
-
-.modal-alert {
-  background-color: #FFF;
-  border-radius: 5px;
-  border: 2px solid #DEDEDE;
-  font-family: Verdana, Geneva, sans-serif;
-  width: 320px;
-}
-.modal-alert p {
-  font-size: 0.75em;
-  color: #333;
-}
-.modal-alert button {
-  background-color: #3d7adf;
-  border: none;
-  border-radius: 0.2em;
-  color: #fff;
-  font-size: 0.8em;
-  font-weight: bold;
-  margin-bottom: 16px;
-  padding: 10px;
-  width: 132px;
 }
 
 .wj-help {
