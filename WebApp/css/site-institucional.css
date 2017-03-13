@@ -36,18 +36,20 @@
          
            /* ------------ Conteudos --------------- */
 			.container-box {
-				background: #fff;
+				background: transparent;
 				display: inline-table;
 				text-align: left;
 				}
+      .entreletra {letter-spacing: 1px;}
       .display-table {display: table;}
       .margin-side { margin-right: 35px; margin-left: 35px; }
       .align-center {text-align: center;}
 			.float-left { float: left; }
 			.float-right { float: right; }
+      .font-xbig { font-size: 53px; }
 			.font-big { font-size: 30px; }
 			.font-xxmedio { font-size: 24px; }
-			.font-xmedio { font-size: 21px; }
+			.font-xmedio { font-size: 20px; }
 			.font-medio { font-size: 16px; line-height: 27px; }
 			.font-small { font-size: 15px; line-height: 23px; }
 			.font-xsmall { font-size: 13px; line-height: 20px; }
@@ -58,13 +60,14 @@
 			.bold {font-weight: 600;}
 			.xbold {font-weight: 700;}
 			.color-font-blue {color: #0078d7;}
-			.font-cinza-claro {color: #999;}
+      .font-cinza-claro {color: #999;}
       .width-txt-corrido { max-width: 670px; min-width: 350px; }     
 			.width-txt { width: 450px; } 
       .margin-top-s { margin-top: 20px; }
       .margin-top-t { margin-top: 55px; } 
       .margin-top-form { margin-top: 65px; }
 			.margin-top-t1 { margin-top: 90px; }
+      .margin-top-t3 { margin-top: 120px; }
       .margin-top-t2 { margin-top: 150px; }
 			.margin-top-botcurtir { margin-top: 50px; }
 			.margin-top-space1 { margin-top: 80px; }
@@ -75,12 +78,15 @@
                 -moz-box-shadow: 9px 10px 33px 1px rgba(0,0,0,0.33);
                  box-shadow: 9px 10px 33px 1px rgba(0,0,0,0.33);
                     }
-    
+    .responsive {
+  margin: 0 auto;
+  width:100%;
+  height: 100%;
+  }
       .responsive img {
-    max-width: 999px;
+    max-width: 930px;
     width: 100%;
-    max-height: 423px;
-    height: 100%;
+    height: auto;
     margin: 0 auto;
     padding: 0;
     display: block;
@@ -246,6 +252,36 @@
               padding: 9px;
               margin: 0 5px;
 		}
+    /* ---- Botao Grande ---------*/
+      #big-bot, #big-bot * {
+      margin: 0;
+      padding: 0;
+    }
+    #big-bot {
+      position: relative;
+      width: auto;
+      height: auto;
+      list-style: none;
+      letter-spacing: 0px;
+      font-size: 19px;
+      font-weight: 400;
+      text-align: center;
+      }
+    #big-bot li {
+     
+    }
+    #big-bot li a {
+        text-decoration: none;
+        color: #fff;
+        padding: 15px 30px;
+        border-radius: 0.2em;
+        background-color: #016cd4;
+        transition: background-color 0.3s ease-out 0s, border-color 0.3s ease-out 0s, color 0.3s ease-out 0s;
+    }
+    #big-bot li a:hover {
+       text-decoration: none;
+            background-color: #3d7adf;
+    }
 		/* ----------- Formulário ------------ */
        .container-conta {
              position: relative;
@@ -256,7 +292,7 @@
              text-align: left;
              margin: 0 auto;
              padding: 20px 25px 0 25px;
-             background: transparent; 
+             background: #fff;
         }
        .container-conta p { 
             font-size: 13px;

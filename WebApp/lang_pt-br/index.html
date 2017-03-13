@@ -27,9 +27,9 @@
     <script src="../scripts/jquery.blueberry.js"></script>
     <style type="text/css" media="screen">
         body {
-            background: url(../images/site_wj/loading.gif) no-repeat center 90px;
+            background: #333;
         }
-        
+        html, body{height:100%; overflow-y: auto; }
         #page {
             margin-top: 23px;
         }
@@ -37,6 +37,106 @@
         .margin-top-botcurtir {
             margin-top: 7px;
         }
+
+        #header {
+            background: transparent;
+            position: static;
+            margin-top: 8px;
+        }
+        #logo{ 
+            top: 8px;
+        }
+        .color-white {
+           color: #fff;
+        }
+       .color-font-blue2 {
+          color: #0585fc;
+         line-height: 35px;
+        }
+       .menu1 li a {
+              color: #999;
+                      }
+         .menu1 li a:hover {
+            color: #fff;
+           
+           }
+      #bot li a {
+        border-radius: 0.2em;
+        background-color: transparent;
+        border: 1px solid #fff;
+        }
+        #bot li a:hover {
+            color: #333;
+            background-color: #fff;
+        }
+        #rodape {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 135px;
+    margin: 0 auto;
+    border-top: 1px solid #555;
+    background-color: rgba(0, 0, 0, 0);
+}
+#centro {
+    width:760px;
+    height:450px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-left:-380px;
+    margin-top:-225px;
+  
+}
+     a:link {color: #fff; text-decoration: underline;}
+     a:visited {color: #fff; text-decoration: underline;}
+     a:hover {color: #fff; text-decoration: none;}
+     a:active {color: #fff; text-decoration: underline;}
+         /* -- Video -- */       
+       
+.fullscreen-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -100;
+  opacity: 0.2;
+}
+
+.fullscreen-bg__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .fullscreen-bg__video {
+    height: 300%;
+    top: -100%;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .fullscreen-bg__video {
+    width: 300%;
+    left: -100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .fullscreen-bg {
+    background: url('../images/site_wj/videoframe.jpg') center center / cover no-repeat;
+  }
+
+  .fullscreen-bg__video {
+    display: none;
+  }
+}
     </style>
     <script>
         $(window).load(function () {
@@ -63,41 +163,40 @@
         fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 </script>
+<div class="fullscreen-bg">
+    <video loop muted autoplay poster="image/videoframe.jpg" class="fullscreen-bg__video">
+     <source src="../images/site_wj/video_mulher.mp4" type="video/mp4">
+     Your browser does not support the video tag.
+    </video>
+    </div>
     <!-- Header  -->
     <div id="header">
         <div id="cont_menu">
             <ul id="bot">
-                <li><a href="inscrever-se.html" class="" title="">Inscreva-se agora</a></li>
-                <li class="lup3">ou</li>
-                <!-- <li class="lup3">Já tem uma conta?</li> -->
-                <li><a href="entrar.html" class="lup lup2" title="">Entrar</a></li>
+                <!-- <li><a href="inscrever-se.html" class="" title="">Inscreva-se agora</a></li>
+                <li class="lup3">ou</li> -->
+                <li class="lup3 color-white">Já tem uma conta?</li>
+                <li><a href="entrar.html" class="" title="">Entrar</a></li>
             </ul>
-            <a href="http://www.webjato.com/lang_en-us/index.html" class="language" title="English"><img src="../images/site_wj/icon_usa.jpg" alt="English" title="English" /></a>
+            <a href="http://www.webjato.com/lang_en-us/index.html" class="language" title="English"><img src="../images/site_wj/flag_eua2.png" alt="English" title="English" /></a>
         </div>
         <div id="logo">
-            <a href="index.html" class="" title=""><img src="../images/site_wj/logo_webjato.png" alt="Logo criar site com o webjato" title="" /></a>
+            <a href="index.html" class="" title=""><img src="../images/site_wj/logo_webjato2.png" alt="Logo criar site com o webjato" title="" /></a>
         </div>
     </div>
-    <div class="blueberry">
+    <!-- <div class="blueberry">
         <ul class="slides">
             <li><img src="../images/site_wj/banner1.jpg" alt="" title="" /></li>
             <li><img src="../images/site_wj/banner2.jpg" alt="" title="" /></li>
             <li><img src="../images/site_wj/banner3.jpg" alt="" title="" /></li>
         </ul>
-    </div>
-    <div id="page">
+    </div> -->
+    <div id="centro">
         <!-- Título 1 -->
-        <div class="container-box width-txt-corrido margin-side margin-top-t2 align-center">
-            <h1 class="light color-black bottom-2">Para criar SITES modernos,<br /> rápido e grátis.</h1>
-            <h1 class="bottom-1 font-xmedio color-font-blue">PERFEITO PARA APRESENTAR SERVIÇOS, EMPRESAS E TRABALHOS.<br />PARA VOCÊ SE PROFISSIONALIZAR E APARECER NO GOOGLE.</h1>
-        </div>
-        <div class="container-box width-txt-corrido margin-side margin-top-t2 display-table">
-            <h1 class="light color-black bottom-2">Recursos</h1>
-        <div class="responsive"><img src="../images/site_wj/img_03b.jpg" alt="" title="" /></div>            
-        </div>
-         <div class="container-box width-txt-corrido margin-side margin-top-t2 display-table margin-bottom-t">
-            <h1 class="light color-black bottom-2">Vantagens</h1>
-        <div class="responsive"><img src="../images/site_wj/img_04.jpg" alt="" title="" /></div>            
+        <div class="container-box width-txt-corrido margin-side align-center">
+            <h1 class="light color-white bottom-2 font-xbig">Para criar SITES modernos,<br /> de forma fácil e <a href="recursos.html" class="" title="">mais.</a></h1>
+            <h2 class="bottom-1 font-xmedio light color-white bottom-2 entreletra">PERFEITO PARA APRESENTAR SERVIÇOS, EMPRESAS E TRABALHOS.<br />PARA VOCÊ SE PROFISSIONALIZAR E APARECER NO GOOGLE.</h2>
+            <ul id="big-bot" style="margin-top:50px;"><li><a href="inscrever-se.html" class="" title="">Crie seu site, é grátis!</a></li></ul>
         </div>
     </div>
         <!-- Rodapé -->
@@ -119,7 +218,7 @@
                     <a href="https://plus.google.com/+Webjato" target="_blank"><img src="../images/site_wj/icone_gmais_gran.png" class="vert-align img-margin" alt="" title="" /></a>
                 </div>
             </div>
-            <div class="font-xsmall font-cinza-claro space margin-top2 align-center">
+            <div class="font-xsmall space margin-top2 align-center">
                 Webjato é um site para <strong>criar sites</strong>. E você é a nossa inspiração. <br /> 2016 © Webjato
             </div>
         </div>
